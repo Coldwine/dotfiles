@@ -1,0 +1,18 @@
+set folder = "imaps://posteo.de"
+set spoolfile = "+INBOX"
+set mbox = "+Archive"
+set record = "+Sent"
+set postponed = "+Drafts"
+set trash = "+Trash"
+
+set from = "mgmk@posteo.de"
+set signature = ~/.mutt/posteo.sig
+
+set imap_user = "mgmk@posteo.de"
+set imap_pass = "`keyring get posteo.de mgmk@posteo.de`"
+set smtp_url = "smtps://$imap_user@posteo.de:465"
+set smtp_pass = $imap_pass
+
+account-hook posteo.de "set imap_user=mgmk@posteo.de from=mgmk@posteo.de"
+
+# vim: filetype=muttrc

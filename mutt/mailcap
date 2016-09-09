@@ -1,0 +1,22 @@
+#
+# # HTML
+text/html; elinks -dump -force-html -no-references -no-numbering %s; copiousoutput;
+#
+# # Word
+application/msword; ~/.mutt/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+#
+# # Images
+image/jpg; ~/.mutt/view_attachment.sh %s jpg
+image/jpeg; ~/.mutt/view_attachment.sh %s jpg
+image/pjpeg; ~/.mutt/view_attachment.sh %s jpg
+image/png; ~/.mutt/view_attachment.sh %s png
+image/gif; ~/.mutt/view_attachment.sh %s gif
+#
+# # PDFs
+application/pdf; ~/.mutt/view_attachment.sh %s pdf
+#
+# # iCal Preview
+text/calendar; mutt-ics; copiousoutput
+#
+# # Unidentified files
+application/octet-stream; ~/.mutt/view_attachment.sh %s "-"

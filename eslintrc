@@ -1,0 +1,33 @@
+extends: google
+env:
+  jquery: true
+  browser: true
+  node: true
+globals:
+  DS: true
+  _: true
+rules:
+  max-len:
+    - warn
+    -
+      code: 150
+      ignoreComments: true
+      ignoreUrls: true
+  require-jsdoc:
+    - error
+    -
+      require:
+        FunctionDeclaration: false
+        MethodDefinition: false
+        ClassDeclaration: false
+  one-var:
+    - error
+    -
+      var: never
+  indent:
+    - error
+    - 2
+  new-cap:
+    - error
+    -
+      capIsNew: false

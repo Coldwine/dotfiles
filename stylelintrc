@@ -1,0 +1,23 @@
+{
+  "plugins": [],
+  "defaultSeverity": "warning",
+  "rules": {
+    "block-no-empty": true,
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-named": "always-where-possible",
+    "color-no-invalid-hex": true,
+    "declaration-block-no-duplicate-properties": [true, {
+      "ignore": ["consecutive-duplicates"]
+    }],
+    "declaration-empty-line-before": "never",
+    "declaration-no-important": true,
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "max-nesting-depth": 3,
+    "no-duplicate-selectors": true,
+    "rule-non-nested-empty-line-before": "always",
+    "selector-max-empty-lines": 0,
+    "value-keyword-case": "lower"
+  }
+}

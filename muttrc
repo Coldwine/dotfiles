@@ -1,0 +1,14 @@
+source ~/.mutt/work.muttrc
+folder-hook useeds 'source ~/.mutt/work.muttrc'
+folder-hook gmail 'source ~/.mutt/gmail.muttrc'
+folder-hook posteo 'source ~/.mutt/posteo.muttrc'
+
+source ~/.mutt/general.muttrc
+source ~/.mutt/composing.muttrc
+source ~/.mutt/mailboxes.muttrc
+source ~/.mutt/headers.muttrc
+source ~/.mutt/bindings.muttrc
+source ~/.mutt/sidebar.muttrc
+
+# colors
+source ~/.mutt/colors.muttrc

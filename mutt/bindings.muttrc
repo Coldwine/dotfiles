@@ -1,0 +1,21 @@
+bind attach <return> view-mailcap
+bind editor <Tab> complete-query
+bind editor <space> noop
+bind editor ^T complete
+
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager \CP sidebar-prev
+
+bind index i display-message
+bind index l limit
+bind index gg first-entry
+bind index G last-entry
+macro index   <tab>      <next-unread><enter>
+
+bind pager gg top
+bind pager G bottom
+bind pager J next-line
+bind pager K previous-line
+
+# vim: filetype=muttrc

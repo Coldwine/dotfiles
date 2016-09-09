@@ -1,0 +1,54 @@
+set header_cache = ~/.mutt/cache/headers                # directory used to store message header
+set message_cachedir = ~/.mutt/cache/bodies             # directory used to store message body
+set certificate_file = ~/.mutt/certificates             # where to store certificates
+set mailcap_path = ~/.mutt/mailcap                      # path to the mailcap file
+set tmpdir = /tmp                                       # tempory directory
+
+alternates "feuerwinter@gmail.com" "marcel.krause@useeds.de" "mgmk@posteo.de"
+
+set sleep_time = 0                                      # remove pauses
+set delete
+
+# index options
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# pager options
+set pager_index_lines = 10
+set pager_context = 5
+set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+set charset = utf-8
+
+unset markers
+auto_view text/calendar text/html
+alternative_order text/plain text/calendar text/html
+
+# status bar
+set status_chars = " *%A"
+set status_on_top = yes
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+set date_format = "%m/%d"
+set index_format = "%4C [%Z] %D %-15.15F %s"
+set alias_format = "%4n %t %-20a  %r"
+
+# imap options
+# unset imap_passive
+set imap_keepalive = 300
+set mail_check = 120
+set smtp_authenticators = 'gssapi:login'
+set move = no
+
+# useful macros
+macro index,pager ",m" ":unset wait_key\n |add_to_calcurse<enter><exit>"
+macro index so "<enter-command>source ~/.muttrc<enter>" "reload mutt config"
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "extract URLs out of a message"
+
+# vim: syntax=muttrc

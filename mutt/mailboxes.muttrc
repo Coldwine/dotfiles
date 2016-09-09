@@ -1,0 +1,17 @@
+mailboxes "imaps://imap.gmail.com/INBOX" \
+          "imaps://imap.gmail.com/[Gmail]/Drafts" \
+          "imaps://imap.gmail.com/[Gmail]/Sent Mail" \
+          "imaps://imap.gmail.com/[Gmail]/All Mail" \
+          "imaps://imap.gmail.com/[Gmail]/Bin" \
+          "imaps://posteo.de/INBOX" \
+          "imaps://posteo.de/Drafts" \
+          "imaps://posteo.de/Sent" \
+          "imaps://posteo.de/Archive" \
+          "imaps://posteo.de/Trash" \
+          "imaps://outlook.office365.com/INBOX" \
+          "imaps://outlook.office365.com/Drafts" \
+          "imaps://outlook.office365.com/Sent Items" \
+          "imaps://outlook.office365.com/Archive" \
+          "imaps://outlook.office365.com/Deleted Items"
+
+# vim: filetype=muttrc

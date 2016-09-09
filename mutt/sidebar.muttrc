@@ -1,0 +1,7 @@
+set sidebar_visible = yes
+set sidebar_width = 24
+set sidebar_format = "%B%?F? ?%* %?N?%N/?%S"
+set sidebar_short_path
+set mail_check_stats
+
+# vim: filetype=muttrc

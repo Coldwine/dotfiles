@@ -1,0 +1,156 @@
+# abook addressbook file
+
+[format]
+program=abook
+version=0.6.0pre2
+
+
+[0]
+name=Alexander Varro
+email=alexander.varro@extern.consorsbank.de
+
+[1]
+name=Berlin Banking
+email=cb.banking.berlin@useeds.de
+
+[2]
+name=Berlin Mobile
+email=cb.mobile.berlin@useeds.de
+
+[3]
+name=Berlin Trading
+email=cb.trading.berlin@useeds.de
+
+[4]
+name=Christian Dornbusch
+email=christian.dornbusch@useeds.de
+
+[5]
+name=Christian Sieber
+email=Christian.Sieber@consorsbank.de
+
+[6]
+name=Christina Bloecher
+email=christina.bloecher@useeds.de
+
+[7]
+name=Christine Mitsch
+email=christine.mitsch@consorsbank.de
+
+[8]
+name=Daniel Terhorst
+email=daniel.terhorst@useeds.de
+
+[9]
+name=Ekaterina Pereslavskaya
+email=ekaterina.pereslavskaya@useeds.de
+
+[10]
+name=Freelancer Useeds
+email=freelancer@useeds.de
+
+[11]
+name=Huey-Yuan Wang
+email=huey-yuan.wang@useeds.de
+
+[12]
+name=Irene Escudé
+email=irene.escude@useeds.de
+
+[13]
+name=Jan Heinsen
+email=jan.heinsen@extern.consorsbank.de
+
+[14]
+name=Luisa Duong
+email=luisa.duong@useeds.de
+
+[15]
+name=Maksym Gendin
+email=maksym.gendin@consorsbank.de
+
+[16]
+name=Manuela Risch
+email=manuela.risch@useeds.de
+
+[17]
+name=Marcel Krause
+email=marcel.krause@useeds.de,feuerwinter@gmail.com,mgmk@posteo.de
+mobile=+491724071275
+
+[18]
+name=Maria Meermeier
+email=maria.meermeier@useeds.de
+
+[19]
+name=Marit Brademann
+email=marit.brademann@useeds.de
+
+[20]
+name=Martha Olmos
+email=martha.olmos@useeds.de
+
+[21]
+name=Martina Windrath
+email=martina.windrath@useeds.de
+
+[22]
+name=Meike Boelts
+email=meike.boelts@useeds.de
+
+[23]
+name=Michael Fleck
+email=michael.fleck@useeds.de
+
+[24]
+name=Nürnberg Banking
+email=cb.banking.nuernberg@useeds.de
+
+[25]
+name=Nürnberg Banking Development
+email=cb.banking.dev.nuernberg@useeds.de
+
+[26]
+name=Nürnberg Mobile
+email=cb.mobile.nuernberg@useeds.de
+
+[27]
+name=Nürnberg Trading
+email=cb.trading.nuernberg@useeds.de
+
+[28]
+name=Nürnberg Trading Development
+email=cb.trading.dev@useeds.de
+
+[29]
+name=Sabine Kaufmann
+email=sabine.kaufmann@useeds.de
+
+[30]
+name=Sebastian Hoos
+email=sebastian.hoos@useeds.de
+
+[31]
+name=Stefanie Simon
+email=stefanie.simon@useeds.de
+
+[32]
+name=Steve Jones
+email=steve.jones@useeds.de
+
+[33]
+name=Team Useeds
+email=team@useeds.de
+
+[34]
+name=Thomas Otto
+email=thomas.otto@useeds.de
+
+[35]
+name=Thomas Pribbenow
+email=thomas.pribbenow@useeds.de
+
+[36]
+name=Tobias Winkler
+email=tobias.winkler@useeds.de
+

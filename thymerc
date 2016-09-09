@@ -1,0 +1,2 @@
+set :tmux, true
+set :tmux_theme, "| #[fg=#808070,bg=#30302c]#[fg=%s]%s#[fg=#808070,bg=#30302c]"

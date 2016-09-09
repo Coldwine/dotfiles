@@ -1,0 +1,18 @@
+set folder = "imaps://outlook.office365.com"
+set spoolfile = "+INBOX"
+set mbox = "+Archive"
+set record = "+Sent Items"
+set postponed = "+Drafts"
+set trash = "+Deleted Items"
+
+set from = "marcel.krause@useeds.de"
+set signature = ~/.mutt/work.sig
+
+set imap_user = "marcel.krause@useeds.de"
+set imap_pass = "`keyring get outlook.office365.com marcel.krause@useeds.de`"
+set smtp_url = "smtp://$imap_user@smtp.office365.com:587"
+set smtp_pass = $imap_pass
+
+account-hook outlook.office365.com "set imap_user=marcel.krause@useeds.de from=marcel.krause@useeds.de"
+
+# vim: filetype=muttrc

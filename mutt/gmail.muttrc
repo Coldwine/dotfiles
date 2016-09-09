@@ -1,0 +1,18 @@
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set mbox = "+[Gmail]/All Mail"
+unset record
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Bin"
+
+set from = "feuerwinter@gmail.com"
+set signature = ~/.mutt/gmail.sig
+
+set imap_user = "feuerwinter@gmail.com"
+set imap_pass = "`keyring get imap.gmail.com feuerwinter@gmail.com`"
+set smtp_url = "smtps://$imap_user@smtp.gmail.com:465"
+set smtp_pass = $imap_pass
+
+account-hook gmail.com "set imap_user=feuerwinter@gmail.com from=feuerwinter@gmail.com"
+
+# vim: filetype=muttrc

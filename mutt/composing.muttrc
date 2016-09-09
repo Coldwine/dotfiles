@@ -1,0 +1,19 @@
+set mime_forward
+set editor = "nvim +/^$ ++1 -c 'set tw=76 expandtab nosmartindent spell spelllang=de,en'""
+set fast_reply
+set include
+set edit_headers
+set query_command= "abook --mutt-query '%s'"  # used to lookup recipients
+
+# add sender to abook
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+
+# pre-fills the From address when replying to emails based on the email account that received the original mail
+set reverse_name
+set envelope_from
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+
+set text_flowed
+
+# vim: filetype=muttrc
