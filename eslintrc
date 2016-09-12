@@ -9,25 +9,21 @@ globals:
 rules:
   max-len:
     - warn
-    -
-      code: 150
+    - code: 150
       ignoreComments: true
       ignoreUrls: true
   require-jsdoc:
     - error
-    -
-      require:
+    - require:
         FunctionDeclaration: false
         MethodDefinition: false
         ClassDeclaration: false
   one-var:
     - error
-    -
-      var: never
+    - var: never
   indent:
     - error
     - 2
   new-cap:
     - error
-    -
-      capIsNew: false
+    - capIsNew: false

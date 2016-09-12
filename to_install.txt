@@ -1,0 +1,17 @@
+fish -> fin
+tmux -> tpm
+neovim -> vim.plug
+rbenv -> fish.rbenv
+python -> neovim proselint keyring urlscan
+grc
+elinks
+abook
+neomutt -> mkdir -p ~/.mutt/cache/{bodies,headers}
+mpd
+ncmpc
+thyme
+vint
+stylelint
+stylefmt
+eslint
+proselint
