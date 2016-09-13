@@ -1,4 +1,4 @@
-set shell=/bin/zsh
+set shell=/bin/sh
 
 function! s:SourceConfigFilesIn(directory)
   let l:directory_splat = '~/.config/nvim/' . a:directory . '/*.vim'
