@@ -1,4 +1,4 @@
-function General -d 'Create Session'
+function tmx -d 'Create Session'
   tmux has-session -t General
   if test $status != 0
     cd ~/
