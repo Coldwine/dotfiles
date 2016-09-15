@@ -13,6 +13,6 @@ set imap_pass = "`keyring get imap.gmail.com feuerwinter@gmail.com`"
 set smtp_url = "smtps://$imap_user@smtp.gmail.com:465"
 set smtp_pass = $imap_pass
 
-account-hook gmail.com "set imap_user=feuerwinter@gmail.com from=feuerwinter@gmail.com"
+account-hook gmail.com "set imap_user=feuerwinter@gmail.com from=feuerwinter@gmail.com signature=~/.mutt/gmail.sig"
 
 # vim: filetype=muttrc
