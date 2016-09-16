@@ -4,7 +4,7 @@ set certificate_file = ~/.mutt/certificates             # where to store certifi
 set mailcap_path = ~/.mutt/mailcap                      # path to the mailcap file
 set tmpdir = /tmp                                       # tempory directory
 
-alternates "feuerwinter@gmail.com" "marcel.krause@useeds.de" "mgmk@posteo.de"
+alternates "feuerwinter@gmail.com|marcel.krause@useeds.de|mgmk@posteo.de"
 
 set sleep_time = 0                                      # remove pauses
 set delete

@@ -1,5 +1,5 @@
 source ~/.mutt/work.muttrc
-folder-hook useeds 'source ~/.mutt/work.muttrc'
+folder-hook outlook 'source ~/.mutt/work.muttrc'
 folder-hook gmail 'source ~/.mutt/gmail.muttrc'
 folder-hook posteo 'source ~/.mutt/posteo.muttrc'
 

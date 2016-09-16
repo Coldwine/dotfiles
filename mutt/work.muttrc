@@ -13,6 +13,4 @@ set imap_pass = "`keyring get outlook.office365.com marcel.krause@useeds.de`"
 set smtp_url = "smtp://$imap_user@smtp.office365.com:587"
 set smtp_pass = $imap_pass
 
-account-hook outlook.office365.com "set imap_user=marcel.krause@useeds.de from=marcel.krause@useeds.de signature=~/.mutt/work.sig"
-
 # vim: filetype=muttrc
