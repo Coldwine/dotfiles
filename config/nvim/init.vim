@@ -23,5 +23,6 @@ call s:SourceConfigFilesIn('rcbase')
 call s:SourceConfigFilesIn('functions')
 call s:SourceConfigFilesIn('rcplugins')
 
+runtime macros/matchit.vim
 set termguicolors
 colorscheme seoul256

@@ -2,8 +2,10 @@
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'romainl/apprentice'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
 
 " Editing and Formatting
 Plug 'Chiel92/vim-autoformat'
@@ -43,7 +45,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " Source Control
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'

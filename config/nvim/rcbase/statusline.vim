@@ -1,4 +1,3 @@
-set fileencoding=utf8
 scriptencoding utf-8
 
 set laststatus=2
@@ -76,7 +75,7 @@ endfunction
 
 let g:tagbar_status_func = 'TagbarStatusFunc'
 function! TagbarStatusFunc(fname, ...) abort
-    let g:lightline.fname = a:fname
+  let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
 
