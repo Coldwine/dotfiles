@@ -25,4 +25,5 @@ call s:SourceConfigFilesIn('rcplugins')
 
 runtime macros/matchit.vim
 set termguicolors
-colorscheme seoul256
+set background=dark
+colorscheme gruvbox

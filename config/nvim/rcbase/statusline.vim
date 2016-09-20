@@ -4,7 +4,7 @@ set laststatus=2
 set showtabline=2
 
 let g:lightline = {
-      \   'colorscheme': 'seoul256',
+      \   'colorscheme': 'gruvbox',
       \   'active': {
       \     'left': [ [ 'mode', 'paste'  ],
       \               [ 'fugitive', 'gitgutter', 'filename' ] ],

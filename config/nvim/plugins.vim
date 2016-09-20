@@ -6,6 +6,8 @@ Plug 'romainl/apprentice'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
+Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " Editing and Formatting
 Plug 'Chiel92/vim-autoformat'
