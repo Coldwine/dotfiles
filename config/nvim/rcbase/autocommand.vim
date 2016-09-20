@@ -16,11 +16,11 @@ augroup highlightGroups
   autocmd!
 augroup END
 
-autocmd highlightGroups ColorScheme seoul256 highlight NeomakeErrorSign ctermfg=52 ctermbg=238 guifg=#730b00 guibg=#565656
-autocmd highlightGroups ColorScheme seoul256 highlight NeomakeWarningSign ctermfg=222 ctermbg=238 guifg=#ffde99 guibg=#565656
-autocmd highlightGroups ColorScheme seoul256 highlight SignifySignAdd guifg=#006F00
-autocmd highlightGroups ColorScheme seoul256 highlight SignifySignChange guifg=#6B6B6B
-autocmd highlightGroups ColorScheme seoul256 highlight SignifySignDelete guifg=#9A7372
+autocmd highlightGroups ColorScheme seoul256 highlight NeomakeErrorSign guifg=#E12672
+autocmd highlightGroups ColorScheme seoul256 highlight NeomakeWarningSign guifg=#719CDF
+autocmd highlightGroups ColorScheme seoul256 highlight SignifySignAdd guifg=#98BC99
+autocmd highlightGroups ColorScheme seoul256 highlight SignifySignChange guifg=#719CDF
+autocmd highlightGroups ColorScheme seoul256 highlight SignifySignDelete guifg=#E12672
 
 function! s:goyo_active()
   if exists('#goyo')

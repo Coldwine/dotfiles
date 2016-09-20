@@ -5,7 +5,7 @@ set autoread
 set autowrite
 set backspace=2
 set complete=.,w,b,t,kspell
-set completeopt+=longest,menuone
+set completeopt=menu,longest,menuone
 set copyindent
 set cursorline
 set expandtab
