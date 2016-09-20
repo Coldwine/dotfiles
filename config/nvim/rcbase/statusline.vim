@@ -21,7 +21,7 @@ let g:lightline = {
       \     'filetype': 'LightLineFiletype',
       \     'fileencoding': 'LightLineFileencoding',
       \     'mode': 'LightLineMode',
-      \     'gitgutter': 'LightLineGitGutter',
+      \     'gitgutter': 'LightLineSignify',
       \     'neomake': 'neomake#statusline#LoclistStatus',
       \   },
       \   'component_type': {
@@ -79,23 +79,21 @@ function! TagbarStatusFunc(fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-function! LightLineGitGutter()
-  if ! exists('*GitGutterGetHunkSummary')
-        \ || ! get(g:, 'gitgutter_enabled', 0)
-        \ || winwidth('.') <= 90
-    return ''
-  endif
-  let l:symbols = [
-        \ g:gitgutter_sign_added . ' ',
-        \ g:gitgutter_sign_modified . ' ',
-        \ g:gitgutter_sign_removed . ' '
-        \ ]
-  let l:hunks = GitGutterGetHunkSummary()
-  let l:ret = []
-  for l:i in [0, 1, 2]
-    if l:hunks[l:i] > 0
-      call add(l:ret, l:symbols[l:i] . l:hunks[l:i])
+function! LightLineSignify()
+  let symbols = ['+', '-', '!']
+  let [added, modified, removed] = sy#repo#get_stats()
+  let stats = [added, removed, modified]  " reorder
+  let hunkline = ''
+
+  for i in range(3)
+    if stats[i] > 0
+      let hunkline .= printf('%s%s ', symbols[i], stats[i])
     endif
   endfor
-  return join(l:ret, ' ')
+
+  if !empty(hunkline)
+    let hunkline = printf('%s', hunkline[:-2])
+  endif
+
+  return hunkline
 endfunction
