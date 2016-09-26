@@ -35,6 +35,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/es.next.syntax.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
 Plug 'tmux-plugins/vim-tmux'
 
