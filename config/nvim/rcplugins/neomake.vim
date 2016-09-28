@@ -1,4 +1,3 @@
-set fileencoding=utf8
 scriptencoding utf-8
 
 let g:neomake_open_list = 2
