@@ -7,7 +7,8 @@ let g:lightline = {
       \   'colorscheme': 'gruvbox',
       \   'active': {
       \     'left': [ [ 'mode', 'paste'  ],
-      \               [ 'fugitive', 'gitgutter', 'filename' ] ],
+      \               [ 'fugitive', 'gitgutter' ],
+      \               [ 'filename' ] ],
       \     'right': [ [ 'neomake', 'lineinfo' ],
       \                [ 'percent' ],
       \                [ 'fileformat', 'fileencoding', 'filetype' ] ]
