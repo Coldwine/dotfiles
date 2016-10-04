@@ -6,7 +6,7 @@
 
 # Make sure calcurse is running
 if [ ! -f "$HOME/.calcurse/.calcurse.pid" ]; then
-	exit 1
+  exit 1
 fi
 
 # Extract the attachments
