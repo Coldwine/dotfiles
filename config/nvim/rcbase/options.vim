@@ -1,9 +1,14 @@
+scriptencoding utf-8
+
 let &showbreak='↪ '
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:loaded_python_provider = 1
+
 set autoindent
 set autoread
 set autowrite
 set backspace=2
+set clipboard=unnamed
 set complete=.,w,b,t,kspell
 set completeopt=menu,longest,menuone
 set copyindent
@@ -48,13 +53,3 @@ set visualbell
 set wildignorecase
 set wildmenu
 set wildmode=longest:full,full
-
-" Cursor
-if exists('$TMUX')
-  set clipboard=
-  " Different cursor for normal and insert mode
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-else
-  set clipboard=unnamed
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-endif

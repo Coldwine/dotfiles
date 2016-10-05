@@ -11,6 +11,8 @@ module.exports = {
     'plugin/selector-bem-pattern': {
       preset: 'bem'
     },
-    'scss/selector-no-redundant-nesting-selector': true
+    'scss/selector-no-redundant-nesting-selector': true,
+    'at-rule-empty-line-before': 'always',
+    'declaration-empty-line-before': 'never'
   }
 };

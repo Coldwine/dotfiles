@@ -6,7 +6,6 @@ autocmd fileType BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd fileType BufNewFile,BufReadPost *stylelintrc set filetype=json
 autocmd fileType BufNewFile,BufReadPost *ctags set filetype=config
 autocmd fileType BufNewFile,BufReadPost *thymerc set filetype=ruby
-autocmd fileType BufNewFile,BufReadPost *eslintrc* set filetype=yaml
 autocmd fileType BufNewFile,BufReadPost mail set tabwidth=76
 autocmd fileType FileType help nnoremap <buffer> q :q<cr>
 autocmd fileType FileType javascript :iabbrev <buffer> iff if()<left>
