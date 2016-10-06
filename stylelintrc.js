@@ -12,7 +12,7 @@ module.exports = {
       preset: 'bem'
     },
     'scss/selector-no-redundant-nesting-selector': true,
-    'at-rule-empty-line-before': 'always',
+    'at-rule-empty-line-before': 'never',
     'declaration-empty-line-before': 'never'
   }
 };
