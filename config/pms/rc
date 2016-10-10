@@ -1,1 +1,2 @@
 bind d remove
+bind R redraw
