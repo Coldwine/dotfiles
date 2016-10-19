@@ -1,0 +1,4 @@
+@_modsinfo.nlog.loadcmd =  'nload';
+@_modsinfo.nlog.savecmd =  'nsave';
+@_modsinfo.nlog.savefiles= 'a.notify.save notify.log';
+@_modsinfo.nlog.description="notify logging";

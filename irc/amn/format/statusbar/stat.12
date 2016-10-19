@@ -1,0 +1,27 @@
+subpackage stat12
+## last modified by crapple 8.30.05
+## taken from sushi.irc by dh with permission
+## thank you dh!#@
+set -input_prompt
+alias stat12 {
+^set status_query $(sc1)query$(hblk)\($(sc1)=%Q$(hblk))
+^set STATUS_AWAY $(sc1)zZzZ$(mag) +$(cl)
+^set STATUS_CHANNEL $(mag)/$(sc1)%C$(cl)
+^set STATUS_CHANOP $(sc2)@$(cl)
+^set STATUS_CLOCK $(sc1)%T$(cl)
+^set STATUS_CPU_SAVER  (%L)
+^set STATUS_FORMAT %T [%R] %*%=%@%N%#%S%H%B%Q%A%C%+%I%O%M%F%L %D %U %W
+^set STATUS_FORMAT1 $(hwht)<$(ld.hline)$(ld.hline)$(cl)$(ld.hline)$(ld.hline)$(hblk)$(ld.ur_corner) %=%*%@$(sc1)%N$(cl)%#%C%+ %>%! %M $(hblk)\($(cl)o$(mag)/$(sc1)%2 $(cl)n$(mag)/$(sc1)%3 $(cl)v$(mag)/$(sc1)%4$(hblk)\)$(cl) $(mag)+$(sc2) w$(sc1)in$(hblk):$(sc1) %R $(hwht)<$(ld.hline)$(ld.hline)$(cl)$(ld.hline)$(ld.hline)$(hblk)$(ld.ur_corner)$(cl)
+^set STATUS_FORMAT2 $(hblk)$(ld.ll_corner)$(cl)$(ld.hline)$(ld.hline)$(hwht)$(ld.hline)$(ld.hline)>$(sc1) %T $(mag)+$(sc2) $(sc2)s$(sc1)erv$(hblk):$(sc1)%{2}S %>  %Q $(hblk)\($(sc2)a$(sc1)ct$(mag): $(sc1)%F$(hblk)) $(mag)+$(sc2) %A $(sc2)l$(sc1)ag$(hblk):$(sc1)%1$(hblk) $(ld.ll_corner)$(cl)$(ld.hline)$(ld.hline)$(hwht)$(ld.hline)$(ld.hline)>$(cl)
+^set STATUS_MODE $(hblk)\($(cl)+$(sc1)%+$(hblk)\)$(cl)
+^set STATUS_NOTIFY %F
+^set STATUS_MAIL $(hblk)\($(cl)M:%M$(hblk)\)$(cl)
+^set STATUS_OPER $(hblk)*
+^set STATUS_SERVER %S
+^set STATUS_UMODE $(hblk)\($(cl)+$(sc1)%#$(hblk)\)$(cl)
+^set STATUS_VOICE $(mag)+$(cl)
+}
+stat12
+@windowdoubles=[on]
+^window double on
+^timer -del 14

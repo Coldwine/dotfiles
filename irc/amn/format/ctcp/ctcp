@@ -1,0 +1,16 @@
+DESC crapple zak@chowned.org #amnesiac 910492823 PING
+1 $G $(c1)$1 %K\($(c2)$2%K\)%n requested $(c1)$4 $5 %nfrom $3
+2 $G $(c1)$1 %K\[$(c2)$2%K]%n requested $(c1)$4 $5%n from $3
+3 %K>%n>%W> $(hgrn)$1 %K\[$(grn)$2%K]$(grn) requested $4 $5 from $3
+4 $G $(hwt)$1 $(hblk)[$(wht)$2$(hblk)] $(cl)requested $(wht)$4- $(cl)from $3
+5 $G $(hwt)$1 $(hblk)\($(wht)$2$(hblk)\) $(cl)requested $(wht)$4- $(cl)from $3
+6 $G $(c3)$1 $(hblk)\($(c4)$2$(hblk)\) $(cl)requested $(c1)$4- $(cl)from $3
+7 $G $(c3)$1 $(hblk)[$(c4)$2$(hblk)] $(cl)requested $(c1)$4- $(cl)from $3
+8 $G $(cyn)$1 $(hblk)[$(cl)$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)$(hblk)]$(cl) requested $(cyn)$4- $(cl)from $3
+9 %K\(%Wctcp%K/$(c2)$1%K[$(c1)$before(@ $2)%K@$(c1)$after(@ $2)%K]\) \(%W$3%K\)%n $4-
+10 $G %cc%ntcp%K: %n$3 %K[%n$tolower(${[$5]?[$4-]:[$4]})%K]%n from %c$1%n
+11 $G CTCP $4 from $1 to $3: $5-
+12 $fparse(format_timestamp_some $($_timess))$G (%GCTCP%n) %C$1%r[%c$2%r]%n requested %g$4 $5%n from %r[%B$3%r]%n
+13 $(cl).$(c2).$(hblk)[$(wht)ctcp%K\($(c2)$1%K!$(c1)$before(@ $2)%K@$(c1)$after(@ $2)%K\)] \($(c1)$3%K\)$(wht) $4-%n
+14 $fparse(format_timestamp_some $($_timess))$(c3)\($(c4)ctcp%n/$(c2)$3$(c3)\)%n $(c3)from%n $1!$2 $(c3)[%n$4 $5-$(c3)]%n
+15 $fparse(format_timestamp_some $($_timess))$(hmag)$1 $(mag)$2 requested $(hmag)$4 $(mag)from $3

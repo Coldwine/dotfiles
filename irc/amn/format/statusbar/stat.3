@@ -1,0 +1,25 @@
+subpackage stat3
+^set input_prompt $(cl)[$C]$(cl) 
+alias stat3 {
+^set status_format1 $(bblu) %T$(hwht)$(cyn)$(bblu)[$(bblu)%*%=%@$(cl)$(bblu)%N$(bblu)$(hwht)$(bblu)\($(cyn)$(bblu)+$(wht)$(bblu)%#$(hwht)$(bblu)) %A%M $(cyn)$(bblu)[$(cl)$(bblu)%C%+$(cyn)$(bblu)] %> %Q %F $(bblu)
+^set status_format2 $(bblu) $(cyn)$(bblu)[$(cl)$(bblu)Lag $(hwht)$(bblu)%1$(cyn)$(bblu)] $(cyn)$(bblu)[$(cl)$(bblu)O$(cyn)$(bblu)/$(hwht)$(bblu)%2 $(cl)$(bblu)N$(cyn)$(bblu)/$(hwht)$(bblu)%3 $(cl)$(bblu)V$(cyn)$(bblu)/$(hwht)$(bblu)%4$(cyn)$(bblu) $(hwht)$(bblu)T$(cyn)$(bblu)/$(hwht)$(bblu)%7$(cyn)$(bblu)] %> $(bblu)
+^set status_notify $(cyn)$(bblu)[$(cl)$(bblu)Act: $(hwht)$(bblu)%F$(cyn)$(bblu)]
+^set status_umode %#
+^set status_oper $(bblu)$(hblk)*$(bblu)
+^set status_clock $(cyn)$(bblu)[$(hwht)$(bblu)%T$(cyn)$(bblu)]
+^set status_lag $(bblu)%L$(bblu)
+^set status_channel %C
+^set status_mode $(hwht)$(bblu)\($(cyn)$(bblu)+$(cl)$(bblu)%+$(hwht)$(bblu))
+^set status_chanop $(hwht)$(bblu)@
+^set status_format3 $(bblu)%> %4$(bblu)
+^set status_mail $(cyn)$(bblu)[$(cl)$(bblu)Mail: $(hwht)$(bblu)%M$(cyn)$(bblu)]
+^set status_user5 
+^set status_voice $(bblu)+$(bblu)
+^set status_away $(cyn)$(bblu)\($(hgrn)$(bblu)zZzZ$(cyn)$(bblu)\)]
+^set status_hold_lines $(bblu)$(hblk)\[$(hwht)%B$(hblk)]$(bblu)
+^set status_query $(cyn)$(bblu)[$(cl)$(bblu)Query: $(hwht)$(bblu)%Q$(cyn)$(bblu)]
+}
+stat3
+@windowdoubles=[on]
+^window double on
+^timer -del 14

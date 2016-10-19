@@ -1,0 +1,24 @@
+DESC 
+1 %K[%n$Z%K]%n 
+2 %K[%n$strftime($time()%X)%K]%n 
+3 [$Z] 
+4 [$strftime($time()%X)] 
+5 $Z 
+6 $strftime($time()%X) 
+7 $Z|
+8 $strftime($time()%X)|
+9 $Z%c|%n
+10 $strftime($time()%X)%c|%n
+11 %K[%n$Z%K]%n
+12 $(c1)[$(c2)$strftime($time()%X)$(c1)]%n 
+13 $(c1)[$(c2)$strftime($time()%X)$(c1)]%n
+14 \($Z)\ 
+15 \($strftime($time()%X)\) 
+16 [$strftime(%x) $Z] 
+17 [$strftime(%x) $strftime($time()%X)] 
+18 [$strftime(%x)] $Z%c|%n
+19 [$strftime(%x)] $strftime($time()%X)%c|%n
+20 %K[%n$left(2 $strftime(%a))$Z%K]%n 
+21 $left(2 $strftime(%a))$Z 
+22 $left(2 $strftime(%a))%K:%n$Z$(c1)|%n
+23 $(c1)$left(2 $strftime(%a))$Z$(hblu)|%n

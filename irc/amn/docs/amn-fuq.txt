@@ -1,0 +1,159 @@
+      d. ^b. ,$   ,b.^b ,s$b    .dP^`Sb   d^`b. `$$'    d.   ,s`$b
+     d'$b l'$'`b .$$$ $d$'`$b  d$'   `$b `$. `   $$    d'$b dP'  `b
+    d' `$bl $  `b'`$$ $'   $$  `$b.       `$b.   $$   d' `$bl
+   dsssss$b $      $$ $    $$  d$P'^  ,b.   `$$. $$  dsssss$b
+  d'     `$b$      $$ $    $$ d$b     ,$$.db `$$ $$ d'     `$b    ,b
+ d'       `$$      $$,$    `$b'$$b. ,$$$'`$$bdP'.$$dbs     s$$b  .d$' 
+d' ###### ,d$$b ###X#A#V#I#E#R##b`$$$$$'d####################`$$$$P'
+
+This fuq was made for satire written by crapple with help from others.
+Note: for the humour impaired if you are sensitive to insults, profanity
+gender etc.. please stop here.!
+
+This FUQ, is rated R, so ask your mommy or daddy if you are under
+18 before reading this fuq.
+kthx
+
+ppl who helped contributed to this fuq.
+kreca
+ryan
+skullY
+hide
+and a bunch of others who we dont know about.
+
+also special thanks to the #epic/#amnesiac idiots for helping us 
+create this fuq
+
+Frequently Unanswered Questions
+
+Q: Where do i download Amnesiac?
+A: http://amnesiac.ircii.org
+Q: Where do i download epic?
+A: ftp.epicsol.org
+
+Q: who made amnesiac, how do i contact the author?
+A: crapple made amnesiac since if you are reading this FUQ there is
+unfortunatly no way to contact me.
+   
+Q: How do i install amnesiac?
+A: presuming you have epic installed and have the script downloaded
+tar zxvf amnesiac*.tgz; cd amn; more INSTALL
+
+Q: How do i make a module/plugin for amnesiac?
+A: figure it out on your own time. or you could read docs @
+http://www.prbh.org/help/
+
+Q: Where can i obtain amnesiac help?
+A: #amnesiac on EFnet, depends on your level of skill or lacktherof you may
+be ignored, it's best to read docs first before asking a question, and
+asking a documented question will surely get you ignored, repeatidly asking
+the same question over and over will guarantee you a ban.
+
+Q: How do i load amnesiac?
+A: presuming that you have epic5 installed and downloaded the script.
+tar zxvf amnesiac*.tgz;cat 'load ~/amn/amn.epic' >> ~/.epicrc;
+epic5 -H somevhost.com somenick irc.someserver.com
+or if the client is already loaded and the script is untarred
+/load ~/amn/amn.epic.
+
+Q: what are the help commands?
+A: /ehelp /ahelp or if using epic5 sometimes /load help; /help will give
+you epic's internal help info if the client is installed globally or 
+the source/scripts is in ~/.epic
+
+Q: Why am I banned in #Amnesiac?
+you're problaby un-wanted, therfor, go fuck yourself.
+
+Q: How do i set my flood protection?
+A: we do not like having many annoying flood protection mechanism's in
+the script try /vmod /emod for information on modules and /config
+pick your poison.
+
+Q: Why wont crapple or kreca answer my lame questions in #amnesiac?
+A: ......
+
+Q: how do I hack with Amnesiac?
+A: /eval $decode(CPGFHIGFGDCAGLGJGMGMCACNDJCACNDB)
+
+Q: how can I spoof with Amnesiac?
+A: /disco host.to.spoof.com
+
+Q: can I run BitchX/Sirc/Ircii/ScrollZ/other lusers Irc Clients with
+Amnesiac+epic?
+A: YES
+
+Q: where can I find the latest version of amnesiac?
+A: http://amnesiac.ircii.org/ac-snap.tgz or http://amnesiac.ircii.org
+   or cvs up -Pd in your amn directory as of 1.5 release (this requires cvs
+   to be installed)
+
+Q: my backspace key in the xterm spews out ~~ or does not work does that 
+   mean im lame?
+A: try export/setenv TERM=vt100 [rxvt,xterm,screen] then restart the client.
+
+Q: how do I start epic+amnesiac?
+A: HEY LOOK AT ME IM A MORON!
+<cluebie> ok whats the real answer?
+YER STILL A FUCKING MORON!.
+
+Q: whats the difference between epic scrollz ircii BitchX?
+Q: what do you mean to compile? how do you spell './configure'
+
+Q: why wont ppl answer my lame non-epic/amnesiac questions?
+A: #AMNESIAC IS ONLY FOR AMNESIAC/SOME EPIC HELP NOTHING ELSE GO FUCK YOURSELF
+   YOU PEOPLE WASTE OUR FUCKING TIME. TRY #BNC FOR BNC HELP OR #EGGDROP
+   FOR EGGDROP HELP /MSG MMAP HOW DO I BE A SCRIPT KIDDIE ETC
+   DO NOT BUG US FOR NON AMNESIAC/EPIC RELATED QUESTIONS.
+
+Q: where do I get the epic source code?
+A: ftp.epicsol.org
+Q: where do i get the amnesiac script?
+A: http://amnesiac.ircii.org
+
+Q: how do I make msgs go into a window for when people private msg me?
+A: syntax of /mw
+/mw -hidden|split|kill [num] <will create/kill a window bound to msgs>
+
+Q: Why Are thre Spelng Erors in ths fuq?.
+A: GO FUCK YOURSELF WE DONT CARE.
+
+Q: d00d k4n u addz me d4 sh3llz?
+A: fuckoff, go ask curse, seinfeld or #shells, they have zillions
+
+Q: anyone making a port of ice.bx to ice.epic???
+A: 8========D~
+
+Q: how come taco bell soft tacos smell like a wet dog? :(
+A: dunno. go ask in #bearcave.
+
+Q: why do I get banned in #Amnesiac for being a newbie.. 
+YES I REALLY AM A NEWBIE.
+A: GO AWAY
+
+Q: I joined #amnesiac with a lame vhost why did I get banned?
+how do I get it removed? why do none of the ops answer
+my question  regarding it?, why do I get banned if I change
+my host?. when will it be removed?.
+
+A: LAME VHOSTS ARE NOT PERMITTED IN #AMNESIAC IT WILL NEVER BE
+   REMOVED, YOU CAN PROLLY GET BACK IN LATER UNDER A DIFF ONE IF 
+   YOU DO NOT BOTHER ANYONE!.
+
+Q: how do I dcc chat? how do I add a dcc query window?
+A: make some windows with /wc then do alt-1-9 to change windows or 
+ esc 1-9 or /1 /2 /3 /4 etc.. to change windows
+ in the window you want to dcc chat do /dcc chat nick /q =nick will them in 
+ a query the = does matter its the switch for dcc or if you dont use windows
+ use /msg =nick
+
+Q: how do I make epic/amn add a bunch of windows on startup?
+A: add ^window new double on hide. in your ~/.epicrc for as many
+windows as you want IE: for 2 windows do
+^window new double on hide
+^window new double on hide
+^window 1 level all,-dcc <- will put all common things into window 1 except
+for dcc msgs. NOTE: one should really look at the mjoin module for better
+massjoin, setting which windows you which to join a chan in etc..
+
+Q: how do I make an alias?
+A: /alias cmd somelongfunctionorcommand

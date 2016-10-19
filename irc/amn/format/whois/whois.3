@@ -1,0 +1,34 @@
+^sfset format_whois_header $(ld.ul_corner)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)-$(ld.hline) $(ld.hline)$(ld.hline)$(ld.hline)-
+^sfset format_whois_nick $(ld.vline) \($1!$2@$3)$country($rightw(1 $sar(g/./ / $3))))
+^sfset format_whois_name $(ld.vline) ircname  : $1-
+^sfset format_whois_channels $(ld.vline) channels : $1-
+^sfset format_whois_security $(ld.vline) security : connection to server is encrypted
+^sfset format_whois_server $(ld.vline) server   : $1 \($2-\)
+^sfset format_whois_away $(ld.vline) away     : $1-
+^sfset format_whois_actual $(ld.vline) actual   : $2 $msar(g/[/%K[%n/]/%K]%n/ $3)
+^sfset format_whois_connect $(ld.vline) connect  : on $1 actual $6
+^sfset format_whois_login $(ld.vline) login    : as $3
+^sfset format_whois_ident $(ld.vline) ident    : identified
+^sfset format_whois_active $(ld.vline) active   : is active
+^sfset format_whois_root $(ld.vline) root   : Services Root Admin
+^sfset format_whois_operator $(ld.vline) operator : $1 $2- 
+^sfset format_whois_admin $(ld.vline) admin    : $1-    
+^sfset format_whois_idle $(ld.vline) idle     : $tdiff($1) idle
+^sfset format_whois_unknown $(ld.vline) $1: no such nick/channel
+^sfset -format_whois_footer 
+^sfset format_whowas_header $(ld.ul_corner)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)-$(ld.hline) $(ld.hline)$(ld.hline)$(ld.hline)-
+^sfset format_whowas_nick $(ld.vline) $1 was $2@$3)
+^sfset format_whowas_name $(ld.vline) ircname  : $1-
+^sfset format_whowas_unknown $(ld.vline) $1: there was no such nickname
+^sfset format_whois_signon . signon   : $2-
+
+^sfset format_whois_operator $(ld.vline) operator : $1 $2- 
+^sfset format_whois_admin $(ld.vline) admin    : $1-    
+^sfset format_whois_idle $(ld.vline) idle     : $tdiff($1) idle
+^sfset format_whois_unknown $(ld.vline) $1: no such nick/channel
+^sfset -format_whois_footer 
+^sfset format_whowas_header $(ld.ul_corner)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)-$(ld.hline) $(ld.hline)$(ld.hline)$(ld.hline)-
+^sfset format_whowas_nick $(ld.vline) $1 was $2@$3)
+^sfset format_whowas_name $(ld.vline) ircname  : $1-
+^sfset format_whowas_unknown $(ld.vline) $1: there was no such nickname
+^sfset format_whois_signon . signon   : $2-

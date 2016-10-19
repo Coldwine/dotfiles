@@ -1,0 +1,34 @@
+## These settings only applies until you've typed /save or /setsave
+## if so they'll be saved in ~/.amn/a.settings
+set auto_reconnect on;
+set auto_reconnect_delay 60;
+set auto_reconnect_retries 5;
+set auto_rejoin_connect on;
+set history_circleq on;
+set high_bit_esc 0;
+set -continued_line;
+set clock_24hour on;
+set dcc_sliding_window 256;
+set dcc_port_min 19500;
+set dcc_port_max 19800;
+set dcc_auto_send_rejects on;
+set auto_rejoin off;
+set auto_rejoin_delay 5;
+set lastlog 3500;
+set scrollback 2000;
+set num_of_whowas 2;
+set auto_whowas on;
+set indent off;
+set mangle_logfiles all;
+set no_control_log on;
+set suppress_server_motd off;
+set show_who_hopcount on;
+set show_channel_names off;
+set mode_stripper on;
+set client_information I get my kicks on channel six;
+set user_information Are you from the FBI?;
+set notify_on_termination off;
+set switch_channels_between_windows off;
+
+## hack to not break URLS.
+set word_break $strip(. $word_break);

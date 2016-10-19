@@ -1,0 +1,948 @@
+Changes since Amnesiac-1.0a-cvs14
+
+8/7/05
+-fix a window alias. and remove window name amnesiac on startup. //zak
+-sync version to reality. //zak
+-update TODO-BUGS //zak
+-update E5-KNOWNBUGS doc's from -HEAD.
+
+8/8/05
+-added a new /format for nickname changes. Check /format u. 
+ Made by violence, thanks! //kreca
+-possibly fixed the ignore save... oops //zak
+-some comment changes and documentation update somewhat. //zak
+-fix sbar num 11 to output proper format ops/non/voice it was using 
+ vars i have no idea where they came from set it the way my script works 
+ status_users2 = chops aka %2 users3 = nonops aka %3 and %4 = voice
+ remember this in the future should any of you guys do sbar formats. //zak
+-fix a couple of stupid forgotten usages of ADDING $* for some aliases
+ noticed by violence.... who missed this? and how/why? kreca??.
+
+8/9/05
+-update E5-KNOWNBUGS documentation.
+-add a new whois format #6 based off default scrollz whois format which i've
+ been wanting for quite some time, which violence did for me, thanks a lot!.
+ //zak
+-the last of some-commands.txt removed since most of it is now all
+ documented in the new menuish help system /ehelp.
+
+8/13/05
+-rewrite dict module. Fixed the output, looks a lot better now and it'll
+work fine with epic5. //kreca
+-turn off the annoying notify_on_termination per default. //zak
+-add a lusers.m patch/hack which still needs works on done //skullY.
+-move the topicwin module to pasture, until kreca does something about it.
+ too many complaints. it's a hack it's ugly. maybe it'll be fixed later
+ maybe it won't bug him if you want it fix ;p //zak
+-fix /config to work with the new_math_nicely_documented bullshit help
+ from kreca. //zak
+-fix amn.epic to update for new_math_bullshit //zak
+-fix all the formats.m to work with new math. //zak
+-release final snapshot for testing hopefully now we can get rid of 
+ that damn poison. //zak
+-add a new statbar which works well with window double on/off and does not
+ use any form of /sbcolor so colors cannot be changed this way!, merged from
+ enigma a lot of ppl liked this statbar in the past i thought it's something
+ i should port over to amnesiac enjoy. //zak
+-add colours documents for ppl to know the color codes //zak
+-fix up /wq which was broken for quite some time like over 2 months and
+ kreca whines about it a lot so i thought i'd fix it for him it's real hard
+ too ;( //zak
+
+-8/14/05
+finally made the dumb users knock attempts go into the channel that the
+attempt was requested to, instead of spamming my other windows with the
+useless shit it's said in public it looks something like this in the chan
+the knock was request in you do not need to have that window active.
+it'll do it 'automagically' for you.
+[snapshot]
+*** <knock> irc.umich.edu xcrapple!zak@ninja.alienz.net 
+with the knock with bold brackets and servername is in hred. //zak
+-update snapver so i know what ppl are using. //zak
+-make /me in dcc chats output to the correct window. Now it'll be easier
+to igno^H^H^H^H understand what zak tells me in our chat sessions //kreca
+-make knock output look even nicer ;p! //kreca
+
+-8/16/05
+-silence the annoying 'window not found' requested by adam even i find this
+ kinda annoying //zak.
+-sync the TODO-BUGS to reality updating some knownbugs. mainly in snapshot.
+ ie; new /query /me stuff. //zak
+
+-8/20/05
+-change the dcc on hooks somewhat and make a bit more sense on connect/lost
+ closed etc.. please test the new /dcc chat /send etc.. formats and report
+ any problems or ok to me thanks. must do rm -rf ~/.amn/.a.fsetsave before
+ dumping/loading. requested by Alien88 //zak
+-update UPGRADE document. //zak
+-update E5-KNOWNBUGS epic5-0.0.6 users please read this!. //zak
+
+-8/26/05
+-revert out old cvs changes. //zak
+-update docs to reality. //zak
+-properly comment some code using ## instead of the old :: which has some
+ interesting issues in epic5. //zak
+-remove 2 emopart-reasons to make kreca kinda 'happy' //zak
+
+8/29/05
+-add additional response as per grimzy's request users can now choose up to
+ 3 auto-response when your nick/saying shows up in bold. ie; /resp someword
+ /resp2 anotherword /resp3 anotherword and those 3 words will highlight when
+ said at this time /resp2 and /resp3 is not /saved per default. //zak
+-sync snapver. //zak
+-revert out kreca's dccme/me window correction stuff to go back to old
+ behavior for now until the bug is fixed. moved to pasture/ //zak
+-properly comment some stuff with ## instead of :: //zak
+-sync package with subpackage with files i've edited. //zak
+-clean up a bunch of cruft, arrange fsets.m a bit nicer //zak
+-fix up subpackages of statbars which might be causing some confusion //zak
+-fix /kickban yes it works again only with it's $kickreasons. so it's 
+ /kickban nick not /kickban nick somereason. must use randreason at this
+ time.
+-add bantypes to /config /settings
+-set def randomcrap of resp2/resp3 so not everything highlights. //zak
+-add /wflush alias, this is for later versions of epic5-0.0.6cvs+
+ to flush out the lastlog/scrollback in current window. //zak
+-add /ip6ban and /ip4ban aliases. //zak
+-move things from config.m to their respective modules like it should have
+ been done a long time ago. //zak
+-add /modeshow and /showmodes aliases to go with /extpub.
+-add dcc-attempts/logging into away again. and add into /config //zak
+-add operview options in settings/config. //zak
+-modify some things/rewording of orignick. //zak
+-sync version to a pre-release as i want to finish up some other things
+ before i release this out the door, this should be considered pretty stable
+ now compared to the previous snapshots //zak
+-modified /uptime to be a bit eliter, with some functional idea's from 
+ fudd's darkstar script. //zak
+-change some fset formatting outputs for the better some less ansi, some
+ a bit more verbose/informative. //zak ie /topic /not. and /c
+-add a /unkey alias. //zak
+-couple additions into kick.reasons //zak
+-readd kreca's action.dcc/me fixes again with some slight mods 
+ MAYBE it will fix the misdirected /me's this time. //zak
+-move the old action.m into pasture. //zak
+-fixed a really stupid incomplete mode array found by adam. thanks! //zak
+-removed a bunch of broken arrays in publics public_send public_others
+ there's about 20+ formats removed in some of them, please make sure you
+ guys update your themes in case those formats you used before did not
+ exist, and of course some things will probablly cross react with what
+ you had as a format before as those things are renumbered. //zak
+-added some new public formats and msg formats while playing around in
+ the arrays, and 3 new away formats. //zak
+-add a couple more arrays and fix up a couple.. //zak
+-no reproducing of the /me bug thus far. //zak
+-update my theme nocturnal //zak
+-made a bitchx like theme 'bitchx' //zak
+-minor query problem with statbar3 disabled it on second-stat //zak.
+-update the UPGRADE document. //zak
+-make delword in the bwk module accept numeric argument
+-update the TODO-BUGS documents a lot, looks like we're starting to
+ get somewhere! //zak
+-shorten up the /supt alias and a bit more verbose and allow for output
+ to any active window.
+-add another scan.fix alias for possible future usage of colorized scans.
+ //zak
+-sync E5-KNOWNBUGS document from -HEAD //zak
+-add new windowing binds and some windowing functions to make adam happy
+ home/end should work on weird terminals now. //zak
+-cleanups to /tig and /ignore. Bounds checking and sorted output //kreca
+-refix adam's bindings. //zak
+-remove adam's bindings. //zak
+-add adam to the greets/credits.
+-fix public notice form theme/save/startup settings and an odd mutilation
+ in save.m remove some stupid indentings in theme.m while i was in there
+ as well. and /resp2 /resp3 /resp4 are now saved. //zak
+-remove 4-5 themes i lost count. don't care. //zak
+ ^^ still more to come i'm sure. we have too many.
+-removed /mme and mme.m, no it's not going in pasture it's DEAD!. //zak
+-update all themes default versions to be a little less verbose per
+ default!. //zak
+-change our version ways to be more realistic. //zak
+-change /sv formats not to use $uname $client_info and a bit better 
+ output. //zak
+-update my theme again(nocturnal) //zak
+-updated TODO-BUGS a bit more to my liking. //zak
+-organize/comment amn.epic a bit better and remove the stupid fparse
+ on startup. //zak
+-correctly fix/save/make the /resp2 /resp3 /resp4 the right way this 
+ time. sorry if i caused any problems!. //zak
+
+9.1.05
+-fix up some userlist module aliases noticed by adam. thanks! //zak
+-remove the old_math stuff in amn.epic i think we're 100% new_math
+ compatable now yay!
+-THIS TIME UPDATE THE PATCHLEVEL SO XAVIER DOESN'T REPORT IT AS A BUG!
+
+/* -move the changelog file to docs dir as CHANGES.old as this is getting
+ too FAT for ppl to track changes and change how we do ChangeLog
+ documentation.
+-move UPGRADE to docs as UPGRADE.old
+-update the new UPGRADE file to reality/simplification.
+-CHANGES - changes since last release.
+-docs/CHANGES.old - old changelog reformatted a bit won't be updated anymore
+just there fore informative purposes.
+-docs/CHANGES.rel - past changes, after release. (nothing in here yet)
+-docs/UPGRADE.old - not updated anymore just there for informative purposes
+-UPGRADE - synced to reality. */ //zak
+-add a sample.epicrc in docs/ //zak
+-remove mangle_logfiles all from amn.epic ppl can set it in their 
+ epicrc's. //zak
+-remove window 1 name on startup. slightly change comments in amn.epic
+-get rid of the annoying / mode format #1 that has bugged me for a long
+ time. //zak
+-cleanups in userlist.m and orignick.m 
+-cleanups of some xecho module banners. and a few aliases remove/changed.
+-removed encryption module
+-update patchlevel.
+-update helpfiles more, added a new menu based help /rhelp see /ehelp
+-add timestamp formats this should make plenty of ppl happy especially
+those who wanted seconds in their timestamps and a slightly diff output
+ie; with or without brackets and diff color... /format 3 for the list.
+-update nocturnal theme to use my flavor of timestamp format.
+-update patchlevel
+
+9.2.05
+-update TODO-BUGS regardning about broken timestamp formats with seconds.
+-add an alias written by adam which is kinda neat, /common to view common
+ users between channels ie; /common #secondchan will compare the common
+ user in current channel and #secondchannel, i'll probably rewrite this a bit
+ more when i'm a bit more 'coherent' but the base idea is implimented and
+ works. thanks adam!.
+-update patchlevel
+-fix query bug
+-fix timestamp_format bug
+-fix timestamp config option problem i noticed while playing with it 
+ a little more of it not turning off/on properly.
+-add a new alias for adam /wsa which window swaps into the status_format %F
+ (activity) window
+-update patchlevel hopefully release today if no further bugs reported.
+-organize window.m and prune it up a bit remove a few questionable aliases,
+ functions i have no idea what they were used for, better commenting.
+-fix up some things in aliases.m
+-winhelp documentation corrections.
+-new extended menu based help documentation /thelp for the irc swiss army
+ knife ;D see /ehelp as well.
+-updated some docs in /winhelp.
+-add some ereet aliases that uses the power of /trickle see /thelp.
+-change some default fkey settings.
+-kreca doesn't understand the meaning of modules and functions that
+ needs a module to work obviously aint going to work without a module!,
+ move the lp/lpaste stuff into the relay module. and allow it to work
+ in current output window.
+-update patchlevel.
+-^^crapple must've been smoking the crackpipe this evening ;( //kreca
+-separate the notify and notifylogging. To use notifylogging from now on, do addmod notifylog. //kreca
+-add notify signoff logging as an option to the notifylogging module. /config s to configure. //kreca
+-indentaion cleanup and removal of timestamp output for each row. //kreca
+-cleanup of more crap, and removed lame commands, and some just cluttering
+ bloat commands like outputting /suptime /date like really who gives a shit.
+-fixup of some minor things in notify.m and notifylog.m 
+-remove a lot of junk in mass.m and more to come up yet!.
+-i'm not updating patchlevel this as it's not being snapshotted yet.
+-oh fix a minor fuckup of forgetting to remove lpaste from alias.m when
+ my last commit insulted kreca about him not doing it, but i still stand
+ by my words!.
+-large cleanup to amn.epic and mod.m. Indentation fixed in some aliases aswell //kreca
+-various stuff moved out to alias.m, hooks.m and operview.m //kreca
+-split out all defaults in amn.epic to core/sets.m. Default modules are now 
+located in mod.defaults //kreca
+-add new alias, cat which behaves just like unix cat. Rip out ansi.m and 
+replace it with evalcat in alias.m //kreca
+-make format t use evalcat and fix indentation in alias format. //kreca
+-bind alt-§ to the alias wsa (see description above) 
+(the key to the left of 1) //kreca
+-make bwk accept what kind of action that will be done upon the trigger. 
+/addword word #chan <type>.  currently type can be bk and kick. Do some 
+more cleanup to bwk.m //kreca
+-move out 2 ans to their proper place in the adcc module
+-make getusers update statbars on the fly again for modes/quits/parts/joins
+ //zak
+-update bwhelp documentation to reality. //zak
+-remove 3 files from pasture action.orig and action.dcc as well as notify.m //zak
+FIRST public stable release 1.1
+
+changes since first public stable release 1.1
+
+Changes since amnesiac1.1/r1
+9.2.05
+-fix some nonexistents defaults sets for formats from violence.
+and merge into 1.1/r1 release
+9.3.05
+-patch vanilla theme from skullY
+-couple new arrays from skullY
+-update some broken themes to make them work again.
+-update epic theme to be more correct.
+-merged the above changes into release.
+
+-snapshot.
+-change ver to 1.1d r/1 d for development r releasenum.
+-add services module for dalnet users.
+-add nickserv/chanserv/memoserv aliases into core.
+-add some more oper aliases into oper.m
+-remove serviceshelp and services.m file from pasture as i rewrote it
+ to work again 'i think' and merged back it into modules.
+-new menu help /svhelp for the services module see /ehelp for info.
+-clean up unused cruft in /ehelp while in there.
+-update TODO-BUGS doc and UPGRADE.
+-two new aliases for output_rewrite formatting so ppl can choose which one
+they want, i do not know how well the /orww (the one i currently use) works
+but no problems so far the default has been /orw for the past 6 months.
+aliases are /orw and /orww
+-remove igsave.m and move the contents into save.m i have no idea why
+ this was not done in the first place.
+-new menu help /mhelp for modules see /ehelp for info.
+-remove more cruft from ahelp.
+-add breset alias which does /binds -defaults, in case you fsck something
+ up when trying to play around with keybinds this well set it back to 
+ epic defaults not amnesiac default /adump or reload script to bring all
+ the keybindings back the way they were. i do not beleive /dump all dumps
+ keybindings. (i could be wrong)
+-enable timestamps for server hooks on connect so it doesn't get confusing
+ on the formatting output with some banners/nostamps etc..
+-silence 'end of motd' crap on /motd or when connecting to a server.
+-add more connect hooks for opers/spoofs/exempts. etc..
+-update development rel var.
+9.4.05
+-add alias s [window swap $*] so you can swap to specified num ie: /s 4
+-remove dccwin alias, i doubt anyone is going to miss this.
+9.5.05
+-add a new /ghelp for GENERAL USER HELP. mainly to reflect on how to ignore
+ unignore and some other common  things ppl keep bugging me about.
+ see /ehelp as well for more info.
+-fix ignore and tig to use real epic refnums. //kreca
+-added a fix for /ignore to work with the new math parser. Done by skully, 
+ thanks!
+-minor hack to fix /tig for now. /ignore still has some kinks. //zak
+-new format by adam, /format 4 (kickformats) thanks!. minor hooking to make
+ it work by me //zak
+-couple other formats done by adam as well timestamp/nickform. probably
+ missed other's to document by him from the patch.
+9.8.05
+-fix up tig to silence the math_parser warnings for now. //zak
+-remove ignore compat from compat.m as we do not need this anymore
+ *hopefully* //zak
+-cleanup a couple of stupid aliases. (that no one will miss) //zak
+-zap some whitespaces in mjoin. //zak
+-more code cleanups. //zak
+-output linewrap is now enabled per default, i disabled this in the past
+ because some ppl complain about the trailing space on every line. but it 
+ still ends up using much more space on long txt, to go back to the old
+ behavior do /orw. (will set a save/toggle or the like in the near future)
+-move ignore/tig/cig to it's own file ignore.m(core) //zak
+-add ^Wd bind to next_window requested by Alien88 //zak
+-increment development rel ver. //zak
+
+9.9.05
+-make sbar #4 look a bit better requested by ryan. //zak
+-add a /rel alias.. /rel -l to view msgbuf/paste -n for notice -m for 
+ sentmsg's. /rhelp for more info. hope this will make xavier somewhat
+ happy. //zak
+-change some formatting in the relay input to make more sense, ie;
+ hit enter to cancel, so ppl do know they do not have to input anything.
+ //zak
+-change /w to /whois to make skullY happy.
+-merge in all but 1 keybinding in vanilla ^D ^listsplit. to binds.m
+9.10.05
+-sbar 4 fixup by ryan.
+9.14.05
+-more formats/fixups by adam, topics/leave/joinforms i think, prolly missed
+ one, too tired to check ;p //zak
+9.16.05
+-fix kickform to actually show kicks per default. //zak
+-update development release version to 4.
+[after development release 4]
+-remove mass.m module create core/channel.m merge a lot of op/channel
+aliases from alias.m to channel.m merge stuff from mass.m module into
+channel.m as well, this makes much more sense and easier to find said
+aliases in future, code cleanups while in these area's. //zak
+-move bantype/timestamp from alias.m to config.m this is more proper 
+ cleanup/document config.m a little better while in here. //zak
+-create a more extended explanation of modules /emod. make /vmod output
+ nicer. yes both are a hack. will make it a bit better in the future.
+ //zak
+-merge fake.m into relay.m remove the fake module make fake work better.
+ revert changes for the 'betterness' for now. //zak
+-remove some stupid reasons from kick.reasons //zak
+-finished up /emod //zak
+-finished up /vmod //zak
+-sync UPGRADE to reality.
+-sync NOTES to reality.
+-sync TODO-BUGS to reality.
+Note: PLEASE READ THE UPGRADE FOR REMOVING 2 SAVEFILES BEFORE LOADING.
+[increment version to development rel 5]
+-sync EPIC-BUGS i've ran into, and document it more thoroughly.
+
+9.18.05
+-create core/dcc.m (since we've been making a lot of dcc stuff lately)
+ sync bindctl for dcc to reality, move dcc aliases from alias.m to dcc.m //zak
+-add a dcchelp menu. /dcchelp see /ehelp as well. //zak
+-mention dcchelp on startup. //zak
+-add ryan to teh greets, as he has helped out. //zak
+-sync TODO-BUGS list to reality //zak
+
+9.20.05
+-fix binding of alt-r alt-t the old way for now. //zak
+9.24.05
+-sync E5-KNOWNBUGS to reality. //zak
+
+9.30.05
+-change topic formats to be like how ryan likes it, and i think i prefer
+ the green over the magenta myself as well, and ripped it from him without
+ his knowledge ;D //zak
+-sync E5-KNOWNBUGS document from -HEAD. //zak
+-add help menu! /fhelp format/look and feel help see /ehelp and
+ /fhelp. //zak
+-add help menu! /chelp configuration shortcuts see /ehelp and /chelp //zak
+-add more material into /ghelp general user help. see /ghelp //zak
+-fix a couple of broken aliases, remove a few nonessential aliases //zak
+-remove a lot more stuff from compat.m hopefully i didn't break anything
+ the less stuff i need to rely on from builtins/compat etc.. the 
+ happier i am. //zak
+-increment development version to 1.1d r/6 //zak
+
+10.02.05
+-Make /dns output look nicer //kreca
+-Make window doubles automatic depending on what statbar we use //kreca
+-Add a save toggle and /config option as well as /dstat alias to manually
+ choose fixed window doubles on overiding the default statbar setting if
+ needed //zak
+-fix one missing window double i saw. //zak
+-sync TODO-BUGS to reality. //zak
+-change the UPPERCASE to lowercase of on/off toggles for doubles //zak
+-remove/change some default sets on startup //zak
+-increment development version to 1.1d r/7 //zak
+-fix a couple more hardcoded window doubles in modules. //zak
+-make /relm -l behave exactly like /relm. Now users with this 
+ defect will be happy *cough* //kreca
+-make /relsn /relsm /reln etc... also support the -l switch. //zak
+-massive sync to EPIC-BUGS info. //zak
+-sync EPIC-BUGS to reality nonblocking dns problem is fixed now //hop
+-sync E5-KNOWNBUGS from -HEAD //zak
+-update TODO-BUGS with some requests. //zak
+-cleanup lusers.m a bit. //zak
+-remove the ugly /csay /cmsg crap from lsay.m remove lsay module merged
+ /lsay in with the aol module. one less module with crappy bloated shit.
+ //zak
+-sync UPGRADE doc to reality. //zak
+-sync E5-KNOWNBUGS from -HEAD //zak
+-update EPIC-BUGS info after having some time to debug the $finditem() problems
+ this morning a bit. //zak
+
+10.3.05
+-add a BSD like license with a clause.. see COPYRIGHT for info. //zak
+-add credits in README if i happen to be missing someone or if someone
+ thinks they should be in the credits drop me an e-mail or msg online. //zak
+-remove uptime.m merge it into hooks.m //zak
+-sync most files with the COPYRIGHT info. //zak
+-some other minor changes. //zak
+-move UPGRADE into doc/ //zak
+-move NOTES into doc/ //zak
+-sync EPIC-BUGS E5-KNOWNBUGS to reality //zak
+10.6.05
+-sync TODO-BUGS to reality. //zak
+-sync E5-KNOWNBUGS from -HEAD //zak
+
+10.7.05
+-move client adjustable on both epic4/5 sets to amn/settings for ppl who
+ wish to edit the file, however will be overriden on new client versions.
+ //zak
+-allow usage for ~/.amnrc to prevent amnesiac from overriding users sets.
+ added a sample.amnrc in docs/
+-some cleanups of sets and merged some sets from compat.m to amn.epic which
+ are epic5 only so users can see what's available (for those who actually
+ looks at the script) //zak
+^^ all of the above was requested by adam@efnet to make the annoying static
+ that seemingly comes out in txt from his nick stop hopefully ;)
+-increment development version to .8 probably a release sometime by the
+ weekend. if all goes ok. seems stable thus far. //zak
+-sync todo-bugs to reality. //zak
+
+10.9.05
+-Fix output_rewrite rules to not add an extra space at the beginning of
+ every line. //skullY
+-vanilla.m: Remove ^W map so switching windows with ^W alone is done quickly.
+ //skully
+-Fix some code formatting. //skullY
+
+10.10.05
+-big cleanup to tab.m. Remove old useless crap and insert the msg tab completion into our new switch. the old command_completion is now ripped out since it's marked obsolete and hasnt worked at all in epic5. //kreca
+-Change all instances of echo to //echo, to allow echo to be aliased. //skullY
+-vanilla.m: alias echo to output to the current window. //skullY
+-audit all uses of xecho -v. Should only be used on things that really need
+ to goto the current window. Users that use window level none everywhere won't
+ notice any difference. //skullY
+-resync to tree, i presume this is skullY's latest or 'tried to commit' //zak
+-fix dating format. //zak
+-fix scan.2 format to output much nicer and proper like it used to
+ thanks to criminal //zak
+-set indenting OFF, i do not know why this was ever on or needed to be
+ on in the first place if anyone notices something breaks let me know
+ this should get rid of the trailing whitespace at the beginning.
+ and fixing the output_rewrite to actually do what it should do right. //zak
+-increment development version to 9. might actually be getting close to 
+ a release now after we decide the politics of what we're going to do about 
+ some questionable skullyisms. //zak
+-minor nits to TODO-BUGS. //zak
+-Replace a bunch of xecho -b's with xecho $acban. Should make it easier to
+ change the banner for script related stuff and still let you see when a
+ message is from a script or a client, if you want that. //skullY
+-Add acban to the asave alias, so it's saved. //skullY
+-dict.m: Redo using dcc ram instead of telnet. It's portable and more
+ reliable. //skullY
+-sync TODO-BUGS to reality. //zak
+-minor -on to name change request in README //zak
+-remove the old /orw /orww sillyness. just use /set indent on 
+ if you really really really want to //zak
+-Add a new module, tc. Tabkey /msg handler from epic. //skullY
+
+10.11.05
+-make a few changes to dict.m. Dont use wait instead do everything in on handlers + use serials. //kreca
+-Add formats for all aspects of topics. No new set for it, but /format n will
+ set them. //skullY
+-bump development version up to 10 this may be the final development version
+ before the next release everything seems to be set how i like it thus far
+ just needs testing from users now ;) //zak.
+-do not use doublestat of fixed-sized msgwin noticed by Alien88 //zak
+
+10.12.05
+-merge in the following changes from a patch trent(criminal) sent to me.
+ minor cosmetics fix to whois.2 
+ add scan.7 whois.7 (slightly modified copies of others) //trent
+
+10.18.05
+-add /wi support to tabkey from kreca //zak
+-add /m /msg support but not cyclable by me *gulp* //zak
+^^ might break some things as kreca does some really CONFUSING things 
+to tab.m... due to my lack of sleep or quite possibly i might see duplicate
+edit_topic code that's conflicting from exec.m and tab.m want to check it
+out kreca? (i'm clearly dreaming here since i [insert kreca do/check
+something over here] ) //zak
+-add 2 aliases for Xavier //zak
+-fix scan.2 by ryan //zak
+-revert the /m /msg changes from tab.m i'll keep it in my tree to stop kreca
+ from acting like a little $#!@@#$!@#$ //zak
+
+10.19.05
+-add some reasons/modifications by trent(criminal) to emopart.reasons. //zak
+-add a better query alias requested by xavier //zak
+-freeze tree until thurs. //zak
+-set default and some other popular themes to use the action format which
+ supports /me output in multiple channels in same window. //zak
+
+10.20.05
+-set stat.11 to use doublestats for the time being, so people don't get
+ confused with [opervision] //zak
+-userlist.m: Allow users to specify * as a channel name for the userlist. 
+ Fix the formatting while I'm there. //skullY
+-move script echo;s/parses to amn.epic to load before it loads the banners.
+ as the output that should come out on startup shows a missing //echo.
+ this should fix the case of the MISSING OUTPUT. //zak
+-try to center the amn.load banner using WHITESPACES, since for some reason
+ $_center went berserk or doesn't load on time. //zak
+-remove duplicate vars from themes, and set some more themes to use the
+ better actform[2]. //zak
+-change version for 1.2 release 1. yes it's finally a release! //zak
+-sync CHANGES.rel to proper and create a new CHANGES file.
+-shrink EPIC-BUGS info as .7 is rolling out today/tomorrow as well. //zak
+
+Changes since amnesiac 1.2-rel
+
+10.20.05
+
+-fix _center alias to work again seems there's a bug or some change
+ in xecho -w perhaps the usage has been removed in epic5. which explains
+ why i didn't see the issue under epic4. //zak
+-resync amc.load to use _center again //zak
+-merge the above into -release.
+-somewhat general start of the amnesiac-fuq Frequently Unanswered
+Questions. spinoff of the old bitchx.fuq docs/amn-fuq.txt //zak 
+-new snapshot.
+1.2d r/1
+-Add the beginnings of a real faq. //skullY
+-fix some questionable skullyism's that forced me to make a release
+ and found the questionable skullyism to be a problem and to have
+ proof is just priceless (make latin1/ibm437/fixterm) work right again
+ apparently he need's to read up on shell functions 101, perhaps maybe
+ he was thinking people use !/bin/perl or just maybe he doesn't think ;(.
+ //zak - merged to release.
+-tyop in INSTALL - merged to release. //zak
+-merge amn-fuq.txt, amn-faq.txt to release //zak
+-Since epic5 removed xecho -w change all instances to just xecho. //skullY
+-Allow a channel name to be passed to /cops. //skullY
+-Fix the on who that cops sets upon completion. //skullY
+-country.m: Add a /tld to lookup a country. Requested by ml. //skullY
+-Add numbers to /format 2. How was this missing? //skullY
+^^ added to -release //zak
+-sync TODO-BUGS to reality //zak
+-add stuff to TODO-BUGS //zak
+-fixup the multiple /format inconsistencies found and done by Alien88
+ thanks! //zak
+-start of the proper way of using the ^on yell to suppress on what we really
+ want to suppress. it got removed somehow i presume skullY forgot to sync
+ before commit! //zak
+-sync TODO-BUGS to reality. //zak
+-bump snaprelease to r/2 //zak
+-remove the /rel cruft again as we have our /relm -l and friends working
+ i do not know why these are being recommitted *grumble* //zak
+-add new ASK-KEY to /about and amn-fuq.txt amn-faq.txt done by
+ xavier many thanks! //zak
+-update TODO-BUGS //zak
+-silence another yell we don't care about //zak
+-remove /filter alias as if in the future we use the clients $filter() it
+ would cause complications so use /trickle. ;) //zak
+-add a space for /about to make it look better //zak
+
+10.23.05
+-add format_whois_ident for lame ircd's i.e bahamut //zak
+-silence another annoying yell. //zak
+
+10.26.05
+-Fix all the scan.m garbage. I don't think that /scan should do anything
+ but call /names ($C|$*), but kreca says no leave that so he can fix that 
+ part. //skullY
+-Big cleanup to scan.m, make /sco /scv /scn /scan on ^366 all use the same 
+ alias to print scans. Get rid of the redundant formats
+ format_scan_onjoin_nicks_border and format_scan_onjoin_nicks.
+ This fixes what skully wanted to do in the comment above //kreca
+-Revert action.m to use xecho -window to fix /me's in dcc query 
+ windows. //kreca
+
+10.28.05
+-clean up latin1 and fixterm, make them call REFRESH_SCREEN aswell //kreca
+-fix minor glitch in /scan that printed voiced and oped users twice //kreca
+-increase development version to 3 //zak
+-tc.m: Remove the msg alias since it breaks with dcc chats and most people
+ don't use it anyway. //skullY
+-toss out the fsckgin@!#!@ array. created a array directory for arrays
+ of various types in files, this is a bit cleaner imho, and much easier
+ for one to fine when they need to tweak or fsck something up. maybe
+ this will make some of the less experienced be more motivated to take
+ on some new format tasks and the like. //zak
+-sync UPGRADE to reality. //zak
+-fix up /save a bit better with correct alignment with skullY messed up
+ with his xecho skullYism's. bad skullY! //zak
+
+10.30.05
+----merge in following changes/fixes from snapshot to release
+-clean up latin1 and fixterm, make them call REFRESH_SCREEN aswell //kreca
+-tc.m: Remove the msg alias since it breaks with dcc chats and most people
+don't use it anyway. //skullY
+-Revert action.m to use xecho -window to fix /me's in dcc query
+windows. //kreca
+country.m: Add a /tld to lookup a country. Requested by ml. //skullY
+remove filter alias, as it conflicts with epic's $filter() //zak
+-fixup the multiple /format inconsistencies found and done by Alien88
+thanks! //zak
+----end following changes merged from -snapshot //zak
+
+10.31.05
+-Add a usage statement to iban if the user doesn't pass an arg. //skullY
+-Some code cleanup in channel.m. //skullY
+-New command: invkick, sets +i, kicks the target, removes +i after 10
+ seconds. //skullY
+
+11.01.05
+-Fix tab.m to comply with the format_scan_users changes, maybe we need a
+ format_tab_users? //kreca
+
+11.08.05
+-Make away message only display once when doing a /msg to a user who is 
+ marked away. The counter is reset after 120 seconds of inactivity,
+ currently this time is hardcoded. Hopefully this will make zak shut up!
+ //kreca
+-Make /me's in non-current channels show correctly //kreca
+-Fix /lusers for real this time. Works on every efnet server, sorta works 
+ on freenode, doesn't seem to work on undernet but who cares about them
+ anyway? //skullY
+
+11.09.05
+-Fix ignore since kreca can't figure out how to make an alias safely recurse
+ without crashing the client. //skullY
+-update development version to 4. this should be the final development
+ minor before the 1.3 release. //zak
+
+11.17.05
+-Huge changes to /config. The new format is /config <section> <letter>
+ all the config sets and stuff has been redone //kreca
+-add undocumented public logging to /config //kreca
+-general cleanup of a lot of different files
+-bump development version to 5 //zak
+-More cosmetical changes to /config. The output is formed after an 80x25
+ terminal window. If anyone is using a window with less than 80 chars in width
+ please give us a msg. //kreca
+-bump development version to 6 //kreca
+
+11.20.05
+-add another whowas numeric(402) parse.. done by Alien88 thanks! //zak
+
+11.28.05
+-Move sync.m into pasture. //skullY
+-Hook 324 for when modes aren't set. //skullY
+-move some config aliases into config.m which is more proper //zak
+-sync winhelp.m to ehelp.m where it should be. //zak
+-minor cleanups of /config options in modules/core minor fixes
+ while i'm in there. //zak
+-cleanup some uglyness of bans being in channel.m when it should be in
+ ban.m organize/comment things a bit better <-- more to come. //zak
+-increment development version to 7. //zak
+-finally got around to adding /bkh /bkn /bkb /bkd so users can bankick with
+ the prefered bantype on the fly. some explanation about the new bankick
+ types when one does /bkh nick it will bankick the offender out of the
+ current channel with type host. /bkh(host) /bkn(normal) /bkb(better)
+ /bkd(domain) requested by many. //zak
+-make fkey use proper bindings the RIGHT way this time //zak
+-parse CID notifications nicely with a default level of msg, to help
+ people like me and some other's not miss it in channels, to modify
+ the behavior of it edit amn/core/fset.m look for CID.
+ somewhat some more to be done to this yet.(keybindings)
+ 06:30|<CID> irc.umich.edu zak@emogroupie.scenewhore.org (ninjazak)
+ ^^ sample output for umode +g //zak
+-fix format public so it'll show colours when showop is on + more 
+ logical separation. however this will break backwards compability
+ with saved formats, PLEASE REMOVE .amn BEFORE COMPLAINING. //kreca
+-add keybinding of alt-y to CID to accept. add a bit more clearer
+ CID aliases. //zak
+
+11.29.05
+-add huge theme, lookgood, by sirko. Many thanks, new scan, statbar,
+ many formats, whois (8) etc. Type /theme lookgood to check it out!
+ the pubpad and spubpad functions were written with this theme in mind
+ currently it pads to the nick lenght 9 (efnet).//kreca
+-clean up the send publics as I did with regular publics yesterday,
+ need to reload your theme to make formats work.//kreca
+-fix minor fuckup in /format 2 //kreca
+-sync docs to reality. //zak
+-increment minor version. tree is now considered somewhat frozen.
+
+12.02.05
+-update some more docs //zak
+-release amnesiac 1.3 //zak
+
+CHANGES SINCE 1.3.x
+
+12.02.05
+-move old CHANGES to docs/CHANGES.rel 
+-recycle CHANGES for -snapshot.
+-unfreeze tree, change version to reflect -snapshot. //zak
+
+12.04.05
+-add some unrealircd whois parses for fikle //zak
+-fix a krecism. move padding alias from scan.8 to action.m this is probably
+ not the ideal place for it, well have to grunt and gesture a lot since our
+ universal translators are broken to agree on where it should be..
+ (Thinks AIX... being invented by aliens) //zak
+-fix /mjhelp /ajhelp skully broke this some time ago, just it took someone
+ new to the script to report it broken.. found by cyb@efnet.
+-make /delchan accept #channel as argument to shut zak, xavier and others
+ up. //kreca
+-Add a new FAQ entry on formats. //skullY
+
+12.07.05
+-vanilla.m: Add custom _wsact alias, that goes to the oldest window with
+ activity, not the newest. //skullY
+^^ removed and added to core //zak
+
+12.11.05
+-merge all of the above into 1.3 r/2 -release //zak
+-increment development version to 2 as well //zak
+
+12.24.05
+-Some genius made /p be part when /p has been ping since the beginning of
+ time. Fixed. //skullY
+
+1.8.06
+-update copyright to 2006 //zak
+-sync documents to reality.
+
+1.11.06
+-remove epic4 support it has been broken on epic4 for some time, update
+ epic5 compatability version as well while in the general area. //zak
+-increment development version to 3 //zak
+-some minor static var changes into amn.epic from core/sets.m //zak
+-sync more documents to reality. //zak
+
+1.24.06
+-Fix bugs in tsave that created broken .th files. //kreca
+-Added theme ansiless which is good if you like to use charset iso-8859-1
+ on irc. This will work with almost any character set expect utf... 
+ You can see this theme on the screenshot page. //kreca
+
+1.25.06
+-Make ignore work/save right again.. i accidentally removed functions that
+required it to work.. i blame drugs //zak
+-Move edit_topic which is essentially a hook from core/exec.m to
+core/hooks.m where it probably should have bee originally //zak
+-added a few/removed a few windowing aliases for epic5.. /windent /indent
+-some other cleanups..more to come //zak
+-add some /sets which were removed from stock epic5
+ AUTO_RECONNECT AUTO_RECONNECT_DELAY AUTO_REJOIN_DELAY SURPRESS_SERVER_MOTD
+ disable auto_rejoin per default from amn/settings
+ auto_reconnect is a really ugly hack, be sure to connect to an irc
+ server first with at least 4 working servers in /server output before
+ /set auto_reconnect on, USE AT YOUR OWN RISK. //zak
+-add /set suppress_server_motd; *gulp* default setting is off, requested by
+ some. //zak
+-start of support for /beep /beep_on_msg for some hooks. action,ctcp,
+ msg,notice,oper-notice,server-notice,wallop,who. untested at this time
+ feedback would be appreciated on if it works ot not ;) //zak
+-set mangle_logfiles to strip all annoying crap per default. //zak
+-operview/opervision window now indents per default, since epic5 rel .8
+ individual windows can be toggled for indenting on or off /set indent will
+ overide /window indent for all windows, discussion with Alien88 who wanted
+ this capability before the holidays. //zak
+-merge sbcolor to core/color.m(still needs major cleanup) //zak
+-merge notify to core/hooks.m
+^^ sbcolor.m/notify.m has been removed after the merge. //zak
+-remove pasture/sync.m i doubt anyone will miss it. //zak
+-increment development version //zak
+-scrap kickonban, you know... the most annoying thing that most
+idiots/misconfigured clients use just to piss some of us off. i feel 
+for the poor sap who kicks me next time, 'amnesiac has that feature 
+too excuse no longer applies ;D' //zak
+-remove some small/useless/cluttered aliases no one really uses. //zak
+
+1.29.06
+-add core/server.m for more ease of use for some people who have problems
+ using /server switches, see /shelp for more info. //zak
+-add AUTO_RECONNECT document about how to use the auto_reconnect hack that
+ has been in the script for some time that stayed undocumented *gulp* //zak
+-merge some things from window.m(multiserv) to server.m //zak
+-sync the following document to reality amn-faq.txt amn-fuq.tx UNTESTED //zak
+-add new /shelp menu for the recent /server addition stuff. //zak
+-add auto_rejoin and auto_rejoin_delay to config misc //kreca
+
+2.8.06
+-sync documents to reality. //zak
+-move settings to settings.default //kreca
+-add /setsave which saves all the settings in settings.default to 
+ ~/.amn/.a.settings. This removes the need of modifying the old settings file
+ aswell as customized ~/.amnrc //kreca
+-add setsave to saveall aka /save //kreca
+
+2.9.06
+-cleanup/comment some confusions, remove more probably broken getusers hooks
+ while in the general area. //zak
+-fix /stamp /timestamp to actually turn on/off on the fly slight help/fix
+ by kreca //zak
+-remove outdated/ugly channel clone scan module.. /trickle is preferred 
+ for weeding out clones/drones/spammers etc.. see /ehelp trickle //zak
+-remove mjoin(ajoin) module from default startup //zak
+-hook in skullY's http module (undocumented at this time) //zak
+-remove status_insert* from stat.14 hopefully fixes breakage against 
+ some other statbars. //zak
+-bump up minor ver (5) //zak
+
+2.13.06
+-add better reconnect script from epic5/scripts dir. /network
+ will add documentation for it's usage later. //zak
+
+2.20.06
+-re-add my old auto_reconnect hack since no one tested the 'newer /network'
+ reconnect(at least i know mine works for me but it's not for the faint of
+ heart) //zak
+-update my current theme to my liking nocturnal //zak
+-add default sets for scrollback/lastlog of 1000 *gulp* NOTE: this will use
+ apx 8MB/ram when full depending on the OS //zak
+-add default change of clock to 24hour //zak
+-add /set lastlog /set scrollback /set clock_24hour to save settings /save
+ /setsave //zak
+-resync some docs //zak
+
+2.25.06
+-rename /beep /tbeep (interferes with re-addition of beep from builtins) 
+ /set beep on; /set beep_on_msg all works/verified by klepto thanks! //zak
+-sync our TODO-BUGS a bit more, removed some finished projects info //zak
+ ^^ Come on guys we need to get the todo's done before our release.
+-increase our away silencing time to 260 instead of 120, for some of us who
+ delay our response cause of 'distraction' i.e me //zak
+-add /upgrade, /fupgrade please see docs/UPGRADE before attempting
+ ^^ much improved ease of use for upgrading the script cleanup UPGRADE doc
+ while in the general area as well //zak
+-increment minor //zak
+
+2.28.06
+-/kick nick1,nick2,etc - support - requested by klepto, writen by kreca //zak
+
+3.04.06
+-fix a bug in tsave which saved sbar colours incorrectly //kreca
+
+3.5.06
+-various cleanups/removals of cluttered aliases //zak
+-/bans output is more like it should have been ages ago(shows date) strip
+ default ansi for those who wants ansi in the bans output see
+ pasture/bans.patch to re-add ansi "patch < filename.patch" //zak
+-make /i work again(oops) //zak
+-rename core/sets.m -> core/main.m ans/amc.load -> ans/startup.ans //zak
+-remove pasture/bans.m, pasture/topwin* //zak
+-slightly change formatting of /e /i (exempts/invites) //zak
+-new doc about voting/modules and possible removals in the future
+ docs/MODULES //zak
+-refix my theme(nocturnal) now that /tsave works like it should //zak
+-add sirko to greets //zak
+-increment minor //zak
+-new help menu for CID/Accept (umode +g) /cidhelp //zak
+-new feature /ptrap (idea based off highlight by BlackJac)
+ /ptrap will trap any word or phrase you want to be notified about in
+ your hidden windows i.e /ptrap word1 word2 "some phrase" it will trap
+ the word or phrase in a hidden channel and notify you when someone says
+ some specified word or phrase in the hidden channel you should see
+ something like *** (trap) xcrapple in #channel at [window #3] at this time
+ it doesn't tell which trigger was set off. //zak
+
+4.1.06
+-cleanup dcc, make /autoget work again //zak
+-add timestamp to /ptrap it's in a static form at this time using $Z //zak
+-fix braino in /ehelp noticed by xavier rename shelp to /svhelp (server help)
+ /shelp (shitlist help) which caused a conflict when shitlist module was
+ loaded. //zak
+-sync TODO-BUGS to reality //zak
+
+4.10.06
+-fix send public other & clean up the file //kreca
+-clean up color.m + report errnous input //kreca
+
+4.21.06
+-sync E5-KNOWNBUGS //zak
+-prioritize,sync TODO-BUGS //zak
+-increment minor to 8 (very close to a new release) //zak
+-remove so-called 'improved' reconnect script which was taken from
+source/scripts directory, if anyone has any better idea's for a reconnect
+script, even one with some idea's please contact me //zak
+-/set input_prompt saves with /save //zak
+-remove some 'lame quit reasons' requested by grimzy //zak
+-revert back changes of save input_prompt as it may break things //zak
+-fix away timestamping //zak
+-improved consistency in releaseid/date(mainly for snapshots) in /uptime
+ remove 'last seen nick on notify' from /uptime output. //zak
+-remove the silly epic codenames in /sv ouput //zak
+-cleanup TODO-BUGS some //zak
+
+4.28.06
+-sync TODO-BUGS to reality show temp fix for /abot while in there //zak
+-add hack.m to pasture for abot users as a lame fix at this time. //zak
+
+5.02.06
+-fix /abot and remove hack.m //kreca
+-adjust TODO-BUGS to reflect this //kreca
+-fix retardation by crapple in away.m //kreca
+-fix some undefined variables, most notably found a bug in the builtin
+ dcc_timeout. Thanks xdebug! //kreca
+
+5.05.06
+-code cleanups //zak
+-move orignick out of modules into core since most ppl use it anyways //zak
+-sync docs to reality //zak
+-slight cosmetic changes in fsets //zak
+-bump minor(this is the last development ver before our next release) //zak
+
+5.09.96
+-add wjn alias that acts like wj but takes an additional <refnum> argument
+ for easy use with rejoin aliases like in sample.epicrc //kreca
+
+5.14.06
+-add a input_prompt into sbar #4 requested by dan, for those who don't like
+ some input_prompt format it can be changed with /set input_prompt
+ "something" and or /ioff to wipe it out entirely, after the release we'll
+ prolly add some better way of handling this. //zak
+-release amnesiac 1.4 //zak

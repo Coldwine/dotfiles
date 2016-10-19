@@ -1,0 +1,4 @@
+@_modsinfo.utf8.loadcmd = "";
+@_modsinfo.utf8.savecmd = "";
+@_modsinfo.utf8.savefiles = "";
+@_modsinfo.utf8.description="utf8 to latin1";

@@ -1,0 +1,26 @@
+subpackage stat2
+^set -input_prompt
+alias stat2 {
+^set status_format1 $(sc2)$(ld.ul_corner)$(sc1)$(ld.hline)$(hblk)-$(cl)> %*%=%@$(cl)%N %# %C %+ %! $(sc1)[$(cl)o$(hblk)/$(hwht)%2 $(cl)n$(hblk)/$(hwht)%3 $(cl)v$(hblk)/$(hwht)%4$(sc1)] %> $(sc1)\($(cl)lag$(sc1)/$(cl)%1$(sc1)) $(sc1)\($(cl)act/$(hwht)%F$(sc1)) $(sc1)-$(sc2)$(ld.hline)$(ld.ur_corner)
+^set status_format2 $(sc2)$(ld.ll_corner)$(sc1)$(ld.hline)$(hblk)-$(cl)> time$(hblk)$(hwht) %T%A %Q $(sc1)[$(wht)win$(sc1)/$(hwht)%R$(sc1)] %> %{2}S$(cl) $(cl)<$(sc1)$(ld.hline)$(sc2)$(ld.lr_corner)
+^set status_umode $(sc1)[$(cl)+%#$(sc1)]
+^set status_server %S
+^set status_oper $(hblk)*
+^set status_notify %F
+^set status_lag %L
+^set status_clock %T
+^set status_channel $(cl)%C
+^set status_mode $(sc1)[$(cl)+%+$(sc1)]  
+^set status_chanop $(sc1)@
+^set status_format5 %> %5
+^set status_mail $(hblk) $(hwht)m$(cl)ai$(hblk)l $(hwht)%M
+^set status_user5 $(sc1)$S
+^set status_voice +
+^set status_away  $(sc1)[$(wht)away$(sc1)]
+^set status_hold_lines $(hblk)\[$(hwht)%B$(hblk)]
+^set status_query $(hblk)\[$(blu)Q$(wht): $(wht)%Q$(hblk)]
+}
+stat2
+@windowdoubles=[on]
+^window double on
+^timer -del 14

@@ -1,0 +1,7 @@
+DESC crapple #amnesiac hi
+1 $fparse(format_timestamp_some $($_timess))$(cl)-> $(hwht)$1 $(c3)$servernick() $(cl)$3-
+2 $fparse(format_timestamp_some $($_timess))* -> $1: $servernick() $3-
+3 * -> $1: $servernick() $3-
+4 $fparse(format_timestamp_some $($_timess))* -> $(hyel)$servernick()$(cl) $3-
+5 $fparse(format_timestamp_some $($_timess))$(hblk).$(c2).$(hblk)[$(wht)msg$(hblk)\($(sc2)$1$(hblk)\)] $(c2)* $2$(hblk) $(cl)$3-
+6 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)sm%n/$(c2)$1$(c3)] $(c2)*%n $servernick() $3-

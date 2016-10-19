@@ -1,0 +1,34 @@
+subpackage stat13
+
+alias stat13 {
+^set status_format %T [%R] %*%=%@%N%#%S%H%B%Q%A%C%+%I%O%M%F%L %D %W
+^set status_format1  %T [%R] +%*%=%@%N%#%S%H%B%Q%A%C%+%I%O%M%F%L 
+^set status_format2   (ops:%Y) (non:%X) (voc:%Z)     %U %> 
+^set input_prompt > 
+^set status_umode  (+%#)
+^set status_oper *
+^set status_channel  %C
+^set status_mode  (+%+)  
+^set status_clock  %T
+^set status_chanop @
+^set status_format5  %> %5
+^set status_mail  (Mail: %M)
+^set status_user5 $(sc1)s$(hblk)/$(sc2)$S
+^set status_voice +
+^set status_away  (Away)
+^set status_hold_lines  %B
+^set status_query  (Query: %Q)
+^set STATUS_CPU_SAVER  (%L)
+^set STATUS_HOLD Held:
+^set STATUS_NOTIFY  (W: %F)
+^set STATUS_OVERWRITE  (Overwrite)
+^set STATUS_SCROLLBACK  (Scroll)
+^set STATUS_SERVER %S
+^set -STATUS_USER
+^set STATUS_WINDOW ^^^^^^^^ 
+}
+stat13
+@windowdoubles=[off]
+^window double off
+^timer -del 13
+^timer -del 14

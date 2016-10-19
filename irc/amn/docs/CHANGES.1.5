@@ -1,0 +1,404 @@
+for further CHANGES info please read docs/CHANGES.rel.
+
+5.14.06
+-synch docs for development 1.4d(snapshots) and version.
+
+5.22.06
+-redo the mjoin module. It now takes a window number as argument so you have
+ full control on what window it will be bound to. This means the mjoin config
+ is gone and backwards compability for saved channel lists are gone too.
+ //kreca
+
+5.24.06
+-comment out forced dcc_timeout in core/compat.m no kreca this is clearly
+ still not right, and probably should have not been in the -release
+ ppl who claim about dcc chats closing in our previous release for no real
+ reasons do /set dcc_timeout 0 and /save it should solve the issue until
+ a real fix comes along, please investigate into this. it may be an epic
+ bug i do not know.
+
+5.28.06
+-add /rflush (flushes out /relm /relsm /paste etc..) buffer. //zak
+-add /reld /reldm (dcc chat/sent relay) functionality //zak
+-new /config output "relay" for relay buffering as some seems to like
+ adjusting the the values involving 2 new shortcut cmd's /inbuf /outbuf
+ one should however avoid arbitraily large values as interesting things could
+ possibly happen.
+-slight cosmetic output format in /relm /relsm /relw etc.) deansify //zak
+-add wording of /staynick to cancel when one does /orignick //zak
+-increment minor snapver //zak
+-sync epic docs to reality. //zak
+-the previous /dlog functionality only logged dcc attempts, now it actually 
+ logs dcc_msgs when one is set away and /dlog is turned on.
+-added timestamps for dcc connect() close(), NOTE: you must
+ rm -rf ~/.amn/.a.fsetsave if you are upgrading. //zak
+-fix kickform 1 from displaying double )) when someone is kicked
+ noticed by klepto. //zak
+-add klepto to greets //zak
+-force-set a random quit_message when one connects to a server, to prevent
+ non-evaluated quit messages when the client crashes/get killed/power outage
+ ie; user quit, reason $tolower($J) - $randread($(loadpath)quit.reasons)
+ this should also help with people reporting this as a bug. //zak
+-slight change in xy module of typos/deletion/corrections with help from
+ nathan. //zak
+-new help menu for undernet specific xy /xyhelp added with help from
+ nathan, many thanks! //zak
+-move ptrap into bwk module. The functionality will eventually be merged into
+ one. //kreca
+-make ptrap print the whole match string when triggered. Requested by zak
+ and klepto. //kreca
+-fix bug in bwk wordssave function which resulted in bantype not being saved.
+ //kreca
+-output /ahelp list in sorted manner. Requested by zak. //kreca
+-huge cleanup of relay.m. rel* -l will now display as usual, but display no
+ input prompt. //kreca
+
+5.31.06
+-make /supt not display client codenames in output //zak
+-release amnesiac 1.4 r/2 BUGFIX/cleanup //zak
+-regen new minor for 1.4d r/3 snapshot(no functional changes yet) //zak
+
+6.3.06
+-make /format v 12 output, work better/correct to make skullY happy //zak
+-make wall output to the correct channel //zak
+-Some general cleanups. Fixed the grammar. Cleanup formatting in wall.m and
+ fsets.m. Changed some messages to be less lame. //skullY
+-Add a ^ to fsets.m so it'd stop printing out a bunch of assign messages
+ in /format c. //skullY
+
+6.5.06
+-cleanup stuff from compat.m i never really liked relying on the builtins
+script myself, hopefully nothing in the script contains the removed functs
+the following functs have been removed from compat. servergroup, servername 
+serveryourname wincursorline servernick winscrollbacksize if anyone notice 
+any breakage please let me know //zak
+-add new /dcr alias for renaming dcc nicks /dcr oldnick newnick to change
+your dcc chat nicks. //zak
+-add new status_user7 $#pattern(* $channel()) = total users on channel.
+-set sbar 3,11 to include total users, add preliminary Mail count on
+ sbar 12 we'll see how this works. //zak
+-new document STATUS_FORMAT should help give one a general idea on how
+ to make statbars and or modify it to their own liking. //zak
+-Change userlist.m to use a random time up to $_ss seconds. This way when
+ multiple amnesiac users are in a channel we only see one autoop. //skullY
+-Add a date alias to /time. //skullY
+-Fixup /common, it now uses printnames instead of interfacing with the
+ format itself. It also now will accept either one or two args, and will
+ give you help if don't give it any args. //skullY
+-New alias /stalker, does a /common for every channel you're in against
+ the current channel. //skullY
+
+6.8.06
+-Fix /format j 25. //skullY
+-Give the user an idea why their client quit. //skullY
+
+6.9.06
+-sync various docs to reality //zak
+-various cleanups/duplicates //zak
+-sync mjhelp docs to reality to reflect we now accept which window we want
+ to join each channel in, if any. //zak
+-make /unshit num actually work //zak
+-add removal of 2 extra savefiles in /fupgrade due to sometimes broken
+ backwords compat //zak
+-increment minor //zak
+
+6.10.06
+-more cleanups in code to make it readable, those who loves double indenting
+ shit after { should be shot. //zak
+-organize aliases/funcs to be where they should be. //zak
+-some functional changes //zak
+
+7.10.06
+-Fix bug in delset and spell BlackJac correctly. //kreca
+-Fixed bug where nicks with a backslash on the end would get an extra
+ backslash added. //skullY
+-Make /msg tab cycling work correctly, it's always been broken and 
+ unable to cycle through the list more than once //kreca
+-Add /msg #chan to the /msg tab cycling list as requested. //kreca
+-add theme 'alien' for Alien88 which should keep him happy //zak
+-increment minor, and snapdate //zak
+
+8.27.06
+-LICENSE RELAXATION see new COPYRIGHT //zak
+-initial stab at auto_reconnect script taken from source/epic5 written
+ by nullie //zak
+-sync docs to reality //zak
+-add auto_reconnect; auto_reconnect_delay settings to /save //zak
+-remove old AUTO_RECONNECT document from docs/ will prolly add the new
+ way into the faq when its tested enough //zak
+-increment minor/snapdate //zak
+
+9.6.06
+-Bring in auto reconnect script, control it with set auto_reconnect 
+ auto_reconnect_delay and auto_reconnect_retries. This needs a lot 
+ of testing, that's why it's disabled by default. //kreca
+-auto_reconnect has been tested by me and it does work fine, however more
+ feedback would be appreciated //zak
+-add tilts updated 'l33t' theme //zak
+-cleanup various documents to reflect reality //zak
+-some cleanup of annoying aliases no one really needs/uses
+-various cleanups of comments //zak
+-increment minor and snapdate //zak
+-auto-bot module will no longer be loaded per default //zak
+-more commenting cleanups, note kreca as co-author now(i was threatend with
+ abuse) //zak
+-add some aliases to make use of auto_reconnect /areconnect /aconnect
+ /ardelay /aretries //zak
+-cleanout pasture/* and add a readme of why we have a pasture dir //zak
+-new /config option 'connect' /config connect for output info //zak
+-Readd config.kickops after another *cough*mistake*cough* from zak
+ I want some of what you're using! //kreca
+-Cleanups in away.m //kreca
+-New internal structure in modules system, _modinfo structure
+ with information about savefiles, loadcmd and savecmd.
+ This make /save able to save module information aswell instead of
+ the user having to do so manually.
+ In the future this can be extended to contain sets.default etc, so
+ we can switch all our config vars to use addset instead of our homebrewn
+ system. //kreca
+-Small bugfix in tban to remove bans starting and ending with quotes.
+ //kreca
+-adcc.save is now saved when /save is triggered. (bugfix) //kreca
+-remove pager, from away module, its old and was probably broken //zak
+-remove 3 extra responses /resp2 /resp3 /resp4 as this was a temp nasty
+ hack at the time, its been basically replaced by /ptrap which is far
+ more useful than having your nick in bold in the channel anyways. //zak
+-rename the old sprot module to protect, which tries to unban you if someone
+ attempts to ban you and kick the offender, cleaned up and hopefully it
+ works right now. //zak
+-some minor aliasing changes/nits //zak
+-increment minor again *Sigh* //zak
+-** IMPORTANT CHANGE ** All files in ~/.amn/ starting with a .
+ has now been renamed to drop the . This is renamed automatically for 
+ now on startup / adump. //kreca
+
+9.7.06
+-rename bwk module to 'mmatrix' 'multi-matrix' as it contains things like
+ /ptrap and im sure there will be other oddities and cool stuff to add
+ into it /mmhelp(doc still needs to be updated a bit) /addword foo #channel
+ reworded/changed the output to be less confusing //zak
+-sync some docs to reflect reality. //zak
+-fix the dates in the CHANGES //zak
+
+9.11.06
+-create core/addsets.m to make our addsets/sets in a particular file so we
+ dont create confusion with it in amn.epic still needs a better solution tho
+ //zak
+-sync documents to reality, and some documentation cleanups //zak
+-add/remove a few aliases /awayr, make user_information /save slight
+ verbosity on load for amnesiac/epic version as well as /sv organize some
+ no real functional changes //zak
+-sync reconnect.m with new changes. Should be more stable now. //kreca
+
+9.12.06
+-Make ^U (erase_history) paste the text in the cut buffer again. //kreca
+
+9.13.06
+-fix various echo parses which kreca broke when converting amn.epic over
+ to the pf loader //zak
+
+9.14.06
+-away logging is now 'encrypted' with simple algo using $encode/$decode
+ you may notice the logs will be much larger reading it as plaintext
+ however during my testing with about 50 msgs it did not seem to slow
+ down the decode/encode as it was when we used to do plaintext logging. //zak
+-fix output of /userlist /listf again to look more proper //zak
+-new module urlgrab at this time it only grabs from public //zak&kreca
+
+9.19.06
+-Use the new input_reset key binding to keep the cut buffer (in tab.m and
+ history script. Emulate the behaviour for older epic5 clients 
+ (bleeding edge feature) //kreca
+
+9.21.06
+-Command tab completion. Type /cmd<tab> for command tab completion. //kreca
+
+9.25.06
+-Save all /sets to ~/.amn/a.settings upon /save now ! //kreca
+-Make /module.help work for modules with their own help commands. //kreca
+-Fix bug that loaded away module twice. Found by rylan. //kreca
+
+9.27.06
+-Remove rtheme and untheme. These serve no purpose, if a user wants to delete
+ a theme it's easier to rm ~/amn/themes/<name of theme>.th //kreca
+
+9.28.06
+-Default theme is moved to themes/main.th (and loaded of course) //kreca
+
+10.1.06
+-Add msg n<tab> completion. //kreca
+-More additions to the tab completion:
+ dcc commands (type dcc <tab>). Dcc close <type> <tab> will list active
+ sessions for example.
+ ignore, ctcp, q, query support nickname.
+ invite will tab complete both channels and nickname. //kreca
+-Fix bugs in /invite by rewriting it //kreca
+
+10.2.06
+-sync docs to reality, add /url alias shortcut to /urlgrab //zak
+-*gulp* hopefully i set the reverse_status_line script properly via
+ $info(i), if anyone notices any weird statbar problems in -cvs let me
+ know //zak
+-fix internal script upgrade funcs a bit(not recommended for new users) //zak
+-minor default settings adjustment //zak
+
+10.11.06
+-A lot of cleanups have been going on. The pf conversion is almost half done
+ now. //kreca
+-Dcc tab completion is almost complete. //kreca
+-With epic5 commitid 1415 and greater the action support is rewritten to 
+ incorporate the new changes to dcc actions. //kreca
+
+10.17.06
+-Clean up /more. It's a lot better than the original implementation. Add 
+ support for filenames containing white space while being there. //kreca
+-Increment snap date //kreca
+-Add /mode #chan tab support //kreca
+-Fix rel_id bug (minor) //kreca
+-Actually make /sbar changes update window doubles in all windows. //kreca
+
+10.20.06
+-Honour the environment variable IRCNAME if it's set, hack to make
+ xavier happy. //kreca
+
+11.1.06
+-Add alias toggle. works like /set <var> TOGGLE but only operates on booleans.
+ //kreca
+-set paste_strip was inverted, correct this. When paste_strip is set to off
+ blank lines will be outputted when being in paste mode. //kreca
+
+11.12.06
+-Add 6 new timestamp formats (date support added) /tform //rylan
+
+11.14.06
+-Make bankick, kb, bkn etc support nick lists delimited by , and
+ make them also take a reason for the kick. //kreca
+
+12.02.06
+-documentation cleanups, should probably mention kreca started the beginning
+ of our format changes in the past few commits amn/arrays/* have renamed/moved
+ to amn/format/someform/subforms etc.. more work to come //zak
+-Fix * in /trickel //kreca
+
+12.31.06
+-fix /mjhelp, wipe out if (!@) arguments in our internal help system as we do
+ not require arguments anyways (85% done) //zak
+-sync epic5 docs to reality (minor changes) //zak
+-fix a typo in kick.reasons //skullY
+
+1.3.07
+-whoo hoo 2007 is here!, shouldnt be any functional changes. -Rylan
+
+1.7.07
+-Fix breakage in tab module when a nick contains \ or ^ //kreca
+-Convert a lot of formats to the new simplified. We're about 40% done. A few
+ bugs in the old format code has been found and rectified due to this.
+ I strongly recommend anyone upgrading to this version to reconfigure their
+ themes / formats. //kreca
+
+1.10.07
+-Remove format_ prefix when typing /fset. Requested by zak //kreca
+
+1.16.07
+-add /awayhelp. This is a frequently asked question. //kreca
+-finish up /format work. Now all formats are converted to the new format.
+ //kreca
+-When invited ^K will remember serveral channels. It'll join the last one
+ invited to. //kreca
+
+1.17.07
+-Move .reasons files to amn/reasons/ //kreca
+
+1.18.07
+-Add time format 22 made by bioterror. /timeform 22 to check it out //kreca
+
+1.22.07
+-Add auto_rejoin_connect setting which prevents the client from rejoining 
+ channels upon reconnect. //kreca
+
+1.31.07
+-move history from compat.m -> history.m
+-move newnick/motd suppression -> server.m
+-sync epic5 docs to reality
+-sync TODO-BUGS to reality
+-add 2 formats for bioterror banner(58) timestamp(21) //zak
+-sync docs/NOTES to reality mostly reflecting on bwk module renaming,
+ broken old compatability //zak
+
+2.02.07
+-move old userlist/shitlist into pasture/
+-add new userlist module(incomplete)/works somewhat into modules/userlist
+ written by nullie i decided to bring it in now so others can work on it.
+ //zak
+
+2.13.07
+-bring in theme shtfck by bioterror. Really nice charset independent theme 
+ with similar colors to chloro. //kreca
+-add sbar 16 that is used in shtfck also made by bioterror //kreca
+-n/a is now displayed in the sbars when no chops data is available. //kreca
+
+2.27.07
+-sync more documents to reality to avoid simple questions about the
+ userlist //zak
+-fix up /addf /delf /unuser etc.. in userlist //zak
+-fix a minor fuckup in /userlevels //zak
+NOTE: there is still more work that needs to be done on the userlist it isnt
+      perfect but hopefully we'll continue to improve on it in the near future
+-remove ppl from greets/about who have not contributed in the past 2 years.
+ add bioterror to greets. //zak
+
+3.20.07
+-Add unload hook to the module framework. This makes /delmod urlgrabber
+ function correctly. //kreca
+-Fix userlist save function, due to a conflict with our module framework.
+ also general clean up //kreca
+-add a few new aliases to userlist, update /userhelp documentation after
+ going through the userlist module to see what commands are undocumented //zak
+-synch epic5/cvs docs to reality //zak
+-increment date/minor rev //zak
+
+3.23.07
+-Add set tab completion. Try /set DCC<tab> for an example //kreca
+
+03.25.07
+-update sbar 16 for bioterror(was originally written by him) //zak
+-add timestamp to kickform 1 requested by bioterror //zak
+-sync docs to reality, TODO-BUGS(priority bugs needs to be addressed!) //zak
+
+03.26.07
+-fix away format bug //kreca
+-clean up config for old userlist //kreca
+
+03.27.07
+-move http module to pasture. //kreca
+-add dns tab completion //kreca
+-make amnesiac respect maxmodes from server, this applies to op, deop, mop
+ etc. Make a generic _massmode alias to take care of this. I.e. if you do
+ _massmode(#amnesiac +ov kreca zak) on a server with a maximum limit of 3
+ it'd break it up into to mode changes like this:
+ mode #amnesiac +ovo kreca kreca zak
+ mode #amnesiac +v zak
+ //kreca
+
+04.02.07
+-Keep timestamp setting (on/off) when switching themes. //kreca
+
+04.10.07
+-Module framework cleanups. A lot easier to add modules and all help
+ (vmod/emod) will be up to date directly. //kreca
+-Format framework is nearly finished with constructors for formats. Easy 
+ to add new formats which are quite complicated (like whois scan statbar
+ timestamps, banners etc). //kreca
+-All formats are now contained in amn/format/*. Scripter shouldnt have to 
+ mess with other files. //kreca
+
+04.17.07
+-Big changes to wall/bwall. Get rid of old cruft like /bwall2 (bx-bwall?)
+ Add a new bwall format compatible with public_other formats (/wallform 13).
+ wall should hopefully be fixed now (works with both +@ for msgs and notices)
+ Thanks to hop for guidance //kreca
+-Update statusbar 16, submitted by bioterror
+-Fix output bug when away log was delted with remlog, reported by bioterror
+ //kreca
+-Update whois.ans, submitted by violence //kreca
+-Add msg and notice @#chan, ctcp #chan tab completion //kreca

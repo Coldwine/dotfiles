@@ -1,0 +1,5 @@
+@_modsinfo.mmatrix.loadcmd =  'wordsload';
+@_modsinfo.mmatrix.savecmd =  'wordssave';
+@_modsinfo.mmatrix.savefiles = 'a.words.save';
+@_modsinfo.mmatrix.helpcmd  = 'mmhelp';
+@_modsinfo.mmatrix.description="'multi-matrix' bk/kick/notify";

@@ -1,0 +1,5 @@
+@_modsinfo.userlist.loadcmd =  'uload';
+@_modsinfo.userlist.savecmd =  'usave';
+@_modsinfo.userlist.savefiles= 'userlist.conf';
+@_modsinfo.userlist.helpcmd =  'uhelp';
+@_modsinfo.userlist.description="friends/userlist protection";

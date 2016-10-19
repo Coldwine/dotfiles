@@ -1,0 +1,30 @@
+subpackage stat10
+## sbar done by albeniz 
+^set -input_prompt
+
+alias stat10 {
+
+^set -input_prompt
+^set status_format1 $(sc2)$(ld.ul_corner)$(ld.hline) $(hwht)U$(wht)ser$(sc2): %*$(sc1)%N%#%A %F %> %{2}S $(sc2)$(ld.hline)$(ld.ur_corner)
+^set status_format2 $(sc2)$(ld.vline)  $(hwht)C$(wht)hannel$(sc2): $(wht)%@%C%+%W %M%Q %>%T  $(hwht)L$(wht)ag$(sc2): $(sc1)%1 $(sc2)$(ld.hline)$(ld.lr_corner)
+^set status_notify $(hwht)N$(wht)otify$(hblk): $(sc1)%F
+^set status_umode $(hblk)\($(hwht)%#$(hblk)\)
+^set status_server $(hwht)S$(wht)erver$(hblk): $(sc1)%S
+^set status_oper $(sc3)*
+^set status_clock $(hwht)T$(wht)ime$(sc2): $(sc1)%T
+^set status_lag %L
+^set status_channel $(sc1)%C
+^set status_mode $(sc2)\($(hwht)%+$(sc2)\)
+^set status_chanop $(sc3)@
+^set status_mail $(hwht)M$(wht)ail$(sc2): $(sc1)%M
+^set status_voice $(sc3)+
+^set status_away $(sc2)\($(hwht)A$(sc2)\) 
+^set status_query $(hwht)Q$(wht)uery$(sc2): $(sc1)%Q
+^set status_user5 $(hwht)S$(wht)erver$(hblk): $(sc1)$S
+^set status_format5 %> %5
+
+}
+stat10
+@windowdoubles=[on]
+^window double on 
+^timer -del 14

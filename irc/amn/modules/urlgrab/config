@@ -1,0 +1,7 @@
+##No load or savecmd. This should always be triggered by a user
+@_modsinfo.urlgrab.savefiles='urlgrabber.log';
+@_modsinfo.urlgrab.loadcmd='urlload';
+@_modsinfo.urlgrab.unloadcmd='urlunload';
+@_modsinfo.urlgrab.savecmd='';
+@_modsinfo.urlgrab.helpcmd='urlhelp';
+@_modsinfo.urlgrab.description="logs urls to a file";

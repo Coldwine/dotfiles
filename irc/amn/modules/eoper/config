@@ -1,0 +1,2 @@
+@_modsinfo.eoper.helpcmd = 'eohelp';
+@_modsinfo.eoper.description="Enhanced IRC oper/opervision/commands";

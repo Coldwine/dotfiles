@@ -1,0 +1,18 @@
+RELEASE NOTES
+Major changes
+-mjoin module has been made functional.
+-New userlist module, based on ELSA by nullie
+-Bunch of new aliases added for easier management of window buffers, channels
+-tab completion script has had major updates
+-auto reconnect script added
+-major overhaul to the module subsystem
+-Major changes to format system, everything is now contained under format/* 
+ and theme/* to make it easy for theme makers to customize the look and feel.
+-All files in ~/.amn/ starting with a . has now been renamed to drop the .
+ a lot of other changes has been done to the save files, particulary things
+ related to formats, so you might have to do a /theme <your regular theme>
+ if upgrading from an old version.
+-All core files has been converted to use the pf loader, this results in
+ faster loading times.
+-New theme shtfck by bioterror
+-Make channel walls (msg @#chan etc) display properly.

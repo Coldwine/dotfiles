@@ -1,0 +1,2 @@
+@_modsinfo.services.helpcmd =  'svhelp';
+@_modsinfo.services.description="nickserv/memoserv/chanserv helper";

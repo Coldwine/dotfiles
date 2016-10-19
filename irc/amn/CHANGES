@@ -1,0 +1,21 @@
+NOTE: ChangeLog is done from OLD-NEW AKA OLD Stuff on TOP Newer down below
+ChangeLog amnesiac 2.0.2 -> current
+
+[cvs51]
+07.26.10
+-Release amnesiac 2.0.2 [cvs50-51] Hey at least it happened!
+-New release, new CHANGES rollover.
+-Now scripters can go and fuckup the tree, or go wild again assuming
+some scripters/userbase/comitters are active (hopefully) now that
+we have the first release in god knows how many years long overdue,
+I'm not perfectly happy with the release with a broken userlist and some
+other possible bugs, and the oper module mess needs to be dealt with. //zak
+-increment values of some default settings, namely dcc_ports increase
+low-med port range, increment lastlog buffer to 3500 scrollback to 2000, 
+as most people surely have ram for that much these days, heck i use up to
+45000 at times.uses about 30-40megs depending on how many
+windows/channels. increment connect retry amount. //zak
+-add amnesiac release date to /uptime, above snapdate. //zak
+-sync help/docs more to reality, since slocate found some errors the
+other night, i decided to clean up a little bit while in the general area
+before i passed out //zak

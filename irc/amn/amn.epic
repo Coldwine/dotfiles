@@ -1,0 +1,154 @@
+# Copyright (c) 2003-2010 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+
+/* amnesiac by crapple(zak), kreca and skullY
+pr0pz and thanks go to void!, xavier!, fudd, BlackJac, hop, criminal, krimson,
+violence, skullY, Alien88, kreca, adam, ryan, sirko, klepto, david, wicked
+bioterror(mongoose), byron and any others out there who have helped out.
+*/
+
+if (word(2 $loadinfo()) != [pf]) {
+	load -pf $word(1 $loadinfo());
+	return;
+};
+
+package amnesiac;
+
+if (word(0 $info(v)) != 'epic5' || V < 20100430 || info(i) < 1626) {
+	xecho -b Amnesiac has detected an old version of epic;
+	xecho -b Recommended version is epic5-1.1.1+;
+	xecho -b override check: comment check in amn.epic at own risk!;
+#	return;
+};
+
+## dump all
+dump all;
+timer -del all;
+for array in ($getarrays()) {
+        @ delarray($array);
+};
+
+
+## static vars for savefiles.
+@savepath='~/.amn/';
+
+###### TOUCH BELOW THIS LINE AND YOU DESERVE WHATEVER YOU GET, SUCKA. ######
+@savefile='a.save';
+@fsavefile='a.fsave';
+@setsavefile='a.settings';
+@igsfile='a.ig.save';
+@csavefile='a.csave';
+@fsetsavefile='a.fsetsave';
+@modfile='mod.save';
+
+@savefiles="$savefile $fsavefile $igsfile $csavefile $fsetsavefile $modfile";
+@format_strings='action action_other desc send_desc dcc_chat send_dcc_chat away banner kick leave join signoff msg send_msg public send_public public_other notice send_notice public_notice ctcp send_ctcp ctcp_reply mode nick_comp nickname wall bwall who who_footer timestamp_some topic notopic settopic topicby statusbar version_reply whois scan';
+
+## load comptability functs
+@loadpath="$before(-1 / $word(1 $loadinfo()))/";
+
+## supported modules
+@_modules='ncomp abot aol query away dict mjoin oper relay relaysmtp remote tab tc userlist mmatrix vanilla nlog services urlgrab serverlist utf8 eoper elog';
+@_defaultmods='away dict relay tab';
+
+#progress bar
+@_pcnt=0;
+alias _progress {
+	@_pcnt=_pcnt+1;
+	set input_prompt $(hblk)[$cparse($(c1)$[20]repeat($_pcnt þ))$(hblk)] [$(cl)${_pcnt*2}$(hwht)%$(hblk)];
+};
+
+## unset/set cosmetic crap
+set -status_user;
+set -status_format1;
+set -status_format2;
+
+## set def win levels/name
+window 1 level none;
+window 1 name -;
+
+## proper yell silence. as we do not want to silence all
+on ^yell "File not found*" #;
+on ^yell "*INFO*" #;
+on ^yell "% *Mode parser or server*" #;
+
+## NOTE: when loading something in a particular order,
+## make sure its unset on coreload so it doesnt get reloaded
+## around line 120 as of this writing.
+
+## epic5 compat func/addset funcs
+load -pf $(loadpath)core/compat.m;
+load -pf $(loadpath)core/addsets.m;
+
+## load default settings. Overriden in ~/.amn/
+load -pf $(loadpath)defaults/settings.default;
+load $(loadpath)defaults/fset.default;
+
+_progress;
+load -pf $(loadpath)core/main.m;
+load -pf $(loadpath)core/config.m;
+
+## load savefiles.
+@mkdir($(savepath));
+@chmod($(savepath) 700);
+
+## Load all savefiles
+fe ($savefiles) ff {
+	if (fexist($(savepath)$ff)==1) {
+		load $(savepath)$ff;
+	};
+};
+
+_progress;
+
+## load format functions (no particular order required any more)
+fe ($glob($(loadpath)format/*)) ii { 
+	load -pf $(ii)config.m;
+};
+
+## load core files
+fe ($glob($(loadpath)core/*.m)) mod {
+	if ( mod != "$(loadpath)core/compat.m" && 
+	     mod != "$(loadpath)core/addsets.m" && 
+	     mod != "$(loadpath)core/main.m" && 
+	     mod != "$(loadpath)core/config.m" ) {
+        	load -pf $mod;
+		_progress;
+	};
+};
+
+## load default modules
+_modload;
+
+_progress;
+
+# Load settings file here. Modules might add their own sets
+if (fexist($(savepath)$setsavefile)==1) {
+   load $(savepath)$setsavefile;
+};
+
+# i do not see the setting in epic5 cvs for quite some time,
+# is it still in release? else we should remove this //zak
+^set reverse_status_line off; ## We dont use this set any more
+
+## XXX hack to make Xavier happy. If the environment variable IRCNAME is set
+## honour it and clear it. //kreca
+@rname = getenv(IRCNAME);
+if (@rname) {
+	set realname $rname;
+	setenv -IRCNAME;
+};
+
+## Comment for stoners: ^getusers is used when dump/reload while in a chan
+## or loading after one connects to a server.
+getusers;
+
+format.init;
+
+# We're finished, display ans.
+load $(loadpath)ans/startup.ans;
+
+# Im not sure why we need wait here, but we do :) //kreca
+wait;
+
+_center Amnesiac/$a.rel \($a.snap\) [cvs \($a.commitid\)] for $(J) \($V\) [$info(i)] loaded..;

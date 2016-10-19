@@ -1,0 +1,29 @@
+subpackage stat6
+## Another sbar by albeniz 
+^set input_prompt $(sc2)È$(sc1)Í$(sc3)$(ld.hline)$(sc1)>$(sc2)> 
+
+alias stat6 {
+
+^set input_prompt $(sc2)È$(sc1)Í$(sc1)$(ld.hline)$(sc1)>$(sc2)> 
+^set status_format1 $(sc2)É$(sc1)Í$(sc1)$(ld.hline)$(sc2)<%*%=%@$(sc1)%N%#$(sc2)> %A%M %> %Q $(sc2)<$(sc1)T$(sc1)ime$(sc2)/$(sc1)%T$(sc2)> $(sc2)ë $(sc2)<$(sc1)L$(sc1)ag$(sc2)/$(sc1)%1$(sc2)>$(sc1)$(ld.hline)$(sc1)Í$(sc2)»
+^set status_format2 $(sc1)$(ld.vline) $(sc2)ë $(sc2)<$(sc1)%C%+$(sc2)> $(sc2)ë $(sc2)<$(sc1)o$(sc1)/$(sc2)%2$(sc1)n$(sc1)/$(sc2)%3$(sc1)v$(sc1)/$(sc2)%4$(sc2)> %>%F $(sc2)<%{2}S$(sc2)>$(sc1)$(ld.hline)$(sc1)Í$(sc2)¼
+^set status_notify $(sc2)<$(sc1)A$(sc1)ct$(sc2)/$(sc1)%F$(sc2)>$(sc2) ë
+^set status_umode $(sc1)<$(sc1)+%#$(sc1)>
+^set status_server %S
+^set status_oper $(sc1)*
+^set status_clock %T
+^set status_lag %L
+^set status_channel %C
+^set status_mode $(sc1)<$(sc1)+%+$(sc1)>
+^set status_chanop $(sc1)@
+^set status_mail $(sc2)ë $(sc2)<$(sc1)M$(sc1)ail$(sc2)/$(sc1)%M$(sc2)>
+^set status_voice $(sc1)+
+^set status_away $(sc2)ë $(sc2)<$(sc1)A$(sc1)way$(sc2)> 
+^set status_query $(sc2)<$(sc1)Q$(sc2):$(sc1)%Q$(sc2)> $(sc2)ë
+^set status_user5 $(sc1)$S
+^set status_format5 %> %5
+}
+stat6
+@windowdoubles=[on]
+^window double on
+^timer -del 14

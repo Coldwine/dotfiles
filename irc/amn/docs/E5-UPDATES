@@ -1,0 +1,4371 @@
+EPIC5-1.1.3
+
+*** News 06/09/2010 -- New semantics for /BIND TRANSPOSE_CHARACTERS
+	The TRANSPOSE_CHARACTERS keybinding now has the following semantics:
+	1. When the cursor is on the first character, swap the first and second
+	   characters.  
+	2. When the cursor is on a character (but not the first character), swap
+	   the character under the cursor with the character before the cursor.
+	3. When the cursor is at the end of the line (and not on a character), 
+	   swap the last two characters on the input line.
+	In all three cases, the cursor stays in whatever column it is in.
+
+*** News 06/05/2010 -- New script: rejoin
+	Stores channel/key on disconnect/part/kick. I hope it's useful!
+
+	Allows you to rejoin all channels lost in a disconnect, by doing:
+	/rejoin -all OR /rejoin -server
+
+	See script for details. 
+
+EPIC5-1.1.2
+
+*** News 04/15/2010 -- New flags to $sar(), $msar(), case sensitivity
+	In EPIC4, $sar() and $msar() were case sensitive.
+	You could turn this off by using the 'i' flag.
+	In EPIC5, $sar() and $msar() are case *INSENSITIVE*
+	There has been no way to turn this off!
+	You can now turn this off with the 'c' flag.
+
+	Example:
+		$sar(g/One/Two/one One one One)   -> "Two Two Two Two"
+		$sar(cg/One/Two/one One one One/) -> "one Two one Two"
+
+*** News 04/15/2010 -- New /on, /on unknown_set
+	As a favor to howl, I've added /on unknown_set, which will be hooked
+	whenever /set is called on a set that doesn't exist.
+		$0  - The set that doesn't exist
+		$1- - The value the user wanted to set.
+	If you catch this, then the /on set that triggers for "unknown-set"
+	will not be thrown.  If you don't know what I'm talking about, then
+	you won't miss it.
+
+*** News 04/01/2010 -- Can now backslash colons in server passwords
+	Previously it was impossible to include colons in server passwords
+	because colons are delimiters in server descriptions.  Now you can 
+	backslash the colon and it will do the right thing.  Don't forget to
+	backslash your backslashes!
+
+		Real password		What you should use:
+		-------------------	---------------------
+		onetwothree		onetwothree
+		one:twothree		one\:twothree
+		one\two:three		one\\two\:three
+
+*** News 03/25/2010 -- Can now modify servers by refnum (Fix to server descs)
+	The /server command was broken in the epic5-1.1.1 release, and got 
+	some extra work for the next release.  As part of this work, you can 
+	now add change fields to a server refnum, like so:
+		/server 1:type=irc-ssl
+	Previously refering to a server refnum didn't support change fields.
+
+EPIC5-1.1.1
+
+*** News 3/19/2010 -- EPIC5-1.1.1 was released here
+
+*** News 3/19/2010 -- The last value of /WINDOW SERVER is saved per window
+	The last argument passed to /WINDOW SERVER is saved on a per-window
+	basis, via $windowctl(GET x SERVER_STRING).  I added this because
+	howl asked for it, although I don't know what he intended it for.
+
+*** News 3/19/2010 -- Modifying server descriptions on the fly
+	You may now modify server descriptions on the fly in the
+	following situations:
+		/SERVER -ADD <desc>
+		/SERVER -UPDATE <desc>
+		/SERVER <desc>
+		$serverctl(READ_FILE filename)
+		$serverctl(UPDATE refnum stuff)
+		/WINDOW SERVER <desc>
+	For example, let's say you created a server irc.foo.com, but
+	you forgot that it used SSL.  Before it was a pain to "fix" that,
+	but now you can fix it like this:
+
+		/SERVER -ADD irc.foo.com:8855
+	(oops, it uses ssl, i forgot!)
+		/SERVER irc.foo.com:type=irc-ssl
+	(aha! okie. now it will connect using ssl)
+	
+*** News 3/19/2010 -- You can log everything with /LOG SERVER ALL
+	If you create a log like:
+		/LOG NEW FILE myirc.log SERVER ALL ON
+	that will log everything.
+	Previously, you had to add each server individually by 
+	refnum, but now you can just use the magic string "ALL"
+	to refer to all servers.
+
+*** News 3/19/2010 -- Rewrite /log support
+	The /LOG command should work a lot better now.
+
+*** News 3/19/2010 -- New target to msg a window, @E<winref>
+	You can /echo to a window by /msg'ing its winref, as in:
+		/msg @E3 This message will display in window 3.
+
+*** News 3/19/2010 -- "global" now loads ambig and newnick scripts
+
+*** News 3/19/2010 -- New /XEVAL -N flag, which reverses the ^ flag
+	Normally if you run an alias or an on with ^, it will treat every 
+	command as though it were prefixed with ^.  This suppresses the 
+	output of many commands, which you may not want to do.  You can 
+	negate the effect of ^ with /XEVAL -N.  For example:
+		/on ^hook "chdir %" {
+			xeval -n {cd $1-}
+		}
+	Normally the /CD command will output an error if it could not
+	change the directory, but since ^ suppresses that error, in this
+	example, you'd never know that the cd failed.  So you can wrap 
+	commands whose error messages you want to see in /XEVAL -N.
+	Don't forget!  Always wrap your commands in {} to avoid unintended
+	back doors.
+
+*** News 3/19/2010 -- Remember, $dccctl(GET refnum WRITABLE)
+	If you combine $dccctl(FD_TO_REFNUM fd) with
+	$dccctl(GET refnum WRITABLE) you can detect when a nonblocking
+	connect has succeeded!
+
+*** News 3/19/2010 -- New $dccctl(FD_TO_REFNUM <fd>)
+	The $connect() function returns a file descriptor, which you can
+	pass to $dccctl(FD_TO_REFNUM fd) to get the $dccctl() refnum,
+	which you can use to do other stuff.
+
+*** News 3/19/2010 -- New flag to /EXEC, -CLOSEOUT
+	If you do /EXEC -CLOSEOUT it will close the stdin to the process,
+	(ie, sends an EOF) which some processes need to decide that 
+	they're supposed to do something.
+
+*** News 3/19/2010 --  New scripts I should have documented
+	These scripts have been added, but I never got around to documenting
+	them.  That's a bummer.
+		help.irc	history.rb	locale
+		tabkey.sjh	logman		cycle
+		set_color	ban		speak.irc
+
+*** News 10/29/2009 -- Valgrind assistance
+	If you want to run epic under Valgrind, you may want to pass the
+	--with-valgrind  flag to configure, which will compile in some 
+	additional assistance to help valgrind find memory leaks.  This
+	support was graciously provided by caf, as were patches for the
+	bugs he found using valgrind.
+
+*** News 07/06/2009 -- The Fish64 xform actually works now (see below)
+	The first implementation of FISH64 was not actually, to be technical,
+	compatable with FiSH.  It is a strange thing and it took me a while
+	to come up with an implementation of it that doesn't depend on how
+	bits are stored in integers.  I have actually tested it against the
+	real life FiSH implementation and it's correct now.
+
+*** News 06/17/2009 -- New $xform, "FISH64"
+	The FISH64 transform performs base64 encoding that is compatable
+	with FiSH.  Fish64 uses the same algorithm as base64, but it uses
+	a different character set.
+
+*** News 06/08/2009 -- New $xform(iconv) functionality
+	You can now refer to a pre-defined iconv encoding setup,
+	instead of specifying encoding upon every use of
+	$xform(iconv). Whereas you in the old days would do:
+
+		echo $xform(iconv utf-8/ascii $stuff)
+
+	which would take a lot of cpu time, as the client would have
+	to do a lot of stuff to open, use, and then close up, the
+	iconv stuff, you can now do as follows:
+
+		@ id = iconvctl(ADD utf-8/ascii);
+		echo $xform(iconv +$id $stuff);
+
+	You can also do:
+
+		echo $xform(iconv -$id $stuff)
+
+	to reverse.
+		Use /xdebug +unicode to debug iconv stuff!
+
+*** News 06/08/2009 -- New control function: $ICONVCTL()
+	This function works as follows:
+
+		@ id = iconvctl(ADD fromcode/tocode[//option])
+	
+	This sets $id to a permanent identifier for doing encoding 
+	from *fromcode* to *tocode*. (This may speed up encoding a 
+	bit.)
+		If the chosen encoding isn't accepted by iconv(),
+	$iconvctl() returns empty.
+	
+		@ encoding = iconvctl(GET $id)
+
+	This will return whatever you set the encoding $id to.
+
+		@ iconvctl(REMOVE $id)
+
+	This removes the $id from the table of encodings.
+
+		@ iconvctl(LIST)
+
+	This lists encodings.
+
+		@ iconvctl(SIZE)
+
+	And this returns the size of the iconv table.
+
+	Do notice that identifers are re-used after removal.	
+
+*** News 06/08/2009 -- Add USERINFO to /on hooks
+	You can now add some information to "executing hooks".
+	
+		@ hookctl(USERINFO -1 stuff)
+
+	This will set the USERINFO of the current executing hook 
+	to "stuff". To get the userinfo of the current executing hook:
+
+		echo $hookctl(USERINFO -1)
+
+	This can be used in conjunction with changing the $* of a hook,
+	to, for instance, add encoding information to a it.
+
+*** News 06/06/2009 -- Can change $* in an /on hook now
+	You can change the value of $* in an /on hook that will affect
+	/on's with higher serial numbers.  
+		@hookctl(ARGS <level> <new value of $*>)
+
+	This is expected to be useful for things like iconv translation.  
+	Please note carefully that the pattern matching of /on's against 
+	$* is done *AFTER EACH ON IS RAN* so if you change $* you might
+	affect which higher serial numbered /ons will run!
+
+	Usually <level> is -1 and usually the new value of $* would be based
+	on the current value of $*.  The change to $* takes place immediately.
+
+	Example one:
+		on #^hook -100 * {@hookctl(ARGS -1 >>>$0 $1<<< $2-)
+		on ^hook * {echo $*}
+		hook This is a test
+	  would output
+		>>>This is<<< a test
+	  because the /on hook with serial number -100 changed the old value
+	  of $*
+		"This is a test"
+	  to 
+		">>>$0 $1<<< $2-"
+	  which after expansion is:
+		">>>This is<<< a test"
+	  which is the value of $* in the /on hook with serial number 0.
+
+	Example two:
+		on #^hook -100 * {@hookctl(ARGS -1 $reverse($*))}
+		on ^hook "ape" {echo APE! APE!}
+		hook epa
+	  would output
+		"APE! APE"
+	  because the first hook changes $* from its original value
+		"epa"
+	  to $reverse(epa) or
+		"ape"
+	  which matches the second hook.
+
+*** News 04/10/2009 -- /WINDOW CHANNEL now outputs all channels in the window
+	Previously, /window channel only output the window's current channel.
+	It still does that, but now it will also output the full and complete
+	channel list so you see the other channels in that window.
+
+*** News 04/10/2009 -- /IGNORE user@host.com now works again
+	Due to a really lame bug, /ignore user@host.com did not work 
+	properly because the client thought it was a server name and did
+	not fix it up to *!user@host.com which prevented it from matching
+	anything which prevented it from working.  Sorry about that.
+
+*** News 04/10/2009 -- Add permitted values for server desc "proto" field
+	Previously, despite all of the documentation to the contrary, the 
+	only permitted values were "0", "4", and "6" for "either", "ipv4 only"
+	and "ipv6 only" respectively.  This has been increased so you can
+	specify any of these values:
+
+	For "either ipv4 or ipv6, I don't care" (the default)
+		0
+		any
+		ip
+		tcp
+	For "ipv4 only, never use ipv6 for this server"
+		4
+		tcp4
+		ipv4
+		v4
+		ip4
+	For "ipv6 only, never use ipv4 for this server"
+		6
+		tcp6
+		ipv6
+		v6
+		ip6
+
+	Example to connect to an ipv6 server:
+		/server irc.ipv6.foo.com:6665:proto=tcp6
+
+	Example to connect to a server only using ipv4:
+		/server irc.foo.com:proto=ipv4
+
+EPIC5-1.0
+
+*** News 12/25/2008 -- EPIC5-1.0 was released here.
+
+EPIC5-0.9.1
+
+*** News 12/12/2008 -- Configure will check for perl/ruby/tcl usability
+	Up until now, configure would include perl/ruby/tcl as long as it
+	existed and told us where its stuff was at.  That's bad if you
+	don't install the dev packages, because linking against the 
+	langauage library won't work if it's not there.  Configure will now
+	try a test-compile to use the language embedding to see if it works
+	and supports the api we expect.  Failures will cause that language
+	to be turned off.  Be sure to re-run configure!
+
+*** News 12/10/2008 -- New function, $chanlimit(#chan #chan #chan)
+	The $chanlimit() command works just like $chanmode(), but it
+	returns the +l argument -- the channel membership limit.
+	This is by special request of fusion.
+
+*** News 12/10/2008 -- Minor change to /SET NEW_SERVER_LASTLOG_LEVEL
+	Previously, each time you connected to a server (received a 001 reply)
+	the client would unconditionally assign all of the levels in 
+	/set new_server_lastlog_level to the server's current window.
+	This is rather annoying if you got disconnected from the server 
+	because the default value is ALL,-DCC and that would clobber all of
+	your window levels. 
+
+	Having this brought to my attention, this has been changed to be 
+	more reasonable.  These will now reclaim any unused levels, rather
+	than unconditionally stealing them from other windows.  Thus, what
+	/set new_server_lastlog_level ALL,-DCC means is, "each time I connect
+	to a server, please put any levels that aren't being used by any 
+	window connected to this server in the current window".   I apologize
+	for the previous behavior which was stupid and shouldn't have survived
+	as long as it did.
+
+*** News 12/10/2008 -- Minor change to /SET OLD_SERVER_LASTLOG_LEVEL
+	The same change applies when you /window server a window to a server
+	that is already connected -- it has its window level changed to
+	/set old_server_lastlog_level, but it will now NOT steal the level
+	from any other window that already claims it.
+
+EPIC5-0.9.0 (EPIC5-0.3.10)
+
+*** News 11/24/2008 -- New /window operation, /WINDOW SCROLL_LINES
+	The /WINDOW SCROLL_LINES operation overrules /SET SCROLL_LINES for
+	one particular window.  The value may be -1 (which is the default, 
+	and means use /SET SCROLL_LINES) or a positive number.
+
+*** News 11/01/2008 -- New /SET, /SET DCC_CONNECT_TIMEOUT
+	This set will control how long a nonblocking connect for a /dcc get
+	or /dcc chat can go before the client decides to abandon it.  The 
+	value is in seconds, and 0 turns this off (connects will not time out)
+	The default value is 30 seconds.  This feature uses system timers,
+	and you shouldn't change the value of this /set while a connect is 
+	pending or you'll confuse things and your connects probably won't
+	time out properly.
+
+*** News 09/24/2008 -- New script, 'topicbar'
+	The idea with this script is to use topline 1 of any window
+	with a channel to display the topic of the given channel.
+
+*** News 08/25/2008 -- /SET INPUT_INDICATOR_RIGHT now functional
+	It was documented below, but the code for it wasn't finished until
+	today.  So now it will start appearing on your input line.
+
+*** News 07/01/2008 -- Add servers from file -- $serverctl(READ_FILE filename)
+	You may now insert servers into the server list from a file using
+	$serverctl(READ_FILE filename) where "filename" is the name of the 
+	servers description file.  Note that the servers are appended to the
+	end of the servers list!  The filename must be in the same format
+	as the server description file that is loaded at startup.
+
+EPIC5-0.3.9
+
+*** News 06/25/2008 -- configure --without-wserv, job control
+	Configure now checks your system to see if it has posix job control
+	(which means you have setsid() and tcsetpgrp()) and if it does not,
+	it turns off job-control features:
+		/BOTMODE
+		/EXEC
+		/LOADing of compressed files
+		$killpid()
+		$exec()
+		$open() of compressed files
+		The -b command line option
+		External crypto program support
+		Asynchronous (nonblocking) DNS lookups
+		Wserv support
+
+	You can also use the --without-wserv flag to configure to turn off
+	wserv support for a system that otherwise supports job control.
+	There is nothing gained by omitting wserv support, only things
+	removed.  Normally this flag wouldn't be added but I did it as a
+	favor to someone.
+
+*** News 06/25/2008 -- You can now /ignore a server
+	Due to some networks (undernet) having annoying servers that 
+	spam you 10-20 times a day with annoying messages you don't want
+	to receive, it's now possible to /ignore a server:
+		/IGNORE irc.server.com ALL
+
+*** News 05/09/2008 -- Hitting ^C twice interrupts infinite loop
+	Historically, if you hit ^C twice in a row and the client is stuck,
+	it will send itself a SIGARLM.  In the past, this was because the
+	client used blocking connect()s and stuff, and guarded them with
+	alarm(3)s, so sending SIGARLM would cause an early interruption to 
+	a blocking connect.
+
+	Anyways, since we don't have any blocking stuff any more, this is no
+	longer useful for its intended purpose.  You've been able to send the
+	client a SIGUSR2 to raise a 'system exception" which attempts to 
+	gracefully end an infinite loop in your script.  Hitting ^C twice
+	in a row on a stuck client will send a SIGUSR2 which will cause an
+	infinite loop in your script to terminate.
+
+*** News 05/09/2008 -- New /SETs: INPUT_INDICATOR_LEFT, INPUT_INDICATOR_RIGHT
+	This was written and contributed by fusion.  Thanks!
+
+	The input line has been changed so the input prompt is always visible.
+	When you reach the right or left side of the display, the input line 
+	will still scroll side-to-side, but the input prompt will always be 
+	visible, not just when you're at the start of the input line.
+
+	Because it would otherwise not be obvious whether you are at the 
+	beginning of the input line or not, there have been two new /set's
+	added:
+		/set input_indicator_left +
+		/set input_indicator_right  +
+
+	When there is more stuff on the input line than what is currently
+	visible, if the extra stuff is off to the left, the first /set is
+	used to tell you there is more in that direction.  If the extra 
+	stuff is off to the right, the second set is used to tell you there
+	is more in that direction.
+
+	As of the time of this writing, the support for the second /set isn't
+	ready yet, so there is no visual clue if you are at the end of the
+	input line or not.  Keep watching for more info about this.
+
+*** News 04/23/2008 -- Added new /on, /ON WINDOW_NOTIFIED
+	This is hook is thrown when there's activity in a hidden window
+	that is notified.
+		$0 - The window refnum
+		$1 - The level of the activity.
+	Be careful with this hook, as output defered from it, may
+	wreak havoc. 
+
+EPIC5-0.3.8
+
+*** News 04/10/2008 -- Added new /on, /ON SIGNAL
+	You can hook signals with /ON SIGNAL
+		$0 - The signal that was caught (a number)
+		$1 - The number of times this signal has been caught
+		     since the last time /ON SIGNAL was thrown
+	Not every signal can be caught, and some signals are dangerous
+	to catch.  For example, no matter what, you can't catch signals
+	9 (KILL) or 13 (PIPE) 15 (TERM).  It's safe to catch 30 (USR1)
+	and 31 (USR2), but everything else is entirely at your own risk.
+	You should /defer anything you do within an /on signal to be safe.
+
+*** News 04/10/2008 -- /USERHOST -FLUSH
+	/USERHOST -FLUSH removes those userhosts which are "pending send"
+	not those which are "pending receive".
+
+EPIC5-0.3.7
+
+EPIC5-0.3.6
+
+*** News 03/10/2008 -- /NOTIFY list now applicable to local server.
+	The notify list can now be updated on a per server basis.  This is done
+	by placing the ":" nick before the list of local changes in the /NOTIFY
+	command.  Everything on the /NOTIFY line UP TO the ":" is still
+	applicable to every server.
+
+	Examples:
+	/NOTIFY : - [nicks]  # Clear local list and replace with [nicks].
+	/NOTIFY - : [nicks]  # Clear all notify lists and add [nicks] locally.
+
+*** News 01/28/2008 -- /ON WINDOW_COMMAND has command as $2        (kitambi)
+	The command being executed is $2 in /on window_command.  If you do evil
+	things with this, you may crash the client.  You Have Been Warned.
+
+*** News 01/23/2008 -- New built in function $check_code(...)
+	--- Warning --- This function is not really as useful as it looks
+	because you would be unable to submit an invalid block statement
+	or expression to the function without getting a warning from the 
+	syntax parser in the first place.  I don't know how I will "fix"
+	this, but maybe you might find the function interesting for now.
+
+	The $check_code() function takes either a *block statement* 
+	(surrounded by curly braces {}) or an *expression* (surrounded 
+	by parenthesis ()) and tells you whether the item is well-formed
+	and does not have any unmatched braces or parentheses.  It does 
+	*NOT* tell you if the code or expresison inside the item is valid
+	or even makes sense, it only tells you if it contains code that
+	you could pass to /eval or to /@.
+
+	Return values:
+		 0 - The expression or block statement looks ok
+		-1 - This is not an expression or block statement
+		-2 - The expression/block statement is invalid, probably
+		     because there is unmatched brace or parenthesis
+		-3 - There is trailing garbage after the closing brace or
+		     parenthesis.
+	More return values will probably be added in the future as more
+	errors become detectable.
+
+*** News 01/22/2008 -- /SERVER listing now shows your vhost
+	The listing of your servers from /SERVER now shows you the vhost
+	that you're using (if any).  I forget who asked for this.
+
+*** News 01/22/2008 -- Oper passwords no longer revealed with ^L
+	Wjr pointed out that if you did /oper and typed a password that
+	was hidden and hit ^L it would reveal the password.  This has 
+	now been fixed.
+
+*** News 01/22/2008 -- $ignorectl(SUSPEND) and $ignorectl(UNSUSPEND)
+	Larne asked for a way to globally turn off /ignores for some 
+	period of time.  So you can turn off all ignores globally 
+	with $ignorectl(SUSPEND) and turn ignores back on again later
+	with $ignorectl(UNSUSPEND).  A word of caution -- this is a counting
+	queue, so each SUSPEND must be matched with an UNSUSPEND.  If you
+	do two SUSPENDs and one UNSUSPEND, it will still be SUSPENDed.
+	Use $ignorectl(RESET_SUSPEND) if you get the client totaly confused.
+
+*** News 01/22/2008 -- You can /load executable files, with caution
+	Crimedog said that all of his scripts on windows were executable 
+	(+x) and epic wouldn't let him /load them, and so I've removed the
+	restriction that you can't /load executable files.  I've replaced it
+	with a warning that the file is executable and that /loading binary
+	files yields undesirable results.
+
+*** News 01/22/2008 -- /xecho -w -1 outputs to current window
+	As a special favor to BlackJack, /xecho -w -1 will output to the
+	current window, because this is what epic4 used to do, particularly
+	when you did /xecho -w $winchan(#foo) and #foo was not a channel
+	that you were on (so it returned -1) and it output to the curernt
+	window.  In any other case but -1, /xecho -w to a window that 
+	does not exist will drop the output.
+
+*** News 01/22/2008 -- New built in function $strptime()
+	Now you know the $strftime() function converts a $time() value into
+	a string using a special format.  If you have the output of strftime
+	and you have the format it was created with,t he $strptime() function
+	will return the original $time() value it was created with.  This
+	is probably useful by people who are parsing logfiles and want to 
+	get a $time() value so they can do time math and see how long ago
+	something occured.
+
+	For the moment, this only works if you have strptime(3) on your
+	system, and not everybody does.  Very soon, a compat version of 
+	strptime() will be shipped with epic to ensure minimum functionality.
+
+*** News 01/05/2008 -- You can now use arglists with /input (fusion)
+	You can now use arglists with input, like so:
+
+	input "Enter command and arguments: " (cmd, args) {
+		xecho -b You entered [$cmd] and [$args]!
+	}
+
+*** News 01/03/2008 -- $info(o) values for libarchive, iconv support
+	If the binary supports libarchive, $info(o) will include 'r'.
+	If the binary supports iconv, $info(o) will include 'v'.
+	Libarchive support is required to /load from a .zip file
+	Iconv support is required to be able to do character set translation.
+
+*** News 11/29/2007 -- New function $fix_width()
+	The $fix_width() function takes the following arguments:
+		cols      $0    Number of columns
+		justify   $1    Justification (must be "l" for left justify)
+		fillchar  $2    Fill character (a dword, so use " " for space)
+		text      $3-   
+
+	This function returns <text> formatted so that it takes up exactly 
+	<cols> number of columns on the display.  It does this by adding
+	<fillchar> to the string on either the left or the right or both.
+
+	If <text> is already wider than <cols> then it is truncated to <cols>.
+
+	<Justify> must be either "l" for left justify, "c" for center, or "r"
+	for right justify.  Only left justify is supported.  The others are
+	for future expansion.
+
+	This function is intended for creating full width reverse toplines:
+		@ :cols = word(0 $geom())
+		@ :str = fix_width($cols l " " blah blah blah blah)
+		window topline 1 "^V$str"
+
+	You will probably want to call $fix_width() in a separate statement
+	from the /window topline in order to avoid the syntactic confusion
+	with passing a double quoted word to /window and passing a double
+	quoted word to $fix_width() (the space).  Trust me.  Don't go there.
+
+	In the future, support will be added for right justify and centered.
+	Please keep watch out in this document for more info.
+
+*** News 11/29/2007 -- Support for ZIP files from libarchive
+	Support for loading files from .zip files has been added.  This first
+	round of implementation just adds the raw ability, but it's not 
+	totaly ready to be used yet.  You're welcome to start playing with
+	it and reporting any problems you have.
+
+	You can $open() a file for reading or /load it from a zip file:
+		/load foo.zip/file
+	and
+		@fd = open(foo.zip/file R)
+
+	If you /load a zip file, it will load the file ".ircrc" in the top
+	level directory.  This might be enahanced or changed in the future:
+		/load foo.zip
+	acts like
+		/load foo.zip/.ircrc
+
+	Some operations cannot be performed on zipped files, such as $fseek()
+	and $frewind() and so forth.  This might change in the future.
+
+	All of this is based on 'libarchive' being installed.  You will need
+	to re-run configure in order to pick up libarchive support after you
+	do a cvs update.
+
+*** News 10/22/2007 -- New flag to /lastlog, /lastlog -window
+	The /lastlog -window flag lets you grep the lastlog from a different
+	window.  The output will still go to the *current* window, however!
+
+*** News 09/19/2007 -- Some built in functions now 'builtin' aliases.
+	Several functions that have been deprecated by $xform() have been
+	demoted from built in functions to aliases in the 'builtins' script.
+		encode		decode		b64encode	b64decode
+		urlencode	urldecode	sedcrypt	sha256
+
+EPIC5-0.3.5
+
+*** News 09/14/2007 -- New built in function: $splitw(<delim> <string>)
+	This function takes a <string> which has sections delimited by
+	<delim>.  The <delim> argument can only be one character.  An
+	obvious example of this is $PATH which is a <string> that uses
+	the colon as <delim>.  The <delim> is a dword, so you can use the
+	space as a delimiter if you needed to.
+
+	This function unconditionally converts <string> into a dword list.
+	You will need to xdebug dword to iterate over the return value, or
+	you can use $unsplit(" " $splitw(<delim> <string>)) to collapse it
+	to a uword list (although this is probably pointless)
+
+	Example:
+		@ directories = splitw(: $PATH)
+	might return
+		/bin /sbin /usr/bin /usr/sbin /usr/local/bin
+
+	Example:
+		@ foo = splitw(: one:two:three a berry:four:five)
+	returns
+		one two "three a berry" four five
+
+*** News 09/13/2007 -- New /SET, /SET STATUS_HOLDMODE
+	This is the value that %{1}H expands to.  The default is " (Hold)".
+	If you don't like the "(Hold)" in your status bar when your window
+	is in hold mode but not holding anything, unset this variable 
+	entirely:
+		/set -status_holdmode
+	and it will disappear.  Or remove %{1}H from your status format.
+
+*** News 09/13/2007 -- New status expando, %{1}H, hold mode indicator.
+	The %H status expando expands when your window is in hold mode
+	*and* there is something being held.  But if your window is in
+	hold mode, but nothing is held, you can't tell just by looking.
+	So the %{1}H status expando will expand whenever the window is in
+	hold mode *except* when %H will expando.  This is so you can put
+			%{1}H%H 
+	in your status format and one or the other (but not both) will 
+	expand at all times hold mode is on.
+
+	This expando has been added to the client's default status format.
+	The value of %{1}H is controlled by /set status_holdmode, and the
+	default value of that is " (Hold)"
+
+*** News 09/13/2007 -- Remember, *0 is an rvalue, but *var is an lvalue
+	The deref operator ("*") converts a token into an rvalue and then
+	uses that as an lvalue.  Example:
+		assign foo bar
+		@ *foo = [testing]
+		echo $bar
+	in the above (*foo) is the same as "bar".  But numbers are different.
+	Derefing a number yields an rvalue:
+		alias oofda { @ foo = *0 }
+		offda one
+	To convert an argument into an lvalue, deref it a second time:
+		alias booya { @ *(*0) = 'testing' }
+		booya varname
+		echo $varname
+	Does that make it clear?
+
+*** News 09/02/2007 -- New function, $is8bit(string)
+	This function find the first character of string that has the
+	eight bit set. Useful to discover Unicode-strings or other 
+	non-eight bit characters.
+
+*** News 08/22/2007 -- New xform, $xform(ICONV "from/to" text)
+	If your binary is built with iconv support (re-run configure before
+	you tell me it doesn't work!) then you will be able to use iconv()
+	to translate strings from one character encoding to another.  This
+	might be useful to experimentally convert to and from utf8 while 
+	you wait for the unicode-enabled input line to be written.
+
+XXX Help files updated to here XXX
+
+*** News 08/22/2007 -- Checks for iconv in configure: --with-iconv
+	Configure will now check for libiconv support.  Normally it will
+	look for libiconv.a and iconv.h in the --prefix/lib and 
+	--prefix/include directory, or in /usr/local or /opt or /usr/opt.
+	If your iconv support is not in any of these places, then you must
+	supply the --with-iconv=/path/to/dir where that directory contains
+	"include/iconv.h" and "lib/libiconv.a"
+
+*** News 08/22/2007 -- Checks for alt place in configure: --with-localdir
+	A lot of times you'll have software installed but it won't be in
+	the places the compiler looks for it.  Usually this is /usr/local
+	or /opt or something.  You can use this flag to tell configure to
+	look in this directory in addition to the default directories.  This
+	can aid in ensuring optional dependancies don't get turned off because
+	they're in a directory the compiler doesn't look in.
+
+*** News 08/13/2007 -- New /SETs, /SET DEFAULT_REALNAME and DEFAULT_USERNAME
+	Per a discussion on the list, it was decided to introduce two new
+	sets, /SET DEFAULT_REALNAME and /SET DEFAULT_USERNAME.  These control
+	what realname and username should be sent to the server each time you
+	connect.  Although I can't stop you, you shouldn't unset these 
+	variables if you know what is good for you.
+
+	/SET DEFAULT_REALNAME replaces /SET REALNAME, which confused people
+	who though that /setting it changed their realname immediately
+
+	/SET DEFAULT_USERNAME replaces /ircuser which confused people
+	because they thought it was going to be a /set.
+
+*** News 07/20/2007 -- New /SET, /SET LASTLOG_REWRITE
+	This provides the default value to /lastlog -rewrite whenever you
+	don't use the /lastlog -rewrite flag.  If you always want the 
+	/lastlog command to timestamp each line, try this:
+		/set lastlog_rewrite $strftime($1 %T) $8-
+
+	(Remember, if you use this in a pf loaded script to double up $'s...
+		/set lastlog_rewrite $$strftime($1 %T) $$8-		)
+
+*** News 07/20/2007 -- New flag to /LASTLOG, /LASTLOG -REWRITE
+	The /LASTLOG -REWRITE flag rewrites each lastlog line with the 
+	following values for $*
+		$0  - The lastlog item's unique refnum
+		$1  - Timestamp (suitable for use with $strftime())
+		$2  - Window refnum
+		$3  - Output level
+		$4  - Reserved for future use
+		$5  - Reserved for future use
+		$6  - Reserved for future use
+		$7  - Output target
+		$8- - The logical line of output
+	Not all of these field are intended to be useful -- but I don't
+	know what sort of imaginative things people might come up with.
+
+	Example:  To put a timestamp before every line...
+		/lastlog -rewrite "$strftime($1 %T) $8-"
+
+*** News 07/04/2007 -- New $windowctl() option, $windowctl(GET refnum CHANNELS)
+	You can now fetch all of the channels in a window by using
+		$windowctl(GET <refnum> CHANNELS)
+	There is no defined order to the channels returned.
+
+*** News 07/02/2007 -- Clarification of single-indirection implied hooks
+	Earlier, I said...
+	   You may surround <string> with {}s if you wish, to avoid quoting
+	   hell.  Match sure to keep your {}s matched up if you do so.
+	   See the "loadformats" info above for how to practically use this.
+
+	But due to a mistake, this never worked correctly.  This is now 
+	fixed.  If you compare the normal two-expansion version:
+		@ var = [format_send_public]
+		@ fmt = '<%W$N%n> $1-'
+		addset $var int
+		@ hookctl(set list send_public implied \\$var);
+		set $var $fmt
+	which ties /on send_public dynamically to the value of 
+	/set format_send_public.
+
+	If you wanted to do it directly, and not tie the implied hook to a
+	variable, you can surround the format in curly braces, like so:
+		@ hookctl(set list send_public implied {<%W$N%n> $1-})
+	Remember that curly braces protect the insides from $-expansion,
+	so for all purposes the inside of {}s is a literal string that is
+	not expanded except each time the /on is thrown.
+
+*** News 07/02/2007 -- Clarification on using $'s in expression parser
+	The old expression parser used to allow you to use expandos as
+	lvalues in order to indirectly assign to variables, for example:
+		alias inc {
+			@ $0 += 1
+		}
+	But this is not supported in the new math parser.  Instead you 
+	have to use the deref operator, like so:
+		alias inc {
+			@ *0 += 1
+		}
+	which does the same thing.
+
+*** News 06/25/2007 -- New flag to /XECHO, /XECHO -AS
+	The /XECHO -AS flag will output a message to all windows on the
+	current server.  You can combine this with the -S flag if you want 
+	to output to another server.  This might be good for blasting a 
+	message when you're disconnected from the server.  For another
+	example, see below.
+
+*** News 06/25/2007 -- New window level, SYSERR
+	The SYSERR window level will now be used for all of those layered
+	"INFO --" system errors ("syserrs").  The client will make its best
+	effort to ensure that these messages go to the correct server's
+	windows, and that /on yell is hooked in the correct server context.
+
+	You can combine this with /xecho -as  [see above]...
+		on ^yell "* INFO -- *" {xecho -as $*}
+
+EPIC5-0.3.4
+
+*** News 06/02/2007 -- New tranformer: $xform(ALL)
+	The $xform(ALL) transform ignores the text and returns a list of
+	all supported tranformers.  If the user didn't compile SSL support,
+	then you won't be able to use the strong crypto transforms, so this
+	is a great way to check before trying to use crypto.
+
+	Since this is a regular old transform, you can further transform it
+	any way you want to (if you want to).
+
+*** News 06/01/2007 -- More $xform()s added to the list below
+	Please re-read the list immediately below, it's been updated!
+
+*** News 06/01/2007 -- Totaly rewritten $xform(), now actually useful!
+	Here's the plan -- we're going to do this over again a second time.
+
+	$xform("<transformations>" "meta" "meta" text)
+	     
+	Where the <transformation>s are supported by transform_string().
+	At the time i write this, they are:
+
+	Reversable encodings that convert between binary and printable data
+	and do not require a meta:
+	     URL             URL encoding           
+	     ENC             Base16 encoding        
+	     B64             Base64 encoding        
+	     CTCP            CTCP encoding          
+             NONE            Straight copy -- data not changed
+
+	Reversable encryptions that require a meta value (a password):
+	     SED             Simple Encrypt Data  
+	     BF              Blowfish-CBC         
+	     CAST            CAST5-CBC            
+	     AES             AES256-CBC
+	     AESSHA          AES256-CBC with SHA256 digest of the meta
+	     DEF             Default encryption     (NOT IMPLEMENTED YET!)
+
+	Irreversable digest operations that do not require a meta:
+	     SHA256          SHA256 message digest
+
+	You can string together multiple transformations.  Any transformation
+	that requires a meta value (ie, a cipherkey) should be supplied after
+	the transformations *in the correct order*.  After this should be the
+	plain text.  To apply a transformation, prefix its name with a plus sign
+	("+") and to remove a transformation, prefix its name with a minus sign
+	("-").  For example, +URL means url encode, and -URL means url decode.
+
+	The transformations is a dword (must be surrounded by double quotes if
+	it contains a space, which it will if you do multiple transformations).
+	The meta values are dwords (must be surrounded by double quotes if 
+	they contain a space).  These two things make this function behave 
+	differently than functions normally do, so this is a documented 
+	deviancy!
+
+	Examples:
+	     URL-encode a string     $xform(+URL this is a string)
+	     URL-decode a string     $xform(-URL this%20is%20a%20string)
+	     SED-cipher a string     $xform(+SED password this is a string)
+	     SED-decipher a string   $xform(-sed password <whatever>)
+
+	More practical examples:
+	1) Read binary data from a file, encrypt it, and url encode it again.
+	     @fd = open(file.txt R)
+	     @data = read($fd 1024)
+	     @cipher = xform("-CTCP +SED +URL" password $data)
+	     @close($fd)
+	     msg someone $cipher
+
+	Why does this work?
+	 -- $read() returns ctcp-enquoted data, so -CTCP removes it
+	 -- Now we have binary data, so +SED will cipher it
+	 -- Now we have ciphertext, so +URL will url encode it.
+
+	We can send this to someone else, and they can put it in $cipher...
+
+	     @newfd = open(newfile.txt W)
+	     @newdata = xform("-URL -SED +CTCP" password $cipher)
+	     @writeb($newfd $newdata)
+	     @close($newfd)
+
+	We did the reverse of the above:
+	 -- We -URL to recover the binary data
+	 -- We -SED to decrypt it using the password
+	 -- We +CTCP to put it in a form we can use with $writeb().
+
+	Viola!
+
+*** News 05/31/2007 -- New math operator, Unary ** operator
+	The ** unary prefix operator treats its operand as an unexpanded
+	string, permitting it to be expanded again.  This should remove
+	most any need to use /eval.  Example:
+		@ foo = 'this is a string with $var in it'
+		@ var = 'one'
+		@ val1 = **foo
+		@ var = 'two'
+		@ val2 == **foo
+	So $val1 is "this is a string with one in it" and $val2 is
+	"this is a string with two in it".  You can apply this operator
+	to any rvalue (natch):
+		@ foo = **[booya $foo booya!]
+	becomes
+		@ foo = **[booya this is a string with $var in it booya!]
+	becomes
+		@ foo == [booya this is a string with two in it booya!]
+	Yeah!
+
+*** News 05/17/2007 -- New script, 'dcc_ports'
+	This script adds two new sets:
+		/set dcc_port_min <number>
+	and
+		/set dcc_port_max <number>
+	which create a port range which will be used by your dcc's.  Each
+	number in the range will be chosen sequentially (this will be 
+	enhanced further in the future) and any time you change either of 
+	these values you reset the sequence and it goes back to the minimum
+	port again.  When the port range is exhausted, it will cycle back
+	again to the minimum port.
+
+*** News 05/17/2007 -- Default ports for dcc, recovering from ports-in-use
+	There are two new features, that sort of complement each other, and
+	sort of overlap each other.  Whether to use one or the other depends
+	on how your script is set up and what your needs are.
+
+	When you use /dcc chat or /dcc send, but do not use the -p flag to
+	specify a port, you can create a callback to your script to create
+	a default port:
+		@dccctl(DEFAULT_PORT <string>)
+	The <string> will be expanded with $* being the dcc refnum of the
+	dcc needing a port number.  The expanded value of <string> will be
+	used to set the WANT_PORT value (see below).  If a port cannot be 
+	used because it is already in use by someone else, this value will
+	be expanded repeatedly until it generates a port we can use.
+
+	Whenever you use /dcc chat or /dcc send and use -p to bind a port,
+	and that port is already in use, then /on dcc_lost will be thrown
+		$0	The person you're sending it to
+		$1	The dcc type (ie, send or chat)
+		$2	The filename (url encoded)
+		$3	The refnum of the dcc
+		$4	The port that we tried to use that is in use.
+		$5-	The literal string "PORT IN USE"
+	It is expected that you will catch this hook and then do
+		@dccctl(SET $4 WANT_PORT <new port>)
+	and then the client will try the new port again.  If a port cannot
+	be used because it is already in use by someone else, this hook will
+	be thrown repeatedly until you set a port we can use, or you don't
+	change the port
+
+	In either case, if a port is in use, and neither the DEFAULT_PORT
+	nor /ON DCC_LOST results in the WANT_PORT value being changed, then
+	the dcc will be considered a failure, and it will be abandoned, 
+	just as it has always been until this change.
+
+*** News 05/15/2007 -- New dccctl() value, "WANT_PORT"
+	You can now get and set the "WANT_PORT" value for a dcc, which 
+	is the value that the -p flag sets.  You can therefore use this
+	to change the -p flag for the user.  Because this value is only
+	used at the time the client tries to bind() an inbound address,
+	changing this value after the dcc has already been offered will
+	have no effect: it is too late at that point to change the port.
+
+*** News 05/15/2007 -- Normalization of the /SAY and /SEND commands
+	The old behavior:
+	- /SEND (the command used when you type text) sends a message to 
+	       1) Current Query
+	    or 2) Current Channel
+	    or 3) Nowhere
+	- /SAY (the "empty" command to overrule a query) sends a message to 
+	       1) Current Channel
+	    or 2) Nowhere
+
+	The new behavior:
+	- /SEND sends a message to 
+	       1) Current Query
+	    or 2) Current Channel
+	    or 3) Nowhere
+	- /SAY sends a message to 
+	       1) Current Channel
+	    or 2) Current Query		<--- this is the change here
+	    or 3) Nowhere
+
+	So /SAY will now send a message to the current query if you are
+	not on a channel, rather than silently failing.  Until this change,
+	there was no way to do this at all.
+
+*** News 05/13/2007 -- ***IMPORTANT*** Removal of /SET REVERSE_STATUS_LINE
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+	The /set reverse_status_line variable has been removed.  This means
+	that your /set status_format* variables, and your /window status_format
+	variables will not be auto-prepended with ^Vs like they have always
+	been since time immemorial.  You ***MUST*** prepend your status_formats
+	with ^Vs (control-Vs, ie, the reverse character) if you want them to
+	appear in reverse. 
+
+EPIC5-0.3.3
+
+*** News 04/11/2007 -- New argument to /xecho, -TARGET
+	Usually if you wanted to output to a channel's window, you would do
+		/xecho -w $winchan(#channel) ....
+	but someone asked (nicely) for a -target flag to /xecho because they
+	thought that looked nicer.  So now you can do
+		/xecho -t #channel ...
+
+*** News 04/11/2007 -- New serverctl operation "ALLGROUPS"
+	The $serverctl(ALLGROUPS) operation will return a unique list of all of
+	the group names used in all your servers.  Do not pass any arguments 
+	to this operation, since that's reserved for future expansion.
+
+*** News 04/11/2007 -- New gettable serverctl value, "FULLDESC"
+	This value returns the fully qualified server description for a
+	server, suitable for writing into a servers file, or for passing
+	to /server -add or any old place.  You can only get this value; 
+	you cannot set it, although that's planned for the future.
+
+*** News 01/27/2007 -- New serverctl value, "AUTOCLOSE"
+	Normally a server is automatically closed when the last window
+	to it is disconnected (or killed).  Many people hate this behavior
+	and would like to have a server's connect persist even if there
+	are no windows connected to it.  You can now control this behavior.
+		@serverctl(SET refnum AUTOCLOSE 0)
+	The default is 1 (natch).  The behavior of turning this off is 
+	not well understood.  Use with caution, tell me of any troubles.
+
+*** News 12/09/2006 -- New configure flag, --with-threaded-stdout
+	EJB has graciously provided us with a patch to do threaded output.
+	This code will hopefully work around problems with gnu screen
+	blocking, causing pinging out of your servers.  You can turn this
+	code on by using the '--with-threaded-stdout' flag to configure.
+	This code is sort of experimental at this time, but this is an
+	officially supported feature, so please do report any problems you
+	have with it.
+	
+	If you turn this option on, then $info(o) will include 'o'.
+
+*** News 11/17/2006 -- New flag to /userhost, /userhost -extra
+	The /USERHOST -EXTRA flag causes the present value of a variable 
+	to be appended to the $* value of the results of a userhost query.
+
+	Remember that /on 303 and /userhost -cmd are hooked with:
+		$0	Nickname
+		$1	+ if oper, - if not oper
+		$2	+ if away, - if not away
+		$3	Username
+		$4	Hostname
+	and now,
+		$5-	Contents of the -extra variable
+
+	If you do not hook /on 303 or use /userhost -cmd, the contents of the
+	-extra variable are appended to the output.
+
+	Usage:
+		@ foo = [extra stuff]
+		USERHOST hop -extra foo -cmd {xecho -b $0!$3@$4 ($5-)}
+	might output
+		*** hop!jnelson@epicsol.org (extra stuff)
+
+	Remember that the argument to the -extra flag is *an lvalue*
+	(the name of a variable) and is not literal text!  The lval is 
+	expanded (yeilding an rval) and *that* value is saved, and used
+	later on.  You can freely change the value of the variable and 
+	that will not affect anything:
+
+	Example:
+		@ foo = [extra stuff]
+		USERHOST hop -extra foo -cmd {xecho -b $0!$3@$4 ($5-)}
+		@ foo = [blah blah]
+	still will output:
+		*** hop!jnelson@epicsol.org (extra stuff)
+	because the value is saved at the time you do /userhost.
+
+EPIC5-0.3.2
+
+*** News 11/04/2006 -- $shift() and $unshift() changed like $push() and $pop()
+	In the same way that $push() now only takes two arguments, $unshift()
+	now takes only two arguments, an lval, and an unquoted dword:
+		@ foo = [one two]
+		@ unshift(foo three four)
+			($foo is one two "three four")
+
+	In the same way that $pop() now only takes one argument, $shift() 
+	now only takes one argument, an lval:
+		@ foo = [one two three]
+		@ booya = shift(foo)
+			($booya is one and $foo is two three)
+
+*** News 11/04/2006 -- The /xdebug command now takes a block argument
+	You can temporarily change the /xdebug value for a block of
+	statements, and have the original value restored, all in one
+	operation:
+
+		xdebug dword { @push(bar "one two") }
+		@ foo1 = leftw(1 $bar)
+			($foo1 is "one)
+		xdebug dword { @ foo2 = leftw(1 $bar) }
+			($foo2 is "one two")
+
+*** News 11/04/2006 -- New built-in function, $curcmd() (nullie)
+	With this one you know what command is currently executing. For
+	instance, you might want to not timestamp lines generated by
+	/lastlog to avoid having doubled timstamps, or prepend them with
+	something else than timestamps.
+
+	Example:
+
+	/set output_rewrite ${ curcmd() == [lastlog] ? [Lastlog:] : Z} $1-
+
+*** News 11/4/2006 -- Changes to how $push() works with dwords
+	Up until this time, the $push() function treated the arguments
+	as a list of words, rather than a single word that needed to be
+	added.  This caused confusion because people didn't have a way
+	to add a word atomically.  For example:
+
+		xdebug dword
+		assign foo one two
+		@push(foo three four)
+		echo $foo                 returns   one two "three four"
+
+	So from now on, $push() takes two arguments, an lvalue, an a
+	single *unquoted* dword.  If the dword contains spaces, then it
+	will be quoted before added to the variable (as above)
+
+*** News 11/4/2006 -- Changes to how $pop() works (along with dwords)
+	Up until this time, the $pop() function has had two conflicting
+	behaviors, that ambiguously overlapped:
+		$pop(word word word word)
+		$pop(lval)
+	But what happens if you have a word list with only one word?
+	For this reason, $pop() wasn't really useful, and people avoided
+	using it.  So I've removed the ambiguity by removing the first
+	case, which isn't used.
+
+	If you want to $pop() off a word list, use $rightw(1 <word list>)
+	which has the proper behavior.
+
+	Further, to differentiate $rightw() from $pop(), the $pop()
+	function returns an *dequoted string*, as in this example:
+
+		assign foo one two "three four"
+		xdebug dword
+		echo $rightw(1 $foo)       returns "three four"
+		echo $pop(foo)             returns three four
+
+*** News 10/25/2006 -- New field for server descriptions, 'vhost'
+	You may now specify per-server virtual hostnames ("vhosts")
+	by using the "vhost" field in a server descrpition.  
+
+	Example:
+		/server irc.foo.com:vhost=my.other.hostname.com
+
+	Obviously the value you set for vhost must be a value that 
+	you could use for /hostname; that is, a hostname or p-addr
+	that resolves to an address your machine will let you bind().
+	Specifying a vhost for the wrong protocol will malfunction.
+	 (For example: /server irc.foo.com:pr=4:vhost=[ff::ff] )
+
+*** News 09/24/2006 -- New /ON, "WINDOW_SERVER" (nullie)
+	This new hook will trigger every time window's server is
+	changed. This might be useful for purging window-related data
+	such as scripted window-to-channel associations. The params are:
+	
+	$0 - affected window's refnum
+	$1 - old server
+	$2 - new server
+
+*** News 09/19/2006 -- New /ON, "UNKNOWN_COMMAND" (nullie)
+	The hook is thrown whenever an unknown command is entered on the
+	command line or specified in a script. This way, you can
+	complete a partial command name with an ambiguous hook. The
+	params are:
+
+	$0 - command being unknown
+	$1 - parameters, if any
+
+*** News 09/19/2006 -- New /ON, "CHANNEL_LOST" (nullie)
+	This hook is thrown whenever the client leaves a channel for any reason.
+	It is meant as a generalized way for clearing channel-related structures
+	in scripts, instead of having to hook on several other ones (KICK, PART
+	and SERVER_LOST). The parameters are:
+
+	$0 - server refnum where a channel is being destroyed
+	$1 - channel name
+
+	Have one thing in mind, though. This hook isn't necessarily
+	thrown in current server's context. Instead of $servernick(),
+	you need to do $servernick($0).
+
+*** News 09/18/2006 -- New keybinding, "RESET_LINE"
+	The "RESET_LINE" keybinding is intended to be used by tabkey and
+	history recall scripts that need to be able to replace the contents 
+	of the input line without affecting the cut buffer.
+
+	The RESET_LINE keybinding takes an argument (naturally) that is
+	the new value of the input line.  If you don't provide an argument
+	then the input line is simply cleared.
+
+	Example:
+	   /alias oofda {parsekey reset_line this is your new input line}
+	   /bind ^I parse_command {oofda}
+	   (type something and then hit tab)
+
+*** News 09/18/2006 -- New field in server description, "proto"
+	A new (seventh) field, has been added to server descriptions.
+	This field is named "protocol" (see below) and can be abbreviated
+	as "pr".  The field restricts what socket protocols you want epic
+	to use for this server.  Possible values are;
+		tcp4    or   4		IPv4 only
+		tcp6    or   6		IPv6 only
+		tcp     or   any	IPv4 or IPv6, doesn't matter
+	Naturally, "any" is the default.
+
+*** News 09/16/2006 -- Enhancements to server descriptions
+	You are permitted to skip fields in the server description.  Each
+	field has a name that you refer to it by:
+		host	port	pass	nick	group	type
+
+	You can change the field by "assignment", like so:
+		/server irc.foo.com:group=efnet
+	or
+		/server irc.foo.com:7005:type=irc-ssl
+
+	The server description actually skips to the name field, so
+	you don't have to specify them in order, you can skip around
+	however it suits you.  If you skip to a field and then don't
+	specify the name of the following field, whatever field would
+	naturally follow is assumed:
+
+		/server irc.foo.com:7005:group=efnet:irc-ssl
+
+	In this case, you skipped to the 'group' field, and the field
+	that follows that is 'type', so that is what "irc-ssl' is 
+	assumed to be.
+
+	This can be used any place server descriptions are taken, 
+	from /server, to /window server, to ircII.server, to the
+	command line, everywhere.
+
+*** News 09/14/2006 -- WINDOW command will fail if given invalid window refnum
+	Consider the behavior of
+		/WINDOW foo KILL
+	in the two cases where the window 'foo' does and does not exist.
+
+	Up until now, if 'foo' existed, it will killed, but if 'foo' did
+	not exist, this was not an error, and the current window was killed.
+	Ignoring window refnums that didn't exist was intended as a courtesy
+	but actually is a hassle, since most people assume that any further
+	commands will operate only on that window, or not at all.
+
+	So this behavior has been changed.  In the above case, if 'foo' does
+	not exist, then the /window command simply fails at that spot and
+	all further actions in that statement are ignored.
+
+*** News 09/14/2006 -- Some functions no longer support double quoted words
+        The work was done by nullie.
+
+        The following functions have previously supported double quoted
+        words, but due to popular sentiment, this support is being removed
+        to make the functions useful with untrusted data (ie, irc stuff)
+
+        match           rmatch          userhost        word
+        remw            insertw         chngw           pattern
+        filter          rpattern        pop             findw
+        findws          splitw          diff            sort
+        numsort         uniq            remws           getsets
+        getcommands     getfunctions    prefix          rfilter
+        copattern       corpattern      cofilter        corfilter
+
+        The following functions didn't support dwords unless you did
+        /xdebug extractw.  Nothing has changed for these functions.
+
+        leftw           rightw          midw            notw
+        restw           insertw         chngw           beforew
+        tow             afterw          fromw           splice
+
+        The /FE and /FOR I IN (list) commands previously supported
+        double quoted words, but now they will not.
+
+        You can revert to the epic4 behavior (for now) with /xdebug dword
+
+*** News 08/31/2006 -- New serverctl value, $serverctl(GET refnum ADDRSLEFT)
+	This returns the number of addresses left from the last dns lookup
+	for the server "refnum".  It's intended to be used like this:
+		on server_status "% % CLOSED" {
+			if (serverctl(GET $0 ADDRSLEFT)) {
+				# epic will be reconnecting...
+			}
+		}
+	This will help nullie write his reconnect script to not trap until
+	epic is finished with what it wants to do.
+
+*** News 08/17/2006 -- Add support for OPERWALL, /ON OPERWALL, OPERWALL level
+	OPERWALL is an efnet server command which servers send amongst
+	themselves.  The local server very graciously sends it to you 
+	wrapped in a WALLOPS (big ups to whoever was considerate enough
+	and made this decision, you made it much easier to support!)
+	so we peer at WALLOPS and route "OPERWALL - " messages to 
+	/ON OPERWALL and a new OPERWALL window level.  Now black will 
+	stop asking me to add this.
+
+	This is all opt-in.  If you don't hook /on operwall, then they
+	continue going to /on wallops and WALLOPS as they have always done.
+
+*** News 08/17/2006 -- Two new server states CREATED and DELETED
+	When a server is added to the server list, it's initial state is
+	"CREATED".  Once it is initialized, it is switched to the "RECONNECT"
+	stage.  So you can trap new servers with:
+		/on server_status "% CREATED %" {xecho -b New server is $0}
+
+	Servers that are deleted are switched to the DELETED state:
+		/on server_status "% % DELETED" {xecho -b Server $0 going away}
+	No matter what you do, you cannot stop the deletion of a server.
+	It is recommended you /defer any changes you make to the server list
+	from within an /on server_status that traps a server deletion.
+
+EPIC5-0.3.1
+
+*** News 07/01/2006 -- Revamped /encrypt command
+	The /encrypt command, which is a legacy ircII command, has been 
+	revamped and a lot of functionality has been added (see below).
+	The new format looks like this:
+
+	/encrypt
+		See the cipher list
+
+	*** Ways to specify the other person (TARGET is a NICK or CHANNEL)
+	/encrypt TARGET key
+		Trade messages with 'nick' on all servers using 'key'.
+	/encrypt 0/TARGET key
+		Trade messages with 'nick' only on server 0 using 'key'
+	/encrypt SERVERNAME/TARGET key	
+		Trade messages with 'nick' on server 'name' using 'key'.
+		'name' can be "ourname", or "itsname"
+	/encrypt SERVERGROUP/TARGET key
+		Trade messages with 'nick' on group 'group' using 'key'.
+	/encrypt ALTNAME/TARGET key
+		Trade messages with 'nick' on servers with 'altname' using
+		'key'.
+
+	*** Ways to specify the cipher you want to use
+	/encrypt nick key
+		Trade SED messages (default)
+	/encrypt nick key /path/to/program
+		Trade messages ciphered by an external crypto script
+	/encrypt -SED nick key
+		Trade SED messages
+	/encrypt -SEDSHA nick key
+		Trade SED messages, using the SHA256 hash of 'key'.
+	/encrypt -CAST nick key
+		Trade CAST5-CBC messages 
+	/encrypt -BLOWFISH nick key
+		Trade BLOWFISH-CBC messages 
+	/encrypt -AES nick key
+		Trade AES256-CBC messages 
+	/encrypt -AESSHA nick key
+		Trade AES256-CBC messages, using the SHA256 hash of 'key'.
+
+	Compatability and availability of all these is discussed in the 
+	following news bulletin.
+
+	AESSHA is the best cipher, but if it's not available, then SEDSHA
+	is better than SED, but SED is universally compatable.  If you must
+	use SED, use a very long key string (40 chars)
+
+	For backwards compatability, messages ciphered by external crypto
+	scripts are always sent as SED messages, even though they are not,
+	technically, ciphered with SED.
+
+*** News 06/26/2006 -- CAST5, Blowfish, AES, and AES-SHA encryption support
+	This only took me 8 years to catch up with ircII!  Yah!
+	All of this support is provided by the EVP api in OpenSSL.
+	If you don't have OpenSSL, this won't be supported.
+
+	The /ENCRYPT command now takes an argument after the nickname,
+	which can be either -CAST, -BLOWFISH, -AES, or -AESSHA
+		/ENCRYPT nick -CAST key
+		/ENCRYPT nick -BLOWFISH key
+		/ENCRYPT nick -AES key
+		/ENCRYPT nick -AESSHA key
+
+	The -CAST support is fully compatable with ircII (as of the last 
+	time I tested it) and -BLOWFISH isn't compatable with anything 
+	but your fellow bleeding edgers (since nobody supports that yet).
+	Same thing with -AES (only supported by EPIC for now).
+
+	The Blowfish support is *NOT* compatable with FiSH, because FiSH
+	has a couple of idiosyncracies (non-standard Base64, supports keys
+	that are longer than what openssl supports).  It would probably be
+	more likely that FiSH needs bag-on-the-side support than to be 
+	mainlined into the crypto support...
+
+	AES uses a fixed 256 bit key.  This is 32 characters.  If your key
+	is not 32 characters, it is padded out with nuls (ascii 0).  If your
+	key is more than 32 characters, it is truncated.
+
+	AESSHA runs your key through SHA2 to generate a 256 bit key for AES.
+	In any other way, it works the same as AES.
+
+	SEDSHA runs your key through SHA2 to generate a 256 bit key for SED.
+	In any other way, it works the same as SED.  Unlike the others, this
+	does not depend on openssl and is always available.
+
+	Please remember, when you /ENCRYPT a target, everything you send to
+	that target is encoded.  This includes /CTCP requests (/DCC offers).
+	Because ircII does not do CTCP-over-CTCP, you won't be able to send
+	/DCC SEND or /DCC CHAT offers to ircII users, but it will work with 
+	EPIC users.
+
+*** News 06/24/2006 -- New ON, /ON NUMERIC
+	The /ON NUMERIC hook is thrown for all numerics that you do not 
+	catch with a more specific /ON <number>.  For example:
+		/ON 318 * {echo Numeric 318 -- $*}
+		/ON NUMERIC * {echo Not Numeric 318 -- $*}
+	This can be used to unilaterally replace the default format for 
+	numerics that you don't otherwise catch, without having to actually
+	catch all of them!  The expandos are:
+		$0	The numeric being thrown
+		$1	The server who sent the message
+		$2-	The message
+
+*** News 06/24/2006 -- New script, 'reconnect' from nullie
+	The script causes the client to reconnect to disconnected servers after
+	a certain period (/SET reconnect_time, measured in minutes), cycling
+	between servers in a given servergroup. To register given servergroup
+	for its use, use "/NETWORK ADD group". With conjunction with the
+	autojoin scripts, allows the user to automatically rejoin channels he
+	was on before a disconnect.
+
+*** News 06/24/2006 -- New script, 'renumber' from nullie
+	The script adds an alias (/RENUMBER), filling "gaps" in window numbers.
+	If /SET renumber_auto is set (defaults to OFF), this will be performed
+	automatically after a window is closed.
+
+*** News 06/24/2006 -- New script, 'floodprot' from nullie
+	This script buffers all outgoing data sent by the client before
+	transmitting it to the remote server, to avoid "Excess Flood"
+	disconnection, e.g. pasting a lot of text or sending a lot of /MODE
+	commands.
+
+	/SET floodprot_burst decides how many lines can be sent immediately
+	after an idle period.
+
+*** News 06/24/2006 -- New script, 'autoquery' from nullie
+	The script creates new windows for incoming private messages, one per
+	each sender.
+
+	/SET autocreate_split_queries (defaults to OFF) decides whether windows
+	will be split (ON) or hidden (OFF).
+
+*** News 06/24/2006 -- New script, 'autojoin' from nullie
+	The script maintains a list of channels to join upon connecting to a
+	server. For user-defined channels that are joined after every connect,
+	create an ~/.irc/channels file with one line for each channel to join 
+	in the specified format:
+
+	<channel>   <winnum>  <servergroup> [key]
+
+	For instance:
+
+	#epic       2         efnet
+	#secretchan 3         somenet       qwerty
+
+	If the reconnect script is loaded and given server's group is added 
+	via /network add, the script will automatically rejoin channels on 
+	which user was before a disconnect, remembering the keys.
+
+*** News 06/24/2006 -- SEND_LINE does SCROLL_FORWARD in HOLD_MODE
+	For those who use HOLD_MODE, if you accidentally scroll back, you
+	might find yourself trapped in a place where hitting <enter> (the
+	SEND_LINE keybinding) does not get you back current.  To avoid this
+	unfortunate situation, if you are in HOLD_MODE, then SEND_LINE 
+	keybinding (the <enter> key) will now always advance you forward a 
+	page, even if you are in scrollback mode.
+
+*** News 06/24/2006 -- Support for MAILDIR maildrops, /SET MAIL_TYPE
+	If you /SET MAIL_TYPE MAILDIR, epic will check your maildir maildrop
+	for email instead of your mbox maildrop.  You can /SET MAIL_TYPE MBOX
+	to switch back to mbox.
+	
+	You must set the MAILDIR (or MAIL) environment variable to point to
+	your maildrop.  For MAILDIR, your maildrop is the directory that 
+	contains the 'new' and 'cur' subdirectories.
+
+	EPIC will check your 'new' directory for new emails.  This support
+	works the same way for maildir as it does for mbox:
+
+		/on mail  (maildir)		/on mail (mbox)
+		$0 -- New emails in 'new'	$0 -- New emails in 'mbox'
+		$1 -- Total emails in 'new'	$1 -- Total emails in 'mbox'
+
+	The maildir support does not look in 'cur' or anywhere else. 
+
+*** News 06/24/2006 -- Nonblocking SSL negotiation
+	Connections to ssl-enabled servers have an SSL protocol negotiation
+	stage between the nonblocking connect() and irc protocol negotation.
+	Traditionally, this SSL negotation has been blocking, but this can
+	take a long time, during which the client is locked up.  So now 
+	SSL negotiations are nonblocking.  Yay.
+
+	Previously, the server state goes from CONNECTING to REGISTERING.
+	But if it has to take a detour for nonblocking ssl negotation, it
+	will go from CONNECTING to SSL_CONNECTING and then to REGISTERING.
+
+*** News 06/24/2006 -- New script, 'nickcomp' from Blackjac
+
+*** News 06/06/2006 -- Much improved configure support for perl/tcl/ruby
+		*** VERY IMPORTANT FOR PACKAGE MAINTAINERS ***
+
+	The code in the 'configure' script that decides how to integrate
+	perl, tcl, and ruby has been rewritten.  For the most part, it 
+	should automagically work.  Here's the details:
+
+	PERL:
+		--with-perl
+		--with-perl=yes
+		--with-perl=/usr/local/bin/perl
+		--with-perl=no
+		--without-perl
+	By default, unless you specify --without-perl (or --with-perl=no), 
+	configure will look for the 'perl' program in your path (or use the 
+	perl you specify) and will interrogate the extmod package for details 
+	how to compile sucessfully against perl.  If the default 'perl' binary
+	is fine, you need do nothing at all.  Otherwise, all you need know 
+	is what 'perl' binary you want to use.
+
+	RUBY:
+		--with-ruby
+		--with-ruby=yes
+		--with-ruby=/usr/local/bin/ruby
+		--with-ruby=no
+		--without-ruby
+	Same deal as with perl.  Configure will use the 'ruby' program (or
+	the one you specify) to get all the details necessary to get support
+	for ruby.  For most people, you need do nothing at all.
+
+	TCL:
+		--with-tcl
+		--with-tcl=yes
+		--with-tcl=/usr/local/lib/tclConfig.sh
+		--with-tcl=no
+		--without-tcl
+	TCL is a little different.  It looks for a 'tclConfig.sh' file.
+	These ones are used by default (in this order)
+		/usr/lib/tclConfig.sh
+		/usr/local/lib/tclConfig.sh
+		/usr/local/lib/tcl8.4/tclConfig.sh
+	If your tclConfig.sh is not in one of these places, or if you want
+	to use a specific tcl version, you must specify the path to the 
+	tclConfig.h file to --with-tcl.
+
+	Note to package maintainers:
+	Please throw away all of the hacks and patches you have in place
+	to support the old nasty way to set these flags.  I tried to make
+	this as painless as possible.  If the user has ruby/perl installed, 
+	then ruby/perl support will be included.  The hard part is tcl, since
+	every system puts their tclConfig.sh in an odd place.
+
+*** News 06/06/2006 -- /SET INPUT_ALIASES and /SET CMDCHARS deprecated
+	Due to recent optimizations in the epic command parser, these two
+	sets no longer have any function (although they have not yet been
+	removed).  If you desparately need the use of these /set's, please
+	let me know.  Otherwise someday they will vanish into the ether.
+
+*** News 06/06/2006 -- Support for RUBY: $ruby() and /ruby
+	Support for ruby (1.6.4 and 1.8.4 are tested) has been added.  The 
+	support is similar to perl and tcl.  You can call out to ruby using 
+	either the $ruby() function or the /ruby command.  
+
+	The following callbacks to epic are available from within ruby:
+
+	EPIC.echo(stringval)		Same as /echo
+	EPIC.say(stringval)		Same as /xecho -b
+	EPIC.cmd(stringval)		Run "stringval" without $-expansion
+	EPIC.eval(stringval)		Run "stringval" with $-expansion
+	EPIC.expr(stringval)		Return value of epic expression
+	EPIC.call(stringval)		Return value of epic function call
+
+	All of these functions take one argument (a string) and return one
+	value (also a string).
+
+	Some examples:
+	To export an epic variable to ruby (as a String object):
+		@ ruby(rubyvar='$epicvar')
+	or
+		ruby {rubyvar = EPIC.expr("epicvar")}
+
+	To export a ruby variable to epic:
+		@ epicvar=ruby(rubyvar)
+	or
+		ruby {EPIC.expr("epicvar=[#{rubyvar}]")}
+
+	To iterate over each item in a ruby collection, passing each
+	value as the argument to an epic command:
+		ruby {
+			something.each {|x|
+				EPIC.cmd("epiccmd #{x}")
+			}
+		}
+	(Think of using this to do database access)
+
+	The EPIC.cmd and EPIC.eval commands do not start off a new atomic
+	scope within epic.  Consequently, you can read (and write) local
+	variables that are otherwise in scope:
+		alias booya {
+			@ :epiclocal = 5
+			ruby {
+				rubyvar = EPIC.expr("epiclocal").to_i
+				rubyvar = rubyvar + 1
+				EPIC.expr("epiclocal = '#{rubyvar}'")
+			}
+			echo $epiclocal
+		}
+	It is *IMPORTANT TO REMEMBER* that because EPIC is untyped, everything
+	returned to ruby is a String object.  If you have a number in EPIC,
+	it will be a String in ruby, and you need to explicitly convert it
+	to an integer (as in the above example).
+
+	It is *ALSO VERY IMPORTANT TO REMEMBER* that if you use the /ruby
+	command, and you use it in a script that is loaded with the standard
+	(legacy) loader, the loader will insert semicolons into your ruby code
+	in the places where it would belong if it were ircII code.  Needless
+	to say, THIS MAY OR MAY NOT ALWAYS BE CORRECT.  The best solution is 
+	to get with the program and switch over to the pf-loader where this 
+	is entirely under your control.
+
+*** News 06/06/2006 -- New commands: /PERL and /TCL
+	Support for perl and tcl has been via the $perl() and $tcl() 
+	functions.  Regretably, calling a function submits the argument
+	list to quoting hell, which can be particularly painful for perl.
+	To remedy this somewhat, you can now call a block of perl or tcl
+	code with these new commands.  The block of code must be surrounded
+	by curly braces, which protect the inside from quoting hell.
+	Usage:	/perl { <perl code goes here> };
+	Usage:	/tcl { <tcl code goes here> };
+
+	See the above warnings (for ruby) about using these commands in a 
+	script that is loaded by the standard loader.  Semicolons may be
+	a problem.  Use the PF loader instead.
+
+*** News 06/06/2006 -- Removal of /set highlight_char
+	The long-threatened removal of /set highlight_char has occurred.
+	Please use the 'highlight' script for its replacement.
+
+*** News 06/06/2006 -- New script, "chanmonitor"
+
+*** News 06/06/2006 -- Extra support for 64 bits, if you have it.
+	Most built-in-functions that take an integer argument will 
+	now support 64 bit integer values.  
+
+	Further, the following functions can output 64 bits whereas
+	they never could before:
+		fseek		numsort		strtol
+		tobase		tobase		stat
+
+EPIC5-0.2.0
+	EPIC5-0.2.0 was released somewhere in here
+
+EPIC5-0.0.8
+
+*** News 12/09/2005 -- New window verb, /WINDOW INDENT (ON|OFF)
+	The /window indent value permits you to tweak the /set indent
+	value on a per-window basis.  However, if you do /set indent,
+	it will overwrite all of your per-window indent values (I'm 
+	open to discussion on this), to retain backwards compatability.
+
+*** News 12/09/2005 -- New built in function, $xform()
+	    *** OBSOLETE *** THIS INFORMATION IS OLD *** OBSOLETE ***
+	This information is no longer useful.  Do not rely on it.  Please
+	            check out the new documentation up above.
+	    *** OBSOLETE *** THIS INFORMATION IS OLD *** OBSOLETE ***
+
+	The $xform() function does (symmetrical) string transformations.
+	What is a symmetrical transformation?  It is one in which all of
+	the bits in the original string are present in the result string,
+	and the original string can be recreated from the result.  This is
+	distinct from the idea of hashing, which is closer to being a lossy
+	compression algorithm.
+
+	The general format of the $xform() function is:
+		$xform(TYPE DIRECTION KEY text)
+	whereby TYPE is one of the following:
+		URL	Convert non-printable chars to %HH equivalent
+			Equivalent to $urlencode() and $urldecode()
+		ENC	Base16 encoding, for creating variable names
+			Equivalent to $encode() and $decode()
+		B64	Base64 encoding, for sending over email/http
+			Equivalent to $b64encode() and $b64decode()
+		NONE	No changes (just copies the string)
+		CTCP	Mangle things they way CTCP ought to be
+			No equivalent
+
+	and DIRECTION is either "E" (for encoding) or "D" (for decoding),
+	and KEY is ignored except for SED, where it is the cypher used in 
+	the SED bit-twiddling, and DEF where it is the nickname of the 
+	person who it should be transformed for
+
+	At the time I write this, SED, CTCP, and DEF are not implemented
+	yet, but they will be soon.  Watch for more info.
+
+	More transformations are expected to be supported in the future
+	(including real encryption routines).  It will probably be possible 
+	to add your own at some point.
+
+*** News 11/28/2005 -- New /ON, /ON KEYBINDING
+	This on goes off whenever a keybinding is activated:
+	  $0 - The keybinding that is activated
+	  $1 - Length of the sequence (future expansion -- always 0 for now)
+	  $2 - The ascii number of the key that activated it.
+
+	Note that $2 only contains the last character in the bound sequence.
+	In the future, $2- will change to be a word list containing all of
+	the characters in the sequence.  When this change is made, $1 will
+	be changed to a positive value.  But for now, $1 is always 0, and 
+	$2 is always just the last character.
+
+	If you hook this silently, you will suppress the keybinding!
+	If you only want to spy on a keybinding, hook it quietly.
+	The purpose for which this was requested was to be able to trap 
+	everything bound to SELF_INSERT without having to rebind them.
+
+	Examples:
+	To do something every time capital-A is pressed:
+	   on -keybinding "SELF_INSERT % 65" {echo You pressed A}
+	To keep the user from using the SWITCH_CHANNELS keybinding.
+	   on ^keybinding "SWITCH_CHANNELS % *" #
+
+*** News 10/30/2005 -- New function, $dbmctl() [hash table support]
+	*** Notice *** This function uses a custom implementation of SDBM.
+	The file format it generates should be compatable with $perl() but
+	is not compatable with ndbm or gdbm.
+
+	The $dbmctl() function is an interface to the unix DBM API:
+	    $dbmctl(OPEN type filename)
+		Open a DBM file for read and write access.
+	    $dbmctl(OPEN_READ type filename)
+		Open a DBM file for read-only access.
+	    $dbmctl(CLOSE refnum)
+		Close a previously opened DBM file
+	    $dbmctl(ADD refnum "key" data)
+		Insert a new key/data pair.  Fail if key already exists.
+	    $dbmctl(CHANGE refnum "key" data)
+		If key already exists, change its data.  If it doesn't exist, 
+		add it.
+	    $dbmctl(DELETE refnum "key")
+		Remove a key/data pair
+	    $dbmctl(READ refnum "key")
+		Return the data for a key.
+	    $dbmctl(NEXT_KEY refnum start-over)
+		Return the next key in the database
+	    $dbmctl(ALL_KEYS refnum)
+		Return all keys -- could be huge! could take a long time!
+	    $dbmctl(ERROR refnum)
+		Return the errno for the last error.
+
+	"Type" must always be "STD" for now.  Reserved for future expansion.
+	"Filename" must be a filename that doesn't include the ".db" extension!
+		This is a requirement of the DBM api, and not an epic thing.
+	"Refnum" is the integer value returned by OPEN or OPEN_READ
+	"Key" is a hash table key value
+	"Data" is a hash table data value
+	"Start-over" is 1 if you want to fetch the first key in the table, and
+		is 0 if you want to fetch the next key.  You must call this
+		with 1 before you call it with 0, according to the API.
+	ALL_KEYS does a "start-over" and you need to do another "start-over"
+		after using it.
+
+*** News 10/29/2005 -- New built in function, $levelctl()
+	You may now add new window/lastlog/ignore/flood levels at runtime!
+	Once you add a level, you can use it in your windows, and you can use
+	it in /xecho -l.  Since ignore and flood control are hardcoded features
+	adding a level will show up in their types, but will never be used.
+
+	The $levelctl() function permits you to add and query levels:
+	  $levelctl(LEVELS)
+		Return a space-separated list of all canonical level names.
+		This does not return any alias names (see below)
+	  $levelctl(ADD new-name)
+		Add "new-name" as a new canonical level name.  This new name
+		is automagically considered part of ALL.  There is no way to
+		remove levels (yet).  This returns the new level's refnum,
+		which is a small integer value.  If you try to add a level
+		that already exists, it is not added again, but it's existing
+		refnum is returned.
+	  $levelctl(ALIAS old-name new-name)
+		Add "new-name" as an alias for "old-name".  An alias name is
+		permitted anywhere that level names are accepted, but an alias
+		name is never output by the client -- it is silently converted
+		into the canonical name.  For example, "OTHER" is the canonical
+		level name, and "CRAP" is its alias.  If you do 
+			/WINDOW LEVEL CRAP
+		It will tell you
+			*** Window level is OTHER
+	  $levelctl(LOOKUP level-name)
+		Returns the refnum for a level-name.  The level-name can either
+		be a canonical level name or an alias level name.
+	  $levelctl(LOOKUP refnum)
+		Returns the canonical level name for a refnum.
+	  $levelctl(NORMALIZE level-name(s))
+		Given a comma-and-space separated list of level names (like
+		what you specify to /window level), this returns a canonical
+		form which is suitable for /save'ing or displaying to the user. 
+		For example,
+			ALL,-CRAP
+		would return
+			PUBLIC MSG NOTICE WALL WALLOP OPNOTE SNOTE ACTION DCC
+			CTCP INVITE JOIN NICK TOPIC PART QUIT KICK MODE USER1
+			USER2 USER3 USER4 USER5 USER6 USER7 USER8 USER9 USER10
+
+EPIC5-0.0.7
+
+*** News 10/12/2005 -- The %D status bar expando (dcc activity) improved
+	Previously, the %D status bar expando showed you "packets" of 
+	activity.  A packet was 2k of data, so it looked like this:
+		(      hop: 99 of 2350 (4%))
+	Now this is all done in reasonable units, like so:
+		(      hop: 198Kb of 4.7Mb (4.2%))
+	Perhaps in the future I might remove the "b" after "Kb" and "Mb".
+
+*** News 10/12/2005 -- New script 'highlight', removal of highlight ignores
+	This is kind of experimental for now, but there is a new script 
+	'highlight' which you can /load, which will implement the features
+	that were previously available via "highlight ignores".  I haven't
+	yet moved /set highlight_char over to the script, but I will do that
+	for EPIC5-0.0.8.  If you want to help me make this script more robust,
+	drop me a line or just /msg me.  If you have no idea what I'm talking
+	about, don't worry, you're not missing anything.
+
+*** News 10/12/2005 -- New built in functions $b64encode() and $b64decode()
+	The $b64encode() function takes an arbitrary string and returns an
+	expanded string using the Base64 encoding, which uses all of the 
+	characters A-Z, a-z, 0-9, and + and /.  If you count them up, this
+	is 64 distinct characters (hence the name base64), which represent
+	six bits of information.  Thus, 3 bytes of data (24 bits) can be 
+	transformed into 4 characters which are safe to send through data
+	channels that can only handle text (such as the irc server, or 
+	DCC CHAT, email, or a web server)
+
+*** News 10/12/2005 -- Can now set both level and target with with /XECHO
+	Maybe it would help if I just re-documented /XECHO's options:
+	XECHO options can always be abbreviated as long as they're not 
+	ambiguous.  For example, /XECHO -CURRENT can be used as /XECHO -C,
+	and /XECHO -WINDOW can be used as /XECHO -W.
+
+	 -CURRENT
+		The same as -W 0  (output to current global window)
+	 -LINE <number>
+		Must be used in conjunction with -WINDOW.  This allows you to
+		replace the <number>th line on a specified window.  This is 
+		the feature of the old "scratch windows".  All windows behave
+		as scratch windows these days.
+	-LEVEL <window-level>
+		The window levels are of course NONE, CRAP, PUBLICS, MSGS,
+		NOTICES, WALLS, WALLOPS, OPNOTES, SNOTES, ACTIONS, DCCS,
+		CTCPS, INVITES, JOINS, NICKS, TOPICS, PARTS, QUITS, KICKS,
+		MODES, and USER1 through USER10.  If you use this option 
+		without using -WINDOW, then the output will be sent to the
+		window that claims the corresponding level for the current
+		server.  If you use this option together with -WINDOW, then
+		it will be sent to that window anyways.  This is new, because
+		previously you could not tag output to a window with a level
+		that didn't belong to that window.
+	-VISUAL
+		Output to a visible (non-hidden) window.  If window 0 (the
+		global current window) is visible, it is used.  If window 0
+		is hidden, then another visible window is chosen.
+	-WINDOW <refnum>
+		Output to a particular window, instead of the normal one.
+		Remember that window refnum 0 is special, and represents the
+		global current window which **may or may not** be connected
+		to the current server.  If you need the current server's 
+		current window, use $serverwin().
+	-ALL
+		Output to each and every window.
+	-BANNER
+		Prefix the output with the /SET BANNER value.
+	-RAW
+		Send the output directly to the terminal and do not attempt
+		to pre-process it.  This is used to send special control 
+		sequences to your terminal that EPIC does not support (such
+		as sequences to change your character set)
+	-NOLOG
+		Do not allow the line of output to be written to the global
+		logfile, a window logfile, or to a /LOG logfile.
+	-SAY
+		Use say() to output the line, which makes it subject to 
+		output suppression rules.  An example will help:
+			alias loud { xecho -b This is always displayed }
+			alias noloud { xecho -b -s This is not always }
+
+		In the first case, you could do
+			loud
+		or
+			^loud
+		and you would still see the output either way.  There is no
+		way to "suppress" the output.  In the second case
+			noloud
+		shows the output but
+			^noloud
+		does not.
+	-X
+		("Extended" output?)  Ignore /SET DISPLAY_MANGLE for just 
+		this one line, and pretend it was /SET to NORMALIZE instead.
+		The most obvious use for this would be to output something in
+		color even when the user has used /set display_mangle to strip
+		color.
+	-F
+		Do not allow the line of output to trigger hidden-window-
+		notification.  Normally output to a hidden window will cause
+		that window's refnum to show up in the %F status bar expando.
+		Using this keeps that from happening.
+	--
+		End of argument processing: there are no more arguments after
+		this and everything else should just be output directly
+			xecho -- -f <- the -f here is output!
+
+*** News 10/05/2005 -- Automatic Scrollback rebuilding, new /WINDOW operation
+	Whenever the width of a window changes (either because you're 
+	swapping it in, and the screen is a different size than when you 
+	swapped the window out, or because it's visible on a screen that 
+	is changing size), the window's scrollback will be rebuilt.  This is
+	accomplished by clearing the scrollback and then rebreaking the 
+	lastlog.  If you have a large scrollback and a small lastlog, this
+	may result in some data lossage.
+
+	Although the rebuilding process attempts to keep the top of the window
+	the same before and after the rebuild, it's possible for what you were
+	seeing on your window to be gone after the rebuild.  If this occurs,
+	the window will be set to the very top of the scrollback (ie, as far
+	back as it can go).
+
+	Generally, it is advisable from now on to have a lastlog that is 
+	at least as large as your scrollback, if you want to avoid any
+	chance of problems when your windows resize.
+
+*** News 10/05/2005 -- DNS Helper (hostname lookups) now nonblocking by default
+	EPIC5-0.0.6 shipped with a dns helper, but it was synchronous (it 
+	did not fork off a subprocess).  It has been debugged and now it is
+	turned on, and it is asynchronous.  This DNS helper is only used for
+	server connections.  This is the final stage in making connections to 
+	server fully nonblocking. yay!  However, forking off a child process
+	to do the nonblocking dns lookup can cause issues with resource
+	limitations.  (Typically you are only permitted to run a certain
+	number of processes at a time, and this would count against that limit.)
+
+*** News 10/05/2005 -- New /SET, /SET MANGLE_DISPLAY, many sets removed
+	There is a new /SET, /SET MANGLE_DISPLAY, which mangles all output
+	being sent to your display, naturally.  It works in the same way
+	that /set mangle_inbound, mangle_outbound, mangle_logfiles works,
+	and its default value is "NORMALIZE".  You should always specify
+	either "NORMALIZE" or "MANGLE_ESCAPE" -- if you turn off both, then
+	it will be possible for remote people on irc to send raw escape
+	sequences to your display, and that is bad!
+
+	The following /SETs have been superceded by recent changes, and have
+	been removed:
+		alt_charset 	blink_video 	bold_video
+		color		display_ansi 	display_pc_characters
+		inverse_video	underline_video
+
+*** News 10/05/2005 -- Functions that changed because of unified mangler
+	$leftpc(<COUNT> <TEXT>)
+		This function performs a $stripcrap(NORMALIZE <text>) now.
+	$numlines()
+		This function performs a $stripcrap(NORMALIZE <text>) now.
+	$printlen(<TEXT>)
+		This function performs a $stripcrap(NORMALIZE <text>) now.
+	$stripansicodes(<TEXT>)
+		This function is the same as $stripcrap(NORMALIZE <text>)
+	$stripc()
+		This function is the same as $stripcrap(COLOR <text>)
+	$stripcrap()
+		See below for important information.
+
+*** News 10/05/2005 -- Unified string mangler/normalizer
+	Forget everything you thought you knew about the old mangler and
+	normalizer (sorry!).  This is (believe it or not) much less complicated
+	than before, and certainly more well documented than before!
+
+	EPIC5 now includes a unified mangler/normalizer that is used by the
+	following features:
+		(The above functions)
+		The input prompt	
+		/lastlog -mangle
+		/log mangle		
+		/set mangle_inbound
+		/set mangle_outbound	
+		The status bar
+
+	All characters are grouped into one of 9 "types":
+	0	Normal chars 		32-127, 160-255
+	1	High bit control chars	128-159
+	2	Escape char 		^[
+	3	Color char 		^C
+	4	Highlight toggle	^B ^E ^F ^O ^V ^_
+	5	Unsafe char		^M (\r)
+	6	Control char		^@ ^A ^D ^H ^K ^L ^N ^P ^Q 
+					^R ^T ^U ^W ^X ^Y ^Z ^\ ^] ^^
+	7	Beep			^G
+	8	Tab			^I
+	9	Non-destructive Space	^S
+
+	There are the 12 following mangle types:
+	MANGLE_ESCAPES	NORMALIZE	STRIP_COLOR		STRIP_REVERSE
+	STRIP_UNDERLINE	STRIP_BOLD	STRIP_BLINK		STRIP_ND_SPACE
+	STRIP_ALT_CHAR	STRIP_ALL_OFF	STRIP_UNPRINTABLE	STRIP_OTHER
+
+	The mangle types transform the characters, according to this table:
+	-----------------------------------------------------------------------
+        A = Character or sequence converted into an attribute
+        M = Character mangled (ie, ^A into ^VA^V)
+        S = Character stripped, sequence (if any) NOT stripped
+        X = Character stripped, sequence (if any) also stripped
+        T = Transformed into other (safe) chars
+        - = No transformation
+
+						Type
+				0    1    2    3    4    5    6    7    8    9
+	(default)               -    -    -    -    A    -    -    T    T    T
+	NORMALIZE               -    -    A    A    -    X    M    -    -    -
+	MANGLE_ESCAPES          -    -    S    -    -    -    -    -    -    -
+	STRIP_COLOR             -    -    -    X    -    -    -    -    -    -
+	STRIP_*                 -    -    -    -    X    -    -    -    -    -
+	STRIP_UNPRINTABLE       -    X    S    S    X    X    X    X    -    -
+	STRIP_OTHER             X    -    -    -    -    -    -    -    X    X
+	(/SET ALLOW_C1)         -    X    -    -    -    -    -    -    -    -
+	-----------------------------------------------------------------------
+
+	There are only *three* ambiguous cases:
+	* Type 2:
+		MANGLE_ESCAPES has first priority, then NORMALIZE, and 
+		finally STRIP_UNPRINTABLE
+	* Type 3:
+		STRIP_UNPRINTABLE has first priority, then NORMALIZE, and
+		STRIP_COLOR.  You need to use both NORMALIZE and STRIP_COLOR
+		to remove color changes in escape sequences
+	* Type 6:
+		STRIP_UNPRINTABLE has first priority over NORMALIZE.
+
+*** News 10/05/2005 -- "ANSI" mangle type linked to "NORMALIZE"
+	The mangler type "ANSI" has been renamed to "NORMALIZE".  You can 
+	continue to use "ANSI", but it will be silently changed to "NORMALIZE"
+	internally.
+
+*** News 10/05/2005 -- New behavior for $mask() [jm]
+	Jm needs to write me some documentation for this...
+
+*** News 08/30/2005 -- De-support of 7-bit-only terminal/emulators
+	Once upon a time, long long ago, on a planet far away, there
+	used to be terminals and terminal emulators that did not know
+	how to handle characters with the 8th bit set.  Thankfully,
+	nobody uses these any more.  There has been rudimentary support
+	in ircII clients to support this old hardware, but it is now
+	unnecessary and only causes to torment people who can't figure
+	out how to input their 8 bit characters!
+
+	/SET EIGHT_BIT_CHARACTERS has been removed, and its behavior is
+	now hardcoded to the previous "ON" value.  If you really need
+	7-bit support, epic4 will always have it...
+
+*** News 08/30/2005 -- Simplification of display mangling, part one
+	There are 15 /set's that control how output to the display is
+	prepared ("mangled").  That's about 14 too many.  The following
+	/set's are at best historical curiosities and do not serve any
+	modern purpose.  Their function has been eliminated.
+
+	    BEEP_MAX	TAB	TAB_MAX		ND_SPACE_MAX
+
+*** News 08/23/2005 -- New /window verb, /WINDOW FLUSH_SCROLLBACK
+	The /WINDOW FLUSH_SCROLLBACK option, which I already regret the
+	naming of, deletes all of the items in your scrollback buffer.
+	Because the scrollback buffer is used to paint your window, your
+	window will be cleared when you do this.
+
+*** News 08/10/2005 -- Mangle level "ALL" does not include "UNPRINTABLE"
+	This was a mistake, and "ALL" should never have included the
+	UNPRINTABLE mangle level.  So if you want to do them both, then
+	just do ALL,UNPRINTABLE.  Although you would never want to do
+	that, since UNPRINTABLE is more encompassing than ALL.
+
+EPIC5-0.0.6
+
+*** News 08/08/2005 -- Updated behavior for /DCC GET
+	Based on a request from larne, the following syntaxes are now
+	supported for /DCC GET:
+
+	* /DCC GET nick file1 file2 ... fileN /directory
+	This will download one or more files to /directory.
+
+	* /DCC GET nick offered-file not-offered-file
+	This will do a /DCC RENAME get nick offered-file not-offered-file
+	and then a /DCC GET not-offered file.  You cannot combine this with
+	the previous syntax.
+
+	* /DCC GET nick
+	Download ALL files that "nick" have offered you.  You can combine
+	this with the first one, (/DCC GET nick /directory) to download 
+	all files offered to a single directory.
+
+*** News 08/06/2005 -- Generalized status bar activity handling
+	There are three new windowctls, and /window commands to follow
+	later on.  They allow you to control a new status bar expando %E.
+	This will take a bit of explanation.
+
+	Each window has 11 "activity levels".  An "activity level" is a 
+	format and a $* value.  The activity levels are numbered 0 to 10,
+	and 0 is special.
+
+	Each window has a 'current activity level' which you can set with:
+		$windowctl(SET <winref> CURRENT_ACTIVITY <number>)
+	When you set the current activity level to a number 1 to 10, then 
+	the %E status bar expando will replace with that activity level's
+	format expanded against that activity level's data.  The activity 
+	level 0 is not usable, but instead stores default values that are
+	used if you don't define something else for the activity level.
+
+	To set a window's activity level format:
+		$windowctl(SET <winref> ACTIVITY_FORMAT <number> <string>)
+	Remember that $'s in <string> need to be doubled, in order to protect
+	them from being expanded at $windowctl() time.  You do not need to
+	(and you should not) put quotation marks around <string>.  If you do
+	not set an activity format for a given level, then the activity format
+	you set for level 0 will be used as a default.
+
+	To set a window's activity level data:
+		$windowctl(SET <winref> ACTIVITY_DATA <number> <string>)
+	This is the value of $* that will be used to expand the activity 
+	format each time epic redraws the status bar.  If you do not set 
+	an activity data for a given level, the activity data you set for 
+	level 0 will be used as a default.
+
+	So to put this all together, if you set the current_activity value
+	to 0, then the %E expando will expand to nothing.  If you set the
+	current_activity level to any value 1 to 10, then it will expand to
+	the "activity_format" value, which is expanded on the fly using the
+	"activity_data" value as $*.  If you use a current_activity level that
+	is missing an activity_format or activity_data value, the values you
+	set for level 0 are used as defaults.
+
+	Example:
+		$windowctl(SET 1 ACTIVITY_FORMAT 1 ^C3$$*)
+		$windowctl(SET 1 ACTIVITY_FORMAT 2 ^C4$$*)
+		$windowctl(SET 1 ACTIVITY_FORMAT 3 ^C7$$notifywindows())
+		$windowctl(SET 1 ACTIVITY_FORMAT 4 ^C12$$*)
+		$windowctl(SET 1 ACTIVITY_DATA 0 booya)
+		$windowctl(SET 1 ACTIVITY_DATA 2 hazmat)
+
+	Now if I
+		$windowctl(SET 1 CURRENT_ACTIVITY 1)
+	then %E will expand to a green "booya" because the format is
+		^C$$* and the value of $* is "booya" 
+				(from activity_data 0)
+	If I then
+		$windowctl(SET 1 CURRENT_ACTIVITY 2)
+	then %E will expand to a bold red "hazmat" because the format is
+		^C4$$* and the value of $* is "hazmat" 
+				(cause I set activity_data 2)
+
+	If I then
+		$windowctl(SET 1 CURRENT_ACTIVITY 3)
+	then %E will expand to a yellow $notifywindows() that will dynamically
+	update, because there are two $'s in front of it.  It will ignore the
+	"booya" because it does not reference $*.
+
+	This feature is intended to be used to create a %F workalike that
+	gives you full and utter control over all aspects of how the expando
+	will show up, since you get 10 levels, plus a default level, and you 
+	get to control which ones use the default and which ones get their
+	own custom $* and you control the formats -- you control it all.
+	Have fun!
+
+*** News 08/05/2005 -- New flag to /LASTLOG, /LASTLOG -MANGLE
+	The /LASTLOG -MANGLE flag takes a mangle description (the thing that
+	$stripcrap() takes) and mangles each line in the lastlog before 
+	matching against your pattern.  THIS IS VERY EXPENSIVE so you should 
+	not do this unless you really want to.
+
+*** News 08/05/2005 -- *** IMPORTANT *** /EXEC -OUT changed
+	/EXEC -OUT will now output to the window's current target, instead
+	of to the window's current channel.  The current target is $T, and
+	is the window's current query (if there is one) or the window's 
+	current channel (if there isn't a query).
+
+*** News 08/05/2005 -- Text following unmatched braces/parens/brackets
+	If an unmatched brace/bracket/paren is found, about 20 chars after
+	the character will be output in the error message, to help you find
+	it.  Unfortunately I can't give you line numbers yet.
+
+*** News 08/05/2005 -- New server status state, "ERROR"
+	The "ERROR" status state is used in the following cases:
+	* DNS lookup failed (DNS -> ERROR -> CLOSED)
+	* Connect failed (CONNECTING -> ERROR -> CLOSING -> CLOSED)
+	* Socket write failed (<ANY> -> ERROR -> CLOSING -> CLOSED)
+
+*** News 08/05/2005 -- The script "altchan.bj" is renamed to "altchan" ...
+	... Because we deleted the old (lame) altchan script.
+
+*** News 08/05/2005 -- New /set, /SET OLD_MATH_PARSER
+	To use the old math parser, you need to /SET OLD_MATH_PARSER ON.
+	This is a promoted version of /xdebug old_math, which you should
+	no longer use, it will no longer work.  Please make plans to 
+	migrate away from the old math parser in epic5 scripts.
+
+*** News 08/05/2005 -- New mangle type, "UNPRINTABLE"
+	You can now mangle "UNPRINTABLE", which closely models the 
+	/SET NO_CONTROL_LOG variable.  When you mangle UNPRINTABLE, all
+	characters that are not printable (isgraph() || isspace()) will
+	be removed, which includes all of the highlight characters.
+
+*** News 08/05/2005 -- New script 'ison' from jm
+	Jm has written a new 'ison' script which implements an ison queue,
+	and acts as the backend for the 'notify' script which he has also
+	revamped for this release.  This notify script will soon take over
+	the notify duties for epic, so it'd be a good thing to test it 
+	before the builtin notify goes away...
+
+*** News 08/05/2005 -- New operators, === and !==
+	The new math parser now supports two new operators, which do case
+	sensitive string comparisons.  === returns true if the two strings
+	are the same, and !== returns true if the two strings are not the
+	same.
+
+*** News 08/05/2005 -- *** IMPORTANT *** Case insensitive changes
+	All case insensitive string comparisons should now be handled in
+	the CASEMAPPING=ascii sense.  This means '{' and '[' are not equal,
+	and | and ~ and ] and } are not equal.
+
+*** News 08/05/2005 -- 005 CASEMAPPING value now handled (sort of)
+	Some networks use CASEMAPPING=ascii, which means that the characters
+	{|} are not the same as [~] as they are when CASEMAPPING=rfc1459.
+	So in order to keep track of nicks correctly on the former servers,
+	we now track CASEMAPPING and use it as best we can.
+
+*** News 08/05/2005 -- Flexible on patterns can match against themselves
+	When you do /ON TYPE '<pattern>', the value of $* in the pattern is
+	the $* of the ON, so you can essentially do self-references.  For
+	example, this now works...
+		/on general_privmsg '% $0 *' {
+			... you sent a message to yourself ...
+		}
+
+*** News 08/05/2005 -- Can set NOTIFY_NAME via $windowctl()
+	You can $windowctl(SET <refnum> NOTIFY_NAME <stuff>) now, instead
+	of having to battle with quoting hell with /window notify_name "..."
+
+*** News 07/27/2005 -- Extended $userhost() behaviour.
+	Given a channel name in place of a nick, $userhost() will return the
+	unknown userhost as it did previously, but as a side effect, it will
+	attempt to resolve the remaining list of nicks in the given channel
+	only.  This is a somewhat esoteric feature which should only be useful
+	for people who use the $serverctl() maxcache feature.
+
+*** News 07/27/2005 -- New function $shiftbrace().
+	Given a variable name, $shiftbrace() will remove the braced expression
+	at the beginning of the variables value and return it.  This is a
+	somewhat experimental scripting feature.
+
+	/assign qwer {asdf zxcv} {zxcv asdf qwer}
+	/eval echo $shiftbrace(qwer)  =>  asdf zxcv
+	/eval echo $shiftbrace(qwer)  =>  zxcv asdf qwer
+
+*** News 06/21/2005 -- Many scripts desupported
+	Many scripts that shipped with epic4 are now unsupported in epic5.
+	They will always be available at 
+
+	ftp://ftp.epicsol.org/pub/epic/old-scripts/epic5-old-scripts.zip
+
+	but they won't be supported for use with epic5, unless someone 
+	makes a motion to re-support them.  Here are the scripts:
+
+	alias		altchan		autokick	autoop
+	away		basical		columns		dcc_spacefix
+	dcc_timeout	deban		dig		dns
+	edit		efnext		environment	events
+	events.hop	fake-dcc	fe		fe.pf
+	genalias	hybrid6		imap		ip-to-int
+	ircprimer	keybinds	killpath	kpstat
+	langtrans	list		ls		meta
+	mkpdir		more		mudirc		netsplit.env
+	newformat	nicks		old-dcc		prefix
+	recursion	repeat		scandir		sdiff
+	silent		sound		starutils	stat
+	status_lag	tabkey.th	tabkey		tc
+	time		tls		vi-binds	webster
+	window
+
+*** News 06/03/2005 -- New script, "newnick" (blackjac)
+	The "newnick" script, which is loaded automatically by the 'global' 
+	script [and which you need to load from your startup script if you 
+	like this functionality] implements the functionality of the old 
+	/SET AUTO_NEW_NICK feature, which has recently been removed.
+
+	It exposes four /SETs (default values):
+	  /SET AUTO_NEW_NICK ON
+		When ON, automaticaly mangle the nickname to ensure that you
+		can connect to the server without delay.
+	  /SET AUTO_NEW_NICK_CHAR _
+		Then character to append to your nickname in the mangling 
+		process.
+	  /SET AUTO_NEW_NICK_LENGTH 9
+		The maximum nickname length that can be mangled.
+	   /SET -AUTO_NEW_NICK_LIST
+		A list of nicknames to try to use before mangling begins.
+
+*** News 06/03/2005 -- New /TIMER flags, and execution contexts.
+	[ About timer domains ]
+	Each timer now belongs to one of three domains:
+		1) Server timers
+		2) Window timers
+		3) General timers
+	A "server timer" is created when you run /TIMER down-wind from
+	an /ON caused by a server event.  A "window timer" is created
+	when you run /TIMER at any other time.
+
+	[ Forcing a particular type of timer ]
+	You can manually force a timer to be in a particular domain
+	with a flag:
+		/TIMER -SERVER <refnum>		Create a server timer
+		/TIMER -WINDOW <refnum>		Create a window timer
+		/TIMER -GENERAL			Create a general timer.
+
+	[ When timers go off, they change the current window and server ]
+	When a timer goes off, if it is a server timer, then it will 
+	switch the default server to its server, and switch the current
+	window to that server's current window.  If the timer is a window
+	timer, it switches the current window to its window, and switches
+	the current server to that window's server.  If the timer is a 
+	general timer, it leaves the current window alone, and switches
+	the server to the current window's server.
+
+	[ When timers go off and their window or server is gone ]
+	So each server and window timer is "attached" to something, either
+	a server refnum or a window refnum.  If that thing it is attached to
+	no longer exists when the timer goes off, then the timer has to either
+	turn into a general timer (and bind to the current server) or simply
+	not execute at all.  If you use the -CANCELABLE flag, the timer is 
+	cancelable and will not execute in this case.  The default is to be
+	non-cancelable and to be treated as a general timer if the window or
+	server disappears.
+
+*** News 06/03/2005 -- The SIGUSR2 signal now supported
+	If you send epic the SIGUSR2 signal (kill -USR2 pid) from an
+	outside shell, EPIC will throw a "system exception" which makes
+	epic give up on whatever it is doing and fully unrecurse.  This
+	can be used to break out of an infinite loop.
+
+*** News 06/03/2005 -- Several builtin /set's removed, now scripted
+	The following builtin sets which no longer are used in the base
+	executable have been formally removed.  Many of them have been
+	implemented by the 'builtins' script.
+
+		AUTO_NEW_NICK		AUTO_RECONNECT	
+		AUTO_RECONNECT_DELAY	AUTO_REJOIN_CONNECT
+		CONNECT_TIMEOUT		HELP_PAGER
+		HELP_PATH		HELP_PROMPT
+		HELP_WINDOW		MAX_RECONNECTS
+		SWITCH_CHANNEL_ON_PART
+
+*** News 06/02/2005 -- Your startup script is loaded before connecting
+	Historically ircII has always loaded your startup script (~/.epicrc
+	or ~/.ircrc) after you successfully completed your first connection 
+	to a server.  This was to allow you to do irc commands in your startup
+	script, such as /JOIN and /NICK and /UMODE, etc.  This has now been
+	changed so your startup script is always loaded at startup before 
+	epic has attempted to connect to a server.
+
+	If you need or prefer the prior semantics, please wrap your startup
+	script in a wrapper like so:
+
+		on #^connect -1 * {
+			... your old ircrc goes here ...
+			@hookctl(remove -1)
+		}
+
+	What this does is tell epic that you want the body of your script 
+	(the "... your old ircrc goes here ..." part) to be loaded after
+	you connect to a server, and the @hookctl(remove -1) part makes sure
+	that the /on deletes itself after it goes off.  This exactly effects
+	the prior behavior.
+
+	The -B command line option continues to be supported, but is ignored
+	since its behavior is now the default.
+
+*** News 06/02/2005 -- Changes to how server descriptions w/o ports get handled
+	As you may or may not know, epic handles all server descriptions
+	in a unified way.  Server descriptions are the things that look like:
+		<hostname>:<port>:<password>:<nick>:<group>:<protocol>
+
+	The places you can use a server description ("hostname") are:
+		/SERVER -ADD <hostname>
+		/SERVER -DELETE <hostname>
+		/SERVER +<hostname>
+		/SERVER -<hostname>
+		/SERVER <hostname>
+		/DISCONNECT <hostname>
+		$serverctl(REFNUM <hostname>)
+		/XEVAL -S <hostname>
+		/XQUOTE -S <hostname>
+		/MSG -<hostname>/target
+		$winchan(#chan <hostname>)
+		/LOG SERVER <hostname>
+		/WINDOW SERVER <hostname>
+	(Every other place in epic requires a server refnum)
+
+	This change makes the following backwards-incompatable change:
+	When you add the first server for a given <hostname>, the port you
+	use on that server becomes the default port for that <hostname> in 
+	all other places in epic.  This is true even if you later add other 
+	servers for <hostname> using other ports!
+
+	Example 1:
+			/server -add irc.host.com:6666
+	adds a new server, we'll call server refnum 0.  So now any place you 
+	use "irc.host.com" (see above) will default to port 6666, and thus 
+	"irc.host.com" will refer to server refnum 0, rather than being an 
+	error.  Furthermore, let's say you do:
+			/server -add irc.host.com:6667
+	and this becomes server refnum 1.  The "irc.host.com" continues to 
+	refer to server 0, even though this server uses port 6667.
+
+	Example 2:
+			/server -add irc.host.com:6666
+	adds a new server, server refnum 0.  Then later on you do 
+			/server irc.host.com
+	This will connect to server refnum 0, on port 6666, and WILL NOT 
+	create a new server on port 6667 and connect on port 6667!
+
+*** News 06/02/2005 -- /QUIT with no arguments uses per-server quit messages
+	If you do /QUIT with no arguments, then any per-server quit message
+	that you have previously set with $serverctl() will be used, and will
+	not be clobbered by /SET QUIT_MESSAGE.  Thus, /SET QUIT_MESSAGE is 
+	only used as a fallback for servers that do not have their own quit 
+	message.
+
+*** News 06/02/2005 -- Preliminary support for nonblocking dns for server
+	DNS lookups for server connections are now done in a nonblocking way.  
+	This code has not been tested very much so it may be unstable.  If you
+	try to break it, you probably will.  Let me know how you did it.
+
+	Nonblocking DNS lookups require the use of a "dns helper" process,
+	which is fork()ed for every lookup.  Since you only have a limited 
+	number of processes available to you, this means you shouldn't try
+	to connect to an unreasonable number of servers concurrently.  If you
+	do manage to do that, you may receive errors.
+
+	It should be safe to use /server to cancel a very long nonblocking
+	dns request.
+
+*** News 06/02/2005 -- /WINDOW SERVER shows server list instead of error
+	Previously /window server without an argument displayed an error
+	which isn't terribly friendly.  So now it will display the server
+	list, as if you had done /server without any arguments.
+
+*** News 05/10/2005 -- Nickname rejections handled differently now
+	When the server rejects your NICK change request after you have
+	already connected and registered with the server, no further
+	action will take place because there's nothing that can be done
+	to stop a nick collision, and nothing that needs to be done if 
+	your new nick is taken.
+
+	If the server rejects your NICK during the registration process,
+	epic will no longer "fudge" your nickname by adding _'s and/or
+	rotating your nickname, and will no longer "reset" your nickname
+	by prompting you for a new one and stopping the world until you
+	give it a new one.  Rather, EPIC will throw /on new_nickname and
+	if you don't use it, will warn you that you need to use /NICK
+	to choose a new nickname (and /server +<ref> to reconnect if you
+	ping out)
+
+	This also means that /SET AUTO_NEW_NICK is gone (soon to be replaced
+	by a script, which will implement the old hardcoded behavior), and
+	handling nickname change failures is fully under control of script!
+
+*** News 05/10/2005 -- New window verb, /WINDOW KILLABLE (default on)
+	When you /WINDOW KILLABLE OFF, the following changes occur:
+	  * /WINDOW KILL will fail[1] with an error message.
+	  * /WINDOW KILL_ALL_HIDDEN will not kill the window.
+	  * /WINDOW KILL_OTHERS will not kill the window.
+	  * /WINDOW KILLSWAP will fail[1] with an error message.
+	[1] A failure of *any* /window operation causes any subsequent 
+	    operations in the same statement to be discarded, to avoid
+	    accidentally operating on the wrong window.  This behavior
+	    is not a special-case.
+
+*** News 05/07/2005 -- New $windowctl(SET <ref> TOPLINE <num> <stuff>)
+	You can now set a topline literally (without wrangling with the
+	/window command) this way.  The <stuff> is not subject to any
+	sort of double-quoting shenanigans.  BTW, don't get too excited,
+	I haven't implemented any other $windowctl(SET *) operations,
+	but this one needed to be done right away.
+
+*** News 05/02/2005 -- New $serverctl(), $serverctl(GET <ref> LOCALPORT)
+	This returns the port used by the local side of a connection to 
+	the server.  If the server is not connected, it returns 0.
+
+*** News 04/28/2005 -- *** IMPORTANT *** /ON LEAVE changed to /ON PART
+	This is a hard cut-over breaking of backwards compatability.
+	There is no way to "go back", but there are means you can take 
+	to compensate:
+		@type = (info(i) < 1224) ? [LEAVE] : [PART]
+		on $type * { ..... }
+	This is the last vestige of the senseless substitution of the
+	non-irc word "LEAVE" for the irc word "PART".  Good riddens to it
+	and may it never return again.
+
+*** News 04/25/2005 -- /SET -CREATE removed (use /ADDSET)
+	The /set -create command which was first marked for deletion 6 months
+	ago has now been removed.  You can use the /addset alias provided by
+	the "builtins" script to get the same functionality:
+			/ADDSET <name> <type> {
+				... callback ...
+			}
+	Don't forget to /SET <name> <value> after you do an /addset to give 
+	it an initial value!
+
+*** News 04/25/2005 -- *** IMPORTANT *** NEW MATH PARSER NOW DEFAULT
+	The new math parser, which first appeared in 1998 in EPIC4pre2.001,
+	and has been stable since early 1999, has now finally been made the
+	default math parser.  IT IS POSSIBLE THAT VERY BADLY WRITTEN SCRIPTS
+	OR SCRIPTS THAT DEPEND ON BUGS IN THE OLD MATH PARSER MAY BREAK AS A
+	RESULT OF THIS CHANGE!  
+
+	If you need to continue using the old math parser, you can turn it 
+	back on with:
+			/xdebug old_math
+	The old math parser won't be going away any time soon, but it will
+	never again be the default math parser (barring rioting crowds with
+	effigies and pitchforks at my door...)
+
+	The operation /xdebug new_math is now a no-op, and doing it will have
+	no effect.  YOU CANNOT TURN OFF NEW MATH BY DOING /XDEBUG -NEW_MATH 
+	ANY MORE.  YOU MUST DO THE ABOVE /xdebug old_math.
+
+EPIC5-0.0.5
+
+*** News 04/18/2005 -- New $windowctl() stuff
+	$windowctl(GET <win> DISPLAY_SIZE)	to replace $winsize()
+	$windowctl(GET <win> SCREEN)		to replace $winscreen()
+	$windowctl(GET <win> LINE <num>)	to replace $winline()
+
+*** News 04/18/2005 -- /SET -OLD_SERVER_LASTLOG_LEVEL turns that feature off.
+	If you /set -old_server_lastlog_level, then the window's level is not
+	changed when it is connected to an existing server.  This is probably
+	a bad idea as it can lead to level duplication, the effects of which
+	are poorly-defined
+
+*** News 04/18/2005 -- /SET -NEW_SERVER_LASTLOG_LEVEL turns that feature off.
+	If you /set -new_server_lastlog_level, then the window's level is not
+	changed when it is connected to a new server.  This allows you to 
+	completely opt-out of this feature. 
+	
+*** News 04/18/2005 -- New $serverctl() stuff
+	So $serverctl(LAST_SERVER) and $serverctl(FROM_SERVER) have been
+	added and are used by the builtins script
+
+*** News 04/18/2005 -- Translations now fixed
+	I apologize to you RUSSIAN_WIN translation users for it being 
+	broken.  This release fixes it up, and the fix was back-ported 
+	to EPIC4.
+
+*** News 04/18/2005 -- /SET STATUS_* subformats no longer size limited
+	Previously, the effective size that /SET STATUS_* values you could
+	expand to (especially if you have /SET STATUS_DOES_EXPANDOS ON)
+	as limited on a per-expando basis.  This was inconveniently small 
+	for some people who were using lots of characters doing color 
+	markup, etc.  So all of those limits have been removed.
+
+*** News 04/18/2005 -- "ERROR --" changed to "INFO --", not used for exec, dcc
+	The "ERROR --" io messages were alarming people so they were changed
+	to "INFO --" in this release.  Further, EXEC and DCC connections do 
+	not output these diagnostic messages.
+
+*** News 04/18/2005 -- /XECHO -v outputs to current window if it's visible
+	/XECHO -v has traditionally output to the first visible window (the
+	first window on the first screen), but it was agreed that it is more
+	reasonable to output to the current window if that is visible.
+
+*** News 04/18/2005 -- Ways to keep dcc xfers from swamping your cpu...
+	There are three new ways to keep high speed dcc xfers from swamping
+	your cpu with unnecessary status bar redraws:
+
+	$dccctl(UPDATES_STATUS [0|1])
+	   Turns off (on) whether or not the %D status bar value should be
+	   updated whenever any activity occurs.  If you turn this off, then
+	   %D is frozen until you turn it back on.  The argument is optional,
+	   and if you don't supply it, it returns the current value.  If you
+	   do supply it, the old value is returned.
+
+	$dccctl([SET|GET] <refnum> UPDATES_STATUS [0|1])
+	   Turns off (on) whether or not a particular dcc should update the 
+	   %D status bar expando when it has activity.
+
+	/ON ^DCC_ACTIVITY * #
+	   Hooking (and suppressing) /ON DCC_ACTIVITY will prevent the status
+	   bar from being redrawn as a result of this activity.  This won't
+	   stop %D from being updated, but it does stop the status bar from
+	   thrasing uncontrollably.
+ 
+*** News 04/18/2005 -- The "builtins" script (Blackjac)
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+	As noted below in "notes for forward compatability", there is a new
+	script called "builtins" which is loaded by "global" which is not 
+	loaded by default if you have a startup script.  This means it is
+	really important that you add either /LOAD global or /LOAD builtins 
+	to your ~/.ircrc (or ~/.epicrc) file, or you will notice that the 
+	following features have "disappeared":
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+
+	Commands:
+		BYE, DATE, EXIT, HOST, IRCHOST, IRCNAME, LEAVE, REALNAME,
+		SAVE, SIGNOFF, WHOWAS
+	Functions:
+		LASTSERVER, SERVERGROUP, SERVERNAME, SERVERNICK, SERVERNUM,
+		SERVEROURNAME, SERVERTYPE, WINBOUND, WINCURSORLINE, WINLEVEL,
+		WINLINE, WINNAM, WINNICKLIST, WINNUM, WINQUERY, WINREFS,
+		WINSCREEN, WINSCROLLBACKSIZE, WINSERV, WINSIZE, WINSTATSIZE,
+		WINVISIBLE
+	Sets:
+		AUTO_REJOIN, AUTO_REJOIN_DELAY, AUTO_UNMARK_AWAY, AUTO_WHOWAS,
+		BEEP_ON_MSG, COMMAND_MODE, DCC_TIMEOUT, FULL_STATUS_LINE,
+		NUM_OF_WHOWAS, REVERSE_STATUS_LINE, SHOW_END_OF_MSGS,
+		SHOW_WHO_HOPCOUNT, VERBOSE_CTCP
+
+	Furthermore, the following new commands have been added:
+		ADDSET, DELSET
+	which allow you to add a scripted built in /set variable (which
+	is used extensively by this script).
+
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+	THESE FEATURES NO LONGER EXIST AS HARDCODED EPIC5 FEATURES AND ARE 
+	SOLELY IMPLEMENTED AS SCRIPT FEATURES VIA "builtins"!  IT IS NOT A
+	BUG THAT THEY ARE "MISSING".  The way to fix this is to /load global 
+	or /load builtins in your startup script.
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+
+*** News 04/18/2005 -- New script, "loadformats" (fudd)
+	This script presents the usable interface to implied on hooks.
+	See the explanation for implied on hooks below.
+
+	/ADDFORMAT <type> [value]
+	   This binds the implied on hook for /ON <type> to a new builtin set
+	   that is called /SET FORMAT_<type>.  Remember that implied on hooks 
+	   are only used if you don't hook serial number zero!
+
+	/DELFORMAT <type>
+	   This removes the implied on hook for /ON <type> and removes the
+	   builtin set /SET FORMAT_<type>.
+
+	/DUMPFORMATS
+	   This does a /DELFORMAT for all possible values of <type>.  You
+	   will not have any implied on hooks after this is done.
+
+	/LOADFORMAT <filename>
+	   Given a file that contains lines that look like this:
+		<TYPE> <VALUE>
+	   Run /ADDFORMAT <TYPE> <VALUE> for each line.
+
+	/SAVEFORMATS <filename>
+	  Save all implied hooks to a file so it can be loaded later with
+	  /LOADFORMAT.
+
+*** News 03/29/2005 -- Just a note about mangling of /on patterns...
+	In EPIC5, your /ON patterns are no longer "filled out" to the expected
+	number of words in $*.  An example:
+		EPIC4:	/ON PUBLIC "hop" 	becomes	
+			/ON PUBLIC "hop % *"
+		EPIC5:	/ON PUBLIC "hop"	stays as it is.
+	Note that the EPIC5 version *WILL* *NOT* *EVER* *MATCH* any real
+	/on public's because it doesn't match any valid $* values.
+
+	Why was this change made?  Because /on is a general purpose function,
+	there were problems where some /on's sometimes did not always have
+	the minimum number of words in $* that they were supposed to, and it
+	would lead to spaces in odd places, preventing matches.
+
+	It was decided that we would leave "filling it out" as a task that 
+	the scripter would need to be responsible for.  In the above case,
+	you can simple solve the problem with:
+
+		EPIC5:	/ON PUBLIC "hop *"
+
+*** News 03/20/2005 -- History recall moved into a script (Blackjac)
+		*** IMPORTANT *** IMPORTANT *** IMPORTANT ***
+	History recall (BACKWARD_HISTORY and FORWARD_HISTORY) are now
+	scripted features, implemented by 
+			/load history
+	instead of hardcoded into the client.  If you want to be able to
+	use cursor up and down to recall input history you need to add
+			/load history
+	to your ~/.epicrc or ~/.ircrc file.  Remember, if you do not put 
+			/load history
+	in your startup file, then you will find that input history recall
+	will no longer be available.  So just put 
+			/load history
+	in your startup file, and everything will be cool!
+
+EPIC5-0.0.4
+
+*** News 03/14/2005 -- New option to $line(), $line(<num> -TIME)
+	You can now provide the "-TIME" option to the $line() function
+	which returns the timestamp when that line was added to the lastlog.
+	You can use -TIME together with -LEVEL, and if you do, the level is
+	always the second-to-last word, and the timestamp is the last word.
+	You can pass the timestamp to $strftime() for conversion.
+
+	Example:
+		$line(<num> -LEVEL -TIME)
+	might return
+		"Some line goes here CRAP 1110000000"
+
+*** News 03/11/2005 -- Implied ON hooks ($hookctl(SET LIST <type> IMPLIED <str>)
+	A lot of people create a large number of on hooks that look like:
+		ON ^TYPE * { echo $cparse($format[type]) }
+	for each TYPE.  Since all of these ONs are otherwise identical,
+	they clutter up the /on list, and managing all of the variables
+	is a hassle.  So there is now a feature to allow you to set an
+	"implied" on hook that does nothing more than the above.
+
+	You can now set a format with 
+		$hookctl(SET LIST <type> IMPLIED <string>)
+	and if you don't have an /ON <type> *, then epic will do
+		echo $cparse(<string>)
+	and suppress the normal output.
+
+	You may surround <string> with {}s if you wish, to avoid quoting
+	hell.  Match sure to keep your {}s matched up if you do so.
+	See the "loadformats" info above for how to practically use this.
+
+	You can compile out this feature if it offends you by #undef'ing
+	IMPLIED_ON_HOOKS in config.h
+
+*** News 03/03/2005 -- New status bar expandos, %{2}+ and %{3}+
+	These two status exapndos act like %+ and %{1}+ respectively,
+	except that %{2}+ and %{3}+ will contain only the mode string,
+	and not any subsequent arguments.  Specifically, %{2}+ and %{3}+
+	don't include the channel's key or user limit (if any).
+
+*** News 03/03/2005 -- New configure options, --with-multiplex
+	You can choose which multiplex function you want epic to use with
+	a new configure option, "--with-multiplex".  These are the values:
+			--with-multiplex=select
+			--with-multiplex=poll
+			--with-multiplex=freebsd-kqueue
+			--with-multiplex=pthread
+	If you don't choose a multiplexer, or you choose one that isn't
+	supported by your system, it will use select instead.  Note that
+	the kqueue() support is only tested on freebsd-4 and freebsd-5.
+
+	If you use --with-multiplex=pthread and --with-ssl together,
+	and your openssl version was not compiled to be thread-safe, then
+	you won't be able to use ssl with pthreads (it would crash if 
+	you tried).
+
+*** News 03/03/2005 -- New $hookctl() operation, "GET HOOK <ref> STRING"
+	The $hookctl(GET HOOK <ref> STRING) operation returns a string that
+	is suitable for passing to /eval {....} to recreate the hook.  This
+	will be used by scripts that want to "/save" an /on.  If you write
+	these values to a file, you will be able to /load it later.
+
+*** News 03/03/2005 -- Changes to how error messages are displayed
+	Traditionally, ircII clients have tried to emit one error message
+	for each error event, putting all of the information into one line.
+	This has its advantages and disadvantages.  The main disadvantage is
+	that if information is difficult to pass around, it is usually 
+	discarded, and the user may be given a vague or useless error message.
+
+	So now error reporting has been revamped in epic.  Whenever an error
+	is actually generated (or first noticed), the information that is 
+	available will be displayed to the screen.  Then a failure condition
+	will be sent up to the higher levels of epic, and each higher level	
+	will give you whatever information it has available.  Thus, while an
+	error message may take up 3 or 4 lines of display, each line has a 
+	little piece of information the others don't, and taken together, you
+	get the full picture of what happened.
+
+	Each error line looks like this:
+			*** ERROR -- <message>
+	where "***" is the value of /SET BANNER.  These errors are yells, 
+	so if you want to hide them, use /ON YELL.
+
+
+*** News 02/28/2005 -- !!! IMPORTANT !!! "global" SCRIPT NO LONGER AUTO-LOADED
+		This is a backwards incompatable change!
+
+	A lot of people who run script packs find that the "global" script 
+	which is automatically and unconditionally loaded by epic at startup
+	is a nuisance which must be eliminated.  After much deliberation, it
+	seems agreeable to most parties that *by default*, the "global" script
+	will only be loaded for those people who do not have their own startup
+	script (~/.ircrc or ~/.epicrc)
+
+	If you *have* your own startup script, and you *like* having the global
+	script loaded at startup then you need to make a one-time change to 
+	the top of your startup script:
+			load global
+	which will give you old backwards-comaptable behavior.  If you do not
+	make this change, then some /on's, /alias's, and other things that
+	you may have had access to will disappear until you make this change.
+
+	For those of you who do not have your own startup script, you will not
+	notice any changes.
+
+	For those of you who have wished the 'global' script to die a horrible
+	fiery death, you have got your wish.
+
+*** News 02/28/2005 -- New built in command, /SUBPACKAGE
+	The /SUBPACKAGE command is probably temporary, so don't get too
+	attached to it yet.  This command should be used in scripts that
+	are loaded from other scripts, who have used the /PACKAGE command,
+	to set up a "nested" package name.  For example:
+
+	File "one":
+	  /PACKAGE one
+	  /LOAD two
+	  /ALIAS frobnitz {echo hello!}
+
+	File "two"
+	  /SUBPACKAGE two
+	  /ALIAS oofda {echo hi!}
+
+	In this example, "frobnitz" will be in the package "one" and 
+	"oofda" will be in the package "one::two".
+
+*** News 02/28/2005 -- The invite command changed here
+	This was never documented for some reason until June 2007.
+
+	You can now invite people more flexibly:
+		INVITE #chan nick1 nick2 nick3
+	or	INVITE nick #chan1 #chan2 #chan3
+	or	INVITE nick
+
+	and it will just figure out the right thing to do.
+
+*** News 02/04/2005 -- Clarification on /EXEC process output.
+	Until this time, partial lines of output from /EXEC processes
+	were silently ignored, could not be redirected, and callbacks
+	and /on's were not executed in the correct window.  Now the
+	partial-line and full-line handler for /exec processes has been
+	unified, and they both work like this:
+
+	1) Set up the correct server and window
+	   Note: Yes, I am aware this may need further refactoring.
+	2) Increment the line output
+	   Note: Partial lines now count as a line of output for the
+		 -LIMIT counter.
+	3) If you used -MSG or -NOTICE or -OUT, send the the text to 
+	   the target.
+	   Note: This usually hooks an /ON SEND_* hook (see below)
+	4) If you used -LINE or -LINEPART or -ERROR or -ERRORPART, call
+	   the appropriate callback
+	-or-
+	4a) If you didn't use them, hook the appropriate /ON.
+	4b) If you didn't hook the /ON, and you aren't redirecting the
+	    output to another target, output it to the screen.
+
+	Note that (4b) and (3) work in complement to each other.  If you do
+		/EXEC -MSG nick w
+	then the output will be handled through /ON SEND_MSG (either from
+	your own on, or from the default output).  If you do not, then the 
+	output will be handled by /ON EXEC. 
+
+*** News 02/02/2005 -- New $serverctl() attribute, "PROTOCOL"
+	$serverctl(GET <refnum> PROTOCOL) now either returns "IRC" or 
+	"IRC-SSL" depending on whether you're doing a regular irc, or an 
+	ssl-enabled irc connection, eh!
+
+*** News 02/02/2005 -- Automatic creation of ALTNAME for servers, %S changes.
+	When you create a new server (with /server or /server -add or 
+	/window server), the server will automatically be given its first
+	"altname" (see "Alternate server names" below).  
+
+	Each server's first altname is constructed as:
+	* If the server name is an IP address, the whole name, 
+        * Otherwise, the first segment that does not start with "irc".
+
+	This is the value you have historically seen at %S on your status
+	bar.  This value is now automatically created as your server's
+	first altname, and you can change it!
+
+		@serverctl(SET <refnum> ALTNAMES <whatever>)
+
+	%S, and %{1}S have been changed to use the "first altname" for 
+	the server, whatever you choose that to be.
+
+	Please note:  If you clear your server's altname list, then %S and
+	%{1}S will have no choice but to show the server's full name.  This
+	is intentional and not a bug.  %{2}S will continue to show your
+	server's full name all the time.
+
+*** News 01/27/2005 -- New status expando, %{3}S
+	%{3}S is just like %{2}S, but instead it shows the server's group
+	instead of the server's name.
+
+*** News 01/26/2005 -- Notes for forward compatability
+			*** /SET -CREATE DEPRECATED ***
+	EPIC5-0.0.3 includes /SET -CREATE, but this is deprecated, and will
+	be removed by EPIC5-0.0.5.  It is suggested that you start using
+	$symbolctl() [see below] in scripts that support EPIC5-0.0.3 and up.
+
+			*** THINGS ARE GOING TO BE CHANGING ***
+	Starting before EPIC5-0.0.5, there will be a signficant shift to try
+	to script as many /set's and builtin commands as possible.  This
+	stuff is all intended to be put into the 'builtins' script which is
+	loaded from 'global' (ie, it's automatically loaded).  Some of you do
+	not load 'global' and so by EPIC5-0.0.5, if you do not load builtins,
+	you will find a lot of features gone.  I won't consider this a "bug",
+	but the natural progression of EPIC5's development...
+
+	Builtin commands that will be moved to 'builtins'
+		/BYE		/DATE		/EXIT
+		/HOST		/IRCHOST	/IRCNAME
+		/LEAVE		/REALNAME
+		/SIGNOFF
+
+	Builtin functions that will be moved to 'builtins'
+		$serverhost()
+
+	Builtin SETs that will be moved to 'builtins'
+		AUTO_REJOIN	AUTO_REJOIN_DELAY	AUTO_UNMARK_AWAY
+		AUTO_WHOWAS	NUM_OF_WHOWAS		BEEP_ON_MSG
+		COMMAND_MODE	FULL_STATUS_LINE	REVERSE_STATUS_LINE
+		SHOW_CHANNEL_NAMES		SHOW_END_OF_MSGS
+		SHOW_WHO_HOPCOUNT		VERBOSE_CTCP
+
+EPIC5-0.0.3
+
+*** News 01/25/2005 -- New built in function, $symbolctl()
+	Here's the plan.  An all-encompasing low-level symbol manipulation 
+	thingee.  This interface is not intended to replace $aliasctl(), but 
+	rather to supplement it.  No, $aliasctl() will never be removed.  
+	Yes, much of its functionality (but not all) is duplicated here.
+
+	$symbolctl(TYPES)
+	     Return all of the types supported in this version of EPIC:
+	     ALIAS		ASSIGN			BUILTIN_COMMAND
+	     BUILTIN_FUNCTION	BUILTIN_EXPANDO		BUILTIN_VARIABLE
+
+	$symbolctl(PMATCH <type> <pattern>)
+	     Return all symbols of type <type> that match <pattern>.  You can 
+	     use the special value "*" for <type> to get symbols of all types.
+
+	$symbolctl(CREATE <symbol>)
+	     Ensure that <symbol> exists in the global symbol table.  When 
+	     symbols are first created, they do not contain any actual values, 
+	     but rather act as a placeholder in case you want to set any.  
+	     You must ensure that a symbol exists before you try to change 
+	     its values.  CREATEing a symbol that already exists is harmless; 
+	     feel free to do it.
+
+	$symbolctl(DELETE <symbol>)
+	$symbolctl(DELETE <symbol> <type>)
+	     Delete all of the values of a particular symbol, or just one type.
+	     Example: $symbolctl(DELETE booya ALIAS) is the same as 
+				/alias -booya
+	     Warning: You can delete built in variables/functions/etc with this!
+		      There's no way to restore them back if you do!  Caution!
+
+	$symbolctl(CHECK <symbol>)
+	     Inspects <symbol> to see if it has any values left.  If there are 
+	     no values left for <symbol>, it is removed from the global symbol 
+	     table.  You must then CREATE it again if you want to use it later.
+
+			*** IMPORTANT NOTE ABOUT "LEVELS" ****
+	In order to "get" or "set" a symbol's values, the symbol needs to exist.
+	If you try to "get" or "set" a symbol that doesn't exist, $symbolctl() 
+	will return the empty string to tell you that it failed.  You need to 
+	use the CREATE operation above to bootstrap a new symbol before using 
+	it.
+
+	Now, /STACK PUSH and /STACK POP work by manipulating "levels" in the 
+	symbol table.  By rule, <level> == 1 always refers to the "current" 
+	value of a symbol.  If you do /STACK PUSH, then the value you pushed 
+	will be copied to <level> == 2.  If you /STACK PUSH something else, 
+	that values moves to <level> == 3.  So what you can do is use 
+	"GET x LEVELS" to find out how many levels a symbol has, and then use 
+	"GET x <num>" to find out if there is a symbol type that interest you 
+	at that level.  IN THIS WAY you can directly manipulate the /stack push
+	values without having to actually use the /stack command.
+
+	In general, <level> is always 1 for everything you want to do, unless 
+	you are intentionally monkeying around with your /stack values.
+
+		 *** NOW BACK TO YOUR REGULARLY SCHEDULED HELP ***
+	$symbolctl(GET <symbol> LEVELS)
+	     Return the number of levels of <symbol> that are /STACKed.  This
+	     value is always 1 unless you have /STACK PUSHed something.
+	$symbolctl(GET <symbol> <level>)
+	     Return all of the <type>s that are defined for <symbol> at <level>.
+	     If <level> is 1, it gets the current value(s).  If <level> is > 1,
+	     it starts looking at the /STACK PUSHed values.
+
+	$symbolctl(GET <symbol> <level> ALIAS VALUE)
+	$symbolctl(GET <symbol> <level> ALIAS STUB)
+	$symbolctl(GET <symbol> <level> ALIAS PACKAGE)
+	$symbolctl(GET <symbol> <level> ALIAS ARGLIST)
+	     Retrieve one of the values for one of your aliases
+
+	$symbolctl(GET <symbol> <level> ASSIGN VALUE)
+	$symbolctl(GET <symbol> <level> ASSIGN STUB)
+	$symbolctl(GET <symbol> <level> ASSIGN PACKAGE)
+	     Retrieve one of the values for one of your assigns
+
+	$symbolctl(GET <symbol> <level> BUILTIN_COMMAND)
+	$symbolctl(GET <symbol> <level> BUILTIN_FUNCTION)
+	$symbolctl(GET <symbol> <level> BUILTIN_EXPANDO)
+	     Returns 0 if these types are not in use (ie, if there is not a 
+	     built in command), and returns non-zero if there is.  If you're 
+	     smart, you won't try to do anything with the non-zero value.
+
+	$symbolctl(GET <symbol> <level> BUILTIN_VARIABLE TYPE)
+	$symbolctl(GET <symbol> <level> BUILTIN_VARIABLE DATA)
+	$symbolctl(GET <symbol> <level> BUILTIN_VARIABLE BUILTIN)
+	$symbolctl(GET <symbol> <level> BUILTIN_VARIABLE SCRIPT)
+	$symbolctl(GET <symbol> <level> BUILTIN_VARIABLE FLAGS)
+	     Retrieve information about a /SET.  
+	     The "TYPE" is one of "STR", "INT", "BOOL", or "CHAR"
+	     Generally, either "BUILTIN" or "SCRIPT" is set, but not both.
+
+	$symbolctl(SET <symbol> <level> ALIAS VALUE <string>)
+	$symbolctl(SET <symbol> <level> ALIAS STUB <string>)
+	$symbolctl(SET <symbol> <level> ALIAS PACKAGE <string>)
+	$symbolctl(SET <symbol> <level> ALIAS ARGLIST <string>)
+	     Change one of the values for one of your aliases.  If you omit
+	     the <string>, it will clear the value.
+
+	$symbolctl(SET <symbol> <level> ASSIGN VALUE <string>)
+	$symbolctl(SET <symbol> <level> ASSIGN STUB <string>)
+	$symbolctl(SET <symbol> <level> ASSIGN PACKAGE <string>)
+	     Change one of the values for one of your assigns.  If you omit
+	     the <string>, it will clear the value.
+
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE)
+	     Create a new user-created /SET with default values (type == BOOL,
+	     data == OFF, script is <empty>.)
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE TYPE <set-type>)
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE DATA <string>)
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE BUILTIN)
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE SCRIPT <code>)
+	$symbolctl(SET <symbol> <level> BUILTIN_VARIABLE FLAGS)
+	     Change one of the values for one of your /set's.  You cannot 
+	     change values for system /set's, sorry.  Setting the TYPE value 
+	     changes the DATA value to a default (<empty> for strings, 0 for 
+	     everything else) so always set DATA after setting TYPE. 
+	     Yes, you can change the TYPE of a /set after you create it!
+	     It's probably a bad idea to set FLAGS for the present.
+
+*** News 01/13/2005 -- New $logctl() feature, $logctl(CURRENT)
+	$logctl(CURRENT) can return one of these values:
+
+		-1	Nothing is being logged right now
+		 0	Something is being logged to the global log, or to
+			a window log
+		>0	Something is being logged to the given log refnum.
+			You can use this log refnum with $logctl().
+
+*** News 01/11/2005 -- New /ON, /ON NEW_NICKNAME
+	This allows you to create your own nickname mangler whenever EPIC
+	is resetting your nickname to register to a server.  Remember that
+	your nickname is (usually) not reset if /SET AUTO_NEW_NICK is ON, so
+	you need to /SET that to OFF before this can be used.
+
+	Each time that your nickname is "reset" (see next entry), the
+	/ON NEW_NICKNAME hook will be thrown.
+		$0 - Server whose nickname is being reset
+		$1 - Your current nickname ("*" if you're unregistered)
+		$2 - The nickname you tried to change to ("*" if none)
+	You should somehow use this information to generate a new nickname
+	and then do a /NICK <newnick> operation.  You should avoid trying
+	to do anything else, particularly asynchronous things like /wait,
+	because the status of the connection is unknown when this /ON is
+	thrown (ie, you may not be connected).  Just stick to /NICK.
+
+	If you do not hook the /ON, or you do not do a /NICK within the
+	/ON, then epic will prompt you for a new nickname in the way it
+	has always done (so this change is opt-in and backwards compatable).
+
+*** News 01/11/2005 -- Changes to how nick change errors are handled
+	Until this point, EPIC sometimes (rather aggressively) forced the
+	user to provide a new nickname, when it wasn't necessary.  This 
+	was called "resetting" the nickname.  The variable /SET AUTO_NEW_NICK
+	existed to try to avoid needlessly annoying the user with requests
+	for nicknames when a new one could be whipped up.
+
+	Well, anyways, this has all been refactored.  If you are already 
+	connected to the server, epic will no longer "reset" your nickname 
+	when it recieves one of the many numerics that indicate that your 
+	nickname is not acceptable.  "Resets" will only occur when you are
+	unregistered (when you do not have a nickname yet).
+
+	As with before, if you have /SET AUTO_NEW_NICK ON, then your nickname
+	will never be "reset" unless the nickname mangler is unable to come
+	up with an alternate nickname for you.
+
+*** News 01/11/2005 -- Change to how /set new_server_lastlog_level works
+	In EPIC4, when you do /window server, the window that is changing
+	server has its window level changed to /SET NEW_SERVER_LASTLOG_LEVEL.
+	This can result in two windows with level ALL if the new server can't
+	be connected to.  Starting with now, this change will not occur until
+	after we have registered with the server (when we get the 001 numeric).
+
+	This means if you do /window new server foo.com, that the new window
+	will be level NONE until the connection to "foo.com" is successful.
+	Furthermore, only the "current window" for "foo.com" will be changed.
+	If you move multiple windows to a new server at the same time, only
+	one of them is the "current window" and only that window ever has
+	its window levels changed.  The others stay at "NONE".
+
+*** News 01/06/2005 -- Can now set ipv4/ipv6 vhosts separately
+	The /hostname (/irchost) and -H command line option may now take 
+	two hostnames, separated by a slash.  Example:
+
+	/hostname foo.bar.com		Use "foo.bar.com" as the vhost for 
+					both ipv4 and ipv6
+	/hostname foo.bar.com/faz.bar.com
+					Use "foo.bar.com" as the vhost for
+					ipv4, and "faz.bar.com" as the vhost
+					for ipv6.
+	/hostname foo.bar.com/		Use "foo.bar.com" as the vhost for 
+					ipv4 only -- don't change the ipv6
+					vhost
+	/hostname /foo.bar.com		Use "foo.bar.com" as the vhost for
+					ipv6 only -- don't change the ipv4
+					vhost
+
+*** News 01/06/2005 -- New serverctl attr: $serverctl(GET <num> ADDRFAMILY)
+	The $serverctl(GET <num> ADDRFAMILY) value returns either
+		ipv4		if the server connection is ipv4
+		ipv6		if the server connection is ipv6
+		unix		if the server connection is a filename
+
+*** News 01/06/2005 -- Old (undocumented) function: $servports()
+	There has been a function $servports() around for a very long time,
+	but it's never been documented.  It returns two values, the first
+	one is the remote port (what you connected to the server with), and
+	the second one is the local port (which is not always useful).
+
+*** News 01/01/2005 -- Argument lists for hooks, and $fix_arglist() (howl)
+	$fix_arglist(arglist) returns how argument list arglist will be parsed
+	by epic.
+
+	It is now possible to supply argument lists to hooks, just like
+	one would do for aliases:
+	/on hook "*" (a,b,...) {echo $a $b $*;};
+
+	They are optional, of course.
+
+	/ON lists the argument list as part of its output, and does also include
+	the hook's userial (unique serial)
+
+*** News 01/01/2005 -- New function: $hookctl() (howl)
+    This function presents a low-level interface to the /on system
+
+    === ADDING AND REMOVING HOOKS ===
+    $hookctl(ADD [#][!][']<noise><TYPE> [<serial>] <pattern> 
+							[(<arg list>)] <code>)
+	Compare this to:
+	   /ON [#]<noise><TYPE> [<serial>] [!]<pattern> [(<arglist>)] <code>
+
+	Where [#] is used to indicate a <serial> number should be used,
+	where [!] is used to indicate that the ON is a "negative" ON
+	where ['] is used to indicate that the ON is a "flexible" ON
+	where [<noise>] is one of "?", "^", "-", "+", "%", or nothing.
+	where [<TYPE>] is one of the ON types (ACTION, MSG, PUBLIC, etc)
+	where [<serial>] is the ON's serial number (NOT the refnum!)
+	where [<pattern>] is the ON's wildcard pattern (the "nick") that is
+		matched against $* each time the ON is checked
+	where [<code>] is the ircII code that is executed each time the ON
+		is run.
+
+	ADD registers a new /ON and returns the /ON's new <refnum>.  This
+	<refnum> can be used in other $hookctl() operations.
+
+	Example: $hookctl(ADD ^MSG * (nick, msg) {echo msg from $nick: $msg})
+	   is the same as
+		/ON ^MSG * (nick, msg) {echo msg from $nick: $msg}
+	   except it returns the new /on's <refnum> (of course).
+
+    $hookctl(REMOVE <refnum>) 
+	Delete the given /ON.  If <refnum> is -1, it removes the currently
+	executing /ON.
+
+    === WORKING WITH THE ONs YOU'VE CREATED ===
+    -- In these GET HOOK operations, the values in <> are the values that
+       were originally provided to the ADD operation (or the /ON command)
+       <Refnum> is always allowed to be -1, and refers to the currently
+       executing /ON.
+
+    $hookctl(GET HOOK <refnum> ARGUMENT_LIST)
+	Return an /ON's <arglist> if it has one.
+
+    $hookctl(GET HOOK <refnum> FLEXIBLE)
+	Return 1 if /ON was created with ['] (flexible -- <pattern> is 
+		expanded each time the /ON is checked)
+	Return 0 if not.
+
+    $hookctl(GET HOOK <refnum> NICK)
+	Return an /ON's <pattern>.
+
+    $hookctl(GET HOOK <refnum> NOT)
+	Return 1 if /ON was created with [!] (negative on)
+	Return 0 if not.
+
+    $hookctl(GET HOOK <refnum> NOISE)
+    $hookctl(GET HOOK <refnum> NOISY)
+	Return an /ON's <noise>.
+
+    $hookctl(GET HOOK <refnum> PACKAGE)
+	Return an /ON's </package> value.
+
+    $hookctl(GET HOOK <refnum> SERIAL)
+	Return an /ON's <serial>.  If one wasn't given, 0 is the default.
+
+    $hookctl(GET HOOK <refnum> SKIP)
+	Return 1 if the /ON is being "skipped" 
+		("skipped" == ignored -- treated as if it had been deleted)
+
+    $hookctl(GET HOOK <refnum> STUFF)
+	Return an /ON's <stuff>
+		("stuff" == the ircII code when the /ON goes off)
+
+    $hookctl(GET HOOK <refnum> TYPE)
+	Return an /ON's <TYPE>
+
+    -- In these SET HOOK operations, if you attempt to change a value so it
+       clobbers (duplicates) an existing ON's value, then the operation will
+       either fail, or it will replace the existing ON.  I'll have to ask
+       howl how he handled this.
+
+    $hookctl(SET HOOK <refnum> ARGUMENT_LIST)
+	Clear an /ON's argument list (so it no longer takes one)
+
+    $hookctl(SET HOOK <refnum> ARGUMENT_LIST <list>)
+	Replace an /ON's argument list
+
+    $hookctl(SET HOOK <refnum> FLEXIBLE [0|1])
+	Clear (or set) an /ON's flexible-pattern attribute
+
+    $hookctl(SET HOOK <refnum> NICK <pattern>)
+	Change an /ON's <pattern>.  Warning -- You can only have one /ON
+	per serial number with the exact same <pattern>.
+
+    $hookctl(SET HOOK <refnum> NOT [0|1])
+	Clear (or set) an /ON's "negative on" attribute
+
+    $hookctl(SET HOOK <refnum> NOISE <noiseref|noise>)
+    $hookctl(SET HOOK <refnum> NOISY <noiseref|noise>)
+	Change an /ON's <noise> value using either a noise-refnum or
+	the noise's name itsself
+	Example: $hookctl(SET HOOK 147 NOISE SILENT)
+	     and $hookctl(SET HOOK 147 NOISE 1) do the same thing.
+	
+    $hookctl(SET HOOK <refnum> PACKAGE <string>)
+	Change an /ON's </package> value.  This is used by /unload.
+
+    $hookctl(SET HOOK <refnum> SERIAL <number>)
+	Change an /ON's <serial> value.  Warning -- You can only have one 
+	/ON per serial number with the exact same <pattern>.
+
+    $hookctl(SET HOOK <refnum> SKIP [0|1])
+	Clear (or set) an /ON's skippable attribute.  When an /ON is being
+	"skipped", it cannot ever be executed; it is treated as if it were
+	deleted. 
+
+    $hookctl(SET HOOK <refnum> STUFF <ircII code>)
+	Change the ircII commands executed when an /ON goes off.
+
+
+    === GETTING INFORMATION ABOUT ON TYPES ===
+    $hookctl(LIST)
+    $hookctl(LIST LISTS)
+	Return all of the valid <TYPE>s
+
+    $hookctl(LIST LISTS <pattern>)
+	Return all of the valie <TYPE>s that match the <pattern>
+	Ex: $hookctl(LIST LISTS g*) returns "GENERAL_NOTICE GENERAL_PRIVMSG"
+
+    $hookctl(LIST POPULATED_LISTS)
+	Return all of the valid <TYPE>s that have an /ON registered for them.
+
+    $hookctl(LIST POPULATED_LISTS <pattern>)
+	Return all of the valid <TYPE>s that match the <pattern> that have an
+	/ON registered for them.
+
+    $hookctl(LIST HOOKS)
+	Return all of the registered <refnum>s
+
+    $hookctl(LIST HOOKS <pattern>)
+	Return all registered <refnum>s for <TYPE>s that match <pattern>.
+	Ex: $hookctl(LIST HOOKS MSG) returns the refnums of your /ON MSG's
+
+    $hookctl(FIRST_NAMED_HOOK)
+	Return the number such that
+		$word($hookctl(FIRST_NAMED_HOOK) $hookctl(LIST))
+	returns the first non-numeric /ON type.
+
+    $hookctl(NUMBER_OF_LISTS)   
+    $hookctl(COUNT)
+    $hookctl(COUNT LISTS)
+	Return the number of items in $hookctl(LIST)
+
+    $hookctl(COUNT LISTS <pattern>)
+	Return the number of items in $hookctl(LIST LISTS <pattern>)
+
+    $hookctl(COUNT POPULATED_LISTS)
+	Return the number of items in $hookctl(LIST POPULATED_LISTS)
+
+    $hookctl(COUNT POPULATED_LISTS <pattern>)
+	Return the number of items in $hookctl(LIST POPULATED_LISTS <pattern>)
+
+    $hookctl(COUNT HOOKS)
+	Return the number of items in $hookctl(LIST HOOKS)
+
+    $hookctl(COUNT HOOKS <pattern>)
+	Return the number of items in $hookctl(LIST HOOKS <pattern>)
+
+    $hookctl(GET LIST <TYPE> NAME)
+	This just returns <TYPE>, since the name of any <TYPE> is itsself.
+
+    $hookctl(GET LIST <TYPE> PARAMS)
+	Return the mininum number of words in $* for any /ON of this type.
+	Remember that your <pattern> is expected to match a $* that has 
+	AT LEAST this number of words.  If your <pattern> doesn't, the /ON
+	will never go off.
+
+    $hookctl(GET LIST <TYPE> MARK)
+	Return the number of invocations of this /ON type are pending.
+	For example, the first time an /ON MSG event is thrown, then 
+	$hookctl(GET LIST MSG MARK) is 1.  If your /ON does something 
+	funky like a /WAIT and another MSG comes in before your /ON is
+	finished, then $hookctl(GET LIST MSG MARK) is 2.
+
+    $hookctl(GET LIST <TYPE> FLAGS)
+	This is an internal bitmask value.  The only defined bit is 1, which
+	is used to prevent an /ON from going off recursively.  One such ON
+	is /ON INPUT.  If $hookctl(GET LIST INPUT MARK) is 1, then another
+	/ON INPUT event is thrown, no /ON's will actually be executed; the
+	ON is considered unhooked.  This allows you do perform certain
+	commands (like /sendline) from within certain /ON's (like /on input)
+	where without this flag that would result in infinite recursion
+	(and crash)
+
+    === GETTING INFORMATION ABOUT NOISE TYPES ===
+    $hookctl(DEFAULT_NOISE_LEVEL)
+	This always returns "NORMAL" for now.  This is the <noisetype> whose
+	VALUE (see below) is the null character.
+
+    $hookctl(NOISE_LEVELS) 
+	This returns all of the <noisetype> values.
+	Ex: $hookctl(NOISE_LEVELS) returns "SILENT QUIET NORMAL NOISY SYSTEM"
+
+    $hookctl(NOISE_LEVELS <pattern>)
+	This returns all of the <noisetype> values that match <pattern>
+	Ex: $hookctl(NOISE LEVELS s*) returns "SILENT SYSTEM"
+
+    $hookctl(NOISE_LEVEL_NUM)   
+	This returns the highest <noiseref> value.
+
+    In the GET NOISE operations, <noisetype> is the name of a noise 
+    flag.  This is one of "SILENT", "QUIET", "NORMAL", "NOISY", and 
+    "SYSTEM".  <noiseref> is a refnum that uniquely identifies each
+    of the noise types.  The above are numbered 1, 2, 3, 4, and 5 
+    respectively.
+
+    $hookctl(GET NOISE <noisetype|noiseref> NAME)
+	Get the name of the noise type.  One of "SILENT", "QUIET", 
+	"NORMAL", "NOISY", or "SYSTEM"
+
+    $hookctl(GET NOISE <noisetype|noiseref> DISPLAY)
+	Returns 0 if the noise type does a /SET DISPLAY OFF while
+		executing the /ON body.
+	Returns 1 if /SET DISPLAY is not changed when the /ON goes off.
+
+    $hookctl(GET NOISE <noisetype|noiseref> ALERT)
+	Returns 0 if you are not told when the /ON is executed.
+	Returns 1 if you are told whenever the /ON is executed.
+
+    $hookctl(GET NOISE <noisetype|noiseref> SUPPRESS)
+	Preface:  With most /ON's, if you do not have any /ON's that 
+		are appropriate to run, then some "default" action will
+		be taken.
+	Returns 0 if executing the /ON does not cause the "default" action
+		to be suppressed.
+	Returns 1 if executing the /ON causes the "default" action to be
+		suppressed.
+
+    $hookctl(GET NOISE <noisetype|noiseref> VALUE) 	(refnum)
+	Returns the refnum of the noise type.
+	Example: $hookctl(GET NOISE SILENT VALUE) returns "1".
+
+    $hookctl(GET NOISE <noisetype|noiseref> IDENTIFIER)
+	Returns the <noise> value to use when you want to use this noise type.
+	Example: $hookctl(GET NOISE SILENT IDENTIFIER) returns "^".
+
+    $hookctl(GET NOISE <noisetype|noiseref> CUSTOM)
+	This always returns 0 for now.
+
+    === MISCELLANEOUS OPERATIONS ===
+    $hookctl(EXECUTING_HOOKS)
+	This returns the refnums of all of the hooks that are currently 
+	pending (executing).  Since /ONs work like a LIFO queue, the first
+	word is the current /ON, and the second word is the /ON that is waiting
+	for the first one to finish, etc.   Obviously you can use this to 
+	operate on an /ON from within itsself whenever it goes off.
+
+    $hookctl(HALTCHAIN <refnum>)
+    $hookctl(DENY_ALL_HOOKS)
+    $hookctl(DENY_ALL_HOOKS 1)
+    $hookctl(DENY_ALL_HOOKS 0)
+    $hookctl(EMPTY_SLOTS)
+    $hookctl(HOOKLIST_SIZE)
+    $hookctl(LAST_CREATED_HOOK)
+    $hookctl(PACKAGE <package> [<type>])
+    $hookctl(SERIAL <sernum> [<type>])
+    $hookctl(RETVAL)
+    $hookctl(RETVAL <value>)
+    $hookctl(LOOKUP <type> <pattern> <serial>)
+    $hookctl(MATCH <type> <pattern>) 
+
+*** News 01/01/2005 -- New function: $hookctl() (howl)
+    This new function, $hookctl(), lets the users do pretty much whatever
+	they
+
+	$hookctl() arguments:
+   ADD <#!'[NOISETYPE]><list> [[#]<serial>] <nick> [(<argument list>)] <stuff>
+       Argument list not yet implemented for $hookctl()
+   ADD <#!'[NOISETYPE]><list> [[#]<serial>] <nick> <stuff>
+       - Creates a new hook. Returns hook id.
+   COUNT
+       - See COUNT/LIST
+   HALTCHAIN <recursive number>
+       - Will set the haltflag for eventchain. May halt the current chain,
+         or any chain currently being executed.
+         Returns 1 on success, 0 otherwise.
+   DEFAULT_NOISE_LEVEL
+       - returns the 'default noise level'. It is not currently possible
+         to change the current noise level, and probably never will be.
+   DENY_ALL_HOOKS <arguments>
+       - this sets the deny_all_hooks flag, or gets it's value. If set,
+         to anything non negative, all hooks will be "ignored", and the
+         default action of any event will be taken. Similar to a /DUMP ON
+         but doens't actually remove any hooks.
+   EMPTY_SLOTS
+       - will return a list of empty slots in the hook-list.
+   EXECUTING_HOOKS
+       - will return a list of the current executing hooks. This is a
+         'recursive' list, listing the current hook first.
+   FIRST_NAMED_HOOK
+       - returns FIRST_NAMED_HOOK
+   HOOKLIST_SIZE
+       - will returns HOOKLIST_SIZE
+   LAST_CREATED_HOOK
+       - returns the value of LAST_CREATED_HOOK
+   LIST
+       - See COUNT/LIST
+   NOISE_LEVELS <pattern>
+       - Returns a list of 'noise-types'. If <pattern> is specified only
+         noise levels matching pattern will be returns.
+   NOISE_LEVEL_NUM
+       - Returns NOISE_LEVEL_NUM
+   NUMBER_OF_LISTS
+       - Returns NUBER_OF_LISTS
+   PACKAGE <package> [<list>]
+       - Returns a list of hooks of the given package. If <list> is
+         specified, it will return only hooks in list <list>
+   RETVAL <recursive number> [<new value>]
+       - If recursve number isn't specified, 0 (the current) is specified.
+         Will either return the value of retval for the given hook, or
+         set it.
+   SERIAL <serial> [<list>]
+       - Works exactly like PACKAGE.
+
+   GET <type> <arg>
+       - See GET/SET
+   LOOKUP <list> <nick> [<serial>]
+       - Returns hook matching given parametres.
+   MATCH <list> <pattern>
+       - Returns a list of matching hooks.
+   REMOVE <hook id>
+       - Removes the hook with the given hook ID. Returns 1 on success,
+         0 otherwise.
+   SET <type> <arg>
+       - See GET/SET
+
+   * GET/SET usage
+   GET gettype <arguments>
+       - will return 'gettype'
+   SET gettype <arguments>
+       - will set 'gettype' or similar, and return 1 on success. Not all
+         'gettypes' may be set, and not all gettypes will silently ignore
+         being set.
+
+   It is very important to remember that GET won't ever SET anything(!!!)
+   Won't, and shouldn't.
+
+   * GET/SET types:
+   HOOK <argument>
+       - More info on this under GET/SET HOOK
+   LIST <arguments>
+       - More info on this under GET/SET LIST
+   NOISE <argument>
+   NOISY <argument>
+       - More info on this under GET/SET NOISE/NOISY
+   MATCHES <argument>
+       - More info on this under GET/SET MATCHES
+
+   * GET/SET HOOK usage:
+       GET HOOK <hook id> <prop> <arg>
+       SET HOOK <hook id> <prop> <arg>
+
+       <prop> may be one of the following:
+       ARGUMENT_LIST
+           - Returns or sets the argument list, if SET and <arg> is empty,
+             it will be set to NULL, and therefore not used.
+       FLEXIBLE
+           - Returns or sets the value of flexible
+       NICK
+           - Sets or gets the hook's nick. The position of the hook will
+             be changed if needed, and it is not possible to change this
+             to a "crashing nick"
+       NOT
+           - Sets or gets the value of NOT.
+       NOISE
+       NOISY
+           - Sets or returns the value of noisy.
+       PACKAGE
+           - Returns or sets the hook's packagename
+       SERIAL
+           - Returns or sets the serial for the hook. The hook's position
+             in the list will be changed if necesarry, and it is not
+             possible to set the serial to a crashing serial.
+       SKIP
+           - Returns or sets the value of skip.
+       STUFF
+           - Returns or sets the value of stuff.
+       TYPE
+           - Returns or sets the type.
+
+   * GET/SET LIST usage:
+       GET LIST <listname> <prop>
+       SET LIST <listname> <prop> - not functional
+
+       <prop> may be one of the following:
+       COUNT
+           - Returns count of hooks
+       FLAGS
+           - Returns flags
+       MARK
+           - Returns mark
+       NAME
+           - Returns name
+       PARAMETERS
+       PARAMS
+           - Returns value of params
+
+
+
+   * GET/SET NOISE/NOISY usage:
+       GET NOISE <noisename> <prop>
+       SET NOISE <noisename> <prop> - not functional
+
+       <prop> may be one of the following:
+           ALERT
+               - returns value of alert.
+           CUSTOM
+               - returns value of custom.
+           DISPLAY
+               - returns value of display.
+           IDENTIFIER
+               - returns value of identifier.
+           NAME
+               - returns name.
+           SUPPRESS
+               - returns value of suppress.
+           VALUE
+               - returns value of value. d'oh!
+
+   * GET/SET MATCHES:
+       - This function is not ready yet, and will currently RETURN_NULL.
+
+   * COUNT/LIST usage:
+      COUNT / LIST work doing the same, the only difference is that
+      COUNT will return the count of lists/hooks, while list will return
+      a list
+
+      The following options are permitted:
+
+          LISTS <pattern>
+          - Will either return all lists available, or only the
+            matching ones.
+          POPULATED_LISTS <pattern>
+          - Works _just_ like LISTS, but will only return "populated"
+            lists
+          HOOKS <pattern>
+          - Will either return all the hooks on the system, or all
+            the hooks in the matching lists
+
+
+
+*** News 10/29/2004 -- New /ison features.
+	To go with the -d and -f switches, the following switches have been
+	added to exploit the new queueing mechanism:
+
+		-n                  # Prioritise this request.
+		-s                  # Send the next ison request now.
+		-len number         # Change the number of nicks per request.
+		-oncmd {commands}   # Run these commands for online users.
+		-offcmd {commands}  # Run these commands for offline users.
+
+	The descriptions of these switches are simplistic and a little
+	inaccurate.  Some clarifications follow.
+
+	-len will change the maximum length of an ISON request from 500 to the
+	given number.  This number will be used for _all_ requests from then on
+	including those from the notify system.  In practice it may be
+	necessary in some cases to tune this value downwards to avoid the
+	server dropping some names off the list when they are all online.
+
+	-oncmd and -offcmd will run the given lines of code with $* set to all
+	the users that a reply indicates are online or offline, respectively.
+	Note that a single /ison request can generate multiple replies.  Also
+	note, that there is no guarantee that the code will or will not run if
+	$* is empty.
+
+	-n will place the current requests at the head of the queue.  This is
+	useful when many requests are waiting to be sent and it is necessary to
+	have this one replied to quickly.  Note that if the request isn't
+	actually sent by the time the next -n is used, the newer request will
+	always get the higher priority.
+
+	-s will "kick" the ison system back into action in cases where
+	something has gone wrong and it has become necessary to use the -f flag
+	for eg.  This is more of a debugging tool.  It will not actually cause
+	more than $serverctl(get $servernum() maxison) requests to be sent.
+
+*** News 10/01/2004 -- New status format, %{3}W
+	This is a compromise between %W and %{2}W.  %W only shows in the
+	input window when there are split windows, and %{2}W shows in all
+	split windows.  So %{3}W shows in the input window, even if it is
+	the only visible window (ie, there are no split windows).
+
+*** News 10/01/2004 -- New window option, "toplines"
+	You may now reserve 0 to 9 lines at the top of every windows to be
+	removed from the scrollable portion of the window, creating a place
+	for you to put things like a channel topic, or channel users, or
+	whatever.
+
+	/WINDOW TOPLINES <N>    	
+		Reserves and displays <N> lines at the top of the window, 
+		which will not be part of the window's scrollable display.
+		By default, toplines are blank until you set them with...
+	/WINDOW TOPLINE <N> "<string>"	
+		Sets the window's <N>th topline to <string>.  <N> must be 
+		1 to 9.  You should put <string> in double quotes.  You can
+		change toplines even if they aren't visible.
+
+	$windowctl(GET <refnum> TOPLINES)
+		Returns the number of toplines reserved at the top of the
+		window.
+	$windowctl(GET <refnum> TOPLINE <n>)
+		Returns the <n>th topline for the window.
+
+*** News 09/14/2004 -- Added Howls shebang script support.
+	It is now possible to write epic scripts that run from the shell
+	command line.  Yaaay..!  The nature of the epic binary itself made this
+	a little difficult at the interface level, so a little hackery was
+	required.  The form of the shebang line is this:
+
+		#!/path/to/epic -S [command line options] -l
+
+	Note that the -l switch must be the last on the line, and -S must be
+	the first.  Also note that at this point in time, -S will only work as
+	the first part of the first argument.  The results of the use of this
+	switch anywhere else is currently undefined.
+
+*** News 09/14/2004 -- Added some features to the commandqueues script.
+	The first argument to /1cmd may now have a second number attached, with
+	a coma.  This number if given, will cause any recurrences of the same
+	command within that number of seconds to reset the last-executed time
+	_without_ executing the command.
+
+	Use of the 0 or 1 argument form of /qcmd will now cause the timer to be
+	reset to 5 seconds, and if called as a function, the command will be
+	returned without executing it.
+
+*** News 08/25/2004 -- New target syntax, -<serverdesc>/<target>
+	You can now send messages to the special message type:
+		-<serverdesc>/<target>
+	where <serverdesc> is a server description (see below) and <target>
+	is obviously a nick or channel on that server.  This allows you to
+	send a message to a nickname on a server other than your current
+	window's server.  For example:
+		@serverctl(SET 0 ALTNAME booya)		(set an altname)
+		/msg -booya/nick hi there!
+	Will send the message to "nick" on server 0.
+
+*** News 08/25/2004 -- "Server descriptions"
+	Anywhere EPIC expects you to give it a server, it now expects a 
+	"server description" which is one of the following (in this order)
+
+		1) A number, which is taken as a server refnum
+
+		2) An "ourname" of an open server
+		3) An "itsname" of an open server
+		4) A "group" of an open server
+		5) An "alternate name" of an open server
+
+		6) An "ourname" of a closed server
+		7) An "itsname" of a closed server
+		8) A "group" of a closed server
+		9) An "alternate name" of a closed server
+
+	The server description may be a wildcard!  The first server 
+	(starting with server 0) that matches is used.
+
+	This means you can do something like this:
+		@serverctl(SET 0 ALTNAME booya)		(set an altname)
+		/server -0				(disconnect from 0)
+		/server +booya				(reconnect to "booya")
+	and it will connect to server 0, because server 0 has the alternate
+	name of "booya"!
+
+*** News 08/25/2004 -- Alternate server names
+	You may now give a server a list of "alternate names".  There is no
+	limit.  You add a new alternate name with:
+		$serverctl(SET <refnum> ALTNAME <name>)
+	You can totaly replace the list with:
+		$serverctl(SET <refnum> ALTNAMES <names>)
+	<name> and <names> should be space-separated list of words.
+
+	You can get the list of alternate names with
+		$serverctl(GET <refnum> ALTNAMES)
+
+*** News 08/25/2004 -- Aliases now shown with their argument lists
+	When you do /alias, you now see the argument list along with all
+	of the other stuff.
+
+*** News 08/25/2004 -- Mangling now supports "ALT_CHAR"
+	How did this ever get missed?
+
+*** News 08/25/2004 -- New function, $mktime()
+	Usage: $mktime(year month day hour minute second DST)
+	The first six arguments are required.  Returns -1 on error.
+	Returns whatever mktime(3) on your system would return, usually
+	the number of seconds since the epoch represented by the arguments.
+
+*** News 08/25/2004 -- Support for ircnet's "unique id" nicknames
+	You can now always use your "unique id" as your nickname, and also
+	the "0" shortcut nickname, on ircnet.
+
+*** News 08/25/2004 -- New status expando, %{1}F
+	This is just like %F, it displays all of the "notified" windows,
+	except it uses the window's "notify_name" instead of its refnum.
+
+*** News 08/25/2004 -- New window command, /WINDOW NOTIFY_NAME
+	If you change the /WINDOW NOTIFY_NAME, and use the %{1}F status
+	expando, then the notify_name, and not the window's refnum, will
+	show up.  Howl wanted to colorize the refnum up, and this is how
+	you should do it.
+
+*** News 08/25/2004 -- Support for +I channel mode (ratbox)
+	Because adm asked me to
+
+*** News 08/25/2004 -- User-created /SETs, /SET -CREATE   -- WARNING
+			*** DEPRECATED ***
+	You can create your own /set's for now with 
+		/SET -CREATE <name> <type> {<code>}
+	where <type> is one of BOOL, STR, or INT.  <code> is code that 
+	will be run any time the user does /SET <name> <newval>.  You can
+	/SET the value within <code> to override the user's value.  
+
+	*** WARNING *** This interface is temporary and will go away in 
+	the future.  It will be replaced by $symbolctl() which has not
+	yet been written, so stay tuned for more information!
+			*** DEPRECATED ***
+	This feature only existed in EPIC5-0.0.3 and was/will be removed
+	in EPIC5-0.0.4.  Do not use this feature.
+			*** DEPRECATED ***
+
+*** News 08/25/2004 -- Unification of symbol namespaces
+	There is now one big table that holds all of the symbol names for
+	aliases, assigns, built in commands, built in functions, sets, and
+	inline expandos.  You should not notice any changes at all, except
+	maybe epic runs faster.  This was done to pave the path towards
+	plugins, which will need to be able to add their own commands and
+	functions on the fly!
+
+*** News 08/25/2004 -- The /IRCNAME and /REALNAME commands removed here...
+	because they are duplicates of /SET REALNAME.  Use the /SET now.
+
+*** News 08/25/2004 -- $stripcrap(ALL) no longer strips "ALL_OFF"...
+	because the crap-mangler makes liberal use of ALL_OFFs and it is of
+	no harm to leave them in there, and it does great harm to take them
+	out. ;-)  If you want to remove them, do $stripcrap(ALL,ALL_OFF)
+
+*** News 08/25/2004 -- New script 'builtins' loaded from global
+	Some things are starting to migrate from hardcoded builtins to 
+	script features.  They are not "being removed", their implementation
+	is just changing.  This script will contain backwards compatability
+	stuff for epic4.  You really do need this script!  Do 'make install'!
+
+*** News 08/25/2004 -- Automatic command completion removed
+	You can no longer do /whoi as a replacement for /whois.  You'll have
+	to spell out the command name in full now.
+
+*** News 08/25/2004 -- Using your nickname as a command removed here
+	You can no longer do /<mynick> as an alias for /me.  Just use /me.
+
+*** News 08/25/2004 -- The COMMAND_COMPLETION keybinding removed here
+	A new script replacement is forthcoming -- stand by!
+
+*** News 08/25/2004 -- New serverctl, $serverctl(GET <refnum> STATUS)
+	This returns the server's current status, which is described below
+	in the /on server_status stuff.
+
+*** News 08/25/2004 -- New script, 'slowcat'
+	This script cats a file to your current target, 2 lines per second
+	to avoid triggering flood control.  
+		/load slowcat
+		/slowcat filename
+
+*** News 08/25/2004 -- New status expando, %{2}W
+	This acts just like %W, but it shows in every window, and not just 
+	the current window.
+
+*** News 08/25/2004 -- New /SET, /SET OLD_SERVER_LASTLOG_LEVEL
+	When you /WINDOW SERVER to move a window to a server that is already
+	connected, the window's level will be set to this /set value.  This
+	is important, because of the following situation:
+		Window 1, server 0, level ALL
+		Window 2, server 1, level ALL
+	If you do /window 1 server 1  then you have two servers connected
+	to server 1 with level "ALL".  Who wins?  Not you. ;-)  This defaults
+	to NONE, which is probably the only sensible value.
+
+*** News 08/25/2004 -- /WINDOW KILL_ALL_HIDDEN kills your hidden windows.
+	After you run this, you will be left with only your visible windows.
+
+*** News 08/25/2004 -- /ON TYPE !"PATTERN" acts as an exception.
+	If you use this syntax, then the default action will occurs whenever
+	the pattern is matched.  This is how ircII's /ON TYPE ^PATTERN works.
+	For example:
+			on ^msg * echo msg from $0: $1-
+			on ^msg !"nick" 
+	In this case, if anyone but nick sends you a msg, it is echoed as
+	in the first /on.  But if nick sends you a message, it will be
+	displayed in the "default" way by epic, as though you did not have
+	an on at all.
+
+*** News 08/25/2004 -- It is now always safe to delete ONs from within ONs
+	Up until now, you needed to /defer the removal of any /ONs from
+	within other /ONs, or you risked crashing epic.  This meant you 
+	could not safely stop an /ON with a higher serial number from
+	running by deleting it.  All of this has been fixed now.  You can
+	delete /ONs without restriction and the change takes place 
+	immediately.
+
+*** News 08/25/2004 -- ONs no longer compile patterns to regexes
+	This was fraught with peril, so ONs no longer compile their
+	patterns to regexes, and now we do things like we have always
+	done with ONs
+
+*** News 08/25/2004 -- New built in function, $regcomp_cs()
+	This is just like $regcomp(), but it's case sensitive.
+
+*** News 08/25/2004 -- In /ON DCC_RAW "* E *", $3 is the port number
+	Previously it held the "othername", which wasn't terribly useful.
+
+*** News 08/25/2004 -- /WAIT =<fd> waits for a dcc connection to complete
+	If you do $connect(), it is nonblocking and returns before the
+	connection is ready to be used.  If you need to wait until the
+	connection completes, like it did in epic4, do this:
+			@fd = connect(host port)
+			wait =$fd
+	and it's pretty much the same.  This wait is of course recursive
+	(and does not block the client)
+
+EPIC5-0.0.2
+
+*** News 08/25/2004 -- Level names are always plural, except for CRAP
+	The levels have these names now, and they're gonna stay this way:
+
+		CRAP	PUBLICS	MSGS	NOTICES	WALLS	WALLOPS
+		OPNOTES	SNOTES	ACTIONS	DCCS	CTCPS
+		INVITES	JOINS	NICKS	TOPICS	PARTS	QUITS
+		KICKS	MODES	USER1	USER2	USER3	USER4
+		USER5	USER6	USER7	USER8	USER9	USER10
+		ALL (special)	NONE (special)
+
+*** News 08/18/2004 -- Overloadable function aliases.
+	When an alias name "collides" with a built in function, the built in
+	function has traditionally been called.  This update changes this
+	behaviour to calling the alias first.
+
+	NOTE:  This will cause recursive loops in scripts that rely on this
+	behaviour.  To fix this the aliases in question need to be renamed or
+	rewritten to use the following ::function() feature.
+
+	It is possible to call the built in with the :: notation used for
+	global variables, as in $::function().  $:function() will explicitly
+	call the alias.
+
+	NOTE:  Do not use the $::function() and $:function() features just yet,
+	as they will crash epic if the alias or the built in doesn't exist.  It
+	is safe to use if you are sure they do though.
+
+*** News 08/02/2004 -- New commands for $dccctl().
+	$dccctl(readables) will return the refnums of DCCs that have data
+	waiting to be read and $dccctl(get [refnum] readable) will return a 1
+	or 0 depending on whether the given refnum is readable or not.
+
+	Since epic will automatically read data from all unheld DCCs, this
+	feature is expected to be useful only for DCCs in the "held" state.
+
+*** News 08/02/2004 -- General improvements to the flood detection system.
+	Flood detection now works for channel PARTS and for ctcp replies, which
+	is bound to the NOTICES flood.
+
+	Also, the first argument from each flood returned from $floodinfo()
+	when flood_maskuser is set to 1 or 2 is now a valid user@host mask for
+	the flooder in question, suitable for putting in a ban or kline.
+
+*** News 08/02/2004 -- New argument for /on flood.
+	The fourth argument ($3) in the flood hook is now the number of repeats
+	of the flood in question.  This makes it easy to deal with particular
+	kinds of floods in different ways, as they occur.  For example:
+
+	/on flood "% parts % 5" mode $2 +b *!*@$after(@ $userhost())
+	/on flood "% ctcps % 5" mode $2 +b *!*@$after(@ $userhost())
+	/on flood "% % % 50" mode $2 +b *!*@$after(@ $userhost())
+
+*** News 08/02/2004 -- Improvements to $floodinfo().
+	$floodinfo() will now accept as input the same list of lists it
+	outputs.  The lists themselves don't have to be complete.  Any
+	unspecified arguments will match all records.  For example:
+
+	$floodinfo("% #chan joins")  # Return all join records for #chan.
+	$floodinfo(*)                # This still works.
+	$floodinfo($floodinfo(*))    # Same output as above.
+
+	Feeding $floodinfo() output back into its input is useful for tuning
+	the flood /sets by seeing which non-flooders are being caught long term
+	in the system.
+
+	The fields are these:
+
+	u@h mask that matches the flooder.  Defaults to "*".
+	channel mask.  Defaults to "*".
+	flood type mask.  Defaults to "*".
+	Server number.  Defaults to -1, which matches all.
+	Numeric minimum number of flood hits.
+	Numeric minimum duration of flood.
+	Numeric minimum flood rate.
+
+	The last three numeric arguments may be negative, in which case, they
+	specify the _maximum_ values.  These fields make it possible to deal
+	with different kinds of floods in different ways _after_ they occur.
+	For example, a join flood may be falsely triggered by a net join, but
+	it is reasonable to expect that if you have join and part flood records
+	for the same u@h, then it is participating in a join/part flood.
+
+	/on flood "% parts % 5" {
+		if (floodinfo("$userhost() $2 joins $servernum() 5")) {
+			mode $2 +b *!*@$after(@ $userhost())
+		}
+	}
+
+	Or alternately:
+
+	/on flood "% joins % 5" {
+		if (floodinfo("$userhost() $2 parts $servernum() 5")) {
+			mode $2 +b *!*@$after(@ $userhost())
+		}
+	}
+
+*** News 08/02/2004 -- Changes to /userhost and notify.
+	The changes to the ison back end mentioned in the previous entry now
+	also apply to the userhost back end, along with the caveats relating to
+	/wait and flush.  This applies to the /userhost, /userip and /usrip
+	commands.
+
+	A new option has been added to these commands.  /userhost -count
+	[number] will change the number of items that epic will put into each
+	USERHOST request.  This isn't a particularly significant change since
+	this number is already tuned to a number that works on all servers.
+
+	To change the number of USERHOST requests sent at one time, use
+	$serverctl(set [servernum] maxuserhost [number]).  Set it to 0 to turn
+	the new behaviour off.
+
+*** News 07/08/2004 -- Changes to /ison and notify.
+	The back end of the notify system and the /ison command has been
+	changed to permit only a certain number of ISONs to be sent to a server
+	at one time.  The benefit of this is that it will typically prevent a
+	large notify list flooding the client off the server.
+
+	The down side is that it will cause scripts like $is_on() in script/guh
+	that use "/wait for ison .." to fail until they have been fixed.  The
+	fix is to put "@ serverctl(set $servernum() maxison 0)" at the top of
+	any alias that uses it.  This will turn the new behaviour off.
+
+	The notify system itself will not queue an ISON to be sent if there are
+	any ISONs waiting to be sent, but the /ison command will.
+
+	One final note is that the "waiting to be sent" queue won't be flushed
+	when the client reconnects to the server or when "/ison -f" is run.
+	This won't cause any particular damage, but it's not nice and will
+	probably change soon.
+
+*** News 07/08/2004 -- Userhost updating in NICK changes.
+	This is relevant to those who use the $serverctl() maxcache feature,
+	which, if in effect, will prevent a /who message being sent to a
+	server, and thereby make $userhost() fail for every nick that joined
+	the channel before the client did.
+
+	This patch will grab the userhost information for these users from the
+	NICK message itself, and help to rebuild the $userhost() database
+	faster.  It also makes it possible to manually get it into the database
+	by /pretend'ing a NICK message with a userhost obtained from other
+	sources such as the /userhost command.
+
+*** News 03/19/2004 -- New built in function, $tobase(<base> <num>) [howl]
+	This function converts <num>, a number in base 10, to base <base>.
+	For example, $tobase(16 65536) returns "10000"
+
+*** News 03/19/2004 -- New built in function, $strtol(<base> <num>) [howl]
+	This function converts <num>, a number in base <base> to base 10.
+	For example, $strtol(16 10000) returns "65536"
+
+*** News 03/19/2004 -- Changes to /WINDOW NOTIFY, /WINDOW NOTIFIED
+	These two /WINDOW operations now take ON, OFF, or TOGGLE arguments,
+	instead of taking no arguments and behaving as toggle switches.
+	If you do not provide an argument, they show you their current
+	values as the other /WINDOW boolean values do.
+
+*** News 03/19/2004 -- Addition and changes to $windowctl()
+	$windowctl(GET <refnum> MISCFLAGS) always returns 0, and
+	$windowctl(GET <refnum> NOTIFY) returns 1 if /window notify is on
+	$windowctl(GET <refnum> NOTIFIED) returns 1 if /window notified is on.
+	NOTIFY and NOTIFIED replace MISCFLAGS.
+
+*** News 03/19/2004 -- New key binding, SWITCH_QUERY
+	Whenever a window has multple nicknames in its nickname list,
+	and one of those nicknames is active as the window's query, it
+	is possible to use this binding to switch between all of the 
+	nicks in the nick list, just in the same way you can switch
+	between channels using SWITCH_CHANNELS.  If the window does not
+	have an active query, this key binding will have no effect, even
+	if the window has nicks in its nicklist!
+
+*** News 03/19/2004 -- Unification of /WINDOW QUERY and /WINDOW ADD
+	Historically, when you /WINDOW QUERY (or just /QUERY) <NICK>, then
+	it would add <NICK> to the window's "NICK LIST".  The "NICK LIST" 
+	is a list of nicknames for which output goes to that window, just
+	like output to channels go to windows.  Output to or from a nick
+	that is not on any window's "nick list" goes to the LEVEL_MSG level.
+	When you used /WINDOW QUERY <NICK2> to change the query, it would
+	remove the old query from the nick list, and messages to and from
+	the original query went back to LEVEL_MSG.
+
+	Well, this has been unified somewhat.  Now the following rules apply:
+	1) When you /WINDOW QUERY <NICK>, then <NICK> is added to the 
+	   window's nick list.
+	2) If the window already has a query, then the old query nickname
+	   is NO LONGER REMOVED from the window's nick list.  Output to 
+	   that nick will continue to go to the window as it had before.
+	3) When you use /WINDOW QUERY to cancel a query, then the current
+	   query IS STILL REMOVED from the window's nick list, and output
+	   to or from that nick will go to LEVEL_MSGS.
+
+	It is no longer possible to have a window query that is not on the
+	window's nicklist, because the query is selected from the members of
+	the window's nicklist, rather than being a separate thing.
+
+*** News 03/17/2004 -- Change to how /SET INDENT behaves
+	Historically, if you have /SET INDENT ON, and the first word of the
+	first line of output is wider than 1/3 of your screen, then the
+	second (and subsequent) line(s) of output are NOT INDENTED.  This 
+	has been changed so subsequent lines are indented 1/3 of the window's
+	width.  To understand this change, think about how /set indent usually
+	works, and if it would indent more than 1/3 of your screen, then it 
+	will indent 1/3 instead of not at all.
+
+*** News 03/17/2004 -- New flag to /XECHO , /XECHO -F
+	If you use the /XECHO -F flag, "hidden window output notification"
+	will not occur for any hidden windows that receive the output. 
+	
+*** News 03/16/2004 -- You can now bind the 255 character (ÿ)
+	There has been a problem with the new key binding system that
+	made it difficult for Russian language speakers to bind the 255
+	character which is in their alphabet.  This should be fixed now.
+
+*** News 03/16/2004 -- Can now join channels simultaneously per window
+	Previously, if you attempted to join multiple channels in the same
+	window simultaneously, you were not assured that all of the channels
+	would go to that window.  Now you can be assured of this.  This should
+	make reconnection/rejoin scripts much more sane.
+
+*** News 03/16/2004 -- New built in function, $startupfile()
+	This expands to the file that the client loaded at startup as your
+	"startup file".  Usually this is ~/.ircrc or ~/.epicrc or whatever
+	you specified as the IRCRC environment variable or the argument to
+	-l or -L on the command line.
+
+*** News 03/16/2004 -- Unknown CTCP requests offered via /ON CTCP_REQUEST
+	It was pointed out that unknown/unhandled CTCP requests were only
+	being hooked through /on ctcp, so it wasn't possible to use 
+	/on ctcp_request to handle EVERY request.  Well, now unhandled CTCPs
+	are hooked through both /on's just like handled CTCPs are.
+
+*** News 03/16/2004 -- Semantic changes to $connect()
+	You used to be able to depend on /ON DCC_RAW "% % E %" or 
+	/ON DCC_RAW "% % C" hooking before $connect() returned.  Now that
+	$connect() is nonblocking, YOU CAN NO LONGER DEPEND ON THIS.  You
+	must set up your script to assume that /ON DCC_RAW will be hooked
+	asynchronously, after at least the next sequence point.  Think of 
+	it as being like not being able to depend on /WHOIS returning the
+	numerics.  I'll probably add a way to /wait for a connection in the
+	future.  Stay tuned.
+
+*** News 03/16/2004 -- DCC connections are now nonblocking
+	All connect()ions for DCC, including /DCC GET, /DCC CHAT, /DCC RESUME
+	and $connect() are all fully nonblocking.  This means all connects
+	in EPIC are now fully nonblocking! HUZZAH!
+
+*** News 03/15/2004 -- /HELP command now handled by script
+	The built in /HELP command has been replaced by a script that
+	was written by howl for our use.  Much thanks to him!
+
+*** News 03/14/2004 -- Six new USER lastlog levels
+	You may now use USER5, USER6, USER7, USER8, USER9, and USER10
+	as levels with your window, lastlog, flood, and ignore.  Just 
+	use /xecho -l USER5 for example to send to your USER5 window.
+
+*** News 01/20/2004 -- kqueue() support
+	You can uncomment #define USE_FREEBSD_KQUEUE in newio.h if you
+	want to play around with this experimental feature.
+
+*** News 01/15/2004 -- /WINDOW DISCON and /WINDOW NOSERV now the same
+	There was a subtle semantic difference between /WINDOW DISCON 
+	and /WINDOW NOSERV that had to do with the window's "last server"
+	that was used for reconnects.  Because the client no longer does
+	reconnections, this difference is moot.  These two commands now 
+	always do the same thing, which is to disassociate the window
+	with any server.  The window becomes "server-less".
+
+*** News 01/15/2004 -- Changes to /SERVER command
+	/SERVER
+	     Show the server list.
+	/SERVER -DELETE <refnum|desc>
+	     Remove server <refnum> (or <desc>) from server list.
+	     Fails if you do not give it a refnum or desc.
+	     Fails if server does not exist.
+	     Fails if server is open.
+	/SERVER -ADD <desc>
+	     Add server <desc> to server list.
+	     Fails if you do not give it a <desc>
+	/SERVER +<refnum|desc>
+	     If the server's state is "CLOSED", change it to "RECONNECT".  
+	     This allows the server to reconnect if windows are pointed to it.
+	     Note: server reconnection is asynchronous
+	/SERVER -<refnum|desc>
+	     Unconditionally close a server connection
+	     Note: server disconnection is synchronous!
+	/SERVER +
+	     Switch windows from current server to next server in same group
+	/SERVER -
+	     Switch windows from current server to previous server in same group
+	/SERVER <refnum|desc>
+	     Switch windows from current server to another server.
+
+*** News 01/08/2004 -- /ON WIDELIST went away here
+	This /ON hasn't been hooked in many a year, and here it officially
+	passed into the void.
+
+*** News 01/07/2004 -- Removal of WINDOW BIND feature
+	As part of the larger project to decouple windows from channels,
+	the "window bind" feature has been removed.  This means you can 
+	no longer /WINDOW BIND, /WINDOW REBIND, /WINDOW UNBIND, and you 
+	cannot use $windowctl(* BIND_CHANNEL *) or $winbound().  It is 
+	expected that eventually scripts will take over the job of routing 
+	channels to the appropriate windows and EPIC will stay entirely 
+	out of the way.
+
+*** News 01/07/2004 -- New /ON, /ON SERVER_STATUS
+	This /ON is thrown every time a server changes its "state".
+	The states are listed below in "Server States" and I won't
+	go into that again here.
+		$0 - The server changing state
+		$1 - The old status (a string, not a number)
+		$2 - The new status
+	If you find that you do something particularly onerous in 
+	this /ON and EPIC panics or crashes, try /DEFERing it, and
+	if that doesn't work either, let me know.
+
+*** News 01/07/2004 -- Removal of NOTE support
+	I doubt anyone will notice this, and if you do, bummer.
+
+*** News 01/07/2004 -- Server states
+	Servers now exist in one of several "states" each time it connects
+	to the server.  It moves through each of the states from start to
+	end, and stays at the end until manually reset by the user (or script)
+
+	RECONNECT	As soon as a window is attached to the server, the 
+			server should be connected to.
+	CONNECTING	A connection to the server is in progress.  The server 
+			is not ready to be used.
+	REGISTERING	We are attempting protocol registration (NICK/USER) 
+			with the server.  The server is open, but we cannot 
+			really use it yet.
+	SYNCING		Our registration has been accepted and we're doing 
+			whatever meta-tasks are needed to get the connection 
+			fully active
+	ACTIVE		The connection is fully ready for all use.
+	EOF		An End Of File (EOF) has been detected from the server.
+			The connection was closed by the server and cannot be 
+			used any longer.
+	CLOSING		The connection to the server is being shut down.  If 
+			the previous state was "ACTIVE" then you can still 
+			send something to the server.  If the previous state
+			was "EOF" then it's too late.  You cannot stop the
+			closing of a server.
+	CLOSED		The server is disconnected and cannot be used.  The
+			server (and any windows connected to this server) stay
+			in this state until the user resets the state to 
+			RECONNECT.
+
+*** News 01/07/2004 -- Channels are not tracked across disconnects
+	When you are disconnected from a server for *any* reason, EPIC
+	will not retain knowledge of the channels for the next connection
+	and will not rejoin them.  It is expected that scripts will use
+	this to their advantage to fully control the semantics you will
+	have governing "auto-rejoin-on-reconnect".
+
+*** News 01/07/2004 -- Server connections are now brought up asynchronously
+	When you do /WINDOW SERVER or /SERVER or otherwise change the
+	server of a window, the server is not immediately connected or
+	disconnected, and the change will not take effect until the
+	next time through the event looper.  This means that all server
+	connections are "asychronous" (they don't interrupt the current
+	flow of the script).  This means you most definitely cannot
+	do /WINDOW SERVER <host> CHANNEL <channel> any more.  So please
+	stop doing that. ;-)  Use /ON SERVER_STATUS to join channels.
+
+*** News 01/07/2004 -- /XDEBUG SERVER_CONNECT a lot more interesting
+	If you want to watch epic work its gory nonblocking connects,
+	you can turn on this /xdebug and see everything in its glory.
+
+*** News 01/07/2004 -- Nonblocking server connects
+	EPIC now does all server connections using asynchronous, 
+	nonrecursive, nonblocking connections.  And yes, it still 
+	supports multiple protocols and multiple addresses (ie, 
+	"us.undernet.org"), and *yes*, it will try another address if 
+	a server refuses us registration ("You do not have access to 
+	this server").
+
+*** News 01/07/2004 -- EPIC no longer tracks server "dialect" per se
+	The $version() string now always returns "2.8" since all 
+	servers are nominally 2.8 class (rfc1459) servers, and epic
+	does not attempt to determine if it's an undernet, ircnet,
+	efnet, or dalnet server, etc.  This is mostly because scripts
+	can hook /on 004 if they care, and the 005 numeric (ISUPPORT)
+	is making dependance on the server's version much less important.
+
+*** News 01/07/2004 -- EPIC loads ~/.ircrc (or ~/.epicrc) on 001 now
+	Traditionally, ircII has loaded your ircrc when it received 
+	the 002 numeric, and traditionally, epic has done it when it
+	received the 004 numeric.  Due to some refactoring in epic,
+	it is now possible for epic to load your ircrc when it receives
+	the 001 numeric *and before it hooks /on 001*  This means you 
+	shouldn't have to suffer the default epic output for any of
+	the numerics from the server.
+
+*** News 01/07/2004 -- Usermodes now tracked as strings instead of bits
+	Before this change, ircII clients had always tracked your user
+	and channel modes as bits, and the valid (supported) modes were
+	hardcoded into the client at compile time.  With this change, 
+	EPIC will no longer track your modes using bits, but instead 
+	using strings.  This means that epic won't need source code
+	changes to support new modes from your server.  You can't do
+	$serverctl(SET|GET <refnum> UMODES) any more (but the old
+	"UMODE" still works)
+
+*** News 01/07/2004 -- /ON wildcard patterns now compiled into regexes
+			*** OBSOLETE ***
+	At or around this date, EPIC started converting wildcard patterns
+	used by /ON into extended POSIX regexes and compiling them, and
+	using the regexes instead of the pattern matcher.  In the future,
+	epic will allow you to specify your own regexes.  "Flexible"
+	/on hooks are still wildcard pattern matched (for now) because
+	recompiling the pattern every time the /on is thrown is senseless.
+			*** OBSOLETE ***
+	This feature was removed (see note above for 08/25/2004)
+			*** OBSOLETE ***
+
+EPIC5-0.0.1
+
+*** News -- 12/16/2003 -- New levels, KICK, QUIT, and MODE
+	So just for a canonical list, here are all of the levels supported
+	by flood, ignore, lastlog, and windows:
+		CRAP	PUBLICS	MSGS	NOTICES	WALLS	WALLOPS
+		OPNOTES	SNOTES	ACTIONS	DCCS	CTCPS
+		INVITES	JOINS	NICKS	TOPICS	PARTS	QUITS
+		KICKS	MODES	USER1	USER2	USER3	USER4
+		USER5	USER6	USER7	USER8	USER9	USER10
+		ALL (special)	NONE (special)
+
+*** News -- 12/16/2003 -- Unification of ignore, flood, and lastlog levels
+	Previously, the ignore, flood, and lastlog levels used the same
+	names, but they had different meanings in each subsystem (ie, CRAP 
+	in flood was different from CRAP in ignore, and CRAP in lastlog).
+	Now all three subsystems use the same levels, all named the same,
+	and (more or less) all defined the same.  There are some holes in
+	this conversion cause I didn't check every possible combination.
+	Report any odd behavior to me so I can fix it.
+
+*** News -- 12/16/2003 -- New noise type for /ON, /ON %TYPE
+	The /ON %TYPE modifier acts just like /ON ^TYPE, because it
+	suppresses the default action, but it is unlike /ON ^TYPE
+	because it does not turn off the display (what /ON ^TYPE
+	does is it prefixes all the commands in the ON body with 
+	the ^ modifier, which turns off output for that command.)
+	This new modifer does not prefix each command with ^, so any
+	commands not so prefixed will generate their normal output.	
+	The idea is you can use this for /on set's
+		/ON %SET "HOLD_MODE *" {WINDOW HOLD_MODE $*}
+
+*** News -- 12/16/2003 -- Removed /SET BEEP_WHEN_AWAY
+	This feature can be re-implemented in one line of script:
+		/ON #MSG 617 * {IF (A) {BEEP}}
+
+*** News -- 12/16/2003 -- Removed /SET BEEP_ON_MSG
+	The /SET BEEP_ON_MSG feature has been removed because it was only
+	half-implemented, and even that half didn't work right.  Keep an
+	eye out for a scripted re-implementation of this in the future.
+
+*** News -- 12/16/2003 -- Runtime auto-append-of-$* removed
+	Historically, the ircII language has allowed you to auto-append
+	$* onto the end of an alias at runtime by creating an alias that
+	does not refer to any of the command line arguments.  For example,
+		/alias m msg
+	behaves at runtime as
+		/alias m msg $*
+	but with a performance penalty.  This behavior has now been removed
+	and if you wish to have $* appended to your aliases, you need to 
+	change them.  This change would be backwards compatable with epic4.
+
+# End of file

@@ -1,0 +1,7 @@
+DESC irc.servercentral.net skully :End of /WHO list.
+1  $(ld.ll_corner)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)---%c$(ld.hline)%C--%c$(ld.hline)$(ld.hline)%C-%c$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)---%K$(ld.hline)%c--%K$(ld.hline)$(ld.hline)%c-%K$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)--- --  -
+2 *** $1-
+3 *** %Y$1:%w %W$2%w $3-
+4 
+5 
+6 

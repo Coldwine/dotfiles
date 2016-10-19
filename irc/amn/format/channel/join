@@ -1,0 +1,27 @@
+DESC crapple #amnesiac zak@chowned.org
+1 $fparse(format_timestamp_some $($_timess))$(c4)$1 %K[$(c3)$3%K]%n has joined $2
+2 $(c4)$1 %K\($(c3)$3%K\)%n has joined $2 $Z
+3 %c.%K.[%Wj%noin%K/%n$2%K]%n $1%K\(%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$3)%K\)%n $Z
+4 $fparse(format_timestamp_some $($_timess))$(c1)$1 %K[$(c2)$3$(c1)%K]%n has joined $(c2)$2
+5 $fparse(format_timestamp_some $($_timess))%K.%c.%K[%Wj%noin%c.%n$2%K] \(%n$1%K[%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$3)%K]\)%n
+6 $fparse(format_timestamp_some $($_timess))%K.%m.%K[%Wj%noin%m.%n$1%K\(%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$3)%K\)]%n to %m$2
+7 $G %K\(%Wjoin%K/%W$2%K\)%n - %W$1%K[$(c1)$before(@ $3)%K@$(c1)$after(@ $3)%K]%n $Z
+8 $G $(c1)join$(hblk)\([0m$2$(hblk)\)..$(cl) $(hwht)$1$(cl)!$(c1)$3%n $Z
+9 $fparse(format_timestamp_some $($_timess))%K[%cjoin%K!%n$2%K]%n $1%W.%n.%c$3%n
+10 $fparse(format_timestamp_some $($_timess))%cj%noin%K/%c$2 %K[%n$1%K!%c$before(@ $3)%n@%c$after(@ $3)%K]%n
+11 $G $1 \($3\) has joined channel $2
+12 $G $(c1)$1 %K[[0m$sar(g/@/$(hblk)@$(cl)/$3)$(c1)%K]%n has joined $(c2)$2
+13 $(cl)$1 %n$(wht)\($(cl)$3$(wht)\)%n has joined $2 $Z
+14 $fparse(format_timestamp_some $($_timess))$(wht)$1%n $(cl)\($(cl)$3$(cl)\)%n has joined $2
+15 $(wht)$1%n $(hwht)\($(cl)$3$(hwht)\)%n has joined $2 $Z
+16 $fparse(format_timestamp_some $($_timess))$(cl)$1%n $(wht)\($(ck)$3$(wht)\)%n has joined $(wht)$2%n
+17 $G $(wht)$1%n $(hgrn)\($(cl)$3$(hgrn)\)%n$(cl) has joined $(hblu)$2%n$(cl) $Z%n
+18 $fparse(format_timestamp_some $($_timess))%c$1 %K\[%C$3%K\]%n has joined %C$2
+19 $fparse(format_timestamp_some $($_timess))$(c4)$1 %K[$(c3)$3%K]%n has joined $2
+20 $G $1 \($3\) has joined $2
+21 $fparse(format_timestamp_some $($_timess))%K[%Wjoin%K/%n$2%K]%W $1 %K[%n$3%K]%n
+22 $fparse(format_timestamp_some $($_timess)) $(hblk)[$(c1)$1%K\($(c2)$3$(c1)%K\)]%n has joined $(c2)$2
+23 $fparse(format_timestamp_some $($_timess)) $G $(c3)join$(hblk): $(c1)$1$(hblk):$(c1)$2 $(hblk)\($(c1)$3$(hblk)\)%n
+24 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)join%n/$(c2)$2$(c3)]%n $(c3)-%n $1$(c1)!%n$3
+25 $fparse(format_timestamp_some $($_timess))$(c4)$1 %m[$3]%n has joined $(hwht)$2
+26 $fparse(format_timestamp_some $($_timess))$G $(c1)$1$(cl)!$(c1)$3$(cl)\ has joined: $2

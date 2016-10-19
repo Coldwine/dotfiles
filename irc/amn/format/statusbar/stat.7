@@ -1,0 +1,29 @@
+subpackage stat7
+
+alias stat7 {
+^set status_format1 $(sc1)ÉÍÍÍ¸ %*%=%@$(cl)%N %# %C %+ %> $(hblk)[$(c1)ops$(hblk):$(wht)%2 $(c1)nops$(hblk):$(wht)%3 $(c1)voc$(hblk):$(wht)%4$(hblk)] $(sc1)ÉÍ$(hblk)¸
+^set status_format2 $(sc1)º   $(hblk)$(ld.vline)  $(sc1)¯$(sc3)¯ $(sc2)%T%Q $(sc3)®$(sc1)®   $(hblk)[$(sc1)act$(hblk):$(wht)%F$(hblk)] $(hblk)[$(sc1)win$(hblk):$(wht)%R$(hblk)] %> $(hblk)[$(sc1)serv$(hblk):$(wht)%{2}S$(hblk)] $(hblk)[$(c1)lag$(hblk):$(wht)%1$(hblk)] $(c1)Ó$(hblk)$(ld.hline)$(ld.lr_corner)
+^set input_prompt $(hblk)$(ld.ll_corner)$(cl)®$(hblk)$(ld.hline)$(cl)¯$(hblk)$(ld.lr_corner)$(cl) 
+^set status_umode $(hblk)\($(wht)+$(wht)%#$(hblk)\)
+^set status_oper $(sc1)*
+^set status_lag %L
+^set status_channel $(cl)%C
+^set status_mode $(hblk)\($(cl)+$(wht)%+$(hblk))  
+^set status_clock %T
+^set status_chanop $(hblk)@
+^set status_format5 %> %5
+^set status_mail $(hblk) $(wht)m$(cl)ai$(hblk)l $(wht)%M
+^set status_user5 $(sc1)s$(hblk)/$(sc2)$S
+^set STATUS_NOTIFY %F
+^set status_voice +
+^set status_away  $(hblk)[$(sc1)away$(hblk)]
+^set status_hold_lines $(hblk)\[$(wht)%B$(hblk)]
+^set status_query $(hblk)\[$(blu)Q$(wht): $(wht)%Q$(hblk)]
+}
+stat7
+@windowdoubles=[on]
+^window double on
+^timer -del 14
+
+
+

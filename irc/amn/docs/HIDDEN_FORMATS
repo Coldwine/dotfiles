@@ -1,0 +1,9 @@
+This is to document the vars that can be adjusted to change visuals but
+don't have associated format commands. Can be set in the client, amnrc,
+or in themes.
+
+If you use these to change things you're on your own. Don't bug us about
+how they work, because this is basically here at the insisting of one
+particularly onery developer.
+
+acban			Amnesiac banner (default: [a+c])

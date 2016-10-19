@@ -1,0 +1,49 @@
+# Copyright (c) 2003-2010 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+
+before installing amnesiac remember this script is for epic5 it's not a
+bitchx and or scrollz script or any other ircii based client but epic
+first you should get epic from www.epicsol.org download it and compile it.
+if you do not know what epic is then you don't need this irc script.
+
+check the README NOTES TODO-BUGS E5-KNOWNBUGS Files if you are experiencing 
+any weird problems/errors. more documents can also be found in ~/amn/docs
+also please report possible bug reports to us via e-mail or on irc.
+
+NOTE: amnesiac 2.0.2 and newer requires epic5 EPIC5-1.1.2+
+
+install info:
+
+How to install this package:
+
+  o  Run 'tar zxvf amnesiac*.tgz -C ~/'
+  o  If from a snapshot 'tar zxvf ac-snap.tgz -C ~/'
+  o  Then proceed to put this line in your ~/.ircrc or ~/.epicrc
+     load ~/amn/amn.epic
+     ^^ see sample.epicrc in amn/docs directory for more options/info.
+  o  start epic5, some commands/helpdocs, /config /format /theme /ahelp /ehelp
+     /winhelp /dcchelp /mhelp
+  o  common switches/options; epic5 -n somenick -H somevhost.com
+     epic5 -H somevhost.com somenick irc.someserver.com
+     ^^ does not have to be specified in that particular way or use of
+     example switches shown above.
+
+NOTE:
+Amnesiac does not have to reside in ~/amn. You can put it anywhere and read
+only is the only access that the script has to get to work properly. All
+save files will go to ~/.amn per default.
+
+issues/questions/problems:
+if you have read all the docs and still have trouble with script or
+client issues,  join the #amnesiac support channel on efnet. and someone
+should be able to assist you.
+
+Or
+
+msg zak@efnut(usual nicks are zak/crapple),kreca,mongoose and skullY one
+of us should be available.
+
+If you prefer to e-mail.
+E-mail: zak@nospam.ircii.org/kreca@nospam.ircii.org
+
+Amnesiac Mailing list: http://epicsol.org/mailman/listinfo/amnesiac

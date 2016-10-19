@@ -1,0 +1,13 @@
+DESC 
+1 [a!l/$(awayl).p/$(togpager)]
+2 [a|l!$(awayl).p!$(togpager)]
+3 [ac/l:$(awayl) p:$(togpager)]
+4 \(log/$(awayl).page/$(togpager))
+5 \(log!$(awayl).page!$(togpager))
+6 [log/$(awayl).page/$(togpager)]
+7 [log!$(awayl).page!$(togpager)]
+8 (+lp)
+9 
+10 [BX-MsgLog On]
+11 [l/on p/off]
+12 (log:on/page:off)

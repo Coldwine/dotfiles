@@ -1,0 +1,5 @@
+@_modsinfo.tab.description="extended tab completion";
+@_modsinfo.tab.blankmsg=1;
+@_modsinfo.tab.loadcmd = "tabload";
+@_modsinfo.tab.savecmd = "tabsave";
+@_modsinfo.tab.savefiles = "tab.save";

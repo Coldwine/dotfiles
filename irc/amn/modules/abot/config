@@ -1,0 +1,5 @@
+@_modsinfo.abot.loadcmd =  'botload';
+@_modsinfo.abot.savecmd =  'botsave';
+@_modsinfo.abot.savefiles= 'bot.save';
+@_modsinfo.abot.helpcmd =  'abothelp';
+@_modsinfo.abot.description='auto-bot';

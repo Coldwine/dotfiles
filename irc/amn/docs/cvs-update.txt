@@ -1,0 +1,19 @@
+Amnesiac Update using CVS
+
+- The first time you want to update amnesiac with CVS, you need to go 
+  to the top level directory and log into the CVS server:
+  $ cd ~/amn
+  $ cvs login
+  Logging in to :pserver:anoncvs@prbh.org:2401/home/cvs/repository
+  CVS password: anoncvs
+  
+  Finally, to update amnesiac just type:
+  $ cvs -q up -Pd
+
+- or to just grab a fresh copy of amnesiac
+  cvs -q get -P amn (in the directory you wish to store amn) common
+  users can execute from ~/  (user home directory)
+
+NOTE: if you get a pass error, and or if you are running cvs for the
+      first time on a particular account, you may need to touch ~/.cvspass
+      if you run into errors.

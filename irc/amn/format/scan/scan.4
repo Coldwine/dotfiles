@@ -1,0 +1,13 @@
+# Copyright (c) 2003-2008 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+subpackage scan4
+
+@format_scan_users=[  $$(hblk)[$$(c1)o$$(hblk)!$$(wht)$$1$$(cl)$$(hblk)] $$(hblk)[$$(c1)n$$(hblk)!$$(wht)$$2$$(hblk)] $$(hblk)[$$(c1)v$$(hblk)!$$(wht)$$3$$(hblk)]]
+@format_scan_width=15
+^assign -format_scan_header
+^assign -format_scan_nicks_border
+@format_scan_nicks=[ $$(hblk)[$$(cl)$$fix.scan2($1)$$(hblk)]]
+^assign -format_scan_footer
+@format_scan_users_op=[  $$(hblk)[$$(c1)o$$(hblk)!$$(wht)$$1$$(cl)$$(hblk)]]
+@format_scan_users_non=[  $$(hblk)[$$(c1)n$$(hblk)!$$(wht)$$1$$(hblk)]]
+@format_scan_users_voc=[  $$(hblk)[$$(c1)v$$(hblk)!$$(wht)$$1$$(hblk)]]

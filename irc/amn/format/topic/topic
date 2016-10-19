@@ -1,0 +1,12 @@
+DESC crapple #amnesiac RTFM
+1 $G %K[%ntopic%K/$(c3)$2%K:%K[$(c3)$1%K]]:%n $3-
+2 $G %K\(%ntopic%K/$(c3)$2%K:%K[$(c3)$1%K]\):%n $3-
+3 $G %K[%ntopic%K/$(c1)$2%K:%K[$(c1)$1%K]]:%n $3-
+4 $G %K\(%ntopic%K/$(c1)$2%K:%K[$(c1)$1%K]\):%n $3-
+5 $G $1 has changed the topic on channel $2 to $3-
+6 $G $fparse(format_timestamp_some $($_timess))$1 has changed the topic on channel $2 to $3-
+7 $G $fparse(format_timestamp_some $($_timess))%K[%Wtopic%K/%n$2%K] %W$1 %K[%n$3-%K]%n
+8 $G $fparse(format_timestamp_some $($_timess))** Topic On %r[%B$2%r]%n : %M$3-%n by %Y$1%n
+9 $G %K\[%ntopic%K/$(c1)$2%K:%K\($(c2)$1%K\)\]:$(wht) $3-%n
+10 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)topic%n/$(c2)$2%n/$1$(c3)]%n $3-
+11 $1 has changed the topic of $2 to $3-

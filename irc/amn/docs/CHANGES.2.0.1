@@ -1,0 +1,370 @@
+NOTE: ChangeLog is done from OLD-NEW AKA OLD Stuff on TOP Newer down below
+ChangeLog amnesiac 2.0.x -> 2.0.2 release
+
+02.09.09
+-start of new release for amnesiac 2.0, may be a few days before
+its officially completed. //zak
+-Add termtitle(msg) alias which sets the terminal title to msg. //kreca
+-sync whois format to my liking ;p, and a slight version change
+-add a @a.commitid (currently unused but devs should update during changes
+to help track down bugs in the future) //zak
+
+02.14.09
+-happy vd$!@#! here's a new feature for everyone.
+-check for clones when a client joins. toggle in /config misc. //skullY
+-remove adcc module, remove irritating shortened ctcp aliases, ie;
+ now its /clientinfo nick, /userinfo nick for exp, minor cleanups elsewhere
+ i forget. //zak
+
+02.16.09
+-Pull netsplit into core. You might want to '/delmod netsplit' to remove
+ it from the list of loaded modules. //skullY
+
+02.21.09
+-Seed the random number generator where needed. //skullY
+
+03.21.09
+-rename some server helper aliases /svadd /svdel /ssl etc to name a few
+ also make /ssl for adding ssl servers actually work, sync some
+ documentation to reality //zak
+-add more documentation into docs/NOTES, also put NOTES in primary amn
+ directory, as more users may view it before asking questions about
+ common documented things in NOTES
+-remove new_server_lastlog_level from default settings as its fixed in latest
+ epic5 release, apparently the behavior has been broken for some time that
+ forced us to override it. //zak
+
+03.23.09
+-merge in whois fixes for ssl client connections(encryption) credits to
+david@efnet for this, thanks!
+-merge in an statbar 4 customizations, cosmetic changes by wicked@efnet,
+i will keep this in tree for now, see if anyone complains *hides in corner*
+-disable clonecheck per default
+-fix kick to make show reasons again and remove srand usage, this is
+sir skullY's fault, blame him
+-merge in various tabkey autocomplete via david@efnet,wicked@efnet
+-add a /wlc window list channel to output current channels listed in current
+ window, should be useful for some //zak
+
+03.24.09
+-bring back massdevoice, -- minimally tested /mdv //zak
+-eliminate the possibility of a /part infinite loop //skullY
+-fix the srand() nonsense //skullY
+
+03.25.09 // 04.11.09
+-sync docs to reality //zak
+
+05.19.09
+-Add pattern matching to op deop voice devoice. 
+ I.e. you can now do /op *kreca* and it will op all nick matching kreca.
+ Suggested by wicked, david and others, inspired by irssi apparently. //kreca
+
+05.20.09
+-Make putting /msg onto the blank input line when tab is pressed optional.
+ This opens the door to make other commands the default. Suggested by inittab.
+ //skullY
+-Make a new "user requests" section in TODO-BUGS. //skullY
+
+05.26.09
+-Fix /ignore which apparently hasn't worked in at least 2 years. //skullY
+
+05.27.09
+-Add case correction to tab completion. 
+ Requested by: inittab. With help from: Skully
+ //kreca
+
+06.05.09
+-Load amnesiac saved sets after all modules are loaded. 
+ This makes sure that module added sets will save and load automatically. 
+ Make use of this in the utf8 module. //kreca
+-Add the ability to operview and mw to specify window number 
+ (for hidden windows). Give operview the same syntax as mw 
+ (-split,-hidden,-kill). If the window at that given already exists the flags 
+ will be added to that specified window, otherwise it will be created at that
+ number. 
+ Requested by Alien88, hopefully he'll now fullfill my request/condition. 
+ //kreca
+
+06.06.12
+-Reset keybindings on /adump. //skullY
+
+06.18.09
+-Add easykline script to oper module. To use this type /klineview [number] 
+ and a special window for klines is created. Type help in that window (no slash)
+ to see how it works. It's good for mass klining / fast klining. Inspired
+ by http://www.garion.org/hosc/. (Public domain)
+ //kreca
+
+10.10.09
+-Attempt to avoid flooding users with /whowas notifications per hop's
+ recommendation. //skullY
+-Fix kreca's wording (something in the public domain has no license.) //skullY
+-Stylistic cleanups. //skullY
+
+11.04.09
+-increment window swapping via /1 /2 to 40 to keep houzzie happy
+-slight changes to default settings ie; dcc rejcts, dcc_window
+-enable auto-reconnect per default *cringe* however its set to 120 secs
+ instead of the previous 30, /ardelay 'int' to toggle reconnect delay.
+-slight new aliasing in regards to  lastloging /lls llw lll see
+ cvs diff for more changeinfo. //zak
+
+12.12.09
+-remove the hop alias which never worked. people should use /cycle instead. 
+ thanks to slocate for finding this. //skullY
+
+-01.05.10
+-Happy new year!
+-Add scan_users info to all scan format so it's easier to customize. 
+ rb mongoose. //kreca
+
+01.23.10
+-No such thing as a new year while there sync copyrights
+-Various cleanups-sorting of functions aliases.
+-remove useless duplicate aliases we got too many shortened up
+aliases that does the same thing, if someone really does use some short
+'tough shit'. add to .epicrc
+-remove core/more.m merge to core/exec.m slightly more appropriate.
+-sync documentation to reality
+-comment on ambiguous functionality that needs to be rewritten/cleaned up
+and or thrown out alltogether. as we need to clean up a lot of objects
+and put them in proper module/core for easier future debugging purposes.
+-cvs diff to see minor changes not worthy of mentioning in CHANGES
+-I would be pleasantly surprised if this commit does not come with some
+- obvious screwup i probably made somewhere, users may want to test
+before upgrading. //zak
+-new statbar and themes and a whois, as well as some other format changes
+ rb mongoose, if anything breaks, be sure to blame him TYVM
+-remove protect module its junk, i have a better idea for a rewrite to be
+planned before 2012, honest! //zak
+
+-would have saveed me some trouble if kreca documented this somewhere
+on people having some line drawing issues where i had to cvs log.
+THANKS KRECA
+Info below. for those using utf-8 and iso-latin-1
+----------------------------
+revision 1.3
+date: 2009/06/23 17:52:43;  author: kreca;  state: Exp;  lines: +32 -21
+Oki, did a bugfix to the old code
+Can someone that _was_ affected by the bug please type /set_line_drawing 1
+and check how the sbars look after that.
+please switch between
+/eval set_line_drawing 1;sbar 1;
+and
+/eval set_line_drawing 0;sbar 1;
+to see if there is any difference
+
+-By popular demand add slight cosmetic - so it timestamps
+- adminwall/locops/operwall - see amn/modules/oper/oper.m for current
+setting feel free to modify it to your convienience and i will probably
+commit the different cosmetic handling of it.
+current output now shows something like.
+
+Sa:22:19|LOCOPS: zak!zak@hippocratic.oaf/hub.deathwish.net - test
+Sa:22:19|ADMINWALL: zak!zak@hippocratic.oaf/hub.deathwish.net - test
+Sa:22:20|OPERWALL: zak!zak@hippocratic.oaf/hub.deathwish.net - test
+Note: Timestamp conforms to /tform. //zak
+
+01.27.10
+-Cosmetic adjustment to operwall/adminwall/etc by mongoose!
+-addition of quit/kick reasons rb mongoose!
+
+02.03.10
+-Major overhaul of eimodes.m(Now renamed to chanmodes.m along with bans.m)
+ while there also complete the transform to the pf loader.
+-added some new features this is just the beginning of quick mode handling
+of +I/+e, built into the script, basic invite-exempts is complete, however
+/iexempt rely's on /bantype until i get around to making a /invtype,
+iexempt /iexempt <nick|nick1,nick2> adds invite exempt in current chan
+ieh /ieh <nick|nick1,nick2> adds invite exempt of host on the fly
+ieb /ieb <nick|nick1,nick2> adds invite exempt of better on the fly
+ied /ied <nick|nick1,nick2> adds invite exempt of domain on the fly
+iiexp /iiexp <nick|nick1,nick2> adds invite exempt of ident on the fly
+see /smhelp for more info.
+-remove ugly banners in recent addition into adminwal/operwall/locops
+timestamping, however if one wants to use abecho or something, let me
+know //zak
+-some other minor cleanups of cruft that has no functional changes //zak
+-sync some TODO-BUGS a bit more to reality //zak
+
+02.04.10
+-remove adcc for good from pasture //zak
+-sync documents to reality, esp docs/PF-TODO
+-sync epic5 UPDATES docs to reality, i guess somehow i must have
+ missed this awhile back, or cvs ate it. //zak
+
+02.18.10
+-somehow during the merge of eimodes/bans.m into chanmodes.m bans.m did
+not make it, also merge channel.m into chanmodes.m purging more duplicates
+*sigh*, now amnesiac has /bk /bantype ban support etc again sorry for
+the mess. //zak
+-Also another note, between epic5 cvs 1620-21(server handling names got broken,
+ it's fixed in 1622, but other bugs have now popped up cvs users of epic5 
+ should stick with 1619, until the bugs are corrected. you can find a copy
+ at http://amnesiac.ircii.org/epic5/cvs if you dont know how to revert with
+ cvs.  //zak
+
+02.19.10
+-sync document to reality (mostly mailing list information), no functional
+ changes //zak
+
+02.21.10
+-arrggghhh fix abot.m(specifically botsave) which has been broken for
+ centuries yet no one reported it. also fix /bans output, _massmode* is
+ slower than molasses, which kreca will be slapped and forced to rewrite.
+ while in general area undo krecaisms. //zak
+
+03.08.10
+-queue up commands in _massmode alias and execute them all at once. this fixes
+ the performance problems reported with mop/mdeop. Thanks to hop for
+ helping me with the queue command //kreca
+
+03.13.10
+-gearing up for a release, while gearing up cleanup documentation, some
+ serious bugs needs to be rectified see TODO-BUGS /ub broken, tab blankline
+ does not load saved settings or something from $(savepath).tab.save //zak
+-new toggability of /clones /btab //zak
+-adjust our default fkey which we basically inherited from oblivion, set to
+ use aliases that are in base or defaultmodules //zak
+-remove core/users.m -> merged to scan.m which is more appropriate imho.
+-remove core/version.m -> merged to core/hooks.m for very little lines in
+ version.m, hooks.m seems like a better fit. //zak
+-various cleanups //zak
+ 
+03.14.10
+-fix /ub alias. rb zak. //kreca
+
+03.15.10
+-fix tabblankmsg not loading save on startup, also replace xecho -b -> abwecho
+ in tabsave //zak
+-major changes to oper.m, with many help from a major irc network oper name
+ tba for credits if given the ok, many functionalities not tested in oper.m
+ brand new g-line handling, new config output in /config when oper module is
+ loaded, new config options of /skills /srkline /srkbots /owcopy /dateconv
+ shiney new who handling(unformatted) /wholist /whotrace /chantrace latter
+ two are are aliased to /wholist, another of /operspy, /cleargi(clear
+ glines) many cosmetic additions/adjustments to server notice outputs. //zak
+-IMPORTANT: amnesiac will only load on epic5(currently cvs) commit id
+ 1626 or better, for those who do not have cvs you may grab via web @
+ http://amnesiac.ircii.org/epic5.cvs.id1626.tgz, or for those who are
+ willing to risk a serious bug that came up in some previous epic5 releases
+ you may comment the client check in amn/amn.epic, USE AT YOUR OWN RISK.
+ //zak
+-purge out our old shitlist/userlist from pasture it's useless/broken
+ inherited from obvlivion //zak
+-sync minor docs to reflect reality. //zak
+-please test the oper module functionality, it does not mean it will stay it
+ could very well be reverted, it needs testing, if its too much problems
+ introduced the previous version of oper.m will come back, unchanged oper.m
+ has been moved to pasture in case problems arises. //zak
+
+03.15.10
+-convert aol module to pf-loader. //zak
+// shrink remove a bunch of irritating small files see more below. //
+-remove xy module no one uses this AFAIK, and i dont use undernet to
+ bother testing for conversions. //zak
+-merge lag.m -> core/server.m //zak
+-merge fkey.m -> core/binds.m where appropriate //zak
+-merge getusers.m -> core/server.m for a lack of a better place
+ for small aliases //zak
+-merge lusers.m -> core/server.m more appropriate here methinks //zak
+-move server notices(connection hooks) or basic hooks without opermodule
+ from core/hooks.m -> core/server.m for appropriation. //zak
+
+04.16.10
+-Fix silencing of ctcps. The control codes were lost once upon a time and 
+ havent worked since. Now use on ctcp_reply instead to silence it. //kreca
+
+04.28.10
+-Fix bug in chanmodes which made a user unable to op people with \ in their
+ names //kreca
+
+[cvs 43]
+05.12.10
+-sync docs to reflect reality (amnesiac/epic5)
+-finish up exempt modes we now have exempt for +e +I features
+ see /exhelp
+-remove curse,psk from current greets/credits as they had not contributed
+anything for years if much at all, nor anything to do with the upcoming
+release
+-re-add our old oper module as loper NOTE: you cannot load both oper
+ and loper at once, it will break!! as the new one still has some bugs
+ which needs fixing
+-add /etype for exempt type like bantype for bans
+-move things to do with chanmodes from alias.m (invite/part) -> chanmodes.m
+-even though we had /not set to remove topic for a long time, it has now
+ been changed to /cot|/untopic (dont ask), blame xavier, /not is now aliased
+ as /notice 
+-fix clonechecking, it now works again. 
+-minor cleanups //zak
+
+[cvs 44]
+05.12.10
+- doh, loper.m not oper.m for the loper module. now the module should work
+- convert module/dict to PF-loader
+- somewhat fixup whois format aka /format 1, eh, its better than before
+- *sigh* enable /extpub aka show voice/op on nicks in public on default
+- in theory converted the tc module properly over to the PF-load hopefully
+  skullY can verify, or fix my fuckups ;p
+- remove flood module, broken, will script up something in the near future
+  perhaps
+- mmatrix module converted to PF-Loader.
+- major overhaul of modules/relay conversion cleanup of serious unreadable
+  code inherited from oblivion, now PF-loader converted, all our stuff has
+  finally been updated for PF-load, cept for modules/services, which i
+  in particular have no interest in doing.
+- various cleanups one functional change /clone check option has been
+  changed to /ccheck to toggle on/off and or use /config //zak
+
+[cvs 45]
+05.12.10
+- oops forgot to completely destroy the flood module leftovers.
+
+05.15.10
+[cvs 46]
+- add byron to greets for he has helped with cleanups the past few years
+- add a new shiney logger module 'elog' /addmod elog /loghelp, the savefile
+  at this time is hardcoded into ~/.amn/logs/
+- minor cleanups of crufts that byron saw i had missed
+- add functionality from builtins to compat.m that is needed in the script,
+  perhaps the function is what broke userlist? any testers? //zak
+
+05.15.10
+[cvs 47]
+-revert our current 'enhanced oper module as 'eoper' module to be improved
+ upon after release to iron out the bugs, keep the more 'sane' oper as
+ primary oper module for the time being. the oper module is now our original
+ stable version, the eoper is the current problematic version feel free to
+ send diffs!, NOTE: some who may have been using the 'loper' module may wish
+ to /delmod loper before loading the original oper module or the enhanced
+ oper module, pick your poison. //zak
+
+[cvs 48]
+05.16.10
+-add rgreen theme by ryan, stat19 by ryan, a patch to stat.5 also by ryan
+-merge orignick.m -> server.m which seems more appropriate //z
+-merger various server functionalities from alias.m -> server.m //z
+-merger ignore.m -> alias.m //z
+-merge the whowas to thecompat.m where it belongs //zak
+-add rigmask/rigtype() into compat.m in case needed *sigh* //zak
+-minor commenting cleanups //zak
+-adjust minor changes into default stock amnesiac settings, most
+ will probably not notice the impact //zak
+-add /unig /rmignore to /tig to remove ignores for those that gets confused
+-merge ehelp.m -> help.m small file more appropriate //zak
+
+[cvs49]
+05.18.10
+-add statusbar 8 modification to add activity support, if some dont like it
+ill make another statbar like it with activity support if needed, which
+hopefully wont be the case, patch submitted by ryan, comitted by me //zak
+
+[cvs50]
+07.26.10
+-slight cosmetic change on signoff/signon in hooks.m, slocate@efnet //zak
+-remove /untheme which does not exist from /ahelp seems it was removed
+or never existed in amnesiac, not sure how that was missed either way
+let's blame kreca for this one rb slocate@efnet //zak
+-sync epic5/amn docs to reality //zak
+-remove ref to XSIRC network, no one really goes there/support use efnet
+help channel //zak

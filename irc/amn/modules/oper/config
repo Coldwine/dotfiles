@@ -1,0 +1,2 @@
+@_modsinfo.oper.helpcmd = 'ohelp';
+@_modsinfo.oper.description="IRC amnesiac original/lesser oper/opervision/commands";

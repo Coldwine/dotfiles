@@ -1,0 +1,56 @@
+:david&wicked
+:Get Bent by wicked and david (use /color and /sbcolor to customize)
+:getbent
+assign scdesc (Get Bent by wicked and david)
+assign auth david&wicked
+assign desc Get Bent by wicked and david.
+assign name getbent
+assign c1 [0;31m
+assign c2 [1;37m
+assign c3 [1;30m
+assign c4 [0;31m
+assign c5 [1;30m
+assign sc1 [1;31m
+assign sc2 [0;31m
+assign sc3 [1;31m
+assign sc4 [0;33m
+assign acban [g+b]
+assign theme.format.action 7
+assign theme.format.action_other 7
+assign theme.format.desc 6
+assign theme.format.send_desc 6
+assign theme.format.dcc_chat 30
+assign theme.format.send_dcc_chat 30
+assign theme.format.away 12
+assign theme.format.banner 56
+assign theme.format.kick 9
+assign theme.format.leave 19
+assign theme.format.join 24
+assign theme.format.signoff 22
+assign theme.format.msg 45
+assign theme.format.send_msg 58
+assign theme.format.public 18
+assign theme.format.send_public 34
+assign theme.format.public_other 2
+assign theme.format.notice 28
+assign theme.format.send_notice 39
+assign theme.format.public_notice 6
+assign theme.format.ctcp 14
+assign theme.format.ctcp_reply 2
+assign theme.format.send_ctcp 16
+assign theme.format.mode 12
+assign theme.format.nick_comp 15
+assign theme.format.nickname 21
+assign theme.format.wall 15
+assign theme.format.bwall 15
+assign theme.format.who 5
+assign theme.format.who_footer 1
+assign theme.format.timestamp_some 13
+assign theme.format.topic 10
+assign theme.format.notopic 10
+assign theme.format.settopic 10
+assign theme.format.topicby 10
+assign theme.format.statusbar 17
+assign theme.format.version_reply 17
+assign theme.format.whois 10
+assign theme.format.scan 9

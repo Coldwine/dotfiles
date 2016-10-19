@@ -1,0 +1,23 @@
+^sfset -format_whois_header 
+^sfset format_whois_nick *** $1 is $2@$3 
+^sfset format_whois_name *** ircname: $1-
+^sfset format_whois_channels *** on channels: $1-
+^sfset format_whois_security *** security: connection to server is encrypted
+^sfset format_whois_server *** on irc via server $1 \($2-\)
+^sfset format_whois_away *** away: $1-
+^sfset format_whois_actual *** $1 actually $2 $msar(g/[/%K[%n/]/%K]%n/ $3)
+^sfset format_whois_login *** $1 login as $3
+^sfset format_whois_ident *** $1 has identified
+^sfset format_whois_connect *** connected on $1 actual $6
+^sfset format_whois_active *** is active
+^sfset format_whois_root *** Services Root Admin
+^sfset format_whois_operator *** $1 is an IRC Operator
+^sfset format_whois_admin *** $1 is a Server Administrator
+^sfset format_whois_idle *** idle: $tdiff($1)
+^sfset format_whois_unknown *** $1: no such nick/channel
+^sfset format_whois_signon *** $1 signed on at $2-
+^sfset -format_whois_footer 
+^sfset -format_whowas_header 
+^sfset format_whowas_nick *** $1 was $2@$3
+^sfset format_whowas_name *** ircname: $1-
+^sfset format_whowas_unknown *** $1: there was no such nickname

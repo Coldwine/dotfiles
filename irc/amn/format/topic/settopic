@@ -1,0 +1,12 @@
+DESC #amnesiac RTFM
+1 $G %K[%ntopic%K/$(c3)$1%K]:%n $2-
+2 $G %K\(%ntopic%K/$(c3)$1%K]\):%n $2-
+3 $G %K[%ntopic%K/$(c1)$1%K]:%n $2-
+4 $G %K\(%ntopic%K/$(c1)$1%K\):%n $2-
+5 $G Topic for $1: $2-
+6 $G $fparse(format_timestamp_some $($_timess))Topic for $1: $2-
+7 $G $fparse(format_timestamp_some $($_timess))%K[%Wtopic%K/%n$1%K] $2-
+8 $G $fparse(format_timestamp_some $($_timess))$G Topic for %r[%B$1%r]%n : $2-
+9 $G %K\[%ntopic%K/$(c1)$1%K\]:$(wht) $2-%n
+10 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)topic%n/$(c2)$1$(c3)]%n $2-
+11 Topic for $(c1)$1$(cl): $2-

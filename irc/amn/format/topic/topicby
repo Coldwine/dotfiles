@@ -1,0 +1,12 @@
+DESC #amnesiac crapple!zak@from.hell Wed Jan 10 07:20:24 2007
+1 $G %K[%ntopic%K/$(c3)$1%K:%K[$(c3)$2%K]]:%n $3-
+2 $G %K\(%ntopic%K/$(c3)$1%K:%K[$(c3)$2%K]\):%n $3-
+3 $G %K[%ntopic%K/$(c1)$1%K:%K[$(c1)$2%K]]:%n $3-
+4 $G %K\(%ntopic%K/$(c1)$1%K:%K[$(c1)$2%K]\):%n $3-
+5 $G Topic for $1 was set by $2 on $3-
+6 $G $fparse(format_timestamp_some $($_timess))Topic for $1 was set by $2 on $3-
+7 $G $fparse(format_timestamp_some $($_timess))%K[%Wtopic%K/%n$1%K] %W$2 %K[%n$3-%K]%n
+8 $G $fparse(format_timestamp_some $($_timess))$G Topic for %r[%B$1%r]%n : Set By %Y$2%n on $3-
+9 $G %K[%ntopic%K/$(c1)$1%K:%K\($(c2)$2%K\)]:$(wht) $3-%n
+10 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)topic%n/$(c2)$1$(c3)]%n set by $(c2)$2%n @ $3-
+11 $G Topic set by $2 $3-

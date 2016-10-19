@@ -1,0 +1,23 @@
+DESC crapple zak@chowned.org #amnesiac Im such an emokid
+1 $G $(c1)$1 %K\($(c2)$2%K\) %nhas left $(c2)$3 %K[%n$4-%K]
+2 $G $(c1)$1 %K\[$(c2)$2%K\] %nhas left $(c2)$3 %K[%n$4-%K]%n at $Z
+3 $G $1 %K[%w$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)%K]%n has left $3 %K[%W$4-%K]
+4 $fparse(format_timestamp_some $($_timess))%c.%K.[%Wp%nart%K/%n$3%K]%n $1%K\(%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)%K\) %K[%n$4-%K]%n
+5 $G %K.%c.%K[%Wp%nart%c.%n$3%K]%n %K\(%n$1%K[%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)%K]\)%n %K[%n$4-%K]%n at $Z
+6 $fparse(format_timestamp_some $($_timess))%K.%m.%K[%Wp%nart%m.%n$1%K\(%n$msar(g/@/$(hblk)@$(cl)/$(hblk).$(cl)/$2)%K\)]%n of %m$3 %K[%n$4-%K]
+7 $fparse(format_timestamp_some $($_timess))%K\(%Wpart%K/%W$3%K\)%n - %W$1%K[$(c1)$before(@ $2)%K@$(c1)$after(@ $2)%K] \(%n$4-%K\)
+8 $fparse(format_timestamp_some $($_timess))%K\($(c1)p%K$(ld.smalldot)$(c2)$3%K\)%n $1%K[%n$2%K] \(%n$4-%K\)%n
+9 $G $(c1)part$(hblk)\([0m$3$(hblk)\).. $(cl)$1$(hwht)!$(c1)$2%n $Z
+10 $fparse(format_timestamp_some $($_timess))%K[%npart%K!%c$3%K]%n $1%W.%n.%c$2%n
+11 $G part%K/%n$3 %K[%n$1%K!%n$before(@ $2)%K@%n$after(@ $2)%K]%n $Z
+12 $G $1 has left channel $3
+13 $fparse(format_timestamp_some $($_timess))$(hwht)$1 %K\[%n$before(@ $2)%K@%n$after(@ $2)%K\]%n has left $3 %K\[%n$4-%K\]
+14 $fparse(format_timestamp_some $($_timess))$(c1)$1 %K\[$(c2)$2%K\] %nhas left $(c2)$3 %K[%n$4-%K]
+15 $G $1 %K[%G$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)%K]%n has left $3 %K[%W$4-%K]%n at $Z
+16 $fparse(format_timestamp_some $($_timess))%K[%Wpart%K/%n$3%K] %W$1%K\(%n$2%K\) [%n$4-%K]%n
+17 $fparse(format_timestamp_some $($_timess))*** %y$1%n Has Left %r[%B$3%r]%n
+18 $fparse(format_timestamp_some $($_timess)) $G $(c3)part$(hblk): $(c1)$1$(hblk):$(c1)$3 $(hblk)\($(c1)$2$(hblk)\)%n
+19 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)part%n/$(c2)$3$(c3)]%n $(c3)-%n $1$(c1)!%n$2 $(c3)[%n$4-$(c3)]%n
+20 $fparse(format_timestamp_some $($_timess))$(c4)$1 %m[$2]%n has left $(hwht)$3 %m\[%n$4-%m\]
+21 $fparse(format_timestamp_some $($_timess))$G $(c1)$1$(cl)!$(c1)$2 %nhas left $3: $4-
+

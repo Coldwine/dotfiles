@@ -1,0 +1,29 @@
+subpackage stat8
+### stat.8 with activity info added.
+### modded by ryan@slipgate.org
+#^set input_prompt $(sc1).$(cl).$(hblk). 
+^unset input_prompt
+alias stat8 {
+^set status_format1 $(sc1)$(ld.ul_corner)$(hblk)$(ld.hline)$(sc1)Â %*%=%@$(cl)%N %#$(sc1).%C%+ %!$(hblk)[$(cl)o$(sc1).$(hwht)%2 $(cl)n$(sc1).$(hwht)%3 $(cl)v$(sc1).$(hwht)%4$(hblk)] %> $(hwht)l$(cl)ag$(hblk)\($(cl)%1$(hblk)\)%A $(hblk)Â$(sc1)$(ld.hline)$(hblk)$(ld.ur_corner)
+^set status_format2 $(hblk)$(ld.ll_corner)$(sc1)$(ld.hline)$(hblk)Á %{2}S %Q %F %> $(hblk)[$(hwht)w$(cl)in$(hblk)/$(hwht)%R$(hblk)] $(hblk)\($(hwht)t$(cl)ime$(sc1).$(hwht)%T$(hblk)\) $(sc1)Á$(hblk)$(ld.hline)$(sc1)$(ld.lr_corner)
+^set status_umode $(hblk)\($(hwht)+$(wht)%#$(hblk)\)
+^set status_server $(hwht)s$(cl)erv$(hblk)\($(sc1)%S$(hblk)\)
+^set status_oper $(sc1)*
+^set status_lag %L
+^set status_channel $(cl)%C
+^set status_mode $(hblk)\($(hwht)+$(cl)%+$(hblk))
+^set status_clock %T
+^set status_chanop $(hblk)@
+^set status_format5 %> %5
+^set status_notify $(hblk)[$(hwht)a$(cl)ct$(hblk)/$(cl)%F$(hblk)]
+^set status_mail $(hblk) $(hwht)m$(cl)ai$(hblk)l $(hwht)%M
+^set status_user5 $(hwht)s$(cl)erv$(hblk)\($(sc1)$S$(hblk)\)
+^set status_voice +
+^set status_away  $(hblk)<$(hwht)a$(cl)way$(hblk)>
+^set status_hold_lines $(hblk)\[$(hwht)%B$(hblk)]
+^set status_query $(hblk)\[$(blu)Q$(wht): $(wht)%Q$(hblk)]
+}
+stat8
+@windowdoubles=[on]
+^window double on
+^timer -del 14

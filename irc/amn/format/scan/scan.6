@@ -1,0 +1,13 @@
+# Copyright (c) 2003-2006 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+subpackage scan6
+
+@format_scan_users=[ $$4  [o!$$1] [n!$$2] [v!$$3]]
+@format_scan_width=15
+^assign -format_scan_header
+^assign -format_scan_nicks_border
+@format_scan_nicks=[ $$fix.scan2($1)]
+^assign -format_scan_footer
+@format_scan_users_op=[  o!$$1]
+@format_scan_users_non=[  n!$$1]
+@format_scan_users_voc=[  v!$$1]

@@ -1,0 +1,231 @@
+Amnesiac TODO/BUGS/Projects/Procrastinating list.
+
+Rewrite Section:
+
+This is some notes from hop on stuff we should look at rewriting.
+
+<hop> in serverlist.m, i'd love to know why you're torturing the poor FULLDESC
+      return value like that. ;-)
+<hop> if the return value isn't usable, i'd rather fix the return value than
+      require you to murder it.
+<hop> so there is a $serverctl(READ_FILE filename)
+<hop> and if you write all of the $serverctl(GET <refnum> FULLDESC) to that
+      file, it'll Just Work(tm).
+-----
+<hop> $N is *never* what you think it is.
+<hop> $servernick() is what you should use
+-----
+<hop> btw, the same deal with $C  -- $C is the current input window's current
+      channel.  what you want is $winchan($serverwin())
+-----
+<hop> 1) You can create your own output levels with $levelctl()
+<hop> http://epicsol.org/help/levelctl
+<hop> ie, @levelctl(ADD bleh);/xecho -l bleh HAHAHAH!                           
+-----
+<hop>  /server irc.foo.com:pr=v6
+<hop> or /server ssl-irc.foo.com:type=irc-ssl
+-----
+<hop> you should begin planning for elimiating every use of /eval everywhere    
+<hop> if you need to double-expand strings, use the ** math operator            
+<hop> @ foo = 'this is a string with $var in it'                                
+<hop> @ var = "one"                                                             
+<hop> @ val1 = **foo                                                            
+<hop> @ var = "two"                                                             
+<hop> @ val2 == **foo                                                           
+<hop> val1 -> "this is a string with one in it"  val2 -> "this is a string
+      with two in it"
+
+-------------------------------------------------------------------------------
+User Requests
+-------------------------------------------------------------------------------
+
+None
+
+-------------------------------------------------------------------------------
+End User Requests
+-------------------------------------------------------------------------------
+
+Meaning of flags:
+! = fixed/added stuff
++ = changed stuff, uncertain if complete.
+@ = requests/votes
+$ = knownbug.
+? = undecided/closed votes.
+
+## low priority knownbugs.
+$ \ doesn't work well in tab, \nick\ in channel breaks causes problems..
+^^ fixed? or still broken? //zak
+
+$ Supposedly texp will break under certain circumstances <-- vague 
+  kreca motherland speak, a little clarification here would 
+  be nice //zak
+
+$ userlist is buggy/has been having issues for years it's really not a
+  priority for us but we may work on it soon. <- 02.03.10, eh mon, we
+  love to talk about it, it comes up almost every time i come on irc,
+  2015, it will be done in 2015. //zak
+  addenum to the above, flags aor */* however does work, for auto-ops
+  just everything else ctcp etc is broken.
+
+$ serverlist module is actually incomplete, kreca says he will finish it
+  timeline unknown. - year 2014 by my prediction if IRC still exists. ;p
+  //zak
+
+## high priority knownbugs.
+NONE KNOWN
+
+## high priority todo. (stuff that needs to done before upcoming release)
+@ we have too many bindings for dcc, perhaps we could set some sort of cycle
+  for chat/accept/send, as i highly doubt more than one person would send
+  some sort of dcc request at once in most cases, ie; use ctrl-t to accept
+  both chat/files and ctrl-r to reject both chat/files? something to look
+  into? 03.12.10 no interest?, perhaps to look into after our release //zak
+
+@ cleanup oper module/rewrite portions/allow for more toggability of 
+  some things alien88 likes blocked that others may too.
+  we should discuss things among different admins/opers we know in some
+  temp irc channel //zak (work in progress) 02.04.10 - recent work of
+  interest in improving our oper functonality has started up somewhat
+  again, however it would be nice if opers big/small/medium networks
+  of this script would stop by and ask what they would like to see or
+  adjusted,removed if anything, feel free to drop us an e-mail even.
+  (will evualuate after our real-first release) so we can fuck up so
+  many cleanups while the current cvs is pretty stable/mature.
+
+## lower priority requests/todo.
+@ Finish server list module, assigned to kreca (kreca check UPDATES)
+  ^ Still incomplete as of 02.03.10 marking the date/year down should
+   speed up kreca's slackness or maybe not //zak
+
+@ Start assigning more sane hook numerics, they're all over the place
+  which is something we pretty much inherited from oblivion. //zak
+
+@ We need to fix the getusers handling, hell it needs an overhaul, any
+  takers? (some slight improvement in the past few months) 03.12.10 //zak
+
+@ add some topwin module, kreca has to start a discussion about some topwin
+  script he might have permission for us to use/modify/rip ;)
+  02.04.10 - due to the ugliness of toplines, and most of the scripters
+  do not use/want topic modules, and the brave few who have attempted
+  to do so, they all have their own little quirks, bugs, irritation,
+  its not so much of doing, its how to actually properly design one,
+  users who wants it, should check the epic5 source for topic scripts
+  and load it, they do co-exist with amnesiac, they're however buggy.
+
+@ make orignick use ISON functionality.. -Rylan
+  02.04.10 - i honestly think i like the idea of this however i
+  forget the reason behind why we should use this other than,
+  hijacking nicks quicker?, ISON functionality of epic is something
+  not well understood for me //zak
+
+@ Add a way to match the ban/invite execption list against the current
+  users in a channel. Requested by Tilt. 10.04.10 i can totally see
+  this happening within the next decade, i like the concept, however
+  i can see this taking some time if someone even succeeded in scripting
+  up that there are going to be a lot of complicated bugs, unforseen
+  bugs cropping up over time, unless by chance someone else has
+  some actual draft of how this could be implimented safely. //zak
+
+
+## Procrastinated requests.
+@ add support to bwk to allow usage of wildcards.
+  - cool to have but hrm again what the benefit of the time
+    to do this? sure it may be 5 mins but 5 mins is a lot of
+    minutes for someone with a lack of time //zak
+
+@ fixdouble/fixwin or equiv for doublestats
+  - Note sure what the reason for this or why someone please
+    start documenting more on TODO-BUGS on what is what thanks. //zak
+
+## bugs fixed. / projects done.
+! 05.12.10
+ convert modules to the PF-Loader 02.04.10 see docs/PF-TODO
+ All has finally been converted over to PF-L, cept for modules/services
+ which isnt exactly of importance at this time, only took us 4 years! //zak
+
+! 05.12.10
+  /format 1, doesnt output the proper whois parses ircname/away mixup
+  fixed better than it was before and looks better, not perfect but i'll
+  settle for the cosmetic adjustment compared to our previous output //zak
+
+! 05.12.10
+  clonechecking broken
+  -seems like it got missing/broken from the netsplit.m merge into
+   core somehow, and some genius tried to make a duplicate hook
+   which would not trigger regardless. now fixed! //zak
+
+! 03.15.10 
+  blankmsg tabkey does not save settings. (variable missing?) 
+  -missing some stupid pf-loading crap for brokeness //zak
+
+! 03.15.10
+  /ub nick is broken, over further debugging - /ub nick /bans will also break.
+  -fixed by kreca in previous commit(yesterday) //kreca
+
+02.04.10
+! more documentation need some updating?
+  we have probably extensively documented more things in amnesiac
+  more than any other irc script in history im sure, they may not
+  all be in the client helpfiles itself, users of amn please to
+  check out amn/docs for help as well before assuming amnesiac
+  has a bug, or questions that may NOT be documented on client side
+  due to in verbatim, ergo it goes in amn/docs though i admit there
+  are some that still needs tweaking progress has been made //zak
+
+02.03.10
+! finish up or scrap the adcc module, i really hate to touch this myself
+  i have never heard of a request for this module nor have i heard a single
+  complaint about it working or not working perhaps a vote?
+  @skullY I vote remove. If they need this they can run an eggdrop.
+  gone for some time now i beleive, i forget how long, dont care, me
+  happy //zak
+
+01.23.10
+! protect module is borked, fix? remove?
+  @skullY I vote remove, Metoo, dead,gone junk useless not even pasture
+  worthy //zak
+  
+2.13.08 - i beleive this has been done about a year ago kreca forgot to
+	  update the file as usual. //zak
+! Get some variables from numeric 005 so we can finetune some displays?
+  EG, get nick length so we can have formatted publics and /who with proper
+  output?
+
+2.13.08 - finally got around to doing it /bhelp for info //zak
+! add bans help documentation
+
+1.24.08 - seems to work fine, let us know if any problems.
+! add possible dcc_ports toggability, somewhat based off epic5/scripts.
+   let me or kreca know if it works/causes problems/whatnot //zak
+   (still untested for me really)
+
+1.12.08 it's been set for default_realname/user, -snapshot is more for
+	-cvs epic anyways. (were not adding backwards compat)
+! fixup /set realname for default_realname and default_user should we
+  if < ver, or break compatability? i vote for if < somever when it was
+  added then do the old way of set realname.
+
+1.31.07
+! mmatrix module, /addword foobar #chan will not ban and kick user, just kick
+  ^^ fixed prolly about a month or two ago //zak
+
+10.21.06 - fixed by kreca 'getuhost' issue in alias.m -Rylan
+! /ign seems to have interesting issues, recursion?? /ign foo-bar(nonexistent
+  nick) spews Cannot pop operand: no more operands, looks like there's some
+  hack to suppress even more errors a la ^?; math parser issue? -Rylan
+
+9.14.06 seems to work fine, hopefully some will like this feature //zak
+! make usage of $encode() for basic 'encryption' for awaylogs or some other
+  new function that has yet to be investigated.
+
+7.10.06 //skullY
+! =nick= bug: if you use /msg nic<tab> and their nick ends in a \
+  =nick= it prefixes it with another \, so it'll be nick\\
+
+8/7/05 doesn't look like this is needed move to here votes closed. //zak
+- maybe? for - glines...
+  <@skullY> you could if ([$0]==[y] || [$0]==[yes]) //vote?
+
+Last but not least, dont forget to report any unsurprising bugs no matter
+how trivial they may appear, if you think something is a bug, please let
+us know.

@@ -1,0 +1,32 @@
+DESC crapple zak@chowned.org hi
+1 $fparse(format_timestamp_some $($_timess))%K-$(c3)$1%K\(%n$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K\)-%n $3-
+2 $fparse(format_timestamp_some $($_timess))%K-$(c3)$1%K\[%n$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K\]-%n $3-
+3 $fparse(format_timestamp_some $($_timess))%K-%M$1%K\(%m$2%K\)- %n$3-
+4 $fparse(format_timestamp_some $($_timess))%c.%K.%Wn%not%K\(%n$1%K[%n$msar(g/@/$(hblk)@$(cl)/./$(hblk).$(cl)/$2)%K]\)%n $3-
+5 $fparse(format_timestamp_some $($_timess))$(c1)-$(c2)\($(hwht)$1$(c2)\)$(c1)-%n $3-
+6 $fparse(format_timestamp_some $($_timess))%K.%c.%K[%n$1%K]%n $3- %K\(%m$sar(g/@/$(hmag)@$(mag)/$2)%K\)
+7 $fparse(format_timestamp_some $($_timess))%m.%K.[%c$1%K]%n $3- %K[%c$2%K]%n
+8 $fparse(format_timestamp_some $($_timess))$(hblk)-$(c1)$1$(hblk)\($(c2)$2$(hblk)\)-$(cl) $3-
+9 $fparse(format_timestamp_some $($_timess))%K-%Wn%K/$(c2)$1%K\($(c1)$before(@ $2)%K@$(c1)$after(@ $2)%K\)-%n $3-
+10 $fparse(format_timestamp_some $($_timess))%K-%n$1%K\($(c1)$before(@ $2)$(hblk)@$(c1)$after(@ $2)%K)-%n $3-
+11 $fparse(format_timestamp_some $($_timess))%K-%n$1%K\($(c3)$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K)-%n $3-
+12 $fparse(format_timestamp_some $($_timess))%K-%n$1%K!$(c1)$before(@ $2)$(hblk)@$(c1)$after(@ $2)%K-%n $3-
+13 $fparse(format_timestamp_some $($_timess))%K-%n$1%K!$(c3)$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K-%n $3-
+14 $fparse(format_timestamp_some $($_timess))$(c1)-%n$1$(c1)!%n$before(@ $2)$(c1)@$(cl)$after(@ $2)$(c1)-%n $3-
+15 $fparse(format_timestamp_some $($_timess))$(c3)-%n$1$(c3)!%n$before(@ $2)$(c3)@$(cl)$after(@ $2)$(c3)-%n $3-
+16 $fparse(format_timestamp_some $($_timess))%K-$(c1)$1%K-%n $3- %n%K-$(c1)$before(@ $2)$(hblk)@$(c1)$after(@ $2)%K-
+17 $fparse(format_timestamp_some $($_timess))%K-$(c3)$1%K-%n $3- %n%K-$(c3)$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K-
+18 $fparse(format_timestamp_some $($_timess))$(c1)-%n$1$(c1)-%n $3- %n$(c1)-%n$before(@ $2)$(c1)@$(cl)$after(@ $2)$(c1)-
+19 $fparse(format_timestamp_some $($_timess))$(c3)-%n$1$(c3)-%n $3- %n$(c3)-%n$before(@ $2)$(c3)@$(cl)$after(@ $2)$(c3)-
+20 $fparse(format_timestamp_some $($_timess))%K-$(c1)$1%K-%n $3- %n%K-%n$before(@ $2)$(hblk)@%n$after(@ $2)%K-
+21 $fparse(format_timestamp_some $($_timess))%K-$(c3)$1%K-%n $3- %n%K-%n$before(@ $2)$(hblk)@%n$after(@ $2)%K-
+22 $fparse(format_timestamp_some $($_timess))%K-%n$1%K-%n $3- %n%K-$(c1)$before(@ $2)$(hblk)@$(c1)$after(@ $2)%K-
+23 $fparse(format_timestamp_some $($_timess))%K-%n$1%K-%n $3- %n%K-$(c3)$before(@ $2)$(hblk)@$(c3)$after(@ $2)%K-
+24 $fparse(format_timestamp_some $($_timess)) -$1- $3-
+25 -$1- $3-
+26 $fparse(format_timestamp_some $($_timess))* %R$1 $3-%n
+27 $fparse(format_timestamp_some $($_timess))$(hblk).$(c2).$(hblk)\[$(c2)$1$(hblk)\($(c1)$2$(hblk)\)\] $(hwht)$3-
+28 $fparse(format_timestamp_some $($_timess))$(c3)-\($(c4)n%n/$(c2)$1$(c1)!$%n$2$(c3)\)-%n $3-
+29 $fparse(format_timestamp_some $($_timess))%m-$(hblu)$1%K\!$(cyn)$2%m- %n$3-
+30 $fparse(format_timestamp_some $($_timess))%m$1%K\(%m$2%K\) %n$3-
+

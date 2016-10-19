@@ -1,0 +1,59 @@
+# Copyright (c) 2003-2010 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+
+* AMNESIAC HOME PAGE:	http://amnesiac.ircii.org
+  IRC Support channel: #amnesiac on EFnet @ irc.efnet.org
+
+* Amnesiac Mailing list: http://epicsol.org/mailman/listinfo/amnesiac
+
+* common faq's,documents etc can be accessed via from the following.
+  http://amnesiac.ircii.org/doc/amn-faq.txt (the faq)
+  http://amnesiac.ircii.org/doc/amn-fuq.txt (freq unanswered questions)
+  http://amnesiac.ircii.org/doc/NOTES (various troubleshooting info)
+  http://amnesiac.ircii.org/doc/ (to browse various documents)
+  http://amnesiac.ircii.org/bugs.html (for any unsurprising knwon bug
+  report(s) in epic5, or amnesiac)
+
+* people who wish to see amnesiac source via cvsweb may do so @
+  http://cvs.epicsol.org/cgi/viewcvs.cgi/amn/
+
+* The INSTALL file gives detailed instructions how to install amnesiac.
+
+* The documents directory, contains misc documents for amnesiac and epic
+  as well as the todo list, and knownbugs.
+
+* The pasture directory, contains stuff some people may still want but has
+  been removed. or for reference purpose.
+
+* If you find a bug in amnesiac, please join one of our support channels
+  primarily on efnet, to report a bug, or drop an email to the mailing
+  list: amnesiac@<nospam>epicsol.org if you have subscribed
+  this may help speed up fixing a bug in case i am not around or vice versa.
+
+* If you want a feature in amnesiac or anything else, please let
+  crapple/kreca/skullY@efnet know, or drop an e-mail to the mailing list.
+
+* The CHANGES file contains any amendments to the help files since the 
+  last release of amnesiac
+* The CHANGES.1.2.3x file contains changes between releases.
+
+* NOTES file contains common questions and possible solution, please
+  also see amn/docs for more documentation.
+
+I would like to thank the following people for contributing
+in some way to this project.
+
+        Jeremy Nelson  <jnelson at epicsol dot org>
+        Brian Weiss    <brian at epicsol dot org>
+	Xavier	       <jak at epicsol dot org>
+	Jonas Trollvik <kreca at ircii dot org>
+	Zach White     <zwhite at ircii dot org>
+	Void	       <void at mindcryme dot com>
+	ryan	       <ryan at slipgate dot org>
+	violence       <prozac at scenewhore dot org>
+	adam	       <adam at d62 dot net>
+	Mike Garrison  <Alien88 at EFnet>
+        BlackJac       <BlackJac at EFnet>
+        Trent Petrasek <trent at deathwish dot net>
+
+if you beleive your name should be on this list drop me an e-mail.

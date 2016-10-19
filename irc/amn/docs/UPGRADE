@@ -1,0 +1,63 @@
+07.26.10 - last edited by crapple
+
+NOTE: most of this information here is for referece purposes, for some brave
+amnesiac users who still have yet to upgrade in the past 3+ years. you   
+should always back up your ~/.amn savefile directory before attempting to
+upgrade in case things breaks, or needs to be merged manually.
+
+NOTE: added a new CAVEAT for updating to latest amnesiac 2.0.1(cvs 40+)
+Most important from 2.0.x to 2.0.2 is to purge your ~/amn dir and recvs,
+unless you know how to force update to head via cvs then cvs -q up -Pd,
+then pray. cause of too many file deletion/changes/modifications/renames
+etc. so make sure your amnesiac dir actually get's rid of things that
+is now in the attic on the cvs side of things, next most important,
+make sure to unload modules that no longer exist, or possibly broken/
+nonexistent etc. /listmod and /vmod should help determine what's avail
+More info near the bottom of this upgrade file. marked "NEW"
+
+WARNING: the following may screw up your script, remove precious savefiles or
+render the client unusable, you have been warned.
+
+## /adump info and why.
+/adump is more of a scripters command, there are various usages of this cmd,
+i.e when playing with /sets and or formats/sbars etc.. something went wrong
+/adump will dump and reload/configure the script from it's last /save position
+(basically last working config before it got messed up)
+
+## Upgrading from 1.1x 1.2x to 1.3d 1.4d
+rm -rf /path/to/amn
+tar zxf newver.tgz (will normally uncompress in home dir, or current dir)
+or if one wishes to specify where to put amn
+tar zxf newver.tgz -C /path/to/where/you/want/it
+/adump (in client)
+
+## upgrading to snapshots
+wget http://amnesiac.ircii.org/ac-snap.tgz
+rm -rf /path/to/amn
+tar zxf ac-snap.tgz (this will store in current dir usually home as amn)
+or to specify where to put amn.
+tar zxf ac-snap.tgz -C /path/to/preferred/place
+/adump (in client)
+
+## AS of 1.5.x release we are now using a public cvs server.
+NOTE: please see docs/cvs-update.txt for more information.
+
+most of you should be able to update easily after grabbing the latest
+release and or snapshot, cd /path/to/your/amn && cvs up -Pd 
+this will require you to have cvs installed naturally.
+
+NOTE: in some cases you may have to rm -rf ~/.amn in cases we may have
+broke backwards compatability with some things.
+ie; banwordkick(mmatrix module) and format settings(core client)
+^^ information is outdated. its strictly a reference for upgrading amnesiac
+from 1.1, 1.2, 1.3 to 1.5 for example.
+
+NEW - 05.12.10
+-because of so many changes to our object layout, and file deletion/moving
+/renames, etc, you MUST rm -rf ~/amn if you are not upgrading from CVS,
+else follow the CVS-UPDATE information how to update via CVS.
+
+upgrading from 1.x 2.0 -> 2.0.1+(commit id 40+)
+use cvs, and or rm -rf ~/amn
+tar zxf ac-snap.tgz
+/adump if you're brave, if using older epic5 it may not even load.

@@ -1,0 +1,36 @@
+7DESC criminal:#amnesiac crapple is k-r4d!@!!1!
+1 $fparse(format_timestamp_some $($_timess))%K<$spubpad(%n 0 $1)%K>%n $2-
+2 $fparse(format_timestamp_some $($_timess))%K\($spubpad(%n 0 $1)%K\)%n $2-
+3 $fparse(format_timestamp_some $($_timess))$(hmag)<$spubpad(%n 0 $1)$(hmag)>%n $2-
+4 $fparse(format_timestamp_some $($_timess))$(hmag)\($spubpad(%n 0 $1)$(hmag)\)%n $2-
+5 $fparse(format_timestamp_some $($_timess))$(hblu)<$spubpad(%n 0 $1)$(hblu)>%n $2-
+6 $fparse(format_timestamp_some $($_timess))$(hblu)\($spubpad(%n 0 $1)$(hblu)\)%n $2-
+7 $fparse(format_timestamp_some $($_timess))%K<$spubpad(%c 0 $1)%K>%n $2-
+8 $fparse(format_timestamp_some $($_timess))%K\($spubpad(%c 0 $1)%K\)%n $2-
+9 $fparse(format_timestamp_some $($_timess))%b<$spubpad(%n 0 $1)%b>%n $2-
+10 $fparse(format_timestamp_some $($_timess))%b\($spubpad(%n 0 $1)%b\)%n $2-
+11 $fparse(format_timestamp_some $($_timess))$(sc1)<$spubpad(%n 0 $1)$(sc1)>%n $2-
+12 $fparse(format_timestamp_some $($_timess))%K<$spubpad(%n 0 $1)%K>%n $2-
+13 $fparse(format_timestamp_some $($_timess))%K<$spubpad($c1 0 $1)%K>%n $2-
+14 $fparse(format_timestamp_some $($_timess))$(c1)<$spubpad(%n 0 $1)$(c1)>%n $2-
+15 $fparse(format_timestamp_some $($_timess))$(c3)<$spubpad(%n 0 $1)$(c3)>%n $2-
+16 $fparse(format_timestamp_some $($_timess))%K\($spubpad(%n 0 $1)%K)%n $2-
+17 $fparse(format_timestamp_some $($_timess))%K\($spubpad($c1 0 $1)%K)%n $2-
+18 $fparse(format_timestamp_some $($_timess))$(c1)\($spubpad(%n 0 $1)$(c1))%n $2-
+19 $fparse(format_timestamp_some $($_timess))$(c3)\($spubpad(%n 0 $1)$(c3))%n $2-
+20 $fparse(format_timestamp_some $($_timess))%K[$spubpad(%n 0 $1)%K]%n $2-
+21 $fparse(format_timestamp_some $($_timess))%K[$spubpad($c1 0 $1)%K]%n $2-
+22 $fparse(format_timestamp_some $($_timess))$(c1)[$spubpad(%n 0 $1)$(c1)]%n $2-
+23 $fparse(format_timestamp_some $($_timess))$(c3)[$spubpad(%n 0 $1)$(c3)]%n $2-
+24 $fparse(format_timestamp_some $($_timess))> $2-
+25 > $2-
+26 $fparse(format_timestamp_some $($_timess))$(wht)\($spubpad(%n 0 $1)$(wht)\)%n $2-
+27 $fparse(format_timestamp_some $($_timess))$(cl)\($spubpad(%n 0 $1)$(cl)\)%n $2-
+28 $fparse(format_timestamp_some $($_timess))$(hwht)\($spubpad(%n 0 $1)$(hwht)\)%n $2-
+29 $fparse(format_timestamp_some $($_timess))$(hblu)\($spubpad(%n 0 $1)$(hblu)\)%n $2-
+30 $fparse(format_timestamp_some $($_timess))$(mag)\($spubpad(%n 0 $1)$(mag)\)%n $2-
+31 $fparse(format_timestamp_some $($_timess))$spubpad(%Y 9 $1)%n: $2-
+32 $_format.getop(" " $1)%K\(%W$_format.npad(9 $1)%K\)%w $2-
+33 $fparse(format_timestamp_some $($_timess))$spubpad(%n 0 $1)> $2-
+34 $fparse(format_timestamp_some $($_timess))$(c3)[$spubpad($c1 0 $1)$(c3)]%n $2- 
+35 $fparse(format_timestamp_some $($_timess))$spubpad($(cyn) 0 $1)$(c1)>%n $2-

@@ -1,0 +1,55 @@
+:bioterror
+:iso-8859-1 friendly theme
+:shtfck
+@auth=[bioterror]
+@desc=[iso-8859-1 friendly theme]
+@name=[shtfck]
+@scdesc=[\(shtfck\)]
+@theme.format.msg=1
+@theme.format.send_msg=1
+@theme.format.public=1
+@theme.format.send_public=13
+@theme.format.public_other=1
+@theme.format.signoff=9
+@theme.format.join=1
+@theme.format.leave=[14]
+@theme.format.mode=1
+@theme.format.notice=1
+@theme.format.send_notice=1
+@theme.format.send_dcc_chat=1
+@theme.format.dcc_chat=1
+@theme.format.topic=1
+@theme.format.notopic = [1]
+@theme.format.settopic = [1]
+@theme.format.topicby = [1]
+@theme.format.ctcp=1
+@theme.format.ctcp_reply=1
+@theme.format.send_ctcp=1
+@theme.format.banner=58
+@theme.format.nick_comp=14
+@theme.format.version_reply=7
+@theme.format.scan=3
+@theme.format.wall = [1]
+@theme.format.bwall=1
+@theme.format.away=8
+@theme.format.action=5
+@theme.format.desc=1
+@theme.format.send_desc=1
+@theme.format.statusbar=[16]
+assign theme.format.whois 10
+@c1=[$(grn)
+@c2=[$(hgrn)
+@c3=[$(grn)
+@c4=[$(hgrn)
+@sc1=[[0;32m
+@sc2=[[1;32m
+@sc3=[[0;32m
+@sc4=[[1;32m
+@acban=[2»10»]
+@theme.format.action_other=2
+@theme.format.kick=1
+@theme.format.public_notice=1
+@theme.format.nickname=18
+@theme.format.who=1
+@theme.format.who_footer=1
+@theme.format.timestamp_some=21

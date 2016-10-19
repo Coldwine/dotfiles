@@ -1,0 +1,25 @@
+DESC violence emokid
+1 $G %w$1 %nis now known as %m$2
+2 $G %w$1 %nis now known as %m$2 %n$Z
+3 $G %c$1 %nis now known as %m$2
+4 $G %c$1 %nis now known as %m$2 %n$Z
+5 $G %g$1 %nis now known as %G$2
+6 $G %g$1 %nis now known as %G$2 %n$Z
+7 $G %nnick change %K\(%c$1 %K-> %m$2%K\)
+8 $G %nnick change %K\(%c$1 %K-> %m$2%K\) %n$Z
+9 $G %nnick change %K\(%g$1 %K-> %G$2%K\)
+10 $G %nnick change %K\(%g$1 %K-> %G$2%K\) %n$Z
+11 $fparse(format_timestamp_some $($_timess))$G %c$1%n is now known as %m$2
+12 $fparse(format_timestamp_some $($_timess))$G %W$1 %nis now known as %m$2
+13 $fparse(format_timestamp_some $($_timess))$G %nnick change %K\(%c$1 %K-> %m$2%K\)
+14 $fparse(format_timestamp_some $($_timess))$G %nnick change %K\(%W$1 %K-> %m$2%K\)
+15 $fparse(format_timestamp_some $($_timess))$G %nnick change %K\(%W$1 %K-> %W$2%K\)
+16 $G $1 is now known as $2
+17 $fparse(format_timestamp_some $($_timess))$G %Y$1%n Changed Nickname to %y$2%n
+18 $fparse(format_timestamp_some $($_timess))$G %W$1%n is now known as %W$2
+19 $fparse(format_timestamp_some $($_timess))$G $(hblk)[$(wht)nick$(hblk)] $(c1)$1$(cl) is now known as $(c1)$2%n
+20 $fparse(format_timestamp_some $($_timess))$G %K[%nnick%K]%n %g$1%n %K-%R>%n %G$2%n
+21 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)nick%n/$(c2)change$(c3)]%n $(c3)-%n $1 $(c2)=>%n $2 
+22 $fparse(format_timestamp_some $($_timess))%M$1%n is now known as %m$2
+23 $fparse(format_timestamp_some $($_timess))$G $(c1)$1%n is now known as $(c2)$2
+

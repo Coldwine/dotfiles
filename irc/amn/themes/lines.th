@@ -1,0 +1,56 @@
+:bioterror
+:try it out!
+:lines
+assign scdesc try it out!
+assign auth bioterror
+assign desc try it out
+assign name lines
+assign c1 [0;35m
+assign c2 [1;35m
+assign c3 [1;35m
+assign c4 [1;35m
+assign c5 [0;36m
+assign sc1 [0;35m
+assign sc2 [1;35m
+assign sc3 [1;35m
+assign sc4 [0;35m
+assign acban 2-12/2-
+assign theme.format.action 8
+assign theme.format.action_other 8
+assign theme.format.desc 1
+assign theme.format.send_desc 1
+assign theme.format.dcc_chat 25
+assign theme.format.send_dcc_chat 25
+assign theme.format.away 9
+assign theme.format.banner 60
+assign theme.format.kick 10
+assign theme.format.leave 20
+assign theme.format.join 25
+assign theme.format.signoff 23
+assign theme.format.msg 46
+assign theme.format.send_msg 59
+assign theme.format.public 29
+assign theme.format.send_public 35
+assign theme.format.public_other 39
+assign theme.format.notice 29
+assign theme.format.send_notice 40
+assign theme.format.public_notice 7
+assign theme.format.ctcp 3
+assign theme.format.ctcp_reply 1
+assign theme.format.send_ctcp 8
+assign theme.format.mode 13
+assign theme.format.nick_comp 15
+assign theme.format.nickname 22
+assign theme.format.wall 4
+assign theme.format.bwall 4
+assign theme.format.who 6
+assign theme.format.who_footer 6
+assign theme.format.timestamp_some 23
+assign theme.format.topic 10
+assign theme.format.notopic 10
+assign theme.format.settopic 10
+assign theme.format.topicby 10
+assign theme.format.statusbar 16
+assign theme.format.version_reply 5
+assign theme.format.whois 10
+assign theme.format.scan 1

@@ -1,0 +1,56 @@
+:zak
+:iso-8859-1 possibly friendly theme
+:nocturnal
+assign scdesc \(iso-8859-1 possibly friendly theme\)
+assign auth zak
+assign desc iso-8859-1 possibly friendly theme
+assign name nocturnal
+assign c1 [0;36m
+assign c2 [1;36m
+assign c3 [1;32m
+assign c4 [1;35m
+assign c5 [1;32m
+assign sc1 [0;36m
+assign sc2 [1;36m
+assign sc3 [0;36m
+assign sc4 [0;35m
+assign acban [a+c]
+assign theme.format.action 2
+assign theme.format.action_other 2
+assign theme.format.desc 2
+assign theme.format.send_desc 2
+assign theme.format.dcc_chat 25
+assign theme.format.send_dcc_chat 25
+assign theme.format.away 9
+assign theme.format.banner 45
+assign theme.format.kick 1
+assign theme.format.leave 15
+assign theme.format.join 17
+assign theme.format.signoff 21
+assign theme.format.msg 41
+assign theme.format.send_msg 57
+assign theme.format.public 5
+assign theme.format.send_public 33
+assign theme.format.public_other 31
+assign theme.format.notice 19
+assign theme.format.send_notice 5
+assign theme.format.public_notice 4
+assign theme.format.ctcp 3
+assign theme.format.ctcp_reply 1
+assign theme.format.send_ctcp 8
+assign theme.format.mode 1
+assign theme.format.nick_comp 15
+assign theme.format.nickname 20
+assign theme.format.wall 4
+assign theme.format.bwall 4
+assign theme.format.who 1
+assign theme.format.who_footer 1
+assign theme.format.timestamp_some 22
+assign theme.format.topic 4
+assign theme.format.notopic 4
+assign theme.format.settopic 4
+assign theme.format.topicby 4
+assign theme.format.statusbar 16
+assign theme.format.version_reply 5
+assign theme.format.whois 6
+assign theme.format.scan 3

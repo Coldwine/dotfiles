@@ -1,0 +1,24 @@
+^sfset -format_whois_header
+^sfset format_whois_nick %c$[9]1  %n: %m$2%W@%m$3 %n\($4-\) \[$country($rightw(1 $sar(g/./ / $3)))\]
+^sfset -format_whois_name
+^sfset format_whois_channels %BChannels   %n:%C $1-
+^sfset format_whois_security %BSecurity   %n: connection to server is encrypted
+^sfset format_whois_server %BServer     %n:%C $1%n \($2-\)
+^sfset format_whois_away %BSetAway    %n: $1-
+^sfset format_whois_actual %BActually   %n:%B $3
+^sfset format_whois_login %BLogin      %n: $1 login as $3
+^sfset format_whois_ident %BIdent      %n: $1 has identified
+^sfset format_whois_connect %BConnect    %n: on $1 actual $6
+^sfset format_whois_active %BActive     %n: is active
+^sfset format_whois_root %BRoot       %n: Services Root Admin
+^sfset format_whois_operator %BIrcOp      %n: $1 $2-
+^sfset format_whois_admin %BIrcAdm      %n: $1 is a Server Administrator
+^sfset format_whois_idle %BIdle       %n: $tdiff($1)
+^sfset format_whois_unknown $1: No such nick/channel
+^sfset format_whois_signon %BSignOn     %n: $2-
+^sfset -format_whois_footer
+^sfset -format_whowas_header
+^sfset format_whowas_nick %c$1 %nwas %m$2%W@%m$3
+^sfset format_whowas_name %Bircname%n: $1-
+^sfset format_whowas_unknown $1: There was no such nickname
+

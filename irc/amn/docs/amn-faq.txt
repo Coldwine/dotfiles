@@ -1,0 +1,146 @@
+Amnesiac FAQ 0.1.2
+
+      d. ^b. ,$   ,b.^b ,s$b    .dP^`Sb   d^`b. `$$'    d.   ,s`$b
+     d'$b l'$'`b .$$$ $d$'`$b  d$'   `$b `$. `   $$    d'$b dP'  `b
+    d' `$bl $  `b'`$$ $'   $$  `$b.       `$b.   $$   d' `$bl
+   dsssss$b $      $$ $    $$  d$P'^  ,b.   `$$. $$  dsssss$b
+  d'     `$b$      $$ $    $$ d$b     ,$$.db `$$ $$ d'     `$b    ,b
+ d'       `$$      $$,$    `$b'$$b. ,$$$'`$$bdP'.$$dbs     s$$b  .d$' 
+d' ###### ,d$$b ###X#A#V#I#E#R##b`$$$$$'d####################`$$$$P'
+
+Q: How do I get help documentation?
+A: /ahelp for general amnesiac help, /ehelp to see what other help commands
+   are available.
+   NOTE: We need a better help system. Think you can do it? Come talk to us
+   on EFNet #amnesiac.
+   NOTE: see amn/docs for further documentation.
+   NOTE: see http://www.prbh.org/help/ also ~help/ for epic specific help.
+
+Q: How can I contribute?
+A: We need documentation and testing. Come to EFNet #amnesiac if you find
+   a bug. Even better if you can isolate it and provide a patch. If you
+   write some documentation come to #amnesiac to get it comitted into the
+   tree, if you used cvs to grab amnesiac, you can create recursive diffs
+   (patches) for amnesiac: cd ~/amn && cvs -q diff -auR > amnesiac.patch
+
+Q: Where can I get help?
+A: The official amnesiac channel is on EFNet, #amnesiac. Don't ask if anyone
+   is around, just ask your question. If no one can answer it right away then
+   idle, someone will be around eventually.
+
+Q: How do I switch channels?
+A: Hit ^X to switch between channels and queries for the current window
+
+Q: How do I make this look less gay?
+A: /theme to see a list of themes, /theme <name> to switch themes. You can
+   also change individual formats with /format.
+
+Q: How do I load and unload modules?
+A: /addmod to load a module, /delmod to remove a module, /listmod to see
+   what's loaded, /vmod to see all the modules available. /emod to see more 
+   detailed description about the module.
+
+Q: How do I use windows?
+A: /wj to join a channel in a new window, ^Wc to create a new window, ^Wn to
+   move to the next window, ^Wp to move to the previous window, ^Wk to kill
+   the current window, ^W<0-9> to switch to the specified window, /<0-9> to
+   switch to the specified window. esc<0-9> to switch to specified window.
+   /wk to kill current window.
+   NOTE: We need better documentation on this. Any volunteers?
+   NOTE: see also /winhelp
+
+Q: How do i create a window dedicated to msgs?
+A: /mw -hidden|split|kill [num] <-- this should be self explanatory.
+
+Q: Where is the annoying ambiguous nickcomplete feature?
+A: Under a ideal world we would like to see users use tab to complete
+   nicks in publics, whilest appending a : at the end of the specified
+   completed nick. i.e if user crapple is in current channel, do
+   hi cra<tab> which will complete the nick crapple or, cra<tab> : which
+   usually completes the nick in question usually with a greater chance
+   of accuracy, for those who want's the old nickcomplete and all of it's
+   broken glory. /addmod ncomp to load the nickcomplete module /format r
+   while choosing your poison don't forget to /save to keep your changes.
+
+Q: What's the best way to change behavior that I don't like?
+A: First, see if there's a /format or a /config for the behavior you want
+   to change. If not, take a look at amn/modules/vanilla for an example
+   of how to write a module to set behavior you like. or if its a simple
+   alias of minor things put it in your ~/.epicrc
+
+Q: How do i use notify?
+A: /notify to view online/offline nicks if any.
+   /notify nick will add specified nick to notify list.
+   /notify -nick will remove specified nick from notify list.
+
+Q: How do i ignore someone, what do the types mean?
+A: /ign nick <type> if specified nick is online else
+   /ign *!ident@*.isp.com <type>
+   /tig to remove ignores.
+   Some common ignore types. taken from epicsol.org's page.
+   ctcps      filter in/out all CTCPs received
+   invites    filter in/out all INVITEs received
+   msgs       filter in/out all MSGs received (but not CTCPs)
+   notes      filter in/out all NOTEs received
+   notices    filter in/out all NOTICEs received
+   public     filter in/out public channel conversation
+   wallops    filter in/out operator WALLOPS
+   topics     filter in/out all TOPIC changes
+   nicks      filter in/out all NICK changes
+   joins      filter in/out all channel JOINs
+   parts      filter in/out all channel PARTs
+   crap       filter QUIT, MODE, KICK and PONG
+   all        everything listed above
+
+Q: How do i ignore a channel?
+A: /cig #channel or /cig for current chan.
+   /tig to remove ignores.
+
+Q: How do i enable/use auto_reconnect?
+A: there are 3 different sets at the time of this writing to make the best
+   use of reconnect.
+   AUTO_RECONNECT is ON <-- settings are on/off on means it will attempt to
+   reconnect you to another server if any during timeouts/kills etc.
+   AUTO_RECONNECT_DELAY is 10 <--- time in seconds before retrying
+   AUTO_RECONNECT_RETRIES is 3 <-- how many times to try before giving up
+
+Q: why do the colours/font display properly?
+A: see docs/NOTES for more detailed info, since amnesiac 2.0.x cvs 30 or
+   higher, try /set_line_drawing 0, /set_line_drawing 1 or /fixterm (vga)
+   /latin1(characters)
+
+Q: does amnesiac support utf-8?
+A: since epic5 1.0.1 release if libiconv(something else in linux) is installed
+   and properly working, try /addmod utf8 and /save (this has been minimal
+   tested by the amnesiac core scripters, we rely on reports from users of
+   amnesiac for improving utf8 and utf8 related issues)
+
+Q: How do i disable/toggle certain window notification?
+A: /wnlevel none <-- disables notification
+   /wnlevel publics,join,part <-- notify on public, join and parts
+
+Q: how come amnesiac doesnt have a current working userlist?
+A: bluntly put we dont care, however there is discussion about it
+   from time to time, epic is a bit limited in terms of scripting something
+   as complex such as a userlist, if anyone wish to write one or improve
+   an existing userlist script in the wild, it may motivate some to look
+   at and improve upon it, if the author has no issues with putting it
+   under a license that is compatable with ours.
+
+Q: how do you enable extended publics to show voice/op from users speaking
+   in public channels?
+A: /extpub on
+
+Q: how can i make tabkey cycle nicks on blank tabs?
+A: /config tab a on or /btab on
+
+Q: how come amnesiac does not have a topicbar feature?
+   [excerpts from TODO-BUGS below]
+A add some topwin module, kreca has to start a discussion about some topwin
+  script he might have permission for us to use/modify/rip ;)
+  02.04.10 - due to the ugliness of toplines, and most of the scripters
+  do not use/want topic modules, and the brave few who have attempted
+  to do so, they all have their own little quirks, bugs, irritation,
+  its not so much of doing, its how to actually properly design one,
+  users who wants it, should check the epic5 source for topic scripts
+  and load it, they do co-exist with amnesiac, they're however buggy.

@@ -1,0 +1,14 @@
+# Copyright (c) 2003-2008 Amnesiac Software Project.
+# See the 'COPYRIGHT' file for more information.
+subpackage scan5
+
+@format_scan_users=[$$fparse(format_banner) Users on $$4:]
+@format_scan_width=1
+^assign -format_scan_header
+@format_scan_nicks=[$$1]
+@format_scan_nicks_border=[$$fparse(format_banner)]
+^assign -format_scan_footer
+@format_scan_users_op=[$$fparse(format_banner) Users on $$2:]
+@format_scan_users_non=[$$fparse(format_banner) Users on $$2:]
+@format_scan_users_voc=[$$fparse(format_banner) Users on $$2:]
+

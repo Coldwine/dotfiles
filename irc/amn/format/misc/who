@@ -1,0 +1,7 @@
+DESC #amnesiac skullY H@ zwhite front.arpa.org irc.servercentral.net 0 The Work is Done and Then Forgotten
+1 %K[%C$(ld.vline)%K] %c$[10]center(10 $2) %K\($[35]center(35 %n$4%W@%n$5)%K\) %K[%n$[3]3%K] [%n$6%m/%c$7%K]
+2 $[16]1 $[9]2 $[4]3 $4@$5 $7-
+3 %Y$[10]1 %W$[10]2%w %c$[3]3 %w$4%R@%w$5 \($8-\) \($6\)
+4 $(c1)$[16]1 $(c2)$[9]2 $(wht)$[4]3 $(cl)$4@$5 $7-
+5 $fparse(format_timestamp_some $($_timess)) $(c2)$[10]center(10 $2) $(c3)\($[50]center(50 $c1$4$c3@$c1$5)$(c3)\) [$(c4)$[3]3$(c3)] [%n$6$(c3)/$(c4)$7$(c3)]
+6 $fparse(format_timestamp_some $($_timess)) $(hblu)$[10]center(10 $2) $(c1)\($[50]center(50 $(cyn)$4$c1@$(cyn)$5)$(c1)\) [$(c1)$[3]3$(c1)] [%n$6$(c1)/$(c1)$7$(c1)]

@@ -1,0 +1,5 @@
+DESC crapple PING 1.2345678 seconds
+1 $G CTCP %W$2 %nreply from $1: $3-
+2 $fparse(format_timestamp_some $($_timess))$(c3)-\($(c4)ctcp%n/$(c2)reply%n/$2$(c3)\)-%n $(c3)from%n $1 $(c3)[%n$3-$(c3)]%n
+3 $G $fparse(format_timestamp_some $($_timess)) $(c2)[$(cl)CTCP $2 reply from $1$(c2)]$(cl) $(c3)\($(cl)$3-$(c3)\)$(cl)
+4 $fparse(format_timestamp_some $($_timess)) CTCP %W$2 %nreply from $1: $3-

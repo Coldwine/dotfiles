@@ -1,0 +1,11 @@
+@_modsinfo.remote.helpcmd = "remotehelp";
+@_modsinfo.remote.loadcmd = "remoteload";
+@_modsinfo.remote.savecmd = "remotesave";
+@_modsinfo.remote.savefiles = "remote.save";
+@_modsinfo.remote.description = "Connect to your client using another irc client";
+@_modsinfo.remote.hostname = "localhost";
+@_modsinfo.remote.listening = 0;
+@_modsinfo.remote.listenPort = "10101";
+@_modsinfo.remote.password = "biteme";
+@_modsinfo.remote.statusType[0] = "off";
+@_modsinfo.remote.statusType[1] = "on";

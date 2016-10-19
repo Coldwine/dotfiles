@@ -1,0 +1,58 @@
+as of epic5 -cvs commitid 1524
+Multiserv support has improved substantially with amnesiac, however it
+still is not perfect yet.
+here are some ways/tricks you can do for multiserv. (tho i will not go into
+the full scope of documentation)
+
+1) connect to your usual irc network of your choice. and if you use
+windowing its probably best to create as many windows you may use on each
+network you connect to.
+
+2) /wns irc.someothernetwork.com will create a new last window and connect
+   you to the second irc network (auto_reconnect) works fine for multiserv
+   so you shouldnt lose your windowing and the like if you reconnect within
+   whatever time allocated you set for your multiserv. however if you
+   pingout/server dies for like 10 mins, to reconnect on that server go to
+   the window the second server you was on, /window server
+   irc.someothernetwork.com (you will have to rejoin all your channels on
+   the second network in these cases) as the mjoin module is not
+   multi-server capable as of this writing. and each new window you create
+   while on the second server will be allocated for that server. make use of
+   /wl (window list) to figure out how your windows are mapped.
+
+tricks: virtual hosting ipv4/ipv6(this can also work for non-multiserv as well)
+   before connecting to another server and say you want to change your
+   hostname do /hostname some ipv4/ipv6 vanity.host.com before connecting to
+   another server. as for nickname changes you can do /nick someothernick
+   after you have connected to it unless you have specific settings for the
+   other network in /svlist do /svhelp for more info. you should get
+   something like this.
+***     0) irc.umich.edu 6667 (peptide) [<default>] IRC [ACTIVE]
+***     1) irc.ipv6.he.net 6667 [<default>] IRC [RECONNECT]
+***     2) irc.inet.tele.dk 6667 [<default>] IRC [RECONNECT]
+***     3) irc.ircii.org 7000 (zak) [<default>] IRC [ACTIVE]
+***     4) irc.nicky.net 6667 (crapple) [<default>] IRC [ACTIVE]
+ in the cases of specifying your own nicks/ports/options in /svlist
+ /wns 3 for example will create a new lastwin and connect you to
+ irc.ircii.org on port 7000 using nick zak
+
+DCC_CHAT via ipv6, to make dcc_chat work in *most* cases while you're on
+ipv6 to an ipv4 user do /hostname host.of.your.primary.ipv4.ip
+you should get something like this.
+*** IPv4 vhost changed to [blah.deathwish.net], IPv6 vhost unchanged
+from [helpdesk.deathwish.net]
+
+/chat nick foo, if user foo is on IPv4 *in cases of firewalls/nat/etc* 
+if you have a port forwards/firewall set for dcc, /chat nick foo -p portnum.
+alternatively /set DCC_PORT_MAX highport DCC_PORT_MIN minport. /save, to
+save your settings permanently.
+
+As of this writing, i have been on 4 different networks with one client for
+about a month and have not seen many issues of reporting to date, but if
+someone finds bugs/problems in multiserv please let me (crapple/zak) or
+kreca @ efnet know, we can as always usually be found in #amnesiac@efnet.
+keep in mind not all functions/modules are multiserver capable and some may
+even cause for more problems than needs to be ie; query module comes to
+mind.
+
+//zak(crapple)

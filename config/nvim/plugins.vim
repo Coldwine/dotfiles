@@ -38,6 +38,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
+Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
 Plug 'tmux-plugins/vim-tmux'
 

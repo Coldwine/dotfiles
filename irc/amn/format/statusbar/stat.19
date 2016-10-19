@@ -1,0 +1,29 @@
+subpackage stat19
+### sbar done by ryan@slipgate.org (based off what was originally stat.5)
+alias stat19 {
+^set -input_prompt 
+^set status_format1 $(sc2)$(ld.ul_corner)$(sc1)$(ld.hline)$(hblk)$(ld.hline) %*%=%@$(sc1)%N$(hblk)\($(hwht)%#$(hblk)) %C%+%! %Q %> $(hblk)\($(sc1)o$(hblk)/$(hwht)%2 $(sc1)n$(hblk)/$(hwht)%3 $(sc1)v$(hblk)/$(hwht)%4$(hblk)) $(hblk)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline) $(sc1)lag$(hblk)\($(cl)%1$(hblk)) $(ld.hline)$(sc1)$(ld.ur_corner)
+^set status_format2 $(sc1)$(ld.ll_corner)$(hblk)$(ld.hline) $(sc1)win$(hblk)\($(cl)%R$(hblk)) $(sc1)serv$(hblk)\($(cl)%{2}S$(hblk)) %F %A %> %T %6 $(hblk)$(ld.hline)$(sc1)$(ld.hline)$(sc2)$(ld.lr_corner)
+^set status_umode +$(cl)%#
+^set status_oper $(hblk)*
+^set status_server %S
+^set status_notify $(sc1)act$(hblk)\($(cl)%F$(hblk))
+^set status_lag %L
+^set status_clock $(sc1)time$(hblk)\($(cl)%T$(hblk))
+^set status_channel $(sc1)chan$(hblk)\($(cl)%C$(hblk)
+^set status_mode \[$(hwht)+$(cl)%+$(hblk)\])
+^set status_chanop $(hblk)@
+^set status_format5 %> %5
+^set status_mail $(sc1)mail$(hblk)\($(sc1)%M$(hblk))
+^set status_user5 $(sc1)$S
+^set status_user6 $sar(g/ //$(sc1)up$(hblk)\($(cl)$before(m $tdiff2(${time() - F}))m)$(hblk))
+^set status_voice +
+^set status_away  $(hblk)\($(sc1)away$(hblk)\)
+^set status_hold_lines $(hblk)\[$(hwht)%B$(hblk)]
+^set status_query $(sc1)query$(hblk)\($(cl)%Q$(hblk))
+}
+stat19
+^timer -del 14
+@windowdoubles=[on]
+^window double on
+^timer -window -1 -refnum 14 -rep -1 60 ^set status_user6 $sar(g/ //$(sc1)up$(hblk)\($(cl)$before(m $tdiff2(${time() - F}))m)$(hblk))

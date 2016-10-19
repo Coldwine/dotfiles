@@ -1,0 +1,55 @@
+:ryan
+:green theme
+:rgreen
+assign scdesc \(green theme\)
+assign auth ryan
+assign desc green theme
+assign name rgreen
+assign c1 [0;32m
+assign c2 [1;32m
+assign c3 [0;32m
+assign c4 [1;32m
+assign c5 [0;36m
+assign sc1 [0;32m
+assign sc2 [1;32m
+assign sc3 [0;32m
+assign sc4 [1;32m
+assign acban [a+c]
+assign theme.format.action 2
+assign theme.format.action_other 2
+assign theme.format.desc 1
+assign theme.format.send_desc 1
+assign theme.format.dcc_chat 1
+assign theme.format.send_dcc_chat 23
+assign theme.format.away 1
+assign theme.format.banner 49
+assign theme.format.kick 1
+assign theme.format.leave 13
+assign theme.format.join 1
+assign theme.format.signoff 2
+assign theme.format.msg 1
+assign theme.format.send_msg 1
+assign theme.format.public 1
+assign theme.format.send_public 11
+assign theme.format.public_other 1
+assign theme.format.notice 1
+assign theme.format.send_notice 2
+assign theme.format.public_notice 1
+assign theme.format.ctcp 2
+assign theme.format.send_ctcp 1
+assign theme.format.mode 2
+assign theme.format.nick_comp 1
+assign theme.format.nickname 15
+assign theme.format.wall 2
+assign theme.format.bwall 2
+assign theme.format.who 2
+assign theme.format.who_footer 2
+assign theme.format.timestamp_some 1
+assign theme.format.topic 1
+assign theme.format.notopic 1
+assign theme.format.settopic 1
+assign theme.format.topicby 1
+assign theme.format.statusbar 19
+assign theme.format.version_reply 5
+assign theme.format.whois 2
+assign theme.format.scan 1

@@ -1,0 +1,5 @@
+@_modsinfo.mjoin.loadcmd =  'chanload';
+@_modsinfo.mjoin.savecmd =  'chansave';
+@_modsinfo.mjoin.savefiles= 'chan.save';
+@_modsinfo.mjoin.helpcmd =  'ajhelp';
+@_modsinfo.mjoin.description="mass join/auto-join";

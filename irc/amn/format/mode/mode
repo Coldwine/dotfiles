@@ -1,0 +1,15 @@
+DESC crapple #amnesiac -o xavier
+1 $fparse(format_timestamp_some $($_timess))$ztmode%K$(c3)$2 %K[%W$3 $4-%K]%n by %W$1
+2 $fparse(format_timestamp_some $($_timess))$zt%K\[$(c1)mode%K!$(c2)$2%K\] %K"%W$3 $4-%K" %nby %w$1
+3 $fparse(format_timestamp_some $($_timess))$zt%K[%Rmode%K\(%r$2%K)] %K[%R$4-%K\(%n$3%K\)]%n by %w$1
+4 $fparse(format_timestamp_some $($_timess))$zt %cmode%C.%c$2 %K\(%n$3 $4-%K\) %nby %n$1
+5 $fparse(format_timestamp_some $($_timess)) *** Mode change "$3-" for $2 by $1
+6 *** Mode change "$3-" for $2 by $1
+7 $fparse(format_timestamp_some $($_timess))$zt%cmode%C.%c$2 %K\(%n$3 $4-%K\) %nby %n$1
+8 $fparse(format_timestamp_some $($_timess))%Mmode%K/%m$2 %K\[$(hwht)$3-%K\] %nby $(hwht)$1
+9 $fparse(format_timestamp_some $($_timess))%K\[%cmode%K\(%C$2%K\) %c$3 $4-%K\] %nby %C$1
+10 $fparse(format_timestamp_some $($_timess))** Mode Change %r[%C$3-%r]%n On Channel %r[%B$2%r]%n By %Y$1%n
+11 $fparse(format_timestamp_some $($_timess)) $G $(c3)mode$(hblk)\: $(c1)$1$(hblk):$(c1)$2 $(hblk)[$(c5)$3 $(hblk)\($(cl)$4-%K\)]%n
+12 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)mode%n/$(c2)$2%n/$1$(c3)]%n $(c3)[%n$3-$(c3)]%n 
+13 $fparse(format_timestamp_some $($_timess))$ztmode%K$(c2)$2 %K[%W$3 $4-%K]%n by $(c1)$1
+14 $fparse(format_timestamp_some $($_timess))$G mode/$(c1)$2$(cl): $(gre)$3- %nby $1

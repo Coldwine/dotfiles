@@ -1,0 +1,6 @@
+##No load or savecmd. This should always be triggered by a user
+@_modsinfo.away.savefiles=[away.log];
+@_modsinfo.away.helpcmd=[awayhelp];
+@_modsinfo.away.loadcmd=[];
+@_modsinfo.away.savecmd=[];
+@_modsinfo.away.description="away/away-log";

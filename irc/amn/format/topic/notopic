@@ -1,0 +1,12 @@
+DESC #amnesiac No topic is set.
+1 $G %K[%ntopic%K/$(c3)$1%K]:%n %Rtopic not set%n
+2 $G %K\(%ntopic%K/$(c3)$1%K]\):%n %Rtopic not set%n
+3 $G %K[%ntopic%K/$(c1)$1%K]:%n %Rtopic not set%n
+4 $G %K\(%ntopic%K/$(c1)$1%K\):%n %Rtopic not set%n
+5 $G $1 : $2-
+6 $G $fparse(format_timestamp_some $($_timess))$1 : $2-
+7 $G $fparse(format_timestamp_some $($_timess))%K[%Wtopic%K/%n$1%K] %Rtopic not set%n
+8 $G $fparse(format_timestamp_some $($_timess))$G No Topic Set On Channel %r[%B$1%r]%n
+9 $G %K\[%ntopic%K/$(c1)$1%K\]: %Rtopic not set%n
+10 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)topic%n/$(c2)$1$(c3)]%n No Topic Set
+11 $G No topic is set for $(c1)$1

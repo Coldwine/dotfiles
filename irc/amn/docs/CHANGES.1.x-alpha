@@ -1,0 +1,562 @@
+## old alpha release changes. this file will no longer be updated.
+
+## amnesiac1.0a-cvs1
+05/2/05
+-prelimary release of amnesiac finally basically forked away from
+ oblivion, amnesiac had originally started as oblivion as a base, but
+ it has however moved away from it a lot, you may notice some similarities
+ and differences. thanks void for helping me learn enough about epic scripting
+ and motivating me to do so over the years, that i decided it was time to 
+ split away from oblivion and start doing things the way i'd like it ;).
+-kickban is currently broken. will fix it someday. use bankick most people
+ use this anyways.
+-anyone want to do up an ereet startup cosmetic for me? ;D
+-added criminals theme so he can stop crying everytime i release a new
+ version ;D named (amnesiac) for lack of a word at this time.
+-report any bugs to me please ;).
+-release of preliminary release amnesiac1.0a-cvs1.
+
+## amnesiac1.0a-cvs2 
+05/3/05
+-fixed up statbar cosmetics thanks to krimson...
+-cleaned up more theme unused vars...
+-increased the msgflood sensor to 16. (we need to take a vote on if 
+ we should keep it or remove it) anyone?
+-dns is always used i have decided to merge it into the core, it's no
+ longer a module.
+-fixed up some timestamping/echo's in aways.
+-added timestamp to quit/modechanges/some other's i forget. and fix echo's
+ i.e when timestamp is on, it disable format echo for some formats, when
+ it is disabled, echo's comes on, it's annoying sometimes for some format's
+ having echo on while using timestamp i.e
+[09:05] [mode(#amnesiac)] [kreca(+o)] --now
+[09:05] *** [mode(#amnesiac)] [kreca(+o)] --before
+*** [mode(#amnesiac)] [kreca(+o)] --without timestamps.
+-removed the mp3 module, it is now in /pasture for anyone who (cares)
+-timestamp all has been removed from /config option, but it's still
+ there for those who wants it. (most just use common timestamps) i.e;
+ msg's,signoffs,dcc,notice,wall etc...
+-oops messed up package names on the unbanself protection it's renamed
+ to sprot.
+-fixed up the themes purged the removal of nonexistent awayforms and 
+ kickforms which has been long long gone. yay!.
+-fixed default awaymsg reason again, accidentally removed some code.
+-fixed a tyop in the install file thanks to msoul.
+-fixed a few more tyop's in the README file after motivation to check
+ my spelling after msoul mentioned the above. thanks!.
+-oops forgot to merge the edit_topic script from the epic5 source tree
+ into the core, mainly since not everyone installs epic globally, it's
+ to keep amnesiac more/less in sync with a stock epic not installed 
+ globally. function was done/merged in by kreca a few months ago.
+-release of amnesiac1.0a-cvs2.
+
+## amnesiac1.0a-cvs3
+-05/3/05
+-fixed bankick and kick to work more properly, you can now make a
+ kickreasons, specified in your $(loadpath)kick.reasons since i have
+ removed the old config usage of a default kick reason which was bloating
+ up my config and hurting my image ;) help from kreca.
+-autobot can now use alphanumeric chars for the op command! thanks to kreca.
+-added timestamps to the end of on joins and on parts requested by many.
+-fixed the on part hook.
+-made a far better part alias which you can specify your drama on part i.e
+ partreasons (/part you guys are big mean poo poo heads) thanks to skullY
+ for this wonderful invention for improving the lives of us hardcore ircers.
+-added some new aliases for efnet's accept command the list of them here are
+..
+alias accept { quote accept $*}
+alias cid accept $*
+alias rmcid { quote accept -$*}
+alias acceptlist { quote accept * }
+alias cidlist acceptlist
+alias rmaccept rmcid $*
+alias acceptdel rmcid $*
+^^should be self explanatory.
+-the new msg flood command has been reworked to the way i have originally
+ wanted it for a long time, it is disabled per default.... the difference
+ in the way the new msg flood system works it set's you umode +g which
+ is server side ignore, and will only work on networks like efnet, or 
+ any others that supports usermode ignore of +g.
+ do /mflood to set the sensor in lines.
+ and /mftime to configure how many seconds to remove it ie umode -g
+ or use mftime - to disable removing the umode until it's done manually.
+ same with /mflood - to disable it again.
+-updated kick.reasons and quit.reasons file.....
+-release amnesiac1.0a-cvs3.tgz
+
+## amnesiac1.0a-cvs4
+05/12/05
+-rewrite addset a bit thanks to xavier (solves a lot of builtin problems)
+-modularize the mflood protection...aka +g with a few annoying glitch fixes
+-modularize the nickcomplete symbol, most people find bold/etc/and so on
+ annoying so if you want nickcomplete format's /addmod ncomp
+-mflood modularized as flood.
+-fix a few tyop's in modules...
+-cleanup of kick.reasons a tad.
+-add blackjak's original addset as oldset as it's needed for scripted
+ on's/hooks.
+-sendline and or /s(tab) more completion to include builtins and aliases
+ and another annoying shit some may or may not like it we'll see how many
+ complaints i get about this it had to be done to make ncomp modular and
+ to make kreca stop crying like a big sissy he is sometimes!
+-rewrite new /config/settings cosmetics i hated the old ugly way.
+-release amnesiac1.0a-cvs4.tgz
+
+## amnesiac1.0a-cvs5
+05/12/05
+-added a /latin1 and /ibm437 alias to basically remap termcodes the latin1
+ was added for the request of violence and kreca basically now eurotrash's
+ can start liking this script as well, however the eurotrash's have yet to 
+ make me an ansiless theme ;((((
+-added a true ansiless whois, varient #4 /format 1 4 to use it.
+-updated the whois echo format's so people know there is more than
+ 1 whois format. /format 1 for the list.
+5/18/05
+-changed the dirs to default untar into ~/amn instead of the old amnesiac
+ and loadfile to amn.epic (shorten it up some)
+-fixed /config (letter) option aliases in core.m i.e /stamp to turn/off
+ timestamps now go to correct letter for settings fixed others as well
+ oops.
+-modify mod.m somewhat. still need to do something about the ugly output.
+-modify themes especially epic to use the ansiless whois format
+ and nocturnal to switch to my usual whois format being #3.
+5/20/05
+-more cleanup/format changes. yes i'm purging out most of the ugly 
+ default ansi in almost every crappy xecho. if you guys hate the direction
+ this script is headed, go use BitchX or back to oblivion or something.
+-get rid of the annoying spaceing in the output_rewrite now numerous people
+ should be happy especially violence!.
+-modify on input "*" for history *cough*
+-update some documentations.
+-update kick.reasons
+-synch to webservers.
+-release amnesiac1.0a-cvs5
+
+## amnesiac1.0a-cvs6
+5/21/05
+-disable/cloak the following ctcp types per default if you wish
+ to actually have use for one enabled edit core/hooks.m and remove
+ the on raw_irc "% privmsg *inger*" for example to renable ctcp finger
+ one you client. disabled per default are ctcp finger/clientinfo/sound/echo
+-add auto-reconnect hook (experimental) it requires that the auto_reconnect
+ setting to be enabled. seems to work from few of the testing i have done
+ with it. warning tho it'll continue trying until you stop it so make sure
+ you have some servers in the serverlist so you don't get banned.
+-disable auto-reconnect per default (one should enable it once they have 
+ connected to an irc server and have a few servers in their serverlist)
+ to avoid flooding.
+5/25/05
+-rewrite the listmod/module output finally! another ansiless pos output
+ gone! done by kreca thanks a bunch!, 
+-config.ans was rewritten by kreca as well much cleaner read, thanks!
+-cleanup fkey's cosmetics and /format cosmetics (purge them of polluted
+ ansi.)
+-purge uptime of some nonessential crap, while purging it of ansi crap as
+ well.
+-redo modules a bit/putting them all into individual directories with their
+ own configs. thanks to kreca.
+-some options will only show up in /config when the module is actually
+ loaded, still more work to do in progress.
+-move some proper aliases to their respective modules to prevent people from
+ getting confused about why/or why not a command exists but doesn't work.
+ plus less bloat/loaded aliases/crap on modules which are not loaded.
+-remove pager.m/moved some of the aliases in with the away module since
+ that's the only time it's really even used anyways, if that.
+-move operview aliases/config sets from config.m into the opermodules.
+-added notify/signon logging, it is enabled per default, i will probably
+ add an option in the next release to have notify cacheing on/off 
+ /ncache or /nread to read the notify logging file /rnlog to remove the
+ notify file or /rmnlog. (does not tell which server the person signed on at
+ this time) this was requested by various people. and it does not log
+ signoffs at this time, if you do not like this behavior use the notify.m
+ from amn/pasture and /adump. provided you have a ~/.epicrc.
+-fixed amnesiac theme by criminal this time (hopefully)
+-removed away timeaway/notice to users permanently i can't stand this static
+ this should make a lot of people happy when they set away, without users
+ bitching about them having all the annoying crap being sent to them.
+-release amnesiac 1.0a-cvs6
+
+## amnesiac1.0a-cvs7
+-5/28/05
+//zwhite@darkstar.frop.org (skullY)
+-Added format_scan_width for scan formats. This lets you tweak the width
+ based on how much extra cruft you add to each nick.
+-Added new theme, epic-orig, which looks pretty much like epic4 does out of
+ the box. Had to add a bunch of new formats for this.
+-Removed core/who.m and integrated it into core/fset.m and core/format.m.
+ We can net define and set various who formats.
+-Fixed a bunch of formats that were formatted wrong. Mostly those used by
+ the epic theme.
+-Added a new version format to spoof default epic4 and epic5 clients.
+-Added new epic-orig module, for redefining commands and bindings to what
+ they were in epic4 with netsplit and tc loaded. TODO: Make tab behave
+ exactly like it does in tc.
+-Added better description to themes/epic.th.
+-Added waitop command, to only autoop someone if they aren't already oped
+-Various formatting cleanups
+-Probably just fixed rn which was a broken c&p job. I have no idea what it
+ was so it may be broke still.
+-add a /faol/smail alias to make 'you have mail shuttup' but still updates
+ mailstats.
+-disable extended publics the <@whiny_bitch> this thing annoys me...
+ per default.
+6/3/05
+-added undernet xy/services command module to simplify some commands for
+ users on undernet. naturally the module is 'xy' without quotes ;p
+-renamed skullY's theme/module epic-orig to vanilla.
+-clean up core/save.m a bit from leftover cruft.
+-fix up modules/add skullys vanilla theme to an actual module hook.
+-finally added better customizations of exempt/invite lists aka +e/+I modes.
+ and some aliases to go with it. /ui to purge the user invite list in 
+ current channel /ue to purge the user exempt list in current channel
+ /iadd/idel /eadd /edel also added /i and /e now only parses the output
+ of the current list in the channel. and thanks to a minor help by a super
+ hacker with the nick for warchest for using the elite supermirc on getting
+ some server numerics for me to get the proper hooks to be able to complete
+ this stuff i have been procrastinating on doing for so long!.
+-more ansipurge in theme.m while fixed up some tyop's while i was in there.
+-clean up more config stuff to their respective modules like _unbanself.
+-added netsplit from epic5/scripts - should make skullY/others happy.
+ 'as a module' - note: join formats are altered when using this module.
+ old netsplit module moved to /pasture.
+-cleaned up core/windowhelp.m and fixed some tyop's while in there.
+-fixed up tabkey for /dcc send somelamer filename thanks to kreca!
+-fixed up the loading of sfsets again!, thanks kreca!
+-cleaned up save.m a bit thanks to kreca and he fixed formats.m while
+ in there as well. wow, 3 things in a row, don't expect any more commits
+ from him for at least 4 months now ;(((((.
+-one last change kreca made just before going to sleep, remove duplicate
+ loads in the bwk module, thanks!.
+-remove the shitlist/userlist/bwk modules from loading per default 
+ not a lot of ppl use these modules i think as i rarely ever hear feedback
+ and or bugs about them just /addmod shitlist or shitlist bwk shall
+ you want to use the modules and /save.
+-slight changes in the away format no longer have "is away:" it's now
+ away: (reason) <someformatifenabled>
+-changes of some of the startup formats, and statbar/whois.
+-add a new scan^names and fixed up /scan #3 ie. format t 3. /format t 3
+ now show's all the available scan formats. and fixed up scan.3 while
+ cleaning up in the area. new scans are 5/6
+-add the verbose_ctcp stuff from builtins (untested)
+-pretty much changed the default layout to not be as colorful sorry guys
+ just load your theme or something k?
+-release amnesiac-1.0a-cvs7
+
+## amnesiac1.0a-cvs7p2
+-overhauled majorly of oper.m module thanks to Alien88 giving me the
+motivation to do so, and skullY for an O;COOKIE, and cleaned up the
+server connect parsing too while at it, yay more ansi shit gone!.
+-also added... from blackjac's script.. not sure which one.
+This will allow you to toggle between hidden windows 1 through 20
+more easily. Press Esc+1 to toggle between windows 1 and 11, Esc+2 for
+win-dows 2 and 12, etc., up through Esc+0 for windows 10 and 20.          
+-some oper stuff for Alien88.
+-added another who format for Alien88 /format 2 3.
+-array cleanups by skullY
+-fsets by skullY.
+-GODDAMMIT i fucked up just before almost passing out as of right now.
+ well skullY kinda did too!, remember folks next time you guys want shit
+ going into 'operview' 'snotices' do not be using xecho -v or -w!
+ KTHX!. sorry about this mikey!. - fixed now.
+-release amnesiac-1.0a-cvs7p1 (major fixes might as well get it out the
+ door! ie. oper.mod finally semi up to date thanks to Alien88.)
+-fixed the netsplit.m fucking up sync.m and when using abot and such
+ make sure with both modules netsplit.m and abot.m it actually reforces
+ a load of things in the array from $(loadpath)/core/sync.m also possibly
+ may have fixed up core/mod.m or fucked it up will find out soon!.
+-fixed the on join formats when netsplit.m is loaded and or unloaded.
+-release amnesiac1.0a-cvs7p2
+
+## amnesiac1.0a-cvs8
+-fix up binds.m a bit by kreca.
+-clean up the new window toggling wit esc by kreca.
+-silence the you have mail crap per default now.
+-for some reason chanmode when /c was silenced. stop silencing it.
+ numeric 324.
+-skullY made oper.m much better for operview, to determine which type
+ of kills were activated etc...
+-fixed links output forgot a $* (thanks to Alien88 for reporting)
+-fix the whois-actual and added another numeric for whois-login(undernet)
+ should make mikey happy!.
+-fixed the $desc in loading of themes.
+-fixed the vanilla theme to show as vanilla not epic-orig. (for skullY)
+-fixed aligning of whois's while in there as well so all whois formats
+ should be a-ok.
+-remove clones module per default. /addmod clones if you want this.
+-strip the last minute dcc urlencode crap, sorry mirc/irssi users! use a
+ real client!.
+-release amnesiac1.0a-cvs8. (getting close to a release now)
+
+## amnesiac-1.0a-cvs9
+6/10/05
+-update various documentations including the TODO list.
+-update website a bit while cleaning up around my www dir.
+-clean up more ansified crappy banners (think i got most now!)
+-fixed up help file some (finally)
+-fix up startup window double on for default sbar[11]
+-change mod.m around a bit, no longer print that valid modules per
+ default when doing /modules /lmod etc.. now do /vmod /smod to see
+ the valid module lists.
+-some alias changes in window.m listed below...
+ alias wka wkh
+ alias wkh {window kill_all_hidden}
+ alias wko {window kill_others}    
+-touch up window.m formatting while in there and updated some commands.
+-make most of the first time startup warnings THUTTUP.
+6/21/05
+-tabkey now includes completion for /me hugs cr<tab>  requested by Alien88
+ done by kreca.
+-touch up some of the dcc hooks a bit (chat mainly)
+-add a /pbwk /kbwk alias to rm/purge the bwk file.
+-fix up bwk so when kickops = on it'll kick ops as well done by kreca.
+-fix up /lusers to parse the unknown and max-client/connections should make
+ various people happy.
+6/26/05 
+-removed more files from pasture/
+-release amnesiac1.0a-cvs9
+
+## amnesiac1.0a-cvs10g
+7/4/05
+-cleanup of unused junk in statbars and fixed up some starbars while
+ in the general area.
+-update some of the documentations for new e-mail addy's and webpage.
+-move the todo list to ~/amn instead of ~/amn/doc which kreca found 
+ annoying cause he's a really slow typer and going into another directory
+ to modify the todo file is just too hard on him.
+7/9/05
+-redo the help system since not all commands are always loaded and /ahelp
+is so bloated per default bleh split the help up into individual modules
+/ehelp for the extended help on what goes where for the modules, so
+hopefully /ehelp will help with some confusion in the help system.
+/ahelp does still exist and will always exist it's just time to shrink it
+like uhh seriously, do you guys like 40+ lines of scroll spewing on the 
+screen and you do /ahelp somecommand and /somecommand doesn't exist because
+the module for the said command doesn't exist, it's just annoying totally
+annoying!.
+-clean up the banners better in userlist finally getting somewhere i like!.
+-fix up outputting of shitlist to be far better and stripped ansi parses
+ while in there, now it at least has a better output on what is what before
+ it just outputed shitlist users/chans/level/reason but didn't give a real
+ valid description of what all the stuff that was being outputed meant. this
+ should be a big bonus in cleaning up more confusion with shitlist.
+ie. before.
+1    *!test@test.com        #test                 3    fuck
+2    *!some@some.long.hos   #test1,#test2,#test   3    plur, faggot.
+now it's adjusted to have a topbanner of values i.e new way.
+[num] [shithost            ] [shitchan            [lev] [reason       ]
+[1]    *!test@test.com        #test                 3    fuck
+[2]    *!some@some.long.hos   #test1,#test2,#test   3    plur, faggot.
+-added a /aehelp command, which is something in the works for some basic
+ quick list of commands on option you chose.
+7/22/05
+-make /verk kick ops if /kickops is enabled. 
+-make /sv say the real information instead of depening on the current theme
+-now amnesiac supports both epic4 and epic5, load compat code based on version 
+information  //kreca
+-updated docs to explain should work for both epic4/5 however it has not
+been tested thoroughly with epic4 yet, feedbacks are appreciated.
+-bravely release not really a alpha/beta but more/less gamma
+version of amnesiac. amnesiac1.0a-cvs10g
+
+## amnesiac1.0a-cvs11g
+7/23/05
+-modeshow now finally works to point at channel you are msging if you 
+happen to have multiple channels in the same window ie; /msg #chan2 hi
+will show it as <yournick:#chan2> hi instead of the old annoying way
+of <yournick> hi was confusing on which channel you msg'd at times.
+done by kreca (eurotrash can occasionally be useful at times)
+-make ^Z switch channel & switch query depending on what window 
+you're in //kreca
+-created the old what was /sv renamed to /svf which echo the format_sv
+for ppl who likes to be annoying. //zak
+-i have spend a vast amount of time on this i really hope ppl really enjoy
+this new feature to make it easier to manage efnet's invite and exempt lists
+the following new things that have been added for exempts and invite
+exempts these aliases should help you grab the basics of using it, most of
+you are probably familier with /tban /tig etc.. when you can specify #'s
+you wish to remove ie; /tban 4-8 to remove bans # 4-8 shown in the list.
+same goes with the new invite and exempt alias, which the following
+commands are /tinv /texp or /tpi /tpe which is the same as /tinv and /texp
+you can purge the channels e-mode +e list with /ue or /pexp for +I list
+purging /ui or /pinv. //zak
+-release amnesiac1.0a-cvs11g
+
+## amnesiac1.0a-cvs12g
+7/23/05
+-updated trent's new amnesiac theme (whois format change) //zak
+-added a /cat command which doesn't require the usage of exec. //zak
+-updated some missing functions needed for epic5 in compat.m from the
+ builtins src/epic5/scripts dir. //zak
+-added a /edump alias which is far better than the usual builtin /dump
+ however it's not always needed but it's useful for some of us (mainly
+ scripters the following types are... (alias array bind channel dcc 
+ hook timer variable window) taken from the dump script in epic5/scripts
+ dir. by BlackJac. (alias added into compat.m) //zak
+-added the history script into compat.m so ppl do not have to worry
+ about making a ~/.epic or finding a history global script or for those
+ who are not too experienced with globals should make it easier. done by
+ BlackJac as well... taken from src/epic5/scripts/history. //zak
+-added /grep /egrep which is based off wd's grep in anduril, taken from
+ src/epic5/scripts dir, so now you can /grep pattern which uses your lastlog
+ and you can also specify window to grep ie; /grep -w //zak (untested)
+-modified the addset/oldset a bit i decided to add blackjac's original
+ addset back to addset instead of oldset to save confusion shall ppl load 
+ some script in the future in the epic5 scripts dir and renamed my
+ customized former addset alias to xaddset. //zak
+-added the autonewnick stuff from src/epic5/scripts dir, also done by
+ Blackjac. for when used with epic5. merged to compat.m //zak
+-merged the log module which essentially only used for away logging, it's
+ pointless to have a away module which also requires the log module to work
+ efficiently, so one less module gone!. //zak
+-renamed the odcc module to adcc(will eventually work on this) *cough* //zak
+-update the UPGRADE docs a bit.
+-change the abecho/banner formats a bit for some things before when
+ configuring let's say operview it had [mod] (oper) something adjusted..
+ now it just shows it as (oper) something adjusted, less spammy and
+ annoying. //zak
+-updated /ehelp documentation added a new entry of /smhelp which is
+ always available [core] the new entry has the latest cmd's for the special
+ modes and explanation/counterparts to do with chanmodes +e/+I exempts //zak
+-make ^X switch channel & switch query depending on what window
+ you're in //zak
+-release amnesiac1.0a-cvs12g (wow 2 releases in a day, sorta..) //zak
+
+## amnesiac1.0a-cvs13g
+7/25/05
+-update the country alias to return Unknown for unkown hosts, to make 
+/whois output look better on people with spoofs. //kreca
+-update KNOWNBUGS regarding window level. //zak
+-update the epic5 aka E5-UPDATES and E5-KNOWNBUGS in amn/docs dir. //zak
+-Change cvs letter (gs) for snapshot/testing. //zak
+-added hold_mode script into compat.m //zak
+-remove grep/egrep just too buggy might work on something like it in the
+ future //zak
+7/27/05
+-removed edump if one wants it just /load dump from the epic5 base/scripts
+ directory, it's just too brutal for us to have use and clutters code
+ at this time.
+-add a reject hook for dcc chat requests(don't know why i didn't add this
+ earlier all i needed to do was add another bind sheesh), so alt-T to accept
+ a dcc chat request and alt-R to reject dcc chat request.
+-added a theme for msoul, 'souly' should also be ok for users on shitty
+ default rxvt terminal fonts.
+7/29/05
+-center the format_scan_usernum on scan #2 (to the best theoretical
+ possibility) requested by krimson.
+7/30/05
+-clean up alias.m removing a couple of usages of ansified usage;
+-change the /bantype to not say oblivion, how do we/you/anyone miss this???
+-remove some cluttered up aliases with multiple bindings to other aliases
+ that ppl probably don't even use ie; /eadd /edel /iadd etc... and stupid
+ useless ones like /4dv, and fix up the documented code a 
+ bit/organize. //zak
+-add a 'coloUr' alias to go with colOr and we all know it's spelled colour
+ not color right? ;D modified(color.m) //zak
+-^^same for sbcolour modified(sbcolor.m) //zak
+-cleanup more ansified crap in themes.m and documented some minor things
+ while in there. //zak
+-merge sping.m into lag.m and remove sping it's pointless for 2 small
+ aliases in 2 diff files. //zak
+-test the whoform.load append in the updates.m file, hopefully this will
+ fix some issues with the usage of /who not showing up right. //zak
+-clean up some ugly crap in the fakeversion shit, and remove some, while
+ adding 2 new version formatting which might be more suitable 
+ for some, also cleanup of arrays.m while in there somewhat //zak
+-clean up fkeys.m to do more/less proper @ bindctl now, i am unsure if
+ more need's to be done here as i really don't have the time to test.
+ however the do.fkey alias does seem like the reasonable place to have 
+ it set as the other's just modifies it on the command lines directly.
+ will need to look into this more in the future. //zak.
+-rename the KNOWNBUGS file to NOTES about some script issues not really a
+ bug and not really a script issue just to be documented. //zak
+-rename the TODO to TODO-BUGS which lists both TODO/BUGS list. and update
+ documents while in both files including todo/bugs. //zak
+-update the UPGRADE doc for 13g(s) snapshot/release. //zak
+-fixed the relay module up so nicely that kreca couldn't comprehend doing
+ such a nice task!, and hell tossed out most of his 600lines of 'code' 
+ and it does more now than it used to! ;((((, so now /relm /paste/ relsm
+ /relw can be outputted to an active window as long as there's a query
+ or channel dcc chat opend in that window. bye bye /pmsg /pquery aka 
+ /fuckclient.. //zak
+-removed the attack theme(broken) //zak
+-removed statbar #13 which was ugly from my old scrollz script.
+ and broken. now it's replaced with skully's vanilla statbar. #13. //zak
+-update the ahelp file to reflect changes on /relm/relsm/paste/relw etc..
+ while removing some.
+-update greetz(eater,grimzy) add /about alias with a notice upon startup.
+ //zak
+-remove mass.m from pasture. //zak
+-release amnesiac1.0a-cvs13g
+-ack the fkeys.m did actually break back out changes and re-release //zak
+
+## amnesiac1.0a-cvs14
+8/2/05
+-remove the usermods-commands.txt from documents it's not needed anymore
+ with the new improved help /ehelp when the module is 
+ loaded just run /uhelp //zak
+-remove the E5-UPDATES txtfile, not needed since script has both epic4/5
+ support but i will keep the E5-KNOWNBUGS updated as i see fit.
+ this should shrink the scriptsize a bit. //zak
+-updated some info in the UNTESTED documents mainly about the topwin module
+ issues. //zak
+-fix a simple tyop in oper.m module //zak 
+-fixed up the alias in stat13 which used to be 14 ewps //zak
+-update TODO-BUGS doc regarding unbanself/sprot module //zak
+-modify amn.epic to reflect version as a snapshot.
+-modify clones module to remove the /banclones /killclones it's pointless
+ and the way all the vhosts goes these days it's surely going to cause
+ some problems. learn to use /trickle /filter which is aliased to /trickle
+ will probably make some aliases in the future to use the /trickle alias.
+ to simplify things up. //zak
+-modify version.m to allow for interoperability between channel/msg/dcc
+ when doing /sv and or /svf //zak
+-for some reason /+e/i -e/i aliases got mutilated. fixed.. //zak
+8/3/05
+-to fix a stack overflow in country.m we now use two Karll's arrays to 
+store the entries //kreca
+-fix a startup error msg cause of the new_math, toss out the compatability
+for old math yeah, now we're up to 'date' //zak
+-no need to use /wlevel none on startup anymore -
+ new_server_lastlog_level default set of NONE finally got this annoying
+ thing out of my way //zak
+-remove some uneeded compatability like old_math we can now use the new
+ math.
+-update the notes file to reflect reality.
+-update notes regarding terminfo in FreeBSD.
+-some minor country.m tyop's blame kreca. //zak
+-more cleanup of helpfiles with the new moduler help menu stuff...
+ new help menu /ohelp for operview/oper help, added list to /ehelp. //zak
+-fixed the country.m to show all country names thanks to skullY! //zak
+-added a new msg format for violence (a) 39 //zak
+-added 2 new oper commands for Alien88 /dline and /undline //zak
+-update /ohelp to reflect reality. //zak
+-add a bunch of new formats joins/msg/publics to help with latin1 charset
+ users //zak
+-change the default look a bit (better methinks) and formats. //zak
+-i beleive that we are getting very close to an official release since some
+ ppl has been requesting to put it on epicsol's page. i just want to make
+ sure everything is a-ok before doing so. //zak
+-renable the old_math until i have everything sorted out for the time being
+ //zak
+-add a new alias /emopart with uses emopart.reasons in $loadpath.
+-update TODO-BUGS.
+-add /ecycle(emocycle) /mon /moff which turns the new_math on/off in epic5
+ ircII EPIC5-0.0.5 (Commit id: 1273) (Date of release: 20050420) and later.
+ makes it easier for the scripters to debug/update the script for the new 
+ math. couple of short form emopart aliases /epart /dpart. //zak
+-adjust some settings on which should be set on epic4 and or epic5. and the
+ order. (amn.epic) //zak
+-adjust version to sync with reality.
+-modify emopart.reasons kick.reasons quits.reasons a bit to be a little less
+ LAME. //zak
+-more huge format in array changes, you guys may noticed timestamping on
+ join and parts are different than before. some help from violence and 
+ skullY //zak
+-update my theme -nocturnal //zak
+-fix up statbar #12 to include query (hopefully it's enough room) //zak
+-release amnesiac1.0a-cvs14
+
+## end
+
+//crapple
+zak@ircii.org

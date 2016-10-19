@@ -1,0 +1,25 @@
+
+^sfset format_whois_header $(hwht) $(ld.ul_corner)$(ld.hline)$(ld.hline)$(c2)$(ld.hline)$(hwht)$(ld.hline)$(c2)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(c1)$(ld.hline)$(c2)$(ld.hline)$(ld.hline)$(c1)$(ld.hline)$(ld.hline)-$(hblk)  -      -           $(ld.smalldot)
+^sfset -format_whois_nick $(hblk)[$(c2)$(ld.vline)$(hblk)] $(hblk)\($(hwht)$1$(hblk)!$(c1)$2$(hblk)@$(c1)$3$(hblk)\)$(cl) $country($rightw(1 $sar(g/./ / $3)))
+^sfset format_whois_name $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)i$(c1)rcname  $(hblk).. $(cl)$1-
+^sfset format_whois_channels $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)c$(c1)hannels $(hblk).. $(cl)$1-
+^sfset format_whois_security $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)s$(c1)ecurity $(hblk).. $(cl)connection to server is encrypted
+^sfset format_whois_server $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)s$(c1)erver   $(hblk).. $(cl)$1 \($2-\)
+^sfset format_whois_away $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)a$(c1)way     $(hblk)..$(cl) $1-
+^sfset format_whois_actual $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)a$(c1)ctual   $(hblk).. $(cl)$2 $msar(g/[/%K[%n/]/%K]%n/ $3)
+^sfset format_whois_connect $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)c$(c1)onnect  $(hblk).. $(cl)on $1 actual $6
+^sfset format_whois_active $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)a$(c1)ctive   $(hblk).. $(cl)is active
+^sfset format_whois_root $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)r$(c1)oot     $(hblk).. $(cl)Services Root Admin
+^sfset format_whois_login $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)l$(c1)ogin   $(hblk).. $(cl) as $3
+^sfset format_whois_ident $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)i$(c1)dent   $(hblk).. $(cl) identified
+^sfset format_whois_operator $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)o$(c1)perator $(hblk).. $(cl)$1 $2- %K[%nOperator%K]
+^sfset format_whois_admin $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)a$(c1)dmin    $(hblk).. $(cl)$1-
+^sfset format_whois_idle $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)i$(c1)dle     $(hblk).. $(cl)$tdiff($1) idle
+^sfset format_whois_unknown $(hblk)[$(c2)$(ld.vline)$(hblk)]$(cl) $1$(hblk):$(cl) no such nick/channel
+^sfset format_whois_footer $(c1) $(ld.ll_corner)-$(hblk) -$(ld.hline)- -     -              -          -
+^sfset format_whowas_header $(hwht) $(ld.ul_corner)$(ld.hline)$(ld.hline)$(c2)$(ld.hline)$(hwht)$(ld.hline)$(c2)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(c1)$(ld.hline)$(c2)$(ld.hline)$(ld.hline)$(c1)$(ld.hline)$(ld.hline)-$(hblk)  -      -           $(ld.smalldot) 
+^sfset format_whowas_nick $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(hwht)$1 was $(hblk)\($(c1)$2@$3$(hblk)\)$(cl)
+^sfset format_whowas_name $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)i$(c1)rcname  $(hblk).. $(cl)$1-
+^sfset format_whowas_unknown $(hblk)[$(c2)$(ld.vline)$(hblk)]$(cl) $1$(hblk):$(cl) there was no such nickname
+^sfset format_whowas_footer $(c1) $(ld.ll_corner)-$(hblk) -$(ld.hline)- -     -              -          -
+^sfset format_whois_signon $(hblk)[$(c2)$(ld.vline)$(hblk)]  $(c2)s$(c1)ignon   $(hblk).. $(cl)$2-

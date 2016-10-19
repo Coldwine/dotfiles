@@ -1,0 +1,16 @@
+DESC @ #amnesiac hi
+1 $fparse(format_timestamp_some $($_timess))$(hblk)\($(c1)chanwall$(hblk)-$(cl)$servernick()$(hblk)/$(cl)$2$(hblk)\)$(cl) $3-
+2 $fparse(format_timestamp_some $($_timess))$(c1)\($(hwht)*$(c1)\) $(c1)\($(cl)$servernick()$(hblk)/$(hwht)$2$(c1)\)$(cl) $3-
+3 $fparse(format_timestamp_some $($_timess))$(cl)[$(hgrn)BX-Wall$(cl)/$(hwht)$2:*$(cl)] $3-
+4 $fparse(format_timestamp_some $($_timess))$(c1)[$(hwht)w$(cl)all$(c1)/$(cl)$servernick()$(hblk):$(cl)$2$(c1)]$(cl) $3-
+5 $fparse(format_timestamp_some $($_timess))%K\(%Wa%K/%nwall%K[%c$servernick()%K:%c$2%K]\)%n $3-
+6 $fparse(format_timestamp_some $($_timess))%c<%Ka%K!%Ww%nall%c\(%n$servernick()%K/%n$2%c\)>%n $3-
+7 $fparse(format_timestamp_some $($_timess))%K(%Wa%nmn%K/%nwall%K) [%n$servernick()%K:%n$2%K]%n $3-
+8 $fparse(format_timestamp_some $($_timess))%K.%c.%K[%Wa%nmn%K/%nwall%K\(%c$servernick()%K/%c$2%K\)]%n $3-
+9 $fparse(format_timestamp_some $($_timess))$(hblk)[$(c2)+$(c1)o$(hblk)] [$(cyn)$servernick()$(hblk)/$(cl)$2$(hblk)]$(cl) $3-
+10 $fparse(format_timestamp_some $($_timess))%K[%c*%C*%K] [%c$servernick()%K!%n$2%K]%n $3-
+11 $fparse(format_timestamp_some $($_timess))[$servernick()!$2] $3-
+12 %n\-$servernick():$1$2%n\-> $3-
+13 $fparse(format_timestamp_some $($_timess))%K<%n$servernick()%K:%n$1$2%K>%n $3-
+14 $fparse(format_timestamp_some $($_timess))$(hblk).$(c2).$(hblk)[$(hwht)@$(c1)$(c2)$servernick()$(hblk):$(c1)$2$(hblk)]$(cl) $3-
+15 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)wall%n/$(c2)$2%n/$(c1)$servernick()$(c3)]%n $3-

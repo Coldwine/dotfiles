@@ -1,0 +1,18 @@
+DESC crapple #amnesiac 910492823 PING
+1 %K¯\($(c1)ctcp%K!%W$2%K\) %n$3 $4 $5 $6
+2 %K¯\[$(c1)ctcp%K!%W$2%K\] %n$3 $4 $5 $6
+3 %K[%rctcp%K\(%R$2%K\)] %n$3 $4 $5 $6
+4 $(hblk)¯[$(wht)ctcp$(hblk)!$(hwht)$2$(hblk)] $(cl)$3 $4 $5 $6
+5 $(hblk)¯\($(wht)ctcp$(hblk)!$(hwht)$2$(hblk)\) $(cl)$3 $4 $5 $6
+6 $(hblk)¯\($(c3)ctcp$(hblk)!$(hwht)$2$(hblk)\) $(cl)$3 $4 $5 $6
+7 $(hblk)¯[$(c3)ctcp$(hblk)!$(hwht)$2$(hblk)] $(cl)$3 $4 $5 $6
+8 %K.%c.%K[%Wc%ntcp%K/%n$2%K]%n $3 $4 $5 $6
+9 $(hblk).$(c2).$(hblk)[$(c2)c$(c1)tcp$(c2).$(c1)$2$(hblk)][0m $3-
+10 %K\(%Wctcp%K/$(c2)$2%K\): %W$3 %K\(%n$4-%K\)
+11 %K:> %cc%ntcp%K:%c $2 %K-%n $3 $4-
+12 [ctcp\($2\)] $3 $4 $5 $6
+13 *** CTCP $3 from $servernick() to $2: $4-
+14 $fparse(format_timestamp_some $($_timess))$G (%GCTCP%n) Sent %g$3 $4%n to %r[%B$2%r]%n
+15 $(cl).$(c2).$(hblk)[$(wht)ctcp$(hblk)\($(c2)$2$(hblk)\)]$(wht) $3-%n
+16 $fparse(format_timestamp_some $($_timess))$(c3)[$(c4)ctcp%n/$(c2)outgoing$(c3)]%n $(c3)to%n $2 $(c3)[%n$3-$(c3)]%n
+17 $fparse(format_timestamp_some $($_timess))$(blu)>$(cyn)>$(hcyn)> $(c1)ctcp$(blu)!$(c1)$2$(cl): $3 $4 $5 $6

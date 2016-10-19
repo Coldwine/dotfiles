@@ -1,0 +1,32 @@
+subpackage stat14
+## statusbar by dh(enigma)... (rewritten by crapple for amnesiac)
+
+^set -input_prompt
+alias stat14 {
+^set status_away $(mag)\($(cl)away$(mag)\)
+^set status_channel $(cyn)%C$(cl)
+^set status_chanop $(mag)@$(cl)
+^set status_clock $(hblk)\[$(cyn)time$(mag)\($(cl)%T$(mag)\)$(hblk)\]
+^set status_cpu_saver $(mag)\($(cl)%J$(mag)\)
+^set status_format 57$(ld.hline)50$(ld.hline) %U%*%=%@$(cyn)%N$(cl)%# %A%C%+ %>%F$(hblk)\[$(cyn)lag$(mag)\($(cl)%1$(mag)\)$(hblk)\] 50$(ld.hline)$(ld.hline)57·
+^set status_format1 57Ö$(ld.hline)50$(ld.hline) %U%*%=%@$(cyn)%N$(cl)%# %Q%A%8 %>%T$(hblk)\[$(cyn)lag$(mag)\($(cl)%1$(mag)\)$(hblk)\] 50$(ld.hline)$(ld.hline)57·
+^set status_format2 Ì50Í  %C%+ $(hblk)\[$(cl)%2$(mag)/$(cyn)o $(cl)%3$(mag)/$(cyn)n $(cl)%4$(mag)/$(cyn)v$(hblk)\]$(cl) %>%F$(hblk)\[$(cyn)win$(mag)\($(cl)%R$(mag)\)$(hblk)\]  50Í¼
+^set status_hold $(mag)\($(cl)hold$(mag)\)
+^set status_hold_lines $(hblk)\[$(cl)%B$(mag)/$(cyn)hold$(hblk)\]
+^set status_mail $(hblk)\[$(cl)%M$(mag)/$(cyn)mail$(hblk)\]
+^set status_mode $(mag)\($(hwht)+$(cl)%+$(mag)\)
+^set status_notify $(hblk)\[$(cyn)act$(mag)\($(cl)%F$(mag)\)$(hblk)\]
+^set status_oper $(mag)*$(cl)
+^set status_overwrite $(mag)\($(cl)ovr$(mag)\)
+^set status_query $(mag)\($(cyn)q$(cl)uery$(mag)/$(cyn)%Q$(mag)\)$(cl)
+^set status_scrollback $(mag)\($(cl)buf$(mag)\)
+^set status_server $(mag)\($(cyn)%S$(mag)\)
+^set status_umode $(mag)\($(hwht)+$(cl)%#$(mag)\)
+^set status_user user$(hblk)!$(cl)
+^set status_voice $(mag)+$(cl)
+^set status_window $(hcyn)^^^^^^^^$(cl)
+}
+stat14
+@windowdoubles=[on]
+^window double on
+^timer -del 14

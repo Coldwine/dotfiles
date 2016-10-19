@@ -1,0 +1,27 @@
+subpackage stat5
+alias stat5 {
+^set -input_prompt 
+^set status_format1 $(sc2)$(ld.ul_corner)$(sc1)$(ld.hline)$(hblk)$(ld.hline) %*%=%@$(sc1)%N$(hblk)\($(sc3)%#$(hblk)) $(sc1)%C$(hblk)\($(sc3)%+%!$(hblk)) %> $(hblk)\($(sc1)o$(hblk)/$(sc3)%2 $(sc1)n$(hblk)/$(sc3)%3 $(sc1)v$(hblk)/$(sc3)%4$(hblk)) $(hblk)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline)$(ld.hline) $(sc1)lag$(hblk)\($(sc3)%1$(hblk))$(ld.hline)$(sc1)$(ld.ur_corner)
+^set status_format2 $(sc1)$(ld.ll_corner)$(hblk)$(ld.hline) $(sc1)time$(hblk)\($(sc3)%T$(hblk)) $(sc1)win$(hblk)\($(sc3)%R$(hblk)) %F %A %M %Q %> %6 $(hblk)$(ld.hline)$(sc1)$(ld.hline)$(sc2)$(ld.lr_corner)
+^set status_umode +%#
+^set status_oper $(hblk)*
+^set status_notify $(sc1)act$(hblk)\($(sc1)%F$(hblk))
+^set status_lag %L
+^set status_clock %T
+^set status_channel $(sc1)%C
+^set status_mode +%+  
+^set status_chanop $(hblk)@
+^set status_format5 %> %5
+^set status_mail $(sc1)mail$(hblk)\($(sc1)%M$(hblk))
+^set status_user5 $(sc1)$S
+^set status_user6 $sar(g/ //$(sc1)up$(hblk)\($(sc3)$before(m $tdiff2(${time() - F}))m)$(hblk))
+^set status_voice +
+^set status_away  $(hblk)\($(sc3)away$(hblk)\)
+^set status_hold_lines $(hblk)\[$(hwht)%B$(hblk)]
+^set status_query $(sc1)query$(hblk)\($(sc1)%Q$(hblk))
+}
+stat5
+^timer -del 14
+@windowdoubles=[on]
+^window double on
+^timer -window -1 -refnum 14 -rep -1 60 ^set status_user6 $sar(g/ //$(sc1)up$(hblk)\($(sc1)$before(m $tdiff2(${time() - F}))m)$(hblk))

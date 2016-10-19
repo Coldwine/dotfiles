@@ -1,0 +1,248 @@
+NOTE: ChangeLog is done from OLD-NEW AKA OLD Stuff on TOP Newer down below
+CHANGES: amnesiac 1.5.x -> 2.0 release
+05.28.07
+-Fix broken /theme //kreca
+-Bind alt-[key-left] and alt-[key-right] to window prev and window next
+ suggested by mongoose //kreca
+-Increase version number and snapshot dates //kreca
+-Remove set REVERSE_STATUS_LINE //kreca
+
+05.30.07
+-Add some format helper functions and temporarily two new formats //kreca
+
+06.01.07
+-Change the way formats are stored, no double expandoes are required any more
+ //kreca
+
+06.04.07
+-Get rid of all evals in core/*. New version requirement: EPIC5-0.3.4 
+ ("This is a stable alpha release that fixes all of the known issues with
+ epic5-0.3.3 and is stable enough to be targeted by scripts and packagers.")
+ //kreca
+
+06.08.07
+-Add whois.9 (looks like whois.1 but is iso-8859-1 compatible)
+ submitted by mongoose //kreca
+
+07.03.07
+-Add notice to tab completion //kreca
+-Clean ncomp module up. Should be a lot more efficient and not intefer
+ with history script. //kreca
+
+09.12.07
+-Fix wall alias to do old style wall notices when sender is not opped.
+ This brings back functionality from wall2 and with an added bonus
+ that it now respects the TARGMAX 005//kreca
+
+10.25.07
+-Change serial in query module from 835 to -835. This fixes first msg
+ bug. Reported by hokkaido. //kreca
+
+10.13.07
+-Update away module to the pf loader. Hopefully fixes issues that some
+ people have noticed with it. //kreca
+
+01.07.08
+-Fix bug in /cycle which parted all channels. rb Alien88 //kreca
+-Add /v to tab completion, requested by Mongoose. //kreca
+-Fix bug that sent //#- to the server upon joins. rb wjr. //kreca
+-Add wser and _wser aliases. Submitted by someone unknown (send me an msg). 
+ //kreca
+
+01.11.08
+-update copyrights to 2008 //zak
+-minor one line changes/minor undoing of kreca's emacisms in some places //zak
+-sync help docs more/less to reality. //zak
+-sync docs/E5-KNOWNBUGS/E5-UPDATES to a much needed reality. //zak
+-remove some minor dead code here and there. //zak
+-sync TODO-BUGS to reality. //zak
+-various cleanups, make /wcs rename to /wser which actually works and
+ prolly much better for multiserver, i have been on 4 different networks
+ with one client the past month and have yet to really have any issues.
+ //zak
+-add more funcs into compat.m from builtins we may be needing in the near
+ future or may need now, we really need to set a vote on some things ;/
+ //zak
+-add /set dcc_port_min dcc_port_max to specify ports to use. (untested at
+ this time) def: 1024/65535 //zak
+-remove format timestamps for dcc_connect and dcc_timeout as it's been
+ broken/inaccurate since the beginning of time. //zak
+-few new aliases of /lockchan/chanlock/unlock //mode $C +im (useful during
+ flooding) //zak
+
+-Make cosmetics of /save output look more saner:
+[a+c] Amnesiac settings saved to ~/.amn/a.save
+[a+c] Color settings saved to ~/.amn/a.csave
+[a+c] Format settings saved to ~/.amn/a.fsave
+[a+c] Fset settings saved to ~/.amn/a.fsetsave
+[a+c] Modules saved to ~/.amn/mod.save
+[a+c] Ignores saved to ~/.amn/a.ig.save
+[a+c] Epic settings saved to ~/.amn/a.settings
+[a+c] Mmatrix wordlist(s) saved to ~/.amn/a.words.save
+[a+c] Mjoin channel(s) saved to ~/.amn/chan.save
+[a+c] Notify module settings saved to a.notify.save
+^^ if someone has a better idea, please let me know //zak
+
+-cleanup TODO-BUGS even more, with more possible future goals. //zak
+-cleanup INSTALL documentation a bit more //zak
+
+1.13.08
+-add new doc MULTISERVER.txt in amn/docs //zak
+-set save cosmetics to let you know if something you saved is a module or
+ not //zak
+-add some TODO: convert to pf-loader in files that needs to be
+ converted/rewritten and or scrapped undecided at this time, but makes it
+ easier for me to GREP for it in the future.
+
+1.24.08
+-sync docs to reality/update docs //zak
+-increment version requirement  EPIC5-0.3.5-cvs (20070917) [1520] 
+ or higher commitnum [1520] being the commitnum //zak
+-make /10 work. since some get's confused between /0 and /10 //zak
+
+1.26.08
+-make /ov set window indent on not global indent //zak
+-add a cvs-update document written by curse, modified by me //zak
+
+1.30.08
+-sync docs to reality
+-sync required-version to epic5 0.3.6-release(users can remove required ver
+ in amn/amn.epic, however use at your own risk on older epic5). //zak
+-add /retard for a whiner, inspired by kreca ;D //zak
+
+02.01.08
+-Fix output of /vmod (rb byron) //kreca
+
+02.08.08
+-Add theme baron with new formats. Submitted by criminal //kreca
+
+02.13.08
+-Remove some ppl who have been inactive for quite some time in the README
+ file and has not contributed in at least 2 years. //zak
+-add new bans help menu /bhelp //zak
+-sync TODO-BUGS to reality //zak
+-make operview window actually show the correct format when fixed/window
+ doubles is set to on this should make some ppl happy //zak
+-make ^Z now do stop_stop irc with /retard binding, for those who were using
+ ^Z in the past to switch targets/queries you may set in your .epicrc file
+ something like this /bind ^Z parse_command switchtarget //zak
+-update more copyright notices to -08 //zak
+-increment snaprel v5 //zak
+
+02.15.08
+-add /svadd ie; /svadd <server> <vhost> will add specified server
+w/specified host to connect with. //zak
+-sync server documentation a bit more to reality //zak
+-sync TODO-BUGS to add some requests/things //zak
+
+02.21.08
+-Add a hook to automatically set the correct server group to the server list
+ unless the server group name is already set by the user. //kreca
+
+04.07.08
+-remove various servnotice suppression in operview, we will come up with
+ something different in the near future to toggle what one may which
+ suppress in the mean time add the stuff to your ~/.epicrc //zak
+-set version to epic5 0.3.7 release no one should be using .6 anyways //zak
+-sync epic5 cvs docs to reality //zak
+
+04.22.08
+-Fix /awaymsg / /config away c so it sets the reason. rb tjh. //kreca
+
+05.07.08
+-Fix bug in away on connect, also get rid of some unused variables. 
+ reported by Byron. //kreca
+
+05.10.08
+-sync documents to reflect reality //byron
+-rename minor aliases zak@ ok.  //byron
+-minor cleanups no real functional changes /arjoin (rejoin on reconnect
+ to server alias) //byron
+-increment epic5 version requirement //byron
+-slight changes to default settings zak@ ok //byron
+
+05.21.08
+-Fix bug in alt-y to accept cid request. rb C-5 //kreca
+
+06.10.08
+-release as rc1 since new epic breaks old stable and the current
+version is stable anyways has usually always been, and lots of bugfixes
+and features, however this does not mean an official stable will be released
+soon, but hopefully it will be. most people use snapshot anyways. //zak
+-merge in pf loader for modules/oper written by byron i have tested portions
+however more testing is needed and would be appreciated let us know of any
+bugs. //zak
+-purge out some credits/info from people who have not contributed in >2/yrs+
+mostly noticeable changes anyways. //zak feel feel to send flames to me
+-sync epic5 docs //zak
+-remove misc useless aliases //zak
+-increment /1 /2 /3 etc.. up to 30 //zak
+
+07.04.08
+-fix cosmetic in version rb byron //zak
+-some new undocumented oper aliases added //zak
+-sync epic5 docs //zak
+-slight documentation update //zak
+
+07.06.08
+-make sure ^P always turns off paste mode when in paste mode //skullY
+-add paste alias to vanilla.m. does anyone actually use relay's /paste? //skullY
+-finish the relaysmtp implementation. it should actually be fully usable
+and documented now. //skullY bug me if it breaks
+-Fix /aol when target is not valid. //kreca
+
+12.13.08
+-change all instances of $N and similar uses to $servernick() //skullY
+-add a serverchan() alias that gets the channel properly, $C can break //skullY
+-change all instances of $C and similar uses to $serverchan() //skullY
+-remove some unneccesary evals //skullY
+
+12.14.08
+-sync version
+-sync docs
+-increment epic5 version requirement
+-increment amnesiac version to 2.0 rc1 (our next release will be the 2.0
+ series to be for the first official release of epic5-stable(no plans on
+ when the next release will be, but hopefully within the next two months
+ provided we get a lot of testing done)
+-added utf8, ask mongoose@errnet for info on how it works(irc.ircii.org)
+ will probably document it more whenever i actually test it however he says
+ it works its ugly i dont like it nor does kreca@, but sadly a lot of our
+ userbase wants some sort of utf8 'support' NOTE: only for
+ msgs,publics,notice, and some other hooks not everything will translate to
+ utf8 look at amn/modules/utf8 for more information /utf8 to toggle on/off
+ after one /addmod utf8 //zak
+
+12.15.08
+-add new remote module. Connect to your client with another client. //skullY
+-increment snap //skullY
+-fix tab.m so it actually works without the eval I removed the other 
+ day. //skullY
+
+12.23.08
+-add psk to greets, maybe he will do something ;(
+-make Alien88 also stop crying with the addition of adminwall too //zak
+
+12.30.08
+-fix relaysmtp and remote so that settings are saved on load //skullY
+
+1.15.09
+-sync copyright 2009 happy new year amnesiacers
+-minor documentation/cleanups/sync to reality //zak
+
+1.19.09
+-make utf-8 module use iconv instead of homebrewn encoding //kreca
+-remove whois.ans, instead use the real whois definitions when doing
+ /format 1. This makes it easier for themers to add custom whois definitions
+ and testing them. //kreca
+
+1.23.09
+-Make scanformat and whoisformat work for amnesiac dirs that has a . in 
+ their path. //kreca
+-Convert all ibm437 that are represented in the portable graphics charachter
+ set by using ^Echr^E instead. This makes a lot of the formats nicer when 
+ using latin-1 or utf. 
+ There are still a few characters left, specifically in a few sbars,
+ bannerformats, awayformats and pubnotices. I havnt noticed any others,
+ please report if you find any and I'll see if I can find a representation
+ //kreca

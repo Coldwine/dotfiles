@@ -1,0 +1,27 @@
+DESC 
+1 $word(0 $info(v))/$sar(g/ /./$afterw(epic4 $info(v)))[$info(i)] $sar(g/././$tolower($uname())) $sar(g/././$(a.ver)/$(a.rel)) $scdesc
+2 $sar(g/././$(a.ver)/$(a.rel)) $tolower($msar(g/././-/-/$J))[$info(i)] $scdesc
+3 ircii/$word(0 $info(v))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $sar(g/././$tolower($uname()))(haze.midron.tk) $sar(g/././$(a.ver)/$(a.rel))
+4 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $sar(g/././$(a.ver)\($(a.rel))) $scdesc
+5 ircII $toupper($word(0 $info(v)))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $uname() $a.ver/$a.rel
+6 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $sar(g/././$tolower($uname()))(haze.midron.tk) $sar(g/././$(a.ver)[$(a.rel))] $scdesc
+7 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] - $(a.ver)<$(a.rel)> - ..$strip(\(\) $scdesc)
+8 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] : $tolower($uname()) [$(a.ver)$(a.rel)]
+9 epic5/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $tolower($uname()) $a.ver/$a.rel
+10 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $(a.ver)$sar(g/././$(a.rel)) 
+11 $(a.ver)$sar(g/././$(a.rel)) $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)]
+12 $(a.ver)[$(a.rel)] $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)]
+13 $word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] - $tolower($uname(%s)-$uname(%%r)) - amnesiac/$(a.rel)
+14 $toupper($word(0 $info(v)))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] - $uname(%s)-$uname(%%r) - amnesiac!$(a.rel)
+15 $toupper($word(0 $info(v)))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] - $uname(%s)-$uname(%%r) - amnesiac/$(a.rel)
+16 $tolower($word(0 $info(v)))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] - $tolower($uname(%s))-$uname(%%r) - amnesiac/$(a.rel)
+17 ..$word(0 $info(v))!$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[$info(i)] $tolower($uname()) \($a.ver/$a.rel\) $scdesc
+18 $sar(g/././$word(0 $info(v))/$word(1 $info(v)).$word(2 $info(v))).$word(3 $info(v))[$info(i)] $tolower($sar(g/././$uname())) $a.ver/$sar(g/././$a.rel)
+19 ircII EPIC5-0.3.3 DragonFly 1.3.7-DEVELOPMENT
+20 ircII EPIC5-0.3.3[1463] DragonFly 1.3.7-DEVELOPMENT
+21 ircii/$word(0 $info(v))-$word(1 $info(v)).$word(2 $info(v)).$word(3 $info(v))[1463] sunos 5.10(insanity)amnesiac/$(a.rel)
+22 irssi v0.8.10-rc5 - running on OpenBSD Sparc64
+23 ircII 20050423+ScrollZ 1.9.5 (19.12.2004)+Cdcc v1.8+OperMods v1.0 by acidflash - clear(01g)
+24 ircII 20050423+ScrollZ 1.9.5 (19.12.2004)+Cdcc v1.8+OperMods v1.0 by acidflash - Almost there
+25 BitchX-1.1-final+ by panasync - *IX :7A69!
+26 mIRC v6.16 Khaled Mardam-Bey

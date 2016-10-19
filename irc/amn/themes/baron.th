@@ -1,0 +1,56 @@
+:criminal
+:red baron (ansi)
+:baron
+assign scdesc \(red baron\)
+assign auth crimmy
+assign desc red baron
+assign name baron
+assign c1 [0;31m
+assign c2 [1;31m
+assign c3 [0;33m
+assign c4 [1;30m
+assign c5 [0;37m
+assign sc1 [0;31m
+assign sc2 [1;31m
+assign sc3 [0;33m
+assign sc4 [1;30m
+assign acban [a+c]
+assign theme.format.action 6
+assign theme.format.action_other 6
+assign theme.format.desc 5
+assign theme.format.send_desc 5
+assign theme.format.dcc_chat 29
+assign theme.format.send_dcc_chat 29
+assign theme.format.away 3
+assign theme.format.banner 59
+assign theme.format.kick 8
+assign theme.format.leave 18
+assign theme.format.join 23
+assign theme.format.signoff 20
+assign theme.format.msg 13
+assign theme.format.send_msg 56
+assign theme.format.public 15
+assign theme.format.send_public 16
+assign theme.format.public_other 16
+assign theme.format.notice 27
+assign theme.format.send_notice 38
+assign theme.format.public_notice 5
+assign theme.format.ctcp 13
+assign theme.format.ctcp_reply 1
+assign theme.format.send_ctcp 15
+assign theme.format.mode 11
+assign theme.format.nick_comp 1
+assign theme.format.nickname 19
+assign theme.format.wall 14
+assign theme.format.bwall 14
+assign theme.format.who 4
+assign theme.format.who_footer 1
+assign theme.format.timestamp_some 1
+assign theme.format.topic 9
+assign theme.format.notopic 9
+assign theme.format.settopic 9
+assign theme.format.topicby 9
+assign theme.format.statusbar 7
+assign theme.format.version_reply 17
+assign theme.format.whois 10
+assign theme.format.scan 9

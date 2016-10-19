@@ -1,0 +1,27 @@
+subpackage stat17
+## sbar done by david@sleepers.pro (and it's the best!)
+^set input_prompt $(sc2)$(ld.ll_corner)$(sc1)$(ld.hline)$(sc3)[$(cl)$T$(sc3)]$(sc1)$(ld.hline)$(sc2)> 
+alias stat17 {
+
+^set status_format1 $(sc2)$(ld.ul_corner)$(sc1)$(ld.hline)$(sc3)[$(cl)%T$(sc3)] $(sc3)[%*%=%@$(cl)%N%#$(sc3)] %A %M %> %Q %F $(sc3)[$(sc1)W$(cl)in$(sc2):$(cl)%R$(sc3)]$(sc1)$(ld.hline)$(sc2)$(ld.ur_corner)
+^set status_format2 $(sc2)$(ld.tee_right)$(sc1)$(ld.hline)$(sc3)[$(cl)%C%+$(sc3)] $(sc3)[$(sc1)o$(sc2):$(cl)%2 $(sc1)n$(sc2):$(cl)%3 $(sc1)v$(sc2):$(cl)%4$(sc3)] %> $(sc3)[$(sc1)L$(cl)ag$(sc2):$(cl)%1$(sc3)] $(sc3)[$(cl)%{2}S$(sc3)]$(sc1)$(ld.hline)$(sc2)$(ld.lr_corner)
+^set status_notify $(sc3)[$(sc1)A$(cl)ct$(sc2):$(cl)%F$(sc3)]
+^set status_umode $(sc2)\($(cl)+%#$(sc2)\)
+^set status_server %S
+^set status_oper $(sc1)*
+^set status_clock %T
+^set status_lag %L
+^set status_channel %C
+^set status_mode $(sc2)\($(cl)+%+$(sc2)\)
+^set status_chanop $(sc4)@$(sc3)
+^set status_mail $(sc3)[$(sc1)M$(cl)ail$(sc2):$(cl)%M$(sc3)]
+^set status_voice $(sc4)+$(sc3)
+^set status_away $(sc3)[$(sc1)A$(cl)way$(sc3)] 
+^set status_query $(sc3)\[$(sc1)Q$(sc2):$(cl)%Q$(sc3)]
+^set status_user5 $(cl)$S
+^set status_format5 %> %5
+}
+stat17
+@windowdoubles=[on]
+^window double on
+^timer -del 14

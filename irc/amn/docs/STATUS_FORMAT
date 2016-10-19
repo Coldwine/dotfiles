@@ -1,0 +1,248 @@
+This doc will kinda try to explain on how one can customize and or make
+a new sbar, and be able to hook it into the tree.
+as some may have noticed epic5 has a bunch of /set status_user*
+to make use of it, for example if you want a shortend var for
+how many ops/nonops are in your channel on the statbar one may do something
+like this.
+/set status_user2 $#chops()
+/set status_user3 $#nochops()
+
+to copy a simplified/modified example from statbar 11
+/set status_format %T [win:%R] +%*%=%@%N%#%S%H%B%Q%A%C%+%I%O%F%L
+/set status_format2 (ops:%2) (non:%3)
+
+the %number points to whatever value is set into status_user2 and 3
+for some more of the common values(note: just because you put lets say a %Q
+for query it does not mean it may/may not work because it may/may not
+require a /set status_query value one should look at stats/stat.11
+for a simple example.
+
+our own amnesiac custom variables. if one wants to customized their own
+version of status_user* you should probably use 12 or higher as to not
+conflict with the primary client values.
+status_user2 $#chops() <-- total number of ops in a chan %2
+status_user3 $#nochops() <-- total number of nonops in a chan %3
+status_user4 $#pattern(*+* $channel()) <-- total voice in a chan %4
+status_user7 $#pattern(* $channel()) <-- total of users in a chan %7
+
+@windowdoubles=[on] <-- this means that the statbar will always use double
+formats aka /set status_format and status_format2
+
+after one is seemingly happy you may edit the amn/core/sbar.m file
+from a couple of lines down from the top
+change the @ sbar.max = 15 <-- the value is 15 as the time of this writing
+lets say you just made the 16th sbar change the value to 16 and put your
+newly modified sbar in amn/stats as stats.16, reload the script and /sbar 16
+should take effect. and of course we welcome any new sbar if they look
+ok, preferably only 1 format not double format statbars at this time.
+
+Some other stat variables.
+Taken from epicsols page.
+
+%A	(CURRENT, SET STATUS_AWAY)
+	This expands when you are AWAY.  If you are connected to only
+	one server, this appears in the current window.  If you are
+	connected to multiple servers, this appears in all windows.
+
+%B	(SET STATUS_HOLD_LINES, wrapper)
+	This expands if you have lines in your scrollback that you have 
+	never seen ("held lines").  This sub-expansion value is the number
+	of lines that you have never seen.  It is updated every /WINDOW 
+	HOLD_INTERVAL lines.
+
+%C	(SET STATUS_CHANNEL, wrapper)
+	This expands when you are on a channel.  The sub-expansion value is
+	the current channel name:
+        * But if /SET HIDE_PRIVATE_CHANNELS is ON, and the channel mode
+	includes +p or +s, "*private*" is used instead.
+        * But if /SET CHANNEL_NAME_WIDTH is > 0, and the channel name is
+	longer than this value, it is chopped off to this length.
+
+%D	(CURRENT)
+	This expands to information about your current file transfer when
+	you have a DCC SEND or DCC GET in progress, and when the window's 
+	level includes DCC, or if this is the current input window and 
+	/SET CURRENT_WINDOW_LEVEL includes DCC.
+
+%{1}D
+	This expands to information about your current file transfer when you
+	have a DCC SEND or DCC GET in progress.  It unconditionally appears
+	in every window.
+
+%F	(CURRENT, SET STATUS_NOTIFY, wrapper)
+	If you /WINDOW NOTIFY ON,  a window, then hide it, and output occurs
+	to one of the levels in the hidden window's /WINDOW NOTIFY_LEVEL,
+	the window will "notify" you that it has output.  The sub-expansion
+	value is a comma-separated list of the window refnums that are 
+	"notifying".
+
+%{1}F   (CURRENT, SET STATUS_NOTIFY, wrapper)
+	Just like %F, this gives you a list of notifying hidden windows,
+	but if the window has a name, the name is used instead of its
+	refnum.
+
+%H	(SET STATUS_HOLD)
+	This expands if you have lines in your scrollback that you have
+	never seen ("held lines").
+
+%I	(CURRENT, SET STATUS_INSERT)
+	This expands when /SET INSERT_MODE is ON.
+
+%K	(SET STATUS_SCROLLBACK)
+	This expands when you are browsing the scrollback in this window.
+	It can be helpful to use this because any new output to your window
+	is "held" when you are in scrollback mode, and this gives you a
+	visual clue that you haven't existed scrollback mode yet.
+
+%{1}K
+	This expands when you are browsing the scrollback in this window.
+	It expands to "(Scroll: <num1> of <num2>)" where <num1> is how far 
+	the top of your display is from the bottom of the scrollback buffer 
+	(including any lines being held), and <num2> is how many lines total 
+	are in your scrollback buffer (including any lines being held).
+
+%L	(SET STATUS_CPU_SAVER, wrapper)
+	This expands when you are in CPU SAVER mode.  The sub-expansion
+	value is the literal string "CPU".
+
+%M	(CURRENT, SET STATUS_MAIL, wrapper)
+	This expands whenever /SET MAIL is not 0 and you have mail in 
+	your inbox.  EPIC only supports mbox right now.  If /SET MAIL is 1,
+	the sub-expression value is the empty string.  If /SET MAIL is 2,
+	the sub-expression value is the number of emails in your inbox.
+
+%N	(SET STATUS_NICKNAME, wrapper)
+	This always expands.  The sub-expansion value is the nickname you
+	are using on the window's server.  If the window is not connected
+	to a server, the sub-expansion value is "<invalid server>".  If the
+	window is connected to a disconnected server, the sub-expansion 
+	value is "<not registered yet>".
+
+%O	(CURRENT, SET STATUS_OVERWRITE)
+	This expands when /SET INSERT_MODE is OFF.
+
+%P
+	This is an expando which is used by the developers to display 
+	debugging information without doing any screen output.  There is
+	no point in documenting it since it changes frequently.
+
+%Q	(SET STATUS_QUERY, wrapper)
+	This expands whenever you have a QUERY in this window.  The
+	sub-expansion value is target you are querying.
+
+%R
+	This always expands to the window's name, if it has one, and to
+	the window's refnum, if it does not have a name.
+
+%{1}R
+	This always expands to the window's refnum.
+
+%S	(SET STATUS_SERVER, wrapper)
+	This expands when you are connected to no servers, or when you 
+	are connected to more than one server.  If the window is not
+	connected to a server, it expands to "No Server".  The sub-expansion
+	value is the first segment (portions of the name separated by dots)
+	of our name for the server (what you supplied to the /SERVER command 
+	or put in your server list).  If the name of the server is an IP
+	address, then the sub-expression value is the IP address.  If the
+	first segment of the server's name starts with "irc", then the
+	second segment of the server's name is used.  If the name of the server 
+	is more than 60 characters, it is chopped off at 60 characters.  As an
+	example, if you are connected to "irc.choomba.com", then %S is 
+	"choomba", and if you are connected to "192.168.1.101" then %S is
+	"192.168.1.101" and if you are connected to "zen.buddha.com" then
+	%S is "zen".  I hope this makes sense!
+
+%{1}S   (SET STATUS_SERVER, wrapper)
+	This is just like %S, but it appears in all windows, even when
+	you are connected to just one server.
+
+%{2}S	(SET STATUS_SERVER, wrapper)
+	This is just like %{1}S, but the sub-expansion value is the full
+	name of the server, and is not chopped up like %S.
+
+%T	(CURRENT, SET STATUS_CLOCK, wrapper)
+	This expands if /SET CLOCK is ON.  The sub-expansion value is 
+	the current time formatted with strftime() using /SET CLOCK_FORMAT.
+	If /SET CLOCK_FORMAT is unset, and /SET CLOCK_24HOUR is ON, then
+	the time will be shown in 24 hour time, otherwise it will be shown 
+	in 12 hour (imperial) time.
+
+%{1}T
+	This expands to the string "TEST".  If you don't see this on the
+	status bar when you use this expando, your epic version doesn't
+	support status expando maps.
+
+%V	(CURRENT)
+	This expands to the client's version string ($V)
+
+%W
+	This expands if there is more than one window on the screen, and 
+	this window is the current input window.  This expando should be
+	used as a visual cue that this window is the current input window
+	when you are using a split screen.
+
+%#	(CURRENT, SET STATUS_UMODE, wrapper)
+	This expands when you have set a user mode on the window's server.
+	It alawys expands if you are connected to more than one server.  It 
+	does not expand if you are not connected to a server in this window.
+	The sub-expansion value is the user mode for this server.
+
+%%
+	This expands to the literal string "%".  This is necessary for when
+	you want to put a % in your status bar.
+
+%*	(CURRENT, SET STATUS_OPER)
+	This expands when you are an irc operator.  It always expands if you
+	are connected to more than one server.
+
+%+	(SET STATUS_MODE, wrapper)
+	This expands when you are on a channel that has a channel mode.
+	The sub-expansion value is the current channel's mode.
+
+%{1}+ 	(SET STATUS_MODE, wrapper)
+	This expands when you are on a channel.  If the current channel 
+	does not have a mode set, the sub-expansion value is the empty
+	string. Otherwise, the sub-expansion value is the current channel's 
+	mode.
+
+%.	(/WINDOW STATUS_SPECIAL)
+	This expands when you have set a value for /WINDOW STATUS_SPECIAL.
+
+%=	(SET STATUS_VOICE)
+	This expands when you are a channel voice for the current channel.
+	This does not expand when you are a channel operator for the 
+	current channel.
+
+%@	(SET STATUS_CHANOP or SET STATUS_HALFOP)
+	This expands when to SET STATUS_CHANOP when you are are a channel
+	operator for the current channel.  Otherwise, it expands to SET 
+	STATUS_HALFOP when you are a half-channel-operator ("helper" on 
+	some servers) for the current channel.
+
+%|	(SET STATUS_SSL_ON or SET STATUS_SSL_OFF)
+	This expands to SET STATUS_SSL_ON when the window's server
+	connection is using SSL encryption.  Otherwise, it expands to SET
+	STATUS_SSL_OFF.
+
+   %U	 (CURRENT, SET STATUS_USER)
+   %X	 (CURRENT, SET STATUS_USER1)
+   %Y	 (CURRENT, SET STATUS_USER2)
+   %Z	 (CURRENT, SET STATUS_USER3)
+   %0	 (CURRENT, SET STATUS_USER)
+   %1	 (CURRENT, SET STATUS_USER1)
+   ... (%2, %3, %4, %5, %6, %7, %8) ...
+   %9	 (CURRENT, SET STATUS_USER9)
+   %{1}0 (CURRENT, SET STATUS_USER10)
+   ... (%{1}1, %{1}2, %{1}2, %{1}3, %{1}4, %{1}5, %{1}6, %{1}7, %{1}8) ...
+   %{1}9 (CURRENT, SET STATUS_USER19)
+   %{2}0 (SET STATUS_USER20)
+   ... (%{2}1, %{2}2, %{2}2, %{2}3, %{2}4, %{2}5, %{2}6, %{2}7, %{2}8) ...
+   %{2}9 (SET STATUS_USER29)
+   %{3}0 (SET STATUS_USER30)
+   ... (%{3}1, %{3}2, %{3}2, %{3}3, %{3}4, %{3}5, %{3}6, %{3}7, %{3}8) ...
+   %{3}9 (SET STATUS_USER39)
+	These always expand.
+
+for more information you can go here.
+http://www.prbh.org/help/index.php?q=4_Misc/set/status_format

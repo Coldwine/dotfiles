@@ -1,0 +1,42 @@
+DCC
+	CHAT
+		<nickname>
+	SEND
+		<nickname> <filename> <filename> <filename> <filename>
+	GET
+		<nickname> <dcctype:offered> <filename>
+	RAW
+		<fd> <host>
+	CLOSE
+		CHAT
+			<dcctype:chat>
+		SEND
+			<dcctype:send>
+		GET
+			<dcctype:get>
+		RAW
+			<dcctype:raw>
+		-ALL
+			<dcctype:-all>
+	CLOSEALL
+	LIST
+DCC
+GET
+	<nickname> <dcctype:offered> <filename>
+DCX
+	<dcctype:chat>
+DCA
+DCS
+	<dcctype:send>
+DCG
+	<dcctype:get>
+DCN
+	<dcctype:-all>
+DCR
+	<dcctype:-all> <nickname>
+NOCHAT
+	<dcctype:-all>
+SEND
+	<nickname> <filename> <filename> <filename> <filename>
+CHAT
+	<nickname> "-p"

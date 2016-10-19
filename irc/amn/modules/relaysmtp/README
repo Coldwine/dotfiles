@@ -1,0 +1,101 @@
+# relaysmtp - Relay messages to and from irc using email
+# Original implementation 2007 Aug 12, Zach White (skullY@EFnet)
+# Cleaned up and contributed to amnesiac, 2007 Jan 12
+
+Using this script is a bit complicated. You should have a basic understanding
+of email and shell scripts or have a system administrator that does.
+
+### Initial Setup (outside of epic)
+
+First, you need to setup your email system to get messages from email to your
+irc client. I use the following procmail recipe for this:
+
+	# Handle IRC traffic
+	:0:
+	* ^From: <your email address>
+	|/bin/sh $HOME/amn/modules/relaysmtp/addQueue.sh
+
+If you have installed amnesiac in another location you will need to adjust 
+the procmail recipe and the addQueue.sh script.
+
+This will allow you to send an email similar to the following:
+
+	From: <your email address>
+	To: <your username>+<password>+<irc nick>@<your irc host>
+
+	Hello!
+
+When this email is delivered it will result in your irc client sending a
+/msg to the irc nick you specify. 
+
+### Configuration (Within epic)
+
+Configuration of the script parameters is handled through the /config
+system. You can type "/config relaysmtp" to see your current configuration
+and to set the various options.
+
+/config relaysmtp a <on/off>
+    Turn the relay on or off.
+
+/config relaysmtp b <username>
+    Set the username emails come from.
+
+/config relaysmtp c <shared key>
+    Set the password for sending a message through the relay.
+
+/config relaysmtp d <domain>
+    The domain you receive email at.
+
+/config relaysmtp e <seperator>
+    The seperator between parts of an email address. Normally '+' or '-'.
+
+/config relaysmtp f <email address>
+    The email address you want to send email to.
+
+/config relaysmtp g </usr/bin/sendmail>
+    The location of your sendmail binary.
+
+### Usage Example
+
+I have a sprint phone, which has an email address that looks like this:
+
+	5105550420@messaging.sprintpcs.com
+
+I first setup my procmail rule:
+
+	# Handle IRC traffic
+	:0:
+	* ^From: 5105550420@messaging.sprintpcs.com
+	|/bin/sh $HOME/amn/modules/relaysmtp/addQueue.sh
+
+Then I configure relaying in my irc client (for some options the defaults
+are ok.)
+
+    /config relaysmtp b zwhite
+    /config relaysmtp c fnord
+    /config relaysmtp d darkstar.frop.org
+    /config relaysmtp f 5105550420@messaging.sprintpcs.com
+
+Now when someone sends me a message on irc it will be relayed to my phone
+with the proper From address, so I can simply reply to existing messages in 
+my phone's threaded sms reader.
+
+But wait, I need to ask zak something, and he hasn't messaged me yet. I'll
+have to properly construct the email address! OH GNOEZ!
+
+Luckily, it's not difficult. As we established when we configured the script
+my password is currently "fnord". So I send the following email:
+
+	From: 5105550420@messaging.sprintpcs.com
+	To: zwhite+fnord+zak@darkstar.frop.org
+
+	Look at me! I'm ircing via my phone! Isn't that gay?
+
+And, using magic, it gets relayed to zak.
+
+BUGS:
+
+I don't know what happens if you're on multiple servers. Probably you'll only
+be able to send messages to people on the server that is currently visible,
+while getting messages that are sent to you from any network. If you use 
+multiple networks and want me to work on this, find me (skullY) on EFnet.
