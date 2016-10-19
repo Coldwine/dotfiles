@@ -30,68 +30,68 @@ name=Christian Dornbusch
 email=christian.dornbusch@useeds.de
 
 [6]
-name=Christian Sieber
-email=Christian.Sieber@consorsbank.de
+name=Christian Hager
+email=christian.hager@consorsbank.de
 
 [7]
+name=Christian Sieber
+email=christian.sieber@consorsbank.de
+
+[8]
 name=Christina Bloecher
 email=christina.bloecher@useeds.de
 
-[8]
+[9]
 name=Christine Mitsch
 email=christine.mitsch@consorsbank.de
 
-[9]
+[10]
 name=Daniel Terhorst
 email=daniel.terhorst@useeds.de
 
-[10]
+[11]
 name=Ekaterina Pereslavskaya
 email=ekaterina.pereslavskaya@useeds.de
 
-[11]
+[12]
+name=Emilie Alonso
+email=emilie.alonso@useeds.de
+
+[13]
 name=Freelancer Useeds
 email=freelancer@useeds.de
 
-[12]
+[14]
 name=Huey-Yuan Wang
 email=huey-yuan.wang@useeds.de
 
-[13]
+[15]
 name=Irene Escudé
 email=irene.escude@useeds.de
 
-[14]
+[16]
 name=Ivar Feldheim
 email=thorgis@web.de
 
-[15]
-name=Jan Heinsen
-email=jan.heinsen@gmail.com
-
-[16]
-name=Jan Heinsen
-email=jan.heinsen@extern.consorsbank.de
-
 [17]
+name=Jan Heinsen
+email=jan.heinsen@extern.consorsbank.de,jan.heinsen@gmail.com
+
+[18]
 name=Luisa Duong
 email=luisa.duong@useeds.de
 
-[18]
+[19]
 name=Maksym Gendin
 email=maksym.gendin@consorsbank.de
 
-[19]
+[20]
 name=Manuela Risch
 email=manuela.risch@useeds.de
 
-[20]
-name=Marcel Krause
-email=marcel.krause@useeds.de,feuerwinter@gmail.com,mgmk@posteo.de
-
 [21]
 name=Marcel Krause
-email=marcel.krause@useeds.de
+email=marcel.krause@useeds.de,feuerwinter@gmail.com,mgmk@posteo.de
 
 [22]
 name=Maria Meermeier
@@ -138,34 +138,42 @@ name=Nürnberg Trading Development
 email=cb.trading.dev@useeds.de
 
 [33]
+name=Office
+email=office@useeds.de
+
+[34]
 name=Sabine Kaufmann
 email=sabine.kaufmann@useeds.de
 
-[34]
+[35]
 name=Sebastian Hoos
 email=sebastian.hoos@useeds.de
 
-[35]
+[36]
 name=Stefanie Simon
 email=stefanie.simon@useeds.de
 
-[36]
+[37]
 name=Steve Jones
 email=steve.jones@useeds.de
 
-[37]
+[38]
+name=Sven Lieckefett
+email=sven.lieckefett@useeds.de
+
+[39]
 name=Team Useeds
 email=team@useeds.de
 
-[38]
+[40]
 name=Thomas Otto
 email=thomas.otto@useeds.de
 
-[39]
+[41]
 name=Thomas Pribbenow
 email=thomas.pribbenow@useeds.de
 
-[40]
+[42]
 name=Tobias Winkler
 email=tobias.winkler@useeds.de
 
