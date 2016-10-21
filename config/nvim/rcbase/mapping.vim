@@ -53,9 +53,10 @@ nnoremap <leader>9 <plug>AirlineSelectTab9
 nnoremap <leader>ff :call Preserve("normal gg=G")<cr>
 nnoremap <leader>sw :call StripTrailingWhitespace()<cr>
 nnoremap <leader>ft :Autoformat<cr>
-nnoremap <silent><c-p> :FZF<cr>
-nnoremap <silent><leader>b :TagbarToggle<cr>
+nnoremap <silent><c-p> :Files<cr>
+nnoremap <leader><enter> :Buffers<cr>
 nnoremap <leader>/ :Ag<cr>
+nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>u :UndotreeToggle<cr>
 nnoremap <leader>ga :Git add %:p<cr><cr>
 nnoremap <leader>gs :Gstatus<cr>
