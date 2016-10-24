@@ -4,7 +4,7 @@ set laststatus=2
 set showtabline=2
 
 let g:lightline = {
-      \   'colorscheme': 'gruvbox',
+      \   'colorscheme': 'Dracula',
       \   'active': {
       \     'left': [ [ 'mode', 'paste'  ],
       \               [ 'fugitive', 'gitgutter' ],
@@ -81,20 +81,20 @@ function! TagbarStatusFunc(fname, ...) abort
 endfunction
 
 function! LightLineSignify()
-  let symbols = ['+', '-', '!']
-  let [added, modified, removed] = sy#repo#get_stats()
-  let stats = [added, removed, modified]  " reorder
-  let hunkline = ''
+  let l:symbols = ['+', '-', '!']
+  let [l:added, l:modified, l:removed] = sy#repo#get_stats()
+  let l:stats = [l:added, l:removed, l:modified]  " reorder
+  let l:hunkline = ''
 
-  for i in range(3)
-    if stats[i] > 0
-      let hunkline .= printf('%s%s ', symbols[i], stats[i])
+  for l:i in range(3)
+    if l:stats[l:i] > 0
+      let l:hunkline .= printf('%s%s ', l:symbols[l:i], l:stats[l:i])
     endif
   endfor
 
-  if !empty(hunkline)
-    let hunkline = printf('%s', hunkline[:-2])
+  if !empty(l:hunkline)
+    let l:hunkline = printf('%s', l:hunkline[:-2])
   endif
 
-  return hunkline
+  return l:hunkline
 endfunction

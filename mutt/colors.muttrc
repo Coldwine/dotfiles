@@ -1,37 +1,39 @@
-color   normal        color253   default
-color   indicator     color230   default
-color   status        color101   default
-color   tree          color153   default
-color   signature     color102   default
-color   message       color253   default
-color   attachment    color117   default
-color   error         color30    default
-color   tilde         color130   default
-color   search        color100   default
-color   markers       color138   default
-color   quoted        color107   default
-color   quoted1       color66    default
-color   quoted2       color32    default
-color   quoted3       color30    default
-color   quoted4       color99    default
-color   quoted5       color36    default
-color   quoted6       color114   default
-color   quoted7       color109   default
-color   quoted8       color41    default
-color   quoted9       color138   default
-color   index_author  color202   default  '.*'
-color   index_number  color153   default
-color   index_subject color253   default  '.*'
-color   index_flags   color229   default  '.*'
-color   index_date    color132   default
-color   hdrdefault    color30    default
-color   header        color132   default  '^(Date)'
-color   header        color153   default  '^(To)'
-color   header        color153   default  '^(CC)'
-color   header        color153   default  '^(BCC)'
-color   header        color120   default  '^(From)'
-color   header        color178   default  '^(Subject)'
-color   header        color31    default  '^(User-Agent)'
-color   header        color29    default  '^(Reply-To)'
-
 # vim: filetype=muttrc
+
+color normal            color231    default
+color indicator         color231    default
+color attachment        color60     default
+color error             color196    default
+color quoted            color228    default
+color quoted1           color84     default
+color signature         color212    default
+color status            color231    default
+color tilde             color61     default
+color tree              color61     default
+color hdrdefault        color84     default
+color header            color81     default   '^date:'
+color header            color212    default   '^from:'
+color header            color228    default   '^(to|cc|bcc):'
+color header            color141    default   '^subject:'
+color index_number      color60     default
+color index_author      color212    default   '.*'
+color index_date        color81     default
+color index_flags       color228    default   '.*'
+color index_subject     color141    default   '.*'
+color sidebar_indicator color141    default
+color sidebar_new       color212    default
+color sidebar_highlight color81     default
+# color message       color214    default
+# color markers       color138    default
+# color quoted1       color66     default
+# color quoted2       color32     default
+# color quoted3       color30     default
+# color quoted4       color99     default
+# color quoted5       color36     default
+# color quoted6       color114    default
+# color quoted7       color109    default
+# color quoted8       color41     default
+# color quoted9       color138    default
+# color header        color108    default   '^(to|cc|bcc):'
+# color header        color120    default   '^from:'
+# color header        color178    default   '^subject:'

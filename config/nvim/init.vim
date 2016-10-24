@@ -26,4 +26,4 @@ call s:SourceConfigFilesIn('rcplugins')
 runtime macros/matchit.vim
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
