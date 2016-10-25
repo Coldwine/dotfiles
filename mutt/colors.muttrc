@@ -4,10 +4,15 @@ color normal            color231    default
 color indicator         color231    default
 color attachment        color60     default
 color error             color196    default
+color message           color231    default
+color progress          color81     default
+color prompt            color81     default
 color quoted            color228    default
 color quoted1           color84     default
 color signature         color212    default
 color status            color231    default
+color status            color141    default   '\[([^]]+)\]' 1
+color status            color228    default   '[0-9] (new|delete|tagged|postponed)'
 color tilde             color61     default
 color tree              color61     default
 color hdrdefault        color84     default
