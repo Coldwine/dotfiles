@@ -8,7 +8,7 @@ Plug 'dracula/vim'
 
 " Editing and Formatting
 Plug 'Chiel92/vim-autoformat'
-function! DoRemote(arg)
+function! DoRemote()
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
@@ -48,6 +48,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'justinmk/vim-sneak'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'junegunn/vim-slash'
 
 " Source Control
 Plug 'mhinz/vim-signify'
