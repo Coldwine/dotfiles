@@ -38,6 +38,7 @@ Plug 'othree/yajs.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
