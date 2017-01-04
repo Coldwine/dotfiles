@@ -25,7 +25,6 @@ Plug 'tpope/vim-surround'
 
 " Syntax
 Plug 'Shougo/context_filetype.vim'
-Plug 'cakebaker/scss-syntax.vim'
 Plug 'dag/vim-fish'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
