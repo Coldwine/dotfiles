@@ -1,5 +1,8 @@
 module.exports = {
-  extends: 'google',
+  extends: [
+    'eslint:recommended',
+    'google'
+  ],
   env: {
     jquery: true,
     browser: true,
