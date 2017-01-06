@@ -72,8 +72,8 @@ nnoremap <leader>gp :Ggrep<space>
 nnoremap <leader>gm :Gmove<space>
 nnoremap <leader>gb :Git branch<space>
 nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gps :git push<cr>
-nnoremap <leader>gpl :git pull<cr>
+nnoremap <leader>gps :Git push<cr>
+nnoremap <leader>gpl :Git pull<cr>
 nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gvv :GV!<cr>
 " Terminal mode
