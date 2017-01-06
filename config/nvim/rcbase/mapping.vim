@@ -11,6 +11,9 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 nnoremap - ddp
 nnoremap _ ddkkp
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *<c-o>
 nnoremap <bs> :set hlsearch! hlsearch?<cr>
 nnoremap <left> :bprev<cr>
 nnoremap <right> :bnext<cr>
