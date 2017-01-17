@@ -1,5 +1,5 @@
 const
-path = require('path'),
+  path = require('path'),
   nodeModules = path.join(process.env.NPM_CONFIG_PREFIX, 'lib', 'node_modules');
 
 module.exports = {
@@ -24,10 +24,8 @@ module.exports = {
       ignoreAtRules: [
         'include',
         'extend',
-        'mixin',
       ],
     }],
-    'declaration-empty-line-before': 'never',
     'no-invalid-double-slash-comments': null,
     'number-leading-zero': 'never',
     'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
@@ -74,3 +72,4 @@ module.exports = {
     'scss/selector-no-redundant-nesting-selector': true,
   }
 };
+
