@@ -4,6 +4,7 @@ augroup END
 
 autocmd fileType BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd fileType BufNewFile,BufReadPost *stylelintrc set filetype=json
+autocmd fileType BufNewFile,BufReadPost inspircd.conf set filetype=xml
 autocmd fileType BufNewFile,BufReadPost *ctags set filetype=config
 autocmd fileType BufNewFile,BufReadPost *thymerc set filetype=ruby
 autocmd fileType BufNewFile,BufReadPost mail set tabwidth=76
