@@ -1,24 +1,25 @@
 nnoremap Q <nop>
 nnoremap <leader>so :so $MYVIMRC<cr>
 vnoremap <leader>st :sort<cr>
-nnoremap <leader>sv :tabe $MYVIMRC<cr>
-nnoremap <leader>w :write<cr>
-nnoremap <leader>tl :vsplit<cr>:terminal<cr>
 nnoremap <leader>lc :lclose<cr>
-nnoremap <leader>tn :tabe<cr>
+nnoremap <leader>sv :tabe $MYVIMRC<cr>
 nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>tn :tabe<cr>
+nnoremap <leader>to :tabo<cr>
+nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>tp :tabprev<cr>
+nnoremap <leader>tl :vsplit<cr>:terminal<cr>
+nnoremap <leader>w :write<cr>
 inoremap jk <esc>
 inoremap <esc> <nop>
 nnoremap - ddp
-nnoremap _ ddkkp
+nnoremap _ ddkP
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap * *<c-o>
 nnoremap <bs> :set hlsearch! hlsearch?<cr>
-nnoremap <left> :bprev<cr>
-nnoremap <right> :bnext<cr>
-nnoremap <up> :tabnext<cr>
-nnoremap <down> :tabprev<cr>
+nnoremap <leader>bp :bprev<cr>
+nnoremap <leader>bn :bnext<cr>
 inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <up> <nop>
@@ -44,15 +45,6 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap il] :<c-u>normal! F]vi[<cr>
 " Plugins
-nnoremap <leader>1 <plug>AirlineSelectTab1
-nnoremap <leader>2 <plug>AirlineSelectTab2
-nnoremap <leader>3 <plug>AirlineSelectTab3
-nnoremap <leader>4 <plug>AirlineSelectTab4
-nnoremap <leader>5 <plug>AirlineSelectTab5
-nnoremap <leader>6 <plug>AirlineSelectTab6
-nnoremap <leader>7 <plug>AirlineSelectTab7
-nnoremap <leader>8 <plug>AirlineSelectTab8
-nnoremap <leader>9 <plug>AirlineSelectTab9
 nnoremap <leader>ff :call Preserve("normal gg=G")<cr>
 nnoremap <leader>sw :call StripTrailingWhitespace()<cr>
 nnoremap <leader>ft :Autoformat<cr>
