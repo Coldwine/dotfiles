@@ -1,28 +1,29 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'google'
-  ],
+  extends: ['eslint:recommended', 'google'],
   env: {
     jquery: true,
     browser: true,
-    node: true
+    node: true,
   },
   globals: {
     DS: true,
-    '_': true,
+    _: true,
     Highcharts: true,
-    MQ: true
+    MQ: true,
   },
   rules: {
-    'max-len': [2, {
-      code: 150,
-      tabWidth: 2,
-      ignoreComments: true,
-      ignoreUrls: true
-    }],
+    'max-len': [
+      2,
+      {
+        code: 80,
+        tabWidth: 2,
+        ignoreComments: true,
+        ignoreUrls: true,
+      },
+    ],
     'require-jsdoc': 'off',
     'one-var': 'off',
-    'spaced-comment': 'off'
-  }
-}
+    'spaced-comment': 'off',
+    'no-var': 'off',
+  },
+};

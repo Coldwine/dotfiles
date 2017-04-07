@@ -47,7 +47,7 @@ onoremap il] :<c-u>normal! F]vi[<cr>
 " Plugins
 nnoremap <leader>ff :call Preserve("normal gg=G")<cr>
 nnoremap <leader>sw :call StripTrailingWhitespace()<cr>
-nnoremap <leader>ft :Autoformat<cr>
+nnoremap <leader>ft :Neoformat<cr>
 nnoremap <silent><c-p> :Files<cr>
 nnoremap <leader><enter> :Buffers<cr>
 nnoremap <leader>/ :Ag<cr>

@@ -7,7 +7,7 @@ Plug 'mhinz/vim-startify'
 Plug 'dracula/vim'
 
 " Editing and Formatting
-Plug 'Chiel92/vim-autoformat'
+Plug 'sbdchd/neoformat'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
 Plug 'Shougo/neco-vim'
