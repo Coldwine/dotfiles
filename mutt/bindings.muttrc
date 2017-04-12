@@ -9,12 +9,14 @@ bind index,pager \CP sidebar-prev
 
 bind index i display-message
 bind index l limit
+bind index gr group-reply
 bind index gg first-entry
 bind index G last-entry
 macro index   <tab>      <next-unread><enter>
 
 bind pager gg top
 bind pager G bottom
+bind pager gr group-reply
 bind pager J next-line
 bind pager K previous-line
 
