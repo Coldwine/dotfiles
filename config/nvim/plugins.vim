@@ -11,7 +11,7 @@ Plug 'sbdchd/neoformat'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
 Plug 'Shougo/neco-vim'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'sgur/vim-editorconfig'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
