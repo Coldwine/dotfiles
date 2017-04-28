@@ -8,5 +8,10 @@
 " let g:formatters_javascript = ['eslint']
 let g:neoformat_enabled_javascript = ['prettiereslint']
 
-let g:formatdef_stylefmt = '"stylefmt"'
-let g:formatters_scss = ['stylefmt']
+let g:neoformat_enabled_scss = ['stylefmt']
+function! neoformat#formatters#scss#stylefmt() abort
+    return {
+        \ 'exe': 'stylefmt',
+        \ 'stdin': 1
+        \ }
+endfunction

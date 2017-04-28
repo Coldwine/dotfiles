@@ -8,6 +8,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-function! s:my_cr_function()
+function! <SID>my_cr_function()
   return pumvisible() ? "\<c-y>" : "\<cr>"
 endfunction

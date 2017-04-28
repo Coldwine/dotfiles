@@ -26,8 +26,8 @@ policies:
   ProhibitEqualTildeOperator:
     enabled: true
 
-  ProhibitImplicitScopeBuiltinVariable:
-    enabled: true
+  ProhibitImplicitScopeVariable:
+    suppress_autoload: true
 
   ProhibitMissingScriptEncoding:
     enabled: true

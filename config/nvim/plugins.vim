@@ -56,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
 " Miscellaneous
+Plug 'geekjuice/vim-mocha'
 Plug 'wakatime/vim-wakatime'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
