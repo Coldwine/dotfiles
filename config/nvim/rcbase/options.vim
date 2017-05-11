@@ -1,8 +1,7 @@
 scriptencoding utf-8
 
 let &showbreak='↪ '
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let g:loaded_python_provider = 1
+" let g:loaded_python_provider = 1
 
 set autoindent
 set autoread
