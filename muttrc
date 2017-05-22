@@ -5,6 +5,7 @@ folder-hook posteo 'source ~/.mutt/posteo.muttrc'
 
 source ~/.mutt/general.muttrc
 source ~/.mutt/composing.muttrc
+source ~/.mutt/pgp.muttrc
 source ~/.mutt/mailboxes.muttrc
 source ~/.mutt/headers.muttrc
 source ~/.mutt/bindings.muttrc

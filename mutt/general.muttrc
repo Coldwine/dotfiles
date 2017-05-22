@@ -4,7 +4,7 @@ set certificate_file = ~/.mutt/certificates             # where to store certifi
 set mailcap_path = ~/.mutt/mailcap                      # path to the mailcap file
 set tmpdir = /tmp                                       # tempory directory
 
-set new_mail_command = "terminal-notifier -title 'NeoMutt' -subtitle 'New Mail in %f' -message '%n new messages, %u unread.' -appIcon ~/Downloads/mutt-1.png -activate 'com.googlecode.iterm2'"
+# set new_mail_command = "terminal-notifier -title 'NeoMutt' -subtitle 'New Mail in %f' -message '%n new messages, %u unread.' -appIcon ~/Downloads/mutt-1.png -activate com.googlecode.iterm2 -sender com.googlecode.iterm2"
 
 alternates "feuerwinter@gmail.com|marcel.krause@useeds.de|mgmk@posteo.de"
 
