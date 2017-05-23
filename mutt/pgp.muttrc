@@ -1,1 +1,3 @@
+# vim: filetype=muttrc
+
 set crypt_use_gpgme
