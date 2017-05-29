@@ -40,6 +40,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'andreshazard/vim-freemarker'
 
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
