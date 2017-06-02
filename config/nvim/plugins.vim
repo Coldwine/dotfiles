@@ -5,6 +5,7 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'dracula/vim'
+Plug 'Badacadabra/vim-archery'
 
 " Editing and Formatting
 Plug 'sbdchd/neoformat'
