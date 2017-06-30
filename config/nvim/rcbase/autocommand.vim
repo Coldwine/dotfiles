@@ -20,7 +20,7 @@ function! <SID>goyo_active()
   if exists('#goyo')
     return
   else
-    Neomake
+    ALELint
   endif
 endfunction
 

@@ -9,7 +9,7 @@ let g:lightline = {
       \     'left': [ [ 'mode', 'paste'  ],
       \               [ 'fugitive', 'gitgutter' ],
       \               [ 'filename' ] ],
-      \     'right': [ [ 'neomake', 'lineinfo' ],
+      \     'right': [ [ 'ale', 'lineinfo' ],
       \                [ 'percent' ],
       \                [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \   },
@@ -23,10 +23,7 @@ let g:lightline = {
       \     'fileencoding': 'LightLineFileencoding',
       \     'mode': 'LightLineMode',
       \     'gitgutter': 'LightLineSignify',
-      \     'neomake': 'neomake#statusline#LoclistStatus',
-      \   },
-      \   'component_type': {
-      \     'neomake': 'error',
+      \     'ale': 'LightLineALE',
       \   },
       \   'separator': { 'left': '', 'right': ''},
       \   'subseparator': { 'left': '|', 'right': '|'}
@@ -52,6 +49,19 @@ function! LightLineFilename()
   return ('' !=# LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
         \ ('' !=# expand('%') ? expand('%') : '[No Name]') .
         \ ('' !=# LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineALE() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
 endfunction
 
 function! LightLineFileformat()

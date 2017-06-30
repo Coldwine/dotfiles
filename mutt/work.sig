@@ -1,15 +1,15 @@
 Viele Grüße
 Marcel
----
-USEEDS˚
+•••
+USEEDS°
 user centred thinking
----
+•••
 Marcel Krause
 Experience Developer
 Telefon +49 30 340 6005 0
 Fax +49 30 340 6005 49
----
-USEEDS˚ GmbH
+•••
+USEEDS° GmbH
 Friedrichstr. 209
 D - 10969 Berlin
 
