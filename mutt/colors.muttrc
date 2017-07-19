@@ -1,32 +1,32 @@
 # vim: filetype=muttrc
 
-color normal            color231    default
-color indicator         color231    default
-color attachment        color60     default
-color error             color196    default
-color message           color231    default
-color progress          color81     default
-color prompt            color81     default
-color quoted            color228    default
-color quoted1           color84     default
-color signature         color212    default
-color status            color231    default
-color status            color141    default   '\[([^]]+)\]' 1
-color tilde             color61     default
-color tree              color61     default
-color hdrdefault        color84     default
-color header            color81     default   '^date:'
-color header            color212    default   '^from:'
-color header            color228    default   '^(to|cc|bcc):'
-color header            color141    default   '^subject:'
+color normal            color250    default
+color indicator         color229    default
+color attachment        color238    default
+color error             color131    default
+color message           color250    default
+color progress          color73     default
+color prompt            color73     default
+color quoted            color67     default
+color quoted1           color60     default
+color signature         color131    default
+color status            color250    default
+color status            color108    default   '\[([^]]+)\]' 1
+color tilde             color65     default
+color tree              color65     default
+color hdrdefault        color108    default
+color header            color110    default   '^date:'
+color header            color208    default   '^from:'
+color header            color101    default   '^(to|cc|bcc):'
+color header            color65     default   '^subject:'
 color index_number      color60     default
-color index_author      color212    default   '.*'
-color index_date        color81     default
-color index_flags       color228    default   '.*'
-color index_subject     color141    default   '.*'
-color sidebar_indicator color141    default
-color sidebar_new       color212    default
-color sidebar_highlight color81     default
+color index_author      color208    default   '.*'
+color index_date        color110    default
+color index_flags       color108    default   '.*'
+color index_subject     color65     default   '.*'
+color sidebar_indicator color65     default
+color sidebar_new       color73     default
+color sidebar_highlight color229    default
 # color message       color214    default
 # color markers       color138    default
 # color quoted1       color66     default

@@ -7,17 +7,24 @@ bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
 bind index,pager \CP sidebar-prev
 
+bind index s noop
+bind index g noop
 bind index i display-message
 bind index l limit
 bind index gr group-reply
 bind index gg first-entry
 bind index G last-entry
-macro index   <tab>      <next-unread><enter>
 
+bind pager g noop
 bind pager gg top
 bind pager G bottom
 bind pager gr group-reply
 bind pager J next-line
 bind pager K previous-line
 
+macro index <tab> <next-unread><enter>
+macro index so "<enter-command>source ~/.muttrc<enter>" "reload mutt config"
+macro index,pager ",m" ":unset wait_key\n |add_to_calcurse<enter><exit>"
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "extract URLs out of a message"
 # vim: filetype=muttrc

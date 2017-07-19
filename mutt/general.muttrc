@@ -47,10 +47,4 @@ set mail_check = 120
 set smtp_authenticators = 'gssapi:login'
 set move = no
 
-# useful macros
-macro index,pager ",m" ":unset wait_key\n |add_to_calcurse<enter><exit>"
-macro index so "<enter-command>source ~/.muttrc<enter>" "reload mutt config"
-macro index,pager \cb "<pipe-message> urlscan<Enter>" "extract URLs out of a message"
-macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "extract URLs out of a message"
-
 # vim: syntax=muttrc
