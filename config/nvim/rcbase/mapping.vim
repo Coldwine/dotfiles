@@ -8,7 +8,7 @@ nnoremap <leader>tn :tabe<cr>
 nnoremap <leader>to :tabo<cr>
 nnoremap <leader>tn :tabnext<cr>
 nnoremap <leader>tp :tabprev<cr>
-nnoremap <leader>tl :vsplit<cr>:terminal<cr>
+nnoremap <leader>tl :vsplit<cr>:TerminusOpen /usr/local/bin/fish<cr>
 nnoremap <leader>w :write<cr>
 inoremap jk <esc>
 inoremap <esc> <nop>
@@ -72,7 +72,7 @@ nnoremap <leader>gpl :Git pull<cr>
 nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gvv :GV!<cr>
 " Terminal mode
-tnoremap jk <c-\><c-n>
+tnoremap Q <c-\><c-n>
 tnoremap <c-h> <c-\><c-n><c-w>h
 tnoremap <c-j> <c-\><c-n><c-w>j
 tnoremap <c-k> <c-\><c-n><c-w>k

@@ -4,7 +4,7 @@ set laststatus=2
 set showtabline=2
 
 let g:lightline = {
-      \   'colorscheme': 'archery',
+      \   'colorscheme': 'apprentice',
       \   'active': {
       \     'left': [ [ 'mode', 'paste'  ],
       \               [ 'fugitive', 'gitgutter' ],
@@ -22,7 +22,7 @@ let g:lightline = {
       \     'filetype': 'LightLineFiletype',
       \     'fileencoding': 'LightLineFileencoding',
       \     'mode': 'LightLineMode',
-      \     'gitgutter': 'LightLineSignify',
+      \     'gitgutter': 'LightLineGitGutter',
       \     'ale': 'LightLineALE',
       \   },
       \   'separator': { 'left': '', 'right': ''},
@@ -90,21 +90,23 @@ function! TagbarStatusFunc(fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-function! LightLineSignify()
-  let l:symbols = ['+', '-', '!']
-  let [l:added, l:modified, l:removed] = sy#repo#get_stats()
-  let l:stats = [l:added, l:removed, l:modified]  " reorder
-  let l:hunkline = ''
-
-  for l:i in range(3)
-    if l:stats[l:i] > 0
-      let l:hunkline .= printf('%s%s ', l:symbols[l:i], l:stats[l:i])
+function! LightLineGitGutter()
+  if ! exists('*GitGutterGetHunkSummary()')
+    \ || ! get(g:, 'gitgutter_enabled', 0)
+    \ || winwidth('.') <= 90
+    return ''
+  endif
+  let l:symbols = [
+    \ g:gitgutter_sign_added . ' ',
+    \ g:gitgutter_sign_modified . ' ',
+    \ g:gitgutter_sign_removed . ' '
+  \ ]
+  let l:hunks = GitGutterGetHunkSummary()
+  let l:ret = []
+  for l:i in [0, 1, 2]
+    if l:hunks[l:i] > 0
+      call add(l:ret, l:symbols[l:i] . l:hunks[l:i])
     endif
   endfor
-
-  if !empty(l:hunkline)
-    let l:hunkline = printf('%s', l:hunkline[:-2])
-  endif
-
-  return l:hunkline
+  return join(l:ret, ' ')
 endfunction
