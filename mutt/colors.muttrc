@@ -1,32 +1,32 @@
 # vim: filetype=muttrc
 
-color normal            color250    default
-color indicator         color229    default
-color attachment        color238    default
-color error             color131    default
-color message           color250    default
-color progress          color73     default
-color prompt            color73     default
-color quoted            color67     default
-color quoted1           color60     default
-color signature         color131    default
-color status            color250    default
-color status            color108    default   '\[([^]]+)\]' 1
-color tilde             color65     default
-color tree              color65     default
-color hdrdefault        color108    default
-color header            color110    default   '^date:'
-color header            color208    default   '^from:'
-color header            color101    default   '^(to|cc|bcc):'
-color header            color65     default   '^subject:'
-color index_number      color60     default
-color index_author      color208    default   '.*'
-color index_date        color110    default
-color index_flags       color108    default   '.*'
-color index_subject     color65     default   '.*'
-color sidebar_indicator color65     default
-color sidebar_new       color73     default
-color sidebar_highlight color229    default
+color normal            color07     default
+color indicator         default     color18
+color attachment        color08     default
+color error             color01     default
+color message           color07     default
+color progress          color04     default
+color prompt            color07     default
+color quoted            color05     default
+color quoted1           color06     default
+color signature         color02     default
+color status            color03     default
+color status            color14     default   '\[([^]]+)\]' 1
+color tilde             color03     default
+color tree              color03     default
+color hdrdefault        color07     default
+color header            color04     default   '^date:'
+color header            color05     default   '^from:'
+color header            color06     default   '^(to|cc|bcc):'
+color header            color02     default   '^subject:'
+color index_number      color08     default
+color index_author      color05     default   '.*'
+color index_date        color04     default
+color index_flags       color01     default   '.*'
+color index_subject     color02     default   '.*'
+color sidebar_indicator color10     default
+color sidebar_new       color03     default
+color sidebar_highlight color06    default
 # color message       color214    default
 # color markers       color138    default
 # color quoted1       color66     default

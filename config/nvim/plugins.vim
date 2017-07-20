@@ -4,7 +4,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
-Plug 'romainl/Apprentice'
+" Plug 'romainl/Apprentice'
+Plug 'chriskempson/base16-vim'
 
 " Editing and Formatting
 Plug 'sbdchd/neoformat'

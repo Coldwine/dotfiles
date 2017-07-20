@@ -24,6 +24,5 @@ call s:SourceConfigFilesIn('functions')
 call s:SourceConfigFilesIn('rcplugins')
 
 runtime macros/matchit.vim
-set termguicolors
-set background=dark
-colorscheme Apprentice
+let base16colorspace=256
+colorscheme base16-eighties
