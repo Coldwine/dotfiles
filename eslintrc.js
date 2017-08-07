@@ -1,6 +1,5 @@
 module.exports = {
   extends: ['eslint:recommended', 'google'],
-  ecmaVersion: 6,
   env: {
     jquery: true,
     browser: true,

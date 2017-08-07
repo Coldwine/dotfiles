@@ -1,4 +1,4 @@
-set shell=/bin/sh
+set shell=/usr/local/bin/fish
 
 function! s:SourceConfigFilesIn(directory)
   let l:directory_splat = '~/.config/nvim/' . a:directory . '/*.vim'
