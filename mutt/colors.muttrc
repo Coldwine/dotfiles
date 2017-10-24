@@ -1,7 +1,7 @@
 # vim: filetype=muttrc
 
 color normal            color07     default
-color indicator         default     color18
+color indicator         color08     color02
 color attachment        color08     default
 color error             color01     default
 color message           color07     default
@@ -27,17 +27,3 @@ color index_subject     color02     default   '.*'
 color sidebar_indicator color10     default
 color sidebar_new       color03     default
 color sidebar_highlight color06    default
-# color message       color214    default
-# color markers       color138    default
-# color quoted1       color66     default
-# color quoted2       color32     default
-# color quoted3       color30     default
-# color quoted4       color99     default
-# color quoted5       color36     default
-# color quoted6       color114    default
-# color quoted7       color109    default
-# color quoted8       color41     default
-# color quoted9       color138    default
-# color header        color108    default   '^(to|cc|bcc):'
-# color header        color120    default   '^from:'
-# color header        color178    default   '^subject:'

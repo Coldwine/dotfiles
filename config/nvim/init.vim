@@ -24,5 +24,6 @@ call s:SourceConfigFilesIn('functions')
 call s:SourceConfigFilesIn('rcplugins')
 
 runtime macros/matchit.vim
-let base16colorspace=256
-colorscheme base16-eighties
+set termguicolors
+set background=light
+colorscheme NeoSolarized

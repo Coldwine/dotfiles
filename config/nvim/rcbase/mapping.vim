@@ -52,7 +52,7 @@ nnoremap <silent><c-p> :Files<cr>
 nnoremap <leader><enter> :Buffers<cr>
 nnoremap <leader>/ :Ag<cr>
 nnoremap <leader>b :TagbarToggle<cr>
-nnoremap <leader>u :UndotreeToggle<cr>
+nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>ga :Git add %:p<cr><cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit -v -q<cr>
