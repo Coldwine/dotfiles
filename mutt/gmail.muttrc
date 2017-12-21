@@ -9,7 +9,7 @@ set from = "feuerwinter@gmail.com"
 set signature = ~/.mutt/gmail.sig
 
 set imap_user = "feuerwinter@gmail.com"
-set imap_pass = "`keyring get imap.gmail.com feuerwinter@gmail.com`"
+set imap_pass = "lhlijyafthkafbue"
 set smtp_url = "smtps://$imap_user@smtp.gmail.com:465"
 set smtp_pass = $imap_pass
 
